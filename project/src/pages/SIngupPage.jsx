@@ -28,7 +28,6 @@ function SignupForm() {
         <div>
             <header>
                 <h1>docturtle🐢 회원가입👤</h1>
-                <h5>go to login →</h5>
             </header>
             <div className="container">
                 <h2>회원가입</h2>
@@ -101,11 +100,6 @@ function SignupForm() {
                 <p>이 페이지는 docturtle🐢에서 제공하는 회원가입 양식입니다.</p>
                 <p>개인 정보 처리 방침 → 펼쳐보기 </p>
                 <p>동의/미동의 → 라디오 버튼 활용 </p>
-                <p> ???</p>
-                <p> ???</p>
-                <p> ???</p>
-                <p> ???</p>
-                <p> ???</p>
             </div>
         </div>
     );
