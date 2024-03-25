@@ -32,15 +32,14 @@ function SignupForm() {
             </header>
             <div className="container">
                 <h2>회원가입</h2>
+                <form onSubmit={handleSignup}>
                 <input
                     type="text"
                     value={username}
                     placeholder="이름"
                     onChange={(e) => setUsername(e.target.value)}
                     required
-                />
-                <form onSubmit={handleSignup}>
-                    <div className="form-group">
+                />   
                         <input
                             type="text"
                             value={id}
@@ -49,7 +48,6 @@ function SignupForm() {
                             required
                         />
                         <input type="button" value="중복확인" />
-                    </div>
                     <input
                         type="password"
                         value={password}

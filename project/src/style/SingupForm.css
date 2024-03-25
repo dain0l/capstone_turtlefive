@@ -44,13 +44,15 @@ h2 {
 
 h5 {
     position: fixed;
-    top: 20px;
+    top: 50px;
     right: 20px;
 }
+
 
 input[type="text"], input[type="email"], input[type="password"], select, input[type="date"] {
     width: calc(55% - 5px);
     padding: 10px;
+    margin-left: 0;
     margin-bottom: 15px;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -61,7 +63,7 @@ input[type="button"] {
     width: calc(20% - 30px);
     padding: 10px;
     margin-bottom: 15px;
-    margin-left: 12px;
+    margin-left: 10px;
     background-color: #588D71;
     color: #fff;
     border: none;
