@@ -1,20 +1,14 @@
-import React from 'react';
 import styled from 'styled-components';
-import Toolbar from '../components/toolbar/Toolbar'; // Toolbar 컴포넌트를 import
+import { Link } from 'react-router-dom';
 
 const BackStyle = styled.div`
     display: flex;
-    background-color: #E6E6E6;
+    background-color: #DFF0D8;
     width: 100vw;
     height: 100vh;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-`;
-
-const ImgStyle = styled.img`
-    width: 200px;
-    height: auto;
 `;
 
 const TitleStyle = styled.div`
@@ -26,12 +20,28 @@ const TitleStyle = styled.div`
     line-height: normal;
 `;
 
+const LinkButtonStyle = styled(Link)`
+    color: #FBFDF5;
+    font-family: Roboto;
+    font-size: 1.5rem;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+    margin-top: 1rem;
+    cursor: pointer;
+    text-decoration: none;
+
+    &:hover {
+        color: #FFFFFF;
+        text-decoration: none; // Ensure no underline on hover
+    }
+`;
+
 function StartPage() {
     return (
         <BackStyle>
-            <Toolbar /> {/* Toolbar 컴포넌트 추가 */}
-            
-            <TitleStyle>Turtle Five</TitleStyle>
+            <TitleStyle>TurtleFIve</TitleStyle>
+            <LinkButtonStyle to="/register">START</LinkButtonStyle>
         </BackStyle>
     );
 }

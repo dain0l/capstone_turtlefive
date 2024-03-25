@@ -1,0 +1,54 @@
+.login-container {
+    max-width: 500px;
+    margin: 80px auto;
+    padding: 90px 30px; /* 상하 여백을 늘림 */
+    background-color: #ffffffbb;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+p {
+    margin-top: 20px;
+    margin-bottom: 50px;
+    font-size: 12px;
+    text-align: right;
+
+}
+
+h1 {
+    margin-top: 100px;
+    text-align: center;
+}
+h2 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+input[type="text"],
+input[type="password"] {
+    text-align: center;
+    width: 100%;
+    padding: 15px;
+    margin: 0 auto;
+    margin-bottom:10px ;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+input[type="submit"] {
+    width: 100%;
+    padding: 15px;
+    background-color: #588D71;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #4D7D63;
+}
+
+.input-container {
+    text-align: center; /* input 요소를 가운데 정렬 */
+}

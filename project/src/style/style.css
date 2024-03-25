@@ -1,0 +1,13 @@
+.black-background {
+    background-color: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.white-rectangle {
+    width: 200px;
+    height: 100px;
+    background-color: #fff;
+}
