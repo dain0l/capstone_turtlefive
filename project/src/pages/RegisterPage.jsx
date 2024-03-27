@@ -1,6 +1,10 @@
+import Beforehand from '../components/Home/Beforehand';
+
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom'; 
+
+
 
 
 const HeaderContainer = styled.div`
@@ -78,7 +82,15 @@ function Header() {
                 <Link to="/turtle-inspection">
                     <StyledButton>거북목 검사하러가기</StyledButton>
                 </Link>
+
+                
+
             </RectangleContainer>
+
+            <RectangleContainer>
+            <div><Beforehand /></div>
+            </RectangleContainer>
+
         </div>
 
             
