@@ -75,6 +75,7 @@ function Header() {
                     <StyledLink to="#">About</StyledLink>
                     <StyledLink to="#">Contact</StyledLink>
                     <StyledLink to="/login">Login</StyledLink> 
+                    <StyledLink to="/explain">Explain</StyledLink> 
                 </Navigation>
             </HeaderContainer>
 
