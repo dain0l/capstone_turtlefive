@@ -20,7 +20,7 @@ const PrevNextButton = styled.button`
 `;
 
 const images = [
-  'image1.jpg',
+  './img/AA.jpg',
   'image2.jpg',
   'image3.jpg',
   // 추가 이미지들...
