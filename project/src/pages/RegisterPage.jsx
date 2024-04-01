@@ -62,7 +62,7 @@ const StyledButton = styled.button`
     cursor: pointer;
 
     &:hover {
-        background-color: #4CAF50;
+        background-color: #50655b;
     }
 `;
 
