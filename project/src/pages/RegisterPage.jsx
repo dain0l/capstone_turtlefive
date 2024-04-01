@@ -18,7 +18,7 @@ const HeaderContainer = styled.div`
 `;
 
 const RectangleContainer = styled.div`
-    background-color: #FFFFFF; 
+    background-color: #4a4e4c;
     padding: 20px; 
     border-radius: 10px; /* 직사각형의 모서리를 둥글게 만듭니다. */
     margin-top: 20px; /* 상단 여백을 설정합니다. */
@@ -28,6 +28,7 @@ const RectangleContainer = styled.div`
     align-items: center; /* 버튼을 가운데 정렬합니다. */
     width: 1600px; /* 가로 크기를 300px로 설정합니다. */
     height: 200px; /* 세로 크기를 200px로 설정합니다. */
+    margin-left: 20px; /* 좌측 여백을 설정합니다. */
 `;
 
 const Logo = styled.div`
@@ -54,7 +55,7 @@ const StyledLink = styled(Link)`
 const StyledButton = styled.button`
     font-size: 2rem;
     padding: 0.5rem 1rem;
-    background-color: #2E7D32;
+    background-color: #779787;
     color: white;
     border: none;
     border-radius: 5px;

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const BackStyle = styled.div`
     display: flex;
-    background-color: #4d7661;
+    background-color: #779787;
     width: 100vw;
     height: 100vh;
     align-items: center;
