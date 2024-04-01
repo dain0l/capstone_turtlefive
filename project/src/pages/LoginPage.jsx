@@ -39,7 +39,7 @@ function LoginPage() {
                 <input
                     type="text"
                     value={username}
-                    placeholder="아이디 또는 e-mail"
+                    placeholder="e-mail"
                     onChange={(e) => setUsername(e.target.value)}
                     required
                 />
