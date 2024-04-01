@@ -54,7 +54,7 @@ function LoginPage() {
             </form>
             <div className="additional-links">
                 <p><a href="#">아이디찾기</a> | <a href="#">비밀번호찾기</a></p>
-                <p><StyledLink to="/singup">회원가입</StyledLink></p>
+                <p><StyledLink to="/agree">회원가입</StyledLink></p>
             </div>
         </div>
        </div>
