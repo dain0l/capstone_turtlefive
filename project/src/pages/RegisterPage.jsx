@@ -28,7 +28,7 @@ const RectangleContainer = styled.div`
     align-items: center; /* 버튼을 가운데 정렬합니다. */
     width: 1600px; /* 가로 크기를 300px로 설정합니다. */
     height: 200px; /* 세로 크기를 200px로 설정합니다. */
-    margin-left: 20px; /* 좌측 여백을 설정합니다. */
+    margin-left: 33px; /* 좌측 여백을 설정합니다. */
 `;
 
 const Logo = styled.div`
