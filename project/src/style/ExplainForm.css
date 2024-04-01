@@ -31,6 +31,7 @@
     background-color: rgba(0, 0, 0, 0.452);
     color: #ffffffc3;
     padding: 2px;
+    height: 50px; /* Adjust the height to reduce vertical size */
     position: fixed;
     bottom: 0;
     left: 0; /* 왼쪽 정렬 추가 */
