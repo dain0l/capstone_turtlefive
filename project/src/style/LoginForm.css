@@ -28,6 +28,7 @@ input[type="text"],
 input[type="password"] {
     text-align: center;
     width: 100%;
+    width: calc(100% - 30px * 2); /* 버튼과 같은 가로 크기를 설정합니다. */
     padding: 15px;
     margin: 0 auto;
     margin-bottom:10px ;
@@ -39,6 +40,7 @@ input[type="password"] {
 input[type="submit"] {
     width: 100%;
     padding: 15px;
+
     background-color: #588D71;
     color: #fff;
     border: none;
