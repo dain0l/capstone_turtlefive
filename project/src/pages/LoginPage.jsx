@@ -12,6 +12,10 @@ const StyledLink = styled(Link)`
     }
 `;
 
+const header = styled.header`
+    background-color: #f5f1ee84;
+`;
+
 const LoginPage = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
@@ -27,9 +31,6 @@ const LoginPage = () => {
     };
 
     const styles = {
-        header: {
-            backgroundColor: 'rgba(0, 0, 0, 0.452)'
-        },
         loginContainer: {
             maxWidth: '500px',
             margin: '80px auto',
