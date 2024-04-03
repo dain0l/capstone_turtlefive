@@ -47,7 +47,7 @@ function AgreePage() {
 
     return (
         <div style={{ maxWidth: '600px', margin: '100px auto', padding: '20px', backgroundColor: '#ffffffbb', borderRadius: '10px', boxShadow: '0 0 10px rgba(11, 83, 67, 0.267)' }}>
-            <h2 style={{ textAlign: 'center', marginBottom: '20px' }}>docturtle🐢 회원가입 동의</h2>
+            <h2 style={{ textAlign: 'center', marginBottom: '20px' }}>docturtle🐢 회원가입 동의서</h2>
             <form onSubmit={handleSubmit}>
                 <div style={{ marginBottom: '10px' }} className="checkbox">
                     <input
@@ -89,7 +89,7 @@ function AgreePage() {
                     <label style={{ display: 'inline-block', verticalAlign: 'middle', fontSize: '13px', marginTop: '18px', marginLeft: '5px' }} htmlFor="agreePrivacy">docturtle 개인정보 수집 및 이용에 동의합니다.</label>
                     <div className="agree-container" style={{ textAlign: 'center', fontSize:'12px', backgroundColor: 'rgba(255, 255, 255, 0.703)', border: '1px solid #a7a296', padding: '10px', margin: '20px', borderRadius: '10px' }}>
                         <p>
-                        개인정보보호법에 따라 네이버에 회원가입 신청하시는 분께 수집하는 개인정보의 항목, 개인정보의 수집 및 이용목적,
+                        개인정보보호법에 따라 docturtle 회원가입 신청하시는 분께 수집하는 개인정보의 항목, 개인정보의 수집 및 이용목적,
                         개인정보의 보유 및 이용기간, 동의 거부권 및 동의 거부 시 불이익에 관한 사항을 안내 드리오니 자세히 읽은 후 동의하여 주시기 바랍니다. <br />
                         이용자는 개인정보의 수집 및 이용 동의를 거부할 권리가 있습니다. 회원가입 시 수집하는 최소한의 개인정보,
                         즉, 필수 항목에 대한 수집 및 이용 동의를 거부하실 경우, 회원가입이 어려울 수 있습니다.
