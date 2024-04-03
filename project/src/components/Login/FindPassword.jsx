@@ -21,6 +21,14 @@ function FindPassword() {
     setMessage(`🐻‍❄️ 비밀번호는 ${foundPW} 입니다. 🐻‍❄️`);
   };
 
+  const handleCancel = () => {
+    // 입력된 값 초기화
+    setUsername('');
+    setNumber('');
+    setEmail('');
+
+};
+
   const styles = {
     header: {
       backgroundColor: '#f5f1ee84', // 원하는 배경색으로 변경
@@ -63,10 +71,11 @@ function FindPassword() {
       boxSizing: 'border-box',
     },
     button: {
-      width: '100%',
+      width: '48%',
+      marginLeft: '10px',
       padding: '12px',
       fontSize: '13px',
-      marginTop: '10px',
+      marginTop: '40px',
       backgroundColor: '#588D71',
       color: '#fff',  
       border: 'none',
@@ -125,6 +134,7 @@ function FindPassword() {
               required
             />
           </div>
+          <button style={styles.button} type="button" onClick={handleCancel}>취소하기</button>
           <button style={styles.button} type="submit">비밀번호 찾기</button>
         </form>
         {message && (

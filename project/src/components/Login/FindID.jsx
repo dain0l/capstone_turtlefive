@@ -14,6 +14,14 @@ function FindID() {
     setEmail(foundEmail);
   };
 
+
+  const handleCancel = () => {
+    // 입력된 값 초기화
+    setUsername('');
+    setNumber('');
+
+};
+
   const styles = {
     header: {
         backgroundColor: '#f5f1ee84', // 원하는 배경색으로 변경
@@ -57,9 +65,10 @@ function FindID() {
       boxSizing: 'border-box',
     },
     button: {
-      width: '100%',
+      width: '48%',
+      marginLeft: '10px',
       padding: '12px',
-      marginTop: '10px',
+      marginTop: '40px',
       fontSize: '13px',
       backgroundColor: '#588D71',
       color: '#fff',
@@ -108,6 +117,7 @@ function FindID() {
             required
           />
         </div>
+           <button style={styles.button} type="button" onClick={handleCancel}>취소하기</button>
         <button style={styles.button} type="submit">아이디 찾기</button>
       </form>
       {email && (
