@@ -22,6 +22,13 @@ function FindPassword() {
   };
 
   const styles = {
+    header: {
+      backgroundColor: '#f5f1ee84', // 원하는 배경색으로 변경
+      textAlign: 'center',
+      paddingTop: '25px',
+      paddingBottom: '25px', // 하단 여백을 조절할 수 있습니다.
+   
+  },
     h1: {
       marginTop: '50px',
       textAlign: 'center',
@@ -79,8 +86,8 @@ function FindPassword() {
 
   return (
     <div style={styles.body}>
-      <header>
-        <h1 style={styles.h1}>docturtle🐢</h1>
+      <header style={styles.header}>
+        <h1>docturtle🐢</h1>
       </header>
       <div style={styles.findPasswordContainer}>
         <h2 style={{ textAlign: 'center', marginBottom: '50px'}}>비밀번호 찾기</h2>

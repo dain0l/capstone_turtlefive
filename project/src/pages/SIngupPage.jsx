@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import styled from 'styled-components';
 
 function SignupForm() {
     const [username, setUsername] = useState('');
@@ -25,9 +27,16 @@ function SignupForm() {
     };
 
     const styles = {
+        header: {
+            backgroundColor: '#f5f1ee84', // 원하는 배경색으로 변경
+            textAlign: 'center',
+            paddingTop: '25px',
+            paddingBottom: '25px', // 하단 여백을 조절할 수 있습니다.
+        },
         container: {
             maxWidth: '600px',
-            margin: '20px auto',
+            marginTop: '80px',
+            margin: '30px auto',
             padding: '20px',
             backgroundColor: '#ffffffbb',
             borderRadius: '10px',
@@ -37,6 +46,7 @@ function SignupForm() {
             marginTop: '30px',
             maxWidth: '600px',
             margin: '20px auto',
+            marginBottom: '70px',
             textAlign: 'center',
             padding: '20px',
             backgroundColor: '#ffffffbb',
@@ -105,9 +115,9 @@ function SignupForm() {
 
     return (
         <div style={styles.body}>
-            <header>
-                <h1 style={styles.h1}>docturtle🐢</h1>
-            </header>
+           <header style={styles.header}>
+             <h1>docturtle🐢</h1>
+             </header>
             <div style={styles.container}>
                 <h2 style={styles.h2}>회원가입</h2>
                 <form onSubmit={handleSignup}>

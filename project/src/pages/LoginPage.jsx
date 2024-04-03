@@ -12,10 +12,6 @@ const StyledLink = styled(Link)`
     }
 `;
 
-const header = styled.header`
-    background-color: #f5f1ee84;
-`;
-
 const LoginPage = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
@@ -31,6 +27,13 @@ const LoginPage = () => {
     };
 
     const styles = {
+        header: {
+            backgroundColor: '#f5f1ee84', // 원하는 배경색으로 변경
+            textAlign: 'center',
+            paddingTop: '25px',
+            paddingBottom: '25px', // 하단 여백을 조절할 수 있습니다.
+         
+        },
         loginContainer: {
             maxWidth: '500px',
             margin: '80px auto',
@@ -47,7 +50,8 @@ const LoginPage = () => {
         },
         h1: {
             marginTop: '50px',
-            textAlign: 'center',
+            marginBottom: '50px',
+            textAlign: 'center'
         },
         h2: {
             textAlign: 'center',
@@ -85,9 +89,9 @@ const LoginPage = () => {
 
     return (
         <div style={styles.body}>
-            <header>
-                <h1 style={styles.h1}>docturtle🐢</h1>
-            </header>
+           <header style={styles.header}>
+             <h1>docturtle🐢</h1>
+             </header>
             <div style={styles.loginContainer} className="login-container">
                 <h2 style={styles.h2}>로그인</h2>
                 <form onSubmit={handleLogin}>
