@@ -196,8 +196,7 @@ function SignupForm() {
             </div>
             <div style={styles.footerContainer}>
                 <p style={styles.footerContainerP}>이 페이지는 docturtle🐢에서 제공하는 회원가입 양식입니다.</p>
-                <p style={styles.footerContainerP}>개인 정보 처리 방침 → 펼쳐보기 </p>
-                <p style={styles.footerContainerP}>동의/미동의 → 라디오 버튼 활용 </p>
+                <p style={styles.footerContainerP}>welcome to docturtle website </p>    
             </div>
         </div>
     );
