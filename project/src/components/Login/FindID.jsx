@@ -52,8 +52,8 @@ function FindID() {
       padding: '10px',
       fontSize: '16px',
       marginBottom: '20px',
-      border: '1px solid #ccc',
-      borderRadius: '5px',
+      border: '1px solid #779787',
+      borderRadius: '40px',
       boxSizing: 'border-box',
     },
     button: {

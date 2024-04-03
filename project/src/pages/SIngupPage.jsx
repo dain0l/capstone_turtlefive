@@ -12,6 +12,17 @@ function SignupForm() {
     const [gender, setGender] = useState('');
     const [birthdate, setBirthdate] = useState('');
 
+    const handleCancel = () => {
+        // 입력된 값 초기화
+        setUsername('');
+        setEmail('');
+        setNumber('');
+        setPassword('');
+        setConfirmPassword('');
+        setGender('');
+        setBirthdate('');
+    };
+
     const handleSignup = (e) => {
         e.preventDefault();
         // 회원가입 처리
@@ -77,8 +88,8 @@ function SignupForm() {
             padding: '10px',
             marginLeft: '0',
             marginBottom: '15px',
-            border: '1px solid #ccc',
-            borderRadius: '5px',
+            border: '1px solid #779787',
+            borderRadius: '40px',
             boxSizing: 'border-box',
         },
         button: {
@@ -93,7 +104,7 @@ function SignupForm() {
             cursor: 'pointer',
         },
         submit: {
-            width: '100%',
+            width: '48%',
             padding: '10px',
             marginTop: '10px',
             backgroundColor: '#588D71',
@@ -101,6 +112,7 @@ function SignupForm() {
             border: 'none',
             borderRadius: '5px',
             cursor: 'pointer',
+            marginLeft: '10px'
         },
         label: {
             display: 'block',
@@ -191,12 +203,16 @@ function SignupForm() {
                             required
                         />
                     </div>
+                    <button style={styles.submit} type="button" onClick={handleCancel}>취소하기</button>
                     <input style={styles.submit} type="submit" value="가입하기" />
                 </form>
             </div>
             <div style={styles.footerContainer}>
                 <p style={styles.footerContainerP}>이 페이지는 docturtle🐢에서 제공하는 회원가입 양식입니다.</p>
-                <p style={styles.footerContainerP}>welcome to docturtle website </p>    
+                <p style={styles.footerContainerP}>♥</p>    
+                
+                <p style={styles.footerContainerP}>welcome to docturtle website </p>  
+                  
             </div>
         </div>
     );

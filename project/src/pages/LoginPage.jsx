@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 const StyledLink = styled(Link)`
-    color: #2E7D32;
+    color: #000000;
     text-decoration: none;
     margin-right: 0.1rem;
 
@@ -11,6 +11,8 @@ const StyledLink = styled(Link)`
         text-decoration: underline;
     }
 `;
+
+
 
 const LoginPage = () => {
     const [username, setUsername] = useState('');
@@ -43,6 +45,7 @@ const LoginPage = () => {
             boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)'
         },
         p: {
+            color: '#000000',
             marginTop: '20px',
             marginBottom: '50px',
             fontSize: '12px',
@@ -63,8 +66,8 @@ const LoginPage = () => {
             padding: '15px',
             margin: '0 auto',
             marginBottom: '15px',
-            border: '1px solid #ccc',
-            borderRadius: '5px',
+            border: '1px solid #779787',
+            borderRadius: '40px',
             boxSizing: 'border-box',
         },
         submit: {
@@ -80,10 +83,8 @@ const LoginPage = () => {
         additionalLinks: {
             marginTop: '50px',
             textAlign: 'right',
-            fontSize: '15px'
-        },
-        link: {
-            color: '#fff' // 링크 색상 변경
+            fontSize: '13px',
+            color: '#000000', // 원하는 색상으로 변경
         }
     };
 

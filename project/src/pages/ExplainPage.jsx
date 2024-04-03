@@ -22,7 +22,7 @@ const StyledSection = styled.section`
     margin-bottom: 20px;
     background-color: #F5F1EE;
     border-radius: 10px;
-    border: 1px solid #2a3431d3;
+    border: 1px solid #779787;
 `;
 
 const StyledFooter = styled.footer`
@@ -51,7 +51,7 @@ const StyledTitleContent = styled.div`
     background-color: #f5ede6d6;
     margin-bottom: 20px;
     border-radius: 10px;
-    border: 1px solid #2a3431d3;
+    border: 1px solid #779787;
 
     h2 {
         color: #333;
