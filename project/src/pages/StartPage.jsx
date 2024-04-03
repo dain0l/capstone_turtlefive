@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const BackStyle = styled.div`
     display: flex;
-    background-color: #779787;
+    background-image: linear-gradient(to left, #ccffaa, #779787, #1e5b53);
     width: 100vw;
     height: 100vh;
     align-items: center;

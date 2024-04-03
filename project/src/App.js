@@ -9,6 +9,8 @@ import Singup from './pages/SIngupPage.jsx'
 import Inspect from './components/Home/Inspect.jsx';
 import Explain from './pages/ExplainPage.jsx'
 import Agree from './pages/AgreePage.jsx'
+import FindID from './components/Login/FindID.jsx'
+import FindPassword from './components/Login/FindPassword.jsx'
 
 function App() {
   return (
@@ -21,6 +23,8 @@ function App() {
         <Route path="/inspect" element={<Inspect />} />
         <Route path="/explain" element={<Explain />} />
         <Route path="/agree" element={<Agree />} />
+        <Route path="/findID" element={<FindID />} />
+        <Route path="/findPassword" element={<FindPassword />} />
 
       </Routes>
     </Router>
