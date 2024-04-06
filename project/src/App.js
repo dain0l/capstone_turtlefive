@@ -12,6 +12,7 @@ import Agree from './pages/AgreePage.jsx'
 import FindID from './components/Login/FindID.jsx'
 import FindPassword from './components/Login/FindPassword.jsx'
 import Turtle from './pages/Turtle.jsx'
+import ChartPage from './pages/ChartPage.jsx'
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
         <Route path="/findID" element={<FindID />} />
         <Route path="/findPassword" element={<FindPassword />} />
         <Route path="/turtle" element={<Turtle />} />
+        <Route path="/chartPage" element={<ChartPage />} />
 
       </Routes>
     </Router>

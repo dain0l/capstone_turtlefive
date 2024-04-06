@@ -73,13 +73,12 @@ function Header() {
                 <Logo>TurtleFive</Logo>
                 <Navigation>
                     <StyledLink to="#">Home</StyledLink>
-                    <StyledLink to="#">About</StyledLink>
+                    <StyledLink to="/chartPage">1week-chart</StyledLink>
                     <StyledLink to="#">Contact</StyledLink>
                     <StyledLink to="/login">Login</StyledLink> 
                     <StyledLink to="/explain">Explain</StyledLink> 
                 </Navigation>
             </HeaderContainer>
-
             <RectangleContainer>
                 <Link to="/turtle">
                     <StyledButton>거북목 검사하러가기</StyledButton>
