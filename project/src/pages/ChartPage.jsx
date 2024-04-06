@@ -13,6 +13,21 @@ const StyledLink = styled(Link)`
     }
 `;
 
+const StyledFooter = styled.footer`
+    background-color: rgba(0, 0, 0, 0.452);
+    color: #ffffffc3;
+    padding: 2px;
+    height: 50px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center; /* 수평 중앙 정렬 */
+`;
+
+
 // header 스타일 정의
 const header = {
     backgroundColor: '#f5f1ee84',
@@ -32,51 +47,51 @@ const Container = styled.div`
 
 const ChartDescription = styled.div`
     margin-left: 100px;
-    width: 50%; /* 설명 영역의 너비 조정 */
+    width: 55%; /* 설명 영역의 너비 조정 */
 `;
 
 const ChartPage = () => {
     const data = [
         {
           name: '월요일',
-          uv: 30,
+          거북목감지: 30,
 
         },
         {
           name: '화요일',
-          uv: 30,
+          거북목감지: 10,
 
         },
         {
           name: '수요일',
-          uv: 20,
+          거북목감지: 20,
  
         },
         {
           name: '목요일',
-          uv: 27,
+          거북목감지: 27,
         },
         {
           name: '금요일',
-          uv: 10,
+          거북목감지: 10,
 
         },
         {
           name: '토요일',
-          uv: 23,
+          거북목감지: 23,
 
         },
         {
           name: '일요일',
-          uv: 50,
+          거북목감지: 50,
 
         },
       ];
 
         // 가장 높은 UV 값을 가지는 데이터 찾기
-        let maxUVData = data.reduce((prev, current) => (prev.uv > current.uv) ? prev : current);
+        let maxUVData = data.reduce((prev, current) => (prev.거북목감지 > current.거북목감지) ? prev : current);
         // UV 값의 총합 계산
-        let totalUV = data.reduce((acc, current) => acc + current.uv, 0);
+        let totalUV = data.reduce((acc, current) => acc + current.거북목감지, 0);
         // UV 값의 평균 계산
         let averageUV = totalUV / data.length;
 
@@ -91,16 +106,23 @@ const ChartPage = () => {
                     <XAxis dataKey="name" scale="point" padding={{ left: 70, right: 10 }} />
                     <YAxis />
                     <Tooltip contentStyle={{ backgroundColor: 'white', color: 'black' }} />
-                    <Bar dataKey="uv" fill="#8884d8" background={{ fill: '#eee' }} />
+                    <Bar dataKey="거북목감지" fill="#8884d8" background={{ fill: '#eee' }} />
                 </BarChart>
                 </ResponsiveContainer>
                 <ChartDescription>
-                    <h2> turtle님의 일주일 평균 빈도수입니다.</h2>
+                    <h2> 이 그래프는</h2>
+                    <h2> [ turtle ] 님의 일주일 평균 빈도수입니다.</h2>
+                    <br></br>
+                    <hr></hr>
+                    <br></br>
                     <p>월요일부터 일요일까지의 데이터가 포함되어 있습니다.</p>
-                    <p>일주일 평균 거북목 알림 횟수는 "{averageUV.toFixed(2)}회" 입니다.</  p>
-                    <p>거북목 빈도수가 높은 요일은 "{maxUVData.name}"입니다.</p>
+                    <p><span style={{ color: 'blue' }}>일주일 평균</span> 거북목 알림 횟수는 " {averageUV.toFixed(2)}회 " 입니다.</p>
+                    <p>거북목 빈도수가 높은 요일은 <span style={{color: 'blue'}}>" {maxUVData.name} "</span> 입니다.</p>
                 </ChartDescription>
             </div>
+            <StyledFooter>
+                <p>&copy; 2024 docturtle guide website</p>
+            </StyledFooter>
         </Container>
      );
 }

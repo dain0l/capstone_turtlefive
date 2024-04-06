@@ -1,11 +1,10 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
-//background-image: linear-gradient(to left, #ccffaa, #779787, #1e5b53);
 
 const BackStyle = styled.div`
     display: flex;
-    background-image: url('/tree.jpg'); /* 이미지 경로에 따라 수정 */
+    background-image: linear-gradient(to left, #ccffaa, #779787, #1e5b53);
     width: 100vw;
     height: 100vh;
     align-items: center;
