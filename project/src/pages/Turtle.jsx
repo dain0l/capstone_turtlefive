@@ -2,7 +2,14 @@ import React from 'react';
 import CameraCom from "../components/Examine/CamerCom";
 import LinkCom from '../components/Examine/LinkCom';
 
+import styled from 'styled-components';
+import { Link } from 'react-router-dom'; 
+
+
+
 function Turtle() {
+
+    
     const backgroundContainerStyle = {
         display: "flex",    
         width: "100vw",
@@ -19,7 +26,7 @@ function Turtle() {
         fontStyle: "normal",
         fontWeight: "600",
         lineHeight: "normal",
-        marginTop: "5rem",
+        marginTop: "50px",
         marginBottom: "2.19rem",
     };
 
@@ -33,6 +40,7 @@ function Turtle() {
 
     return (
         <div style={backgroundContainerStyle}>
+
             <div style={titleStyle}>거북목 검사하기</div>
             <div style={containerStyle}>
                 <CameraCom /> {/* CameraCom 컴포넌트를 왼쪽에 배치합니다. */}
