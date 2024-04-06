@@ -121,7 +121,7 @@ const ChartPage = () => {
                 </ChartDescription>
             </div>
             <StyledFooter>
-                <p>&copy; 2024 docturtle guide website</p>
+                <p>&copy; 2024 docturtle chart website</p>
             </StyledFooter>
         </Container>
      );
