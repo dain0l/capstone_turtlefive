@@ -72,11 +72,11 @@ function Header() {
             <HeaderContainer>
                 <Logo>TurtleFive</Logo>
                 <Navigation>
-                    <StyledLink to="#">Home</StyledLink>
                     <StyledLink to="/chartPage">1week-chart</StyledLink>
                     <StyledLink to="#">Contact</StyledLink>
                     <StyledLink to="/login">Login</StyledLink> 
                     <StyledLink to="/explain">Explain</StyledLink> 
+                    <StyledLink to="/myPage">MyPage</StyledLink>
                 </Navigation>
             </HeaderContainer>
             <RectangleContainer>
