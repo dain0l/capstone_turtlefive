@@ -83,11 +83,7 @@ function Header() {
                 <Link to="/turtle">
                     <StyledButton>거북목 검사하러가기</StyledButton>
                 </Link>
-
-                
-
             </RectangleContainer>
-
             <RectangleContainer>
             <div><Beforehand /></div>
             </RectangleContainer>
