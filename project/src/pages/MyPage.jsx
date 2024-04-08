@@ -102,8 +102,8 @@ function MyPage() {
             <Info>가입일: 가입일자</Info>
             {/* 추가적인 사용자 정보 */}
             <BottomContainer>
-                <LinkButtonStyle to="/login">로그인 하러가기</LinkButtonStyle>
-                <LinkButtonStyle to="/singup">회원가입 하러가기</LinkButtonStyle>
+                <LinkButtonStyle to="/login">Log in</LinkButtonStyle>
+                <LinkButtonStyle to="/singup">Sign up</LinkButtonStyle>
             </BottomContainer>
         </Container>
     );
