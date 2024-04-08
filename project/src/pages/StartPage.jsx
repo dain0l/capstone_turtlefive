@@ -1,16 +1,21 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import imglogo2 from '../img/ground.jpg';
 
 
 const BackStyle = styled.div`
     display: flex;
-    background-image: linear-gradient(to left, #ccffaa, #779787, #1e5b53);
+    background-image: url(${imglogo2});
+    //background-color: #000000;
+    //background-image: linear-gradient(to left, #ccffaa, #779787, #1e5b53);
     width: 100vw;
     height: 100vh;
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    opacity: 0.8; /* 불투명도 조절 */
 `;
+
 
 const TitleStyle = styled.div`
     color: #FBFDF5;
@@ -42,6 +47,7 @@ function StartPage() {
     return (
         <BackStyle>
             <TitleStyle>TurtleFIve</TitleStyle>
+            
             <LinkButtonStyle to="/register">START</LinkButtonStyle>
         </BackStyle>
     );

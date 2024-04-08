@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom'; 
+import imglogo from '../img/tree.jpg';
 
 
 // header 스타일 정의
@@ -92,7 +93,7 @@ function MyPage() {
              <h1>docturtle🐢</h1>
              </header>
             <ProfileImageContainer>
-                <ProfileImage src="src/img/tree.jpg" alt="" />
+                <ProfileImage src={imglogo} alt="" />
                 <AltText>프로필 이미지</AltText>
             </ProfileImageContainer>
             <Name>사용자 이름</Name>
