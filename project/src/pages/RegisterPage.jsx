@@ -1,11 +1,7 @@
 import Beforehand from '../components/Home/Beforehand';
-
 import React from 'react';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom'; 
-
-
-
+import { Link } from 'react-router-dom';
 
 const HeaderContainer = styled.div`
     display: flex;
@@ -15,20 +11,51 @@ const HeaderContainer = styled.div`
     width: 100%;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap; /* 필요에 따라 행을 여러 줄로 바꿉니다. */
 `;
 
 const RectangleContainer = styled.div`
     background-color: #4a4e4c;
     padding: 20px; 
-    border-radius: 10px; /* 직사각형의 모서리를 둥글게 만듭니다. */
-    margin-top: 20px; /* 상단 여백을 설정합니다. */
+    border-radius: 10px;
+    margin-top: 20px;
     display: flex;
     justify-content: center;
-    flex-direction: column; /* 버튼을 세로로 배치하기 위해 세로 방향으로 배치합니다. */
-    align-items: center; /* 버튼을 가운데 정렬합니다. */
-    width: 1600px; /* 가로 크기를 300px로 설정합니다. */
-    height: 200px; /* 세로 크기를 200px로 설정합니다. */
-    margin-left: 33px; /* 좌측 여백을 설정합니다. */
+    flex-direction: column;
+    align-items: center;
+    width: 1600px;
+    height: 250px;
+    margin-left: 33px;
+    flex: 0 0 calc(50% - 33px); /* 행의 너비를 50%로 설정하고 왼쪽 여백을 고려합니다. */
+`;
+
+const Rectangle2Container = styled.div`
+    background-color: #4a4e4c;
+    padding: 20px; 
+    border-radius: 10px;
+    margin-top: 20px;
+    margin-bottom: 80px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    width: 50%; /* 반응형을 위해 50%로 설정합니다. */
+    height: 250px;
+    margin-left: 33px;
+`;
+
+const StyledFooter = styled.footer`
+    background-color: rgba(0, 0, 0, 0.452);
+    color: #ffffffc3;
+    padding: 2px;
+    height: 50px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center; /* 수평 중앙 정렬 */
 `;
 
 const Logo = styled.div`
@@ -51,7 +78,11 @@ const StyledLink = styled(Link)`
     }
 `;
 
-// 스타일링된 버튼
+const Row = styled.div`
+    display: flex;
+    width: 99%;
+`;
+
 const StyledButton = styled.button`
     font-size: 2rem;
     padding: 0.5rem 1rem;
@@ -85,13 +116,20 @@ function Header() {
                 </Link>
             </RectangleContainer>
             <RectangleContainer>
-            <div><Beforehand /></div>
+                <div><Beforehand /></div>
             </RectangleContainer>
-
+            <Row>
+                <Rectangle2Container>
+                    {/* Content for the second Rectangle2Container */}
+                </Rectangle2Container>
+                <Rectangle2Container>
+                    {/* Content for the third Rectangle2Container */}
+                </Rectangle2Container>
+            </Row>
+            <StyledFooter>
+                <p>&copy; 2024 docturtle chart website</p>
+            </StyledFooter>
         </div>
-
-            
-
     );
 }
 
