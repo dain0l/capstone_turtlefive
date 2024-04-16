@@ -230,7 +230,7 @@ function Header() {
             <Row>
             <Rectangle2Container>
                 {/*<ProfileImage src={chart} alt="" /> */}
-                <ResponsiveContainer width="100%" height="100%">
+                <ResponsiveContainer width="90%" height="90%">
                 <ComposedChart
                 width={500}
                 height={400}
@@ -255,7 +255,7 @@ function Header() {
                 </ResponsiveContainer>
             </Rectangle2Container>
             <Rectangle2Container>
-            <ResponsiveContainer height="90%" width="90%">
+            <ResponsiveContainer height="80%" width="80%">
                 <BarChart data={data2} margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
                     <XAxis dataKey="name" scale="point" padding={{ left: 70, right: 10 }} />
                     <YAxis />
