@@ -2,6 +2,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import { data2 } from '../components/Data/data';
+
+// 스타일링을 위한 styled-components 사용
 
 const StyledLink = styled(Link)`
     color: #000000;
@@ -51,49 +54,14 @@ const ChartDescription = styled.div`
 `;
 
 const ChartPage = () => {
-    const data = [
-        {
-          name: '월요일',
-          거북목감지: 30,
-
-        },
-        {
-          name: '화요일',
-          거북목감지: 10,
-
-        },
-        {
-          name: '수요일',
-          거북목감지: 20,
- 
-        },
-        {
-          name: '목요일',
-          거북목감지: 27,
-        },
-        {
-          name: '금요일',
-          거북목감지: 10,
-
-        },
-        {
-          name: '토요일',
-          거북목감지: 23,
-
-        },
-        {
-          name: '일요일',
-          거북목감지: 50,
-
-        },
-      ];
+   
 
         // 가장 높은 UV 값을 가지는 데이터 찾기
-        let maxUVData = data.reduce((prev, current) => (prev.거북목감지 > current.거북목감지) ? prev : current);
+        let maxUVData = data2.reduce((prev, current) => (prev.거북목감지 > current.거북목감지) ? prev : current);
         // UV 값의 총합 계산
-        let totalUV = data.reduce((acc, current) => acc + current.거북목감지, 0);
+        let totalUV = data2.reduce((acc, current) => acc + current.거북목감지, 0);
         // UV 값의 평균 계산
-        let averageUV = totalUV / data.length;
+        let averageUV = totalUV / data2.length;
 
       return (
         <Container>
@@ -102,7 +70,7 @@ const ChartPage = () => {
              </header>
            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '80%', marginLeft : '130px', marginTop : '130px' }}>
                 <ResponsiveContainer height={400} width="100%">
-                <BarChart data={data} margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
+                <BarChart data={data2} margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
                     <XAxis dataKey="name" scale="point" padding={{ left: 70, right: 10 }} />
                     <YAxis />
                     <Tooltip contentStyle={{ backgroundColor: 'white', color: 'black' }} />
@@ -110,6 +78,7 @@ const ChartPage = () => {
                 </BarChart>
                 </ResponsiveContainer>
                 <ChartDescription>
+                  {/* db 연결하면 turtle닉네임 연결할 수 있게 아이디 --> 이름 */}
                     <h2> 이 그래프는</h2>
                     <h2> [ turtle ] 님의 일주일 평균 빈도수입니다.</h2>
                     <br></br>

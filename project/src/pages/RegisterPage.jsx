@@ -2,7 +2,9 @@ import Beforehand from '../components/Home/Beforehand';
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import chart from '../img/chart.png';
+import { data1, data2 } from '../components/Data/data';
+
+//import chart from '../img/chart.png';
 import {
     BarChart,
     ComposedChart,
@@ -18,94 +20,6 @@ import {
     ResponsiveContainer,
   } from 'recharts';
 
-
-  
-
-  //평균?
-  const data1 = [
-    {
-      name: 'Page A',
-      uv: 590,
-      pv: 800,
-      amt: 1400,
-      cnt: 490,
-    },
-    {
-      name: 'Page B',
-      uv: 868,
-      pv: 967,
-      amt: 1506,
-      cnt: 590,
-    },
-    {
-      name: 'Page C',
-      uv: 1397,
-      pv: 1098,
-      amt: 989,
-      cnt: 350,
-    },
-    {
-      name: 'Page D',
-      uv: 1480,
-      pv: 1200,
-      amt: 1228,
-      cnt: 480,
-    },
-    {
-      name: 'Page E',
-      uv: 1520,
-      pv: 1108,
-      amt: 1100,
-      cnt: 460,
-    },
-    {
-      name: 'Page F',
-      uv: 1400,
-      pv: 680,
-      amt: 1700,
-      cnt: 380,
-    },
-  ];
-
-  //1-week chart
-  const data2 = [
-    {
-      name: '월요일',
-      거북목감지: 30,
-
-    },
-    {
-      name: '화요일',
-      거북목감지: 10,
-
-    },
-    {
-      name: '수요일',
-      거북목감지: 20,
-
-    },
-    {
-      name: '목요일',
-      거북목감지: 27,
-    },
-    {
-      name: '금요일',
-      거북목감지: 10,
-
-    },
-    {
-      name: '토요일',
-      거북목감지: 23,
-
-    },
-    {
-      name: '일요일',
-      거북목감지: 50,
-
-    },
-  ];
-
-
 const HeaderContainer = styled.div`
     display: flex;
     background: #DFF0D8;
@@ -117,10 +31,12 @@ const HeaderContainer = styled.div`
     flex-wrap: wrap; /* 필요에 따라 행을 여러 줄로 바꿉니다. */
 `;
 
+/*
 const ProfileImage = styled.img`
     width: 100%;
     height: 100%;
 `;
+*/
 
 const RectangleContainer = styled.div`
     background-color: #4a4e4c;
@@ -213,21 +129,25 @@ function Header() {
                 <Logo>TurtleFive</Logo>
                 <Navigation>
                     <StyledLink to="/chartPage">1week-chart</StyledLink>
-                    <StyledLink to="#">Contact</StyledLink>
-                    <StyledLink to="/login">Login</StyledLink> 
-                    <StyledLink to="/explain">Explain</StyledLink> 
-                    <StyledLink to="/myPage">MyPage</StyledLink>
+                    <StyledLink to="#">contact</StyledLink>
+                    <StyledLink to="/login">login</StyledLink> 
+                    <StyledLink to="/explain">explain</StyledLink> 
+                    <StyledLink to="/myPage">my page</StyledLink>
                 </Navigation>
             </HeaderContainer>
+            {/* 거북목 검사하러 가기 컨테이너 */}
             <RectangleContainer>
                 <Link to="/turtle">
                     <StyledButton>거북목 검사하러가기</StyledButton>
                 </Link>
             </RectangleContainer>
+            {/* 슬라이드 컨테이너 */}
             <RectangleContainer>
                 <div><Beforehand /></div>
             </RectangleContainer>
             <Row>
+            {/* chart를 간략하게 보여주는 컨테이너1,2 */}
+             {/* 컨테이너 1 */}
             <Rectangle2Container>
                 {/*<ProfileImage src={chart} alt="" /> */}
                 <ResponsiveContainer width="90%" height="90%">
@@ -254,6 +174,7 @@ function Header() {
                 </ComposedChart>
                 </ResponsiveContainer>
             </Rectangle2Container>
+             {/* 컨테이너 2 */}
             <Rectangle2Container>
             <ResponsiveContainer height="80%" width="80%">
                 <BarChart data={data2} margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
@@ -262,7 +183,7 @@ function Header() {
                     <Tooltip contentStyle={{ backgroundColor: 'white', color: 'black' }} />
                     <Bar dataKey="거북목감지" fill="#8884d8" background={{ fill: '#eee' }} />
                 </BarChart>
-                </ResponsiveContainer>
+            </ResponsiveContainer>
             </Rectangle2Container>
             </Row>
             <StyledFooter>
