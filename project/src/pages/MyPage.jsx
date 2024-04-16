@@ -103,7 +103,7 @@ function MyPage() {
             {/* 추가적인 사용자 정보 */}
             <BottomContainer>
                 <LinkButtonStyle to="/login">Log in</LinkButtonStyle>
-                <LinkButtonStyle to="/singup">Sign up</LinkButtonStyle>
+                <LinkButtonStyle to="/singup">Sign up   </LinkButtonStyle>
             </BottomContainer>
         </Container>
     );

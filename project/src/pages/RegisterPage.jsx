@@ -2,6 +2,7 @@ import Beforehand from '../components/Home/Beforehand';
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import chart from '../img/chart.png';
 
 const HeaderContainer = styled.div`
     display: flex;
@@ -12,6 +13,11 @@ const HeaderContainer = styled.div`
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap; /* 필요에 따라 행을 여러 줄로 바꿉니다. */
+`;
+
+const ProfileImage = styled.img`
+    width: 100%;
+    height: 100%;
 `;
 
 const RectangleContainer = styled.div`
@@ -74,6 +80,7 @@ const StyledLink = styled(Link)`
     margin-right: 2rem;
 
     &:hover {
+        background-color: #DFF0D8; /* 호버 시 배경색 변경 */
         text-decoration: underline;
     }
 `;
@@ -120,14 +127,14 @@ function Header() {
             </RectangleContainer>
             <Row>
                 <Rectangle2Container>
-                    {/* Content for the second Rectangle2Container */}
+                <ProfileImage src={chart} alt="" />
                 </Rectangle2Container>
                 <Rectangle2Container>
                     {/* Content for the third Rectangle2Container */}
                 </Rectangle2Container>
             </Row>
             <StyledFooter>
-                <p>&copy; 2024 docturtle chart website</p>
+                <p>&copy; 2024 docturtle website</p>
             </StyledFooter>
         </div>
     );
