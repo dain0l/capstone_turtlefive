@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import chart from '../img/chart.png';
 import {
+    BarChart,
     ComposedChart,
     Line,
     Area,
@@ -18,7 +19,10 @@ import {
   } from 'recharts';
 
 
-  const data = [
+  
+
+  //평균?
+  const data1 = [
     {
       name: 'Page A',
       uv: 590,
@@ -60,6 +64,44 @@ import {
       pv: 680,
       amt: 1700,
       cnt: 380,
+    },
+  ];
+
+  //1-week chart
+  const data2 = [
+    {
+      name: '월요일',
+      거북목감지: 30,
+
+    },
+    {
+      name: '화요일',
+      거북목감지: 10,
+
+    },
+    {
+      name: '수요일',
+      거북목감지: 20,
+
+    },
+    {
+      name: '목요일',
+      거북목감지: 27,
+    },
+    {
+      name: '금요일',
+      거북목감지: 10,
+
+    },
+    {
+      name: '토요일',
+      거북목감지: 23,
+
+    },
+    {
+      name: '일요일',
+      거북목감지: 50,
+
     },
   ];
 
@@ -192,7 +234,7 @@ function Header() {
                 <ComposedChart
                 width={500}
                 height={400}
-                data={data}
+                data={data1}
                 margin={{
                     top: 20,
                     right: 20,
@@ -213,7 +255,14 @@ function Header() {
                 </ResponsiveContainer>
             </Rectangle2Container>
             <Rectangle2Container>
-                    {/* Content for the third Rectangle2Container */}
+            <ResponsiveContainer height="90%" width="90%">
+                <BarChart data={data2} margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
+                    <XAxis dataKey="name" scale="point" padding={{ left: 70, right: 10 }} />
+                    <YAxis />
+                    <Tooltip contentStyle={{ backgroundColor: 'white', color: 'black' }} />
+                    <Bar dataKey="거북목감지" fill="#8884d8" background={{ fill: '#eee' }} />
+                </BarChart>
+                </ResponsiveContainer>
             </Rectangle2Container>
             </Row>
             <StyledFooter>
