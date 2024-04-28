@@ -2,9 +2,23 @@ import Beforehand from '../components/Home/Beforehand';
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import { data1, data2 } from '../components/Data/data';
+import {data1, data2 } from '../components/Data/data';
 
-//import chart from '../img/chart.png';
+/*
+import {
+    Navigation,
+    Pagination,
+    Scrollbar,
+    A11y,
+    Autoplay,
+  } from 'swiper/modules';
+import {Swiper, SwiperSlide} from "swiper/react";
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import imglogo from '../img/tree.jpg';
+*/
+
 import {
     BarChart,
     ComposedChart,
@@ -88,9 +102,11 @@ const Logo = styled.div`
     font-weight: bold;
 `;
 
+
 const Navigation = styled.nav`
     display: flex;
 `;
+
 
 const StyledLink = styled(Link)`
     color: #2E7D32;
@@ -143,7 +159,7 @@ function Header() {
             </RectangleContainer>
             {/* 슬라이드 컨테이너 */}
             <RectangleContainer>
-                <div><Beforehand /></div>
+                {/*<div><Beforehand /></div>*/}
             </RectangleContainer>
             <Row>
             {/* chart를 간략하게 보여주는 컨테이너1,2 */}

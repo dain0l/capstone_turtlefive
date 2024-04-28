@@ -46,8 +46,7 @@ const LinkButtonStyle = styled(Link)`
 function StartPage() {
     return (
         <BackStyle>
-            <TitleStyle>TurtleFIve</TitleStyle>
-            
+            <TitleStyle>TurtleFIve</TitleStyle>  
             <LinkButtonStyle to="/register">START</LinkButtonStyle>
         </BackStyle>
     );
