@@ -70,3 +70,38 @@ const CameraCom = () => {
 };
 
 export default CameraCom;
+class AuthenticatedData {
+    constructor(clientId, posturePercentage, rankPercentage) {
+      this.clientId = clientId;
+      this.posturePercentage = posturePercentage;
+      this.rankPercentage = rankPercentage;
+    }
+  
+    // 메소드: get으로 /percentage/authenticated
+    getAuthenticated() {
+      return {
+        clientId: this.clientId,
+        posturePercentage: this.posturePercentage,
+        rankPercentage: this.rankPercentage
+      };
+    }
+  
+    // rankPercentage가 90이면 상위 10%를 의미하는 메소드
+    getRankDescription() {
+      if (this.rankPercentage === 90) {
+        return "상위 10%";
+      } else {
+        return "기타"; // 다른 경우에 대한 처리를 추가할 수 있습니다.
+      }
+    }
+  }
+  
+  // 예시 데이터 생성
+  const authenticatedData = new AuthenticatedData("exampleClientId", 80, 90);
+  
+  // /percentage/authenticated 엔드포인트 요청에 대한 응답
+  console.log(authenticatedData.getAuthenticated());
+  
+  // rankPercentage에 따른 설명 출력
+  console.log(authenticatedData.getRankDescription());
+  
