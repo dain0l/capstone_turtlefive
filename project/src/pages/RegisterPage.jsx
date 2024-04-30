@@ -2,7 +2,23 @@ import Beforehand from '../components/Home/Beforehand';
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import chart from '../img/chart.png';
+import { data1, data2 } from '../components/Data/data';
+
+//import chart from '../img/chart.png';
+import {
+    BarChart,
+    ComposedChart,
+    Line,
+    Area,
+    Bar,
+    XAxis,
+    YAxis,
+    CartesianGrid,
+    Tooltip,
+    Legend,
+    Scatter,
+    ResponsiveContainer,
+  } from 'recharts';
 
 const HeaderContainer = styled.div`
     display: flex;
@@ -15,10 +31,12 @@ const HeaderContainer = styled.div`
     flex-wrap: wrap; /* 필요에 따라 행을 여러 줄로 바꿉니다. */
 `;
 
+/*
 const ProfileImage = styled.img`
     width: 100%;
     height: 100%;
 `;
+*/
 
 const RectangleContainer = styled.div`
     background-color: #4a4e4c;
@@ -126,21 +144,24 @@ function Header() {
                 <Logo>TurtleFive</Logo>
                 <Navigation>
                     <StyledLink to="/chartPage">1week-chart</StyledLink>
-                    <StyledLink to="#">Contact</StyledLink>
-                    <StyledLink to="/login">Login</StyledLink> 
-                    <StyledLink to="/explain">Explain</StyledLink> 
-                    <StyledLink to="/myPage">MyPage</StyledLink>
+                    <StyledLink to="#">contact</StyledLink>
+                    <StyledLink to="/login">login</StyledLink> 
+                    <StyledLink to="/explain">explain</StyledLink> 
+                    <StyledLink to="/myPage">my page</StyledLink>
                 </Navigation>
             </HeaderContainer>
+            {/* 거북목 검사하러 가기 컨테이너 */}
             <RectangleContainer>
                 <Link to="/turtle">
                     <StyledButton>거북목 검사하러가기</StyledButton>
                 </Link>
             </RectangleContainer>
+            {/* 슬라이드 컨테이너 */}
             <RectangleContainer>
                 <div><Beforehand /></div>
             </RectangleContainer>
             <Row>
+                
                 <Rectangle2Container>
                 <ProfileImage src={chart} alt="" />
                 </Rectangle2Container>
@@ -149,6 +170,7 @@ function Header() {
                         <Bar>+</Bar>
                     </Link>
                 </Rectangle2Container>
+
             </Row>
             <StyledFooter>
                 <p>&copy; 2024 docturtle website</p>
