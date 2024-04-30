@@ -4,6 +4,8 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { data1, data2 } from '../components/Data/data';
 
+
+
 //import chart from '../img/chart.png';
 import {
     BarChart,
@@ -31,12 +33,12 @@ const HeaderContainer = styled.div`
     flex-wrap: wrap; /* 필요에 따라 행을 여러 줄로 바꿉니다. */
 `;
 
-/*
+
 const ProfileImage = styled.img`
     width: 100%;
     height: 100%;
 `;
-*/
+
 
 const RectangleContainer = styled.div`
     background-color: #4a4e4c;
@@ -122,7 +124,7 @@ const StyledButton = styled.button`
     }
 `;
 
-const Bar = styled.div`
+const StyledBar = styled.div`
     width: 100%;
     height: 50px;
     background-color: #2E7D32;
@@ -166,9 +168,7 @@ function Header() {
                 <ProfileImage src={chart} alt="" />
                 </Rectangle2Container>
                 <Rectangle2Container>
-                    <Link to="/percentPage">
-                        <Bar>+</Bar>
-                    </Link>
+                    
                 </Rectangle2Container>
 
             </Row>
