@@ -104,6 +104,21 @@ const StyledButton = styled.button`
     }
 `;
 
+const Bar = styled.div`
+    width: 100%;
+    height: 50px;
+    background-color: #2E7D32;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+
+    &:hover {
+        background-color: #205d25;
+    }
+`;
+
 function Header() {
     return (
         <div>
@@ -130,7 +145,9 @@ function Header() {
                 <ProfileImage src={chart} alt="" />
                 </Rectangle2Container>
                 <Rectangle2Container>
-                    {/* Content for the third Rectangle2Container */}
+                    <Link to="/percentPage">
+                        <Bar>+</Bar>
+                    </Link>
                 </Rectangle2Container>
             </Row>
             <StyledFooter>
