@@ -16,15 +16,29 @@ const StyledLink = styled(Link)`
 const LoginPage = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const [loginMessage, setLoginMessage] = useState('');
 
-    const handleLogin = (e) => {
+    const handleLogin = async (e) => {
         e.preventDefault();
-        // 로그인 처리
-        console.log('로그인 정보:', {
-            username,
-            password
-        });
-        // 여기서 실제로 서버로 로그인 정보를 전송할 수 있습니다.
+        try {
+            const response = await fetch('/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ username, password }),
+            });
+            const data = await response.json();
+            if (response.ok) {
+                setLoginMessage('로그인 성공');
+                // 로그인 성공 시 리다이렉트 또는 다른 작업 수행
+            } else {
+                setLoginMessage(data.message); // 백엔드에서 반환한 오류 메시지 표시
+            }
+        } catch (error) {
+            console.error('로그인 오류:', error);
+            setLoginMessage('로그인 중 오류가 발생했습니다.');
+        }
     };
 
     const styles = {
