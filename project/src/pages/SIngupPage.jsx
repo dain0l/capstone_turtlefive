@@ -168,15 +168,6 @@ function SignupForm() {
                         onChange={(e) => setPassword(e.target.value)}
                         required
                     />
-                    <input
-                        style={styles.input}
-                        type="password"
-                        value={confirmPassword}
-                        placeholder="비밀번호 재입력"
-                        onChange={(e) => setConfirmPassword(e.target.value)}
-                        required
-                    />
-                    <input style={styles.button} type="button" value="확인" />
                     <div style={styles.formGroup}>
                         <label style={styles.label} htmlFor="gender">성별:</label>
                         <select

@@ -4,6 +4,19 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import {data1, data2 } from '../components/Data/data';
 
+import imglogo from '../img/AA.jpg';
+import imglogo2 from '../img/tree.jpg';
+
+// import Swiper core and required modules
+import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
+
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/scrollbar';
+
+
 /*
 import {
     Navigation,
@@ -61,11 +74,14 @@ const RectangleContainer = styled.div`
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    width: 1600px;
+    width: 100%; /* 너비를 100%로 설정 */
+    max-width: 1600px; /* 최대 너비 지정 */
     height: 250px;
     margin-left: 33px;
-    flex: 0 0 calc(50% - 33px); /* 행의 너비를 50%로 설정하고 왼쪽 여백을 고려합니다. */
+    flex: 0 0 calc(50% - 33px);
+    overflow: hidden; /* 내부 컨텐츠가 넘치지 않도록 설정 */
 `;
+
 
 const Rectangle2Container = styled.div`
     background-color: #4a4e4c;
@@ -103,8 +119,8 @@ const Logo = styled.div`
 `;
 
 
-const Navigation = styled.nav`
-    display: flex;
+const NavigationWrapper = styled.nav`
+  display: flex;
 `;
 
 
@@ -143,13 +159,13 @@ function Header() {
         <div>
             <HeaderContainer>
                 <Logo>TurtleFive</Logo>
-                <Navigation>
-                    <StyledLink to="/chartPage">1week-chart</StyledLink>
-                    <StyledLink to="#">contact</StyledLink>
-                    <StyledLink to="/login">login</StyledLink> 
-                    <StyledLink to="/explain">explain</StyledLink> 
-                    <StyledLink to="/myPage">my page</StyledLink>
-                </Navigation>
+                <NavigationWrapper>
+                <StyledLink to="/chartPage">1week-chart</StyledLink>
+                <StyledLink to="#">contact</StyledLink>
+                <StyledLink to="/login">login</StyledLink>
+                <StyledLink to="/explain">explain</StyledLink>
+                <StyledLink to="/myPage">my page</StyledLink>
+                </NavigationWrapper>    
             </HeaderContainer>
             {/* 거북목 검사하러 가기 컨테이너 */}
             <RectangleContainer>
@@ -159,7 +175,29 @@ function Header() {
             </RectangleContainer>
             {/* 슬라이드 컨테이너 */}
             <RectangleContainer>
-                {/*<div><Beforehand /></div>*/}
+                <Swiper
+          modules={[Navigation, Pagination, Scrollbar, A11y]}
+          spaceBetween={50}
+          slidesPerView={3}
+          navigation
+          pagination={{ clickable: true }}
+          scrollbar={{ draggable: true }}
+          onSwiper={(swiper) => console.log(swiper)}
+          onSlideChange={() => console.log('slide change')}
+        >
+          <SwiperSlide>
+            <img src={imglogo} alt="Slide 1" style={{ width: '200px', height: '200px' }} />
+          </SwiperSlide>
+          <SwiperSlide>
+            <img src={imglogo2} alt="Slide 2" style={{ width: '200px', height: '200px' }} />
+          </SwiperSlide>
+          <SwiperSlide>
+            <img src={imglogo} alt="Slide 3" style={{ width: '200px', height: '200px' }} />
+          </SwiperSlide>
+          <SwiperSlide>
+            <img src={imglogo2} alt="Slide 4" style={{ width: '200px', height: '200px' }} />
+          </SwiperSlide>
+        </Swiper>
             </RectangleContainer>
             <Row>
             {/* chart를 간략하게 보여주는 컨테이너1,2 */}
