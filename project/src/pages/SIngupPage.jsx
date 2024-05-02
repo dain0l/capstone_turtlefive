@@ -3,38 +3,49 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 function SignupForm() {
-    const [username, setUsername] = useState('');
+    const [name, setUsername] = useState('');
+    const [phoneNo, setphoneNo] = useState('');
     const [email, setEmail] = useState(''); //id 변수명을 email로 변경
     //const [id, setId] = useState('');  >> 필요없음 emial이 id이기 떄문
-    const [number, setNumber] = useState('');
+
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [gender, setGender] = useState('');
-    const [birthdate, setBirthdate] = useState('');
+    const [birth, setBirthdate] = useState('');
+    const [signupSuccess, setSignupSuccess] = useState(false);
 
-    const handleCancel = () => {
-        // 입력된 값 초기화
-        setUsername('');
-        setEmail('');
-        setNumber('');
-        setPassword('');
-        setConfirmPassword('');
-        setGender('');
-        setBirthdate('');
-    };
 
     const handleSignup = (e) => {
         e.preventDefault();
-        // 회원가입 처리
-        console.log('회원가입 정보:', {
-            username,   
-            email,  //id변수명을 email로 변경. 원래는 id였음
-            number,
+        
+        // 서버로 전송할 데이터 객체 생성
+        const userData = {
+            name,
+            phoneNo,
+            email,
             password,
             gender,
-            birthdate
+            birth
+        };
+
+        // 서버에 회원가입 요청 보내기
+        fetch('/signup', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(userData)
+        })
+        .then(response => response.json())
+        .then(data => {
+            // 회원가입 성공 시 처리
+            setSignupSuccess(true);
+            console.log('회원가입 완료:', data);
+        })
+        .catch(error => {
+            // 오류 처리
+            console.error('회원가입 오류:', error);
         });
-        // 여기서 실제로 서버로 회원가입 정보를 전송할 수 있습니다.
     };
 
     const styles = {
@@ -127,95 +138,99 @@ function SignupForm() {
 
     return (
         <div style={styles.body}>
-           <header style={styles.header}>
-             <h1>docturtle🐢</h1>
-             </header>
+            <header style={styles.header}>
+                <h1>docturtle🐢</h1>
+            </header>
+
             <div style={styles.container}>
-                <h2 style={styles.h2}>회원가입</h2>
-                <form onSubmit={handleSignup}>
-                    <input
-                        style={styles.input}
-                        type="text"
-                        value={username}
-                        placeholder="이름"
-                        onChange={(e) => setUsername(e.target.value)}
-                        required
-                    />   
-                    <input
-                        style={styles.input}
-                        type="email"
-                        value={email}   //id 변수명을 email로 변경
-                        placeholder="아이디 (email)"
-                        onChange={(e) => setEmail(e.target.value)}
-                        required
-                    />
-                    <input style={styles.button} type="button" value="중복확인" />
-                    <input
-                        style={styles.input}
-                        type="tel"
-                        value={number}
-                        placeholder="휴대전화번호"
-                        onChange={(e) => setNumber(e.target.value)}
-                        required
-                        pattern="[0-9]*" // 숫자만 입력되도록 정규표현식을 지정
-                        title="숫자만 입력해주세요" // 입력값이 일치하지 않을 때 표시될 메시지
-                    />  
-                    <input
-                        style={styles.input}
-                        type="password"
-                        value={password}
-                        placeholder="비밀번호"
-                        onChange={(e) => setPassword(e.target.value)}
-                        required
-                    />
-                    <input
-                        style={styles.input}
-                        type="password"
-                        value={confirmPassword}
-                        placeholder="비밀번호 재입력"
-                        onChange={(e) => setConfirmPassword(e.target.value)}
-                        required
-                    />
-                    <input style={styles.button} type="button" value="확인" />
-                    <div style={styles.formGroup}>
-                        <label style={styles.label} htmlFor="gender">성별:</label>
-                        <select
-                            style={styles.input}
-                            name="gender"
-                            id="gender"
-                            value={gender}
-                            onChange={(e) => setGender(e.target.value)}
-                            required
-                        >
-                            <option value="">성별 선택</option>
-                            <option value="male">남성</option>
-                            <option value="female">여성</option>
-                            <option value="other">기타</option>
-                        </select>
+                {signupSuccess ? (
+                    <div>
+                        <h2>회원가입 완료!</h2>
+                        <p>회원가입이 성공적으로 완료되었습니다.</p>
+                        <Link to="/login">로그인 페이지로 이동</Link>
                     </div>
-                    <div style={styles.formGroup}>
-                        <label style={styles.label} htmlFor="birthdate">생년월일:</label>
-                        <input
+                ) : (
+                    <div>
+                        <h2>회원가입</h2>
+                        <form onSubmit={handleSignup}>
+                            <input
                             style={styles.input}
-                            type="date"
-                            value={birthdate}
-                            onChange={(e) => setBirthdate(e.target.value)}
+                            type="text"
+                            value={name}
+                            placeholder="이름"
+                            onChange={(e) => setUsername(e.target.value)}
                             required
-                        />
+                            />
+                            <input
+                            style={styles.input}
+                            type="email"
+                            value={email}   //id 변수명을 email로 변경
+                            placeholder="아이디 (email)"
+                            onChange={(e) => setEmail(e.target.value)}
+                            required
+                            />
+                            <input
+                                style={styles.input}
+                                type="tel"
+                                value={phoneNo}
+                                placeholder="휴대전화번호"
+                                onChange={(e) => setphoneNo(e.target.value)} // setNumber -> setphoneNo 로 수정
+                                required
+                                pattern="[0-9]*" // 숫자만 입력되도록 정규표현식을 지정
+                                title="숫자만 입력해주세요" // 입력값이 일치하지 않을 때 표시될 메시지
+                            />  
+                            <input
+                            style={styles.input}
+                            type="password"
+                            value={password}
+                            placeholder="비밀번호"
+                            onChange={(e) => setPassword(e.target.value)}
+                            required
+                            />
+                            <input
+                            style={styles.input}
+                            type="password"
+                            value={confirmPassword}
+                            placeholder="비밀번호 재입력"
+                            onChange={(e) => setConfirmPassword(e.target.value)}
+                            required
+                            />
+                            <input style={styles.button} type="button" value="확인" />
+
+                            <div style={styles.formGroup}>
+                                <label style={styles.label} htmlFor="birthdate">생년월일:</label>
+                                <select
+                                    style={styles.input}
+                                    value={gender}
+                                    onChange={(e) => setGender(e.target.value)}
+                                    required
+                                >
+                                    <option value="">성별 선택</option>
+                                    <option value="male">남성</option>
+                                    <option value="female">여성</option>
+                                    <option value="other">기타</option>
+                                </select>
+                            </div>
+                            <div style={styles.formGroup}>
+                                <label style={styles.label} htmlFor="birth">생년월일:</label>
+                                <input
+                                    style={styles.input}
+                                    type="date"
+                                    value={birth}
+                                    onChange={(e) => setBirthdate(e.target.value)}
+                                    required
+                                />
+                               
+                                
+                                <input type="submit" value="가입하기" />
+                            </div>
+                         
+                        </form>
+                        
                     </div>
-                    <button style={styles.submit} type="button" onClick={handleCancel}>취소하기</button>
-                    <input style={styles.submit} type="submit" value="가입하기" />
-                </form>
-            </div>
-            <div style={styles.footerContainer}>
-                <p style={styles.footerContainerP}>이 페이지는 docturtle🐢에서 제공하는 회원가입 양식입니다.</p>
-                <p style={styles.footerContainerP}>♥</p>    
-                
-                <p style={styles.footerContainerP}>welcome to docturtle website </p>  
-                  
+                )}
             </div>
         </div>
     );
 }
-
 export default SignupForm;

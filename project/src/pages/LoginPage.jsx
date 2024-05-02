@@ -14,7 +14,7 @@ const StyledLink = styled(Link)`
 
 
 const LoginPage = () => {
-    const [username, setUsername] = useState('');
+    const [name, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [loginMessage, setLoginMessage] = useState('');
 
@@ -26,7 +26,7 @@ const LoginPage = () => {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ username, password }),
+                body: JSON.stringify({ name, password }),
             });
             const data = await response.json();
             if (response.ok) {
@@ -112,7 +112,7 @@ const LoginPage = () => {
                     <input
                         style={styles.input}
                         type="text"
-                        value={username}
+                        value={name}
                         placeholder="e-mail"
                         onChange={(e) => setUsername(e.target.value)}
                         required
