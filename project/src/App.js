@@ -17,6 +17,7 @@ import MyPage from './pages/MyPage.jsx'
 import Percent from './pages/PercentPage.jsx'
 
 
+
 function App() {
   return (
     <Router>
