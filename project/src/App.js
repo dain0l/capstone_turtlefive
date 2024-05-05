@@ -13,7 +13,9 @@ import FindID from './components/Login/FindID.jsx'
 import FindPassword from './components/Login/FindPassword.jsx'
 import Turtle from './pages/Turtle.jsx'
 import ChartPage from './pages/ChartPage.jsx'
+import ChartPage2 from './pages/ChartPage2.jsx'
 import MyPage from './pages/MyPage.jsx'
+
 
 function App() {
   return (
@@ -30,9 +32,8 @@ function App() {
         <Route path="/findPassword" element={<FindPassword />} />
         <Route path="/turtle" element={<Turtle />} />
         <Route path="/chartPage" element={<ChartPage />} />
+        <Route path="/chartPage2" element={<ChartPage2 />} />
         <Route path="/mypage" element={<MyPage />} />
-
-
       </Routes>
     </Router>
   );

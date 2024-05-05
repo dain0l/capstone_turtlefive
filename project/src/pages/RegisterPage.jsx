@@ -4,11 +4,16 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import {data1, data2 } from '../components/Data/data';
 
-import imglogo from '../img/AA.jpg';
-import imglogo2 from '../img/tree.jpg';
+import turtle1 from '../img/turtle1.jpg';
+import turtle2 from '../img/turtle2.jpg';
+import turtle3 from '../img/turtle3.jpg';
+import turtle4 from '../img/turtle4.jpg';
+import turtle5 from '../img/turtle5.jpg';
+import turtle6 from '../img/turtle6.jpg';
+import turtle7 from '../img/turtle7.jpg';
 
 // import Swiper core and required modules
-import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
+import { Navigation, Pagination, Scrollbar, A11y, Autoplay } from 'swiper/modules';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
@@ -47,6 +52,8 @@ import {
     ResponsiveContainer,
   } from 'recharts';
 
+
+
 const HeaderContainer = styled.div`
     display: flex;
     background: #DFF0D8;
@@ -64,6 +71,7 @@ const ProfileImage = styled.img`
     height: 100%;
 `;
 */
+
 
 const RectangleContainer = styled.div`
     background-color: #4a4e4c;
@@ -93,7 +101,7 @@ const Rectangle2Container = styled.div`
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    width: 50%; /* 반응형을 위해 50%로 설정합니다. */
+    width: 100%; /* 반응형을 위해 50%로 설정합니다. */
     height: 250px;
     margin-left: 33px;
 `;
@@ -142,7 +150,7 @@ const Row = styled.div`
 
 const StyledButton = styled.button`
     font-size: 2rem;
-    padding: 0.5rem 1rem;
+    padding: 0.5rem 1rem;   
     background-color: #779787;
     color: white;
     border: none;
@@ -176,32 +184,48 @@ function Header() {
             {/* 슬라이드 컨테이너 */}
             <RectangleContainer>
                 <Swiper
-          modules={[Navigation, Pagination, Scrollbar, A11y]}
-          spaceBetween={50}
-          slidesPerView={3}
-          navigation
+          modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}
+          spaceBetween={0}
+          slidesPerView={2}
+          navigation = {true}
+          centeredSlides={true}
+          autoplay={{
+            delay: 2000,
+            disableOnInteraction: false,
+          }}
           pagination={{ clickable: true }}
           scrollbar={{ draggable: true }}
           onSwiper={(swiper) => console.log(swiper)}
           onSlideChange={() => console.log('slide change')}
+          style={{ width: '100%', height: '100%' }} // 스와이퍼의 너비와 높이를 부모 요소에 맞게 설정
         >
           <SwiperSlide>
-            <img src={imglogo} alt="Slide 1" style={{ width: '200px', height: '200px' }} />
+            <img src={turtle1} alt="Slide 1" style={{ width: '90%', height: '90%' }} />
           </SwiperSlide>
           <SwiperSlide>
-            <img src={imglogo2} alt="Slide 2" style={{ width: '200px', height: '200px' }} />
+            <img src={turtle3} alt="Slide 2" style={{ width: '90%', height: '90%' }} />
           </SwiperSlide>
           <SwiperSlide>
-            <img src={imglogo} alt="Slide 3" style={{ width: '200px', height: '200px' }} />
+            <img src={turtle2} alt="Slide 3" style={{ width: '90%', height: '90%' }} />
           </SwiperSlide>
           <SwiperSlide>
-            <img src={imglogo2} alt="Slide 4" style={{ width: '200px', height: '200px' }} />
+            <img src={turtle4} alt="Slide 4" style={{ width: '90%', height: '90%' }} />
+          </SwiperSlide>
+          <SwiperSlide>
+            <img src={turtle5} alt="Slide 4" style={{ width: '90%', height: '90%' }} />
+          </SwiperSlide>
+          <SwiperSlide>
+            <img src={turtle6} alt="Slide 4" style={{ width: '90%', height: '90%' }} />
+          </SwiperSlide>
+          <SwiperSlide>
+            <img src={turtle7} alt="Slide 4" style={{ width: '90%', height: '90%' }} />
           </SwiperSlide>
         </Swiper>
             </RectangleContainer>
             <Row>
             {/* chart를 간략하게 보여주는 컨테이너1,2 */}
              {/* 컨테이너 1 */}
+            <Link to="/chartPage2" style={{ width: '46%', marginRight: '60px' }}>
             <Rectangle2Container>
                 {/*<ProfileImage src={chart} alt="" /> */}
                 <ResponsiveContainer width="90%" height="90%">
@@ -228,7 +252,9 @@ function Header() {
                 </ComposedChart>
                 </ResponsiveContainer>
             </Rectangle2Container>
+            </Link>
              {/* 컨테이너 2 */}
+            <Link to="/chartPage"  style={{ width: '46%', }}>
             <Rectangle2Container>
             <ResponsiveContainer height="80%" width="80%">
                 <BarChart data={data2} margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
@@ -239,6 +265,7 @@ function Header() {
                 </BarChart>
             </ResponsiveContainer>
             </Rectangle2Container>
+            </Link>
             </Row>
             <StyledFooter>
                 <p>&copy; 2024 docturtle website</p>
