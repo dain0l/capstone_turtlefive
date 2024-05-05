@@ -150,7 +150,7 @@ function Header() {
             </HeaderContainer>
             {/* 거북목 검사하러 가기 컨테이너 */}
             <RectangleContainer>
-                <Link to="/turtle">
+                <Link to="/webcam">
                     <StyledButton>거북목 검사하러가기</StyledButton>
                 </Link>
             </RectangleContainer>

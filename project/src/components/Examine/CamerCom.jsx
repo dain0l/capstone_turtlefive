@@ -1,11 +1,25 @@
 import React, { useRef, useEffect } from 'react';
 import Webcam from 'react-webcam';
+import styled from 'styled-components';
 import { Holistic, POSE_CONNECTIONS, FACEMESH_TESSELATION } from "@mediapipe/holistic";
 import { Camera } from "@mediapipe/camera_utils";
 import { drawConnectors } from "@mediapipe/drawing_utils";
 import { checkZValues } from "../Algorithms/checkZValues";
 import { checkDistance } from "../Algorithms/checkDistance"; 
 import { checkAngle } from "../Algorithms/checkAngle";
+
+
+const CameraContainer = styled.div`
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const StyledCanvas = styled.canvas`
+  position: absolute;
+  top: 0;
+`;
 
 
 const CameraCom = () => { 
@@ -19,35 +33,6 @@ const CameraCom = () => {
         },
       });
 
-      // 백엔드 엔드포인트 URL 및 클라이언트 ID
-      const BACKEND_URL = "https://your-backend-endpoint.com/alert";//예시임 수정 필요
-      const CLIENT_ID = "your-client-id";//예시임 수정 필요
-
-      // 알람을 백엔드로 보내는 함수
-    //   function sendAlertToBackend() {
-    //     const now = new Date();// 현재 시간 가져오는 함수
-    //     fetch(BACKEND_URL, {
-    //       method: 'POST',
-    //       headers: {
-    //         'Content-Type': 'application/json',
-    //       },
-    //       body: JSON.stringify({
-    //         clientId: CLIENT_ID,
-    //         timestamp: now.toISOString(),
-    //         date: now.toLocaleDateString(),
-    //         time: now.toLocaleTimeString(),
-    //       }),
-    //     })
-    //     .then(response => response.json())
-    //     .then(data => {
-    //       console.log('Success:', data);
-    //     })
-    //     .catch((error) => {
-    //       console.error('Error:', error);
-    //     });
-    //   }
-  
-      // Other code remains unchanged
   
       holistic.onResults((results) => {
           const canvasCtx = canvasRef.current.getContext("2d");
@@ -124,10 +109,10 @@ const CameraCom = () => {
     }, []);
   
     return (
-      <div className="App">
-        <Webcam ref={webcamRef} style={{position: "absolute", marginLeft: "auto", marginRight: "auto", left: 0, right: 0, textAlign: "center", zindex: 9, width: 640, height: 480}} />
-        <canvas ref={canvasRef} style={{position: "absolute", marginLeft: "auto", marginRight: "auto", left: 0, right: 0, textAlign: "center", zindex: 8, width: 640, height: 480}} />
-      </div>
+      <CameraContainer>
+        <Webcam ref={webcamRef} style={{ width: '100%', height: '100%' }} />
+        <StyledCanvas ref={canvasRef} style={{ width: '100%', height: '100%' }}/>
+    </CameraContainer>
     );
   }
 
