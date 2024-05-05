@@ -2,7 +2,6 @@ import Beforehand from '../components/Home/Beforehand';
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-<<<<<<< Updated upstream
 import {data1, data2 } from '../components/Data/data';
 
 import turtle1 from '../img/turtle1.jpg';
@@ -12,6 +11,22 @@ import turtle4 from '../img/turtle4.jpg';
 import turtle5 from '../img/turtle5.jpg';
 import turtle6 from '../img/turtle6.jpg';
 import turtle7 from '../img/turtle7.jpg';
+
+import {
+    BarChart,
+    ComposedChart,
+    Line,
+    Area,
+    Bar,
+    XAxis,
+    YAxis,
+    CartesianGrid,
+    Tooltip,
+    Legend,
+    Scatter,
+    ResponsiveContainer,
+  } from 'recharts';
+
 
 // import Swiper core and required modules
 import { Navigation, Pagination, Scrollbar, A11y, Autoplay } from 'swiper/modules';
@@ -37,43 +52,8 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import imglogo from '../img/tree.jpg';
 */
-=======
-import { data1, data2 } from '../components/Data/data';
-// import Swiper core and required modules
-import { Navigation, Pagination, Scrollbar, A11y, Autoplay } from 'swiper/modules';
->>>>>>> Stashed changes
-
-import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
-import 'swiper/css/scrollbar';
-
-import turtle1 from '../img/turtle1.jpg';
-import turtle2 from '../img/turtle2.jpg';
-import turtle3 from '../img/turtle3.jpg';
-import turtle4 from '../img/turtle4.jpg';
-import turtle5 from '../img/turtle5.jpg';
-import turtle6 from '../img/turtle6.jpg';
-import turtle7 from '../img/turtle7.jpg';
-
 
 //import chart from '../img/chart.png';
-import {
-    BarChart,
-    ComposedChart,
-    Line,
-    Area,
-    Bar,
-    XAxis,
-    YAxis,
-    CartesianGrid,
-    Tooltip,
-    Legend,
-    Scatter,
-    ResponsiveContainer,
-  } from 'recharts';
-
 
 
 const HeaderContainer = styled.div`
@@ -146,11 +126,7 @@ const Logo = styled.div`
 
 
 const NavigationWrapper = styled.nav`
-<<<<<<< Updated upstream
-  display: flex;
-=======
     display: flex;
->>>>>>> Stashed changes
 `;
 
 
@@ -263,11 +239,7 @@ function Header() {
             </RectangleContainer>
             {/* 슬라이드 컨테이너 */}
             <RectangleContainer>
-<<<<<<< Updated upstream
-                <Swiper
-=======
             <Swiper
->>>>>>> Stashed changes
           modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}
           spaceBetween={0}
           slidesPerView={2}
@@ -307,11 +279,7 @@ function Header() {
         </Swiper>
             </RectangleContainer>
             <Row>
-<<<<<<< Updated upstream
             {/* chart를 간략하게 보여주는 컨테이너1,2 */}
-=======
-                {/* chart를 간략하게 보여주는 컨테이너1,2 */}
->>>>>>> Stashed changes
              {/* 컨테이너 1 */}
             <Link to="/chartPage2" style={{ width: '46%', marginRight: '60px' }}>
             <Rectangle2Container>
@@ -354,10 +322,6 @@ function Header() {
             </ResponsiveContainer>
             </Rectangle2Container>
             </Link>
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
             </Row>
             <StyledFooter>
                 <p>&copy; 2024 docturtle website</p>

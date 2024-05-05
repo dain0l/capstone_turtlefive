@@ -5,19 +5,11 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
-<<<<<<< Updated upstream
 
 function LinkCom() {
 
     
     const boxStyle = {
-=======
-
-
-function LinkCom() {
-
-       const boxStyle = {
->>>>>>> Stashed changes
         width: '170%', // 상자의 너비를 화면 너비의 80%로 지정
         maxWidth: '450px', // 최대 너비를 300px로 제한
         height: '700px', // 상자의 높이 고정
@@ -32,20 +24,11 @@ function LinkCom() {
     const slideStyle = {
         marginBottom : '10px', // SwiperSlide 사이의 간격을 조정하기 위해 margin을 설정합니다.
         backgroundColor: '#eeeeee', // 하얀색 배경
-<<<<<<< Updated upstream
-=======
-        width: '100%',
-        height: '100%'
->>>>>>> Stashed changes
     };
 
     return (
         <div style={boxStyle}>
-<<<<<<< Updated upstream
             <Swiper
-=======
-              <Swiper
->>>>>>> Stashed changes
                 modules={[Navigation, Pagination, Scrollbar, A11y]}
                 direction="vertical" // Swiper를 세로 방향으로 설정
                 slidesPerView={3}
