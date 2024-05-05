@@ -34,6 +34,9 @@ const CameraCom = () => {
           return `https://cdn.jsdelivr.net/npm/@mediapipe/holistic/${file}`;
         },
       });
+      const cleanup = () => {
+        holistic.close(); // holistic 인스턴스를 닫음
+      };
 
   
       holistic.onResults((results) => {
@@ -105,16 +108,20 @@ const CameraCom = () => {
           canvasCtx.restore();
         });
   
-      if (typeof webcamRef.current !== "undefined" && webcamRef.current !== null) {
-        const camera = new Camera(webcamRef.current.video, {
-          onFrame: async () => {
-            await holistic.send({image: webcamRef.current.video});
-          },
-          width: 640,
-          height: 480,
-        });
-        camera.start();
-      }
+        if (webcamRef.current && webcamRef.current.video) {
+          const camera = new Camera(webcamRef.current.video, {
+            onFrame: async () => {
+              if (webcamRef.current && webcamRef.current.video) {
+                await holistic.send({image: webcamRef.current.video});
+              }
+            },
+            width: 640,
+            height: 480,
+          });
+          camera.start();
+        }
+      // useEffect 내에서 반환하는 함수는 컴포넌트가 언마운트될 때 실행됨
+      return cleanup;
     }, []);
   
  // 백엔드로 알람 로그를 보내는 함수
@@ -125,7 +132,7 @@ const CameraCom = () => {
     const response = await api.post('/webcam/alarmlog', {
       dateTime: currentTime,
     });
-    if (!response.ok) {
+    if (response.status < 200 || response.status >= 300) { // 상태 코드 확인으로 수정된 부분
       throw new Error('Network response was not ok');
   }
     // 성공적으로 로그를 보냈을 때의 처리를 여기에 작성
