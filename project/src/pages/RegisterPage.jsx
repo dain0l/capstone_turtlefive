@@ -56,6 +56,11 @@ import imglogo from '../img/tree.jpg';
 //import chart from '../img/chart.png';
 
 
+const AppContainer = styled.div`
+    overflow-x: hidden; /* 가로 스크롤을 숨깁니다. */
+`;
+
+
 const HeaderContainer = styled.div`
     display: flex;
     background: #DFF0D8;
@@ -65,6 +70,7 @@ const HeaderContainer = styled.div`
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap; /* 필요에 따라 행을 여러 줄로 바꿉니다. */
+    overflow-x: hidden; /* 가로 스크롤을 숨깁니다. */
 `;
 
 
@@ -85,7 +91,6 @@ const RectangleContainer = styled.div`
     height: 250px;
     margin-left: 33px;
     flex: 0 0 calc(50% - 33px);
-    overflow: hidden; /* 내부 컨텐츠가 넘치지 않도록 설정 */
 `;
 
 
@@ -143,7 +148,8 @@ const StyledLink = styled(Link)`
 
 const Row = styled.div`
     display: flex;
-    width: 99%;
+    width: 100%; /* 전체 너비를 사용하도록 설정 */
+    overflow-x: hidden; /* 가로 스크롤을 숨깁니다. */
 `;
 
 const StyledButton = styled.button`
@@ -213,11 +219,10 @@ function Header() {
 
     return (
         <div>
+            <AppContainer>
             <HeaderContainer>
                 <Logo>TurtleFive</Logo>
                 <NavigationWrapper>
-                    <StyledLink to="/chartPage">1week-chart</StyledLink>
-                    <StyledLink to="#">contact</StyledLink>
                     {isLoggedIn ? (
                         <>
                         <StyledLink to="#" onClick={handleLogout}>logout</StyledLink>
@@ -281,7 +286,7 @@ function Header() {
             <Row>
             {/* chart를 간략하게 보여주는 컨테이너1,2 */}
              {/* 컨테이너 1 */}
-            <Link to="/chartPage2" style={{ width: '46%', marginRight: '60px' }}>
+            <Link to="/chartPage2" style={{ width: '45%', marginRight: '80px' }}>
             <Rectangle2Container>
                 {/*<ProfileImage src={chart} alt="" /> */}
                 <ResponsiveContainer width="90%" height="90%">
@@ -310,7 +315,7 @@ function Header() {
             </Rectangle2Container>
             </Link>
              {/* 컨테이너 2 */}
-            <Link to="/chartPage"  style={{ width: '46%', }}>
+            <Link to="/chartPage"  style={{ width: '45%', }}>
             <Rectangle2Container>
             <ResponsiveContainer height="80%" width="80%">
                 <BarChart data={data2} margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
@@ -326,6 +331,7 @@ function Header() {
             <StyledFooter>
                 <p>&copy; 2024 docturtle website</p>
             </StyledFooter>
+            </AppContainer>
         </div>
     );
 }
