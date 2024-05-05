@@ -109,7 +109,7 @@ const ChartPage2 = () => {
                 <ChartDescription>
                   {/* db 연결하면 turtle닉네임 연결할 수 있게 아이디 --> 이름 */}
                     <h2> 이 그래프는</h2>
-                    <h2> 평균 분포도입니다.</h2>
+                    <h2> 상위 퍼센트 분포도입니다.</h2>
                     <br></br>
                     <hr></hr>
                     <br></br>

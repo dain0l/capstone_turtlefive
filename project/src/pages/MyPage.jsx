@@ -89,9 +89,9 @@ function MyPage() {
     return (
         
         <Container>
-                        <header style={header}>
-             <h1>docturtle🐢</h1>
-             </header>
+            <header style={header}>
+            <h1>docturtle🐢</h1>
+            </header>
             <ProfileImageContainer>
                 <ProfileImage src={imglogo} alt="" />
                 <AltText>프로필 이미지</AltText>
@@ -103,7 +103,7 @@ function MyPage() {
             {/* 추가적인 사용자 정보 */}
             <BottomContainer>
                 <LinkButtonStyle to="/login">Log in</LinkButtonStyle>
-                <LinkButtonStyle to="/singup">Sign up   </LinkButtonStyle>
+                <LinkButtonStyle to="/logout">Log out   </LinkButtonStyle>
             </BottomContainer>
         </Container>
     );
