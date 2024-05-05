@@ -41,15 +41,6 @@ const ChartDescription = styled.div`
 `;
 
 const ChartPage = () => {
-   
-
-
-        // 가장 높은 UV 값을 가지는 데이터 찾기
-        let maxUVData = data2.reduce((prev, current) => (prev.거북목감지 > current.거북목감지) ? prev : current);
-        // UV 값의 총합 계산
-        let totalUV = data2.reduce((acc, current) => acc + current.거북목감지, 0);
-        // UV 값의 평균 계산
-        let averageUV = totalUV / data2.length;
         const [data2, setData2] = useState([]);
 
         useEffect(() => {
@@ -59,6 +50,15 @@ const ChartPage = () => {
                 }
             });
         }, []);
+
+        // 가장 높은 UV 값을 가지는 데이터 찾기
+        let maxUVData = data2.reduce((prev, current) => (prev.거북목감지 > current.거북목감지) ? prev : current);
+        // UV 값의 총합 계산
+        let totalUV = data2.reduce((acc, current) => acc + current.거북목감지, 0);
+        // UV 값의 평균 계산
+        let averageUV = totalUV / data2.length;
+
+
         const fetchData = async () => {
             try {
                 const response = await fetch('/inquiry');
@@ -89,7 +89,7 @@ const ChartPage = () => {
                 <ChartDescription>
                   {/* db 연결하면 turtle닉네임 연결할 수 있게 아이디 --> 이름 */}
                     <h2> 이 그래프는</h2>
-                    <h2> [ turtle ] 님의 일주일 평균 빈도수입니다.</h2>
+                    <h2> [ turtle ] 님의 일주일 평균 알람 빈도수입니다.</h2>
                     <br></br>
                     <hr></hr>
                     <br></br>
