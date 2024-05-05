@@ -12,6 +12,22 @@ import turtle5 from '../img/turtle5.jpg';
 import turtle6 from '../img/turtle6.jpg';
 import turtle7 from '../img/turtle7.jpg';
 
+import {
+    BarChart,
+    ComposedChart,
+    Line,
+    Area,
+    Bar,
+    XAxis,
+    YAxis,
+    CartesianGrid,
+    Tooltip,
+    Legend,
+    Scatter,
+    ResponsiveContainer,
+  } from 'recharts';
+
+
 // import Swiper core and required modules
 import { Navigation, Pagination, Scrollbar, A11y, Autoplay } from 'swiper/modules';
 
@@ -37,24 +53,7 @@ import 'swiper/css/pagination';
 import imglogo from '../img/tree.jpg';
 */
 
-
-
 //import chart from '../img/chart.png';
-import {
-    BarChart,
-    ComposedChart,
-    Line,
-    Area,
-    Bar,
-    XAxis,
-    YAxis,
-    CartesianGrid,
-    Tooltip,
-    Legend,
-    Scatter,
-    ResponsiveContainer,
-  } from 'recharts';
-
 
 
 const HeaderContainer = styled.div`
@@ -127,7 +126,7 @@ const Logo = styled.div`
 
 
 const NavigationWrapper = styled.nav`
-  display: flex;
+    display: flex;
 `;
 
 
@@ -216,7 +215,7 @@ function Header() {
         <div>
             <HeaderContainer>
                 <Logo>TurtleFive</Logo>
-                <Navigation>
+                <NavigationWrapper>
                     <StyledLink to="/chartPage">1week-chart</StyledLink>
                     <StyledLink to="#">contact</StyledLink>
                     {isLoggedIn ? (
@@ -230,7 +229,7 @@ function Header() {
                     <StyledLink to="/explain">explain</StyledLink> 
 
                     
-                </Navigation>
+                </NavigationWrapper>
             </HeaderContainer>
             {/* 거북목 검사하러 가기 컨테이너 */}
             <RectangleContainer>
@@ -240,7 +239,7 @@ function Header() {
             </RectangleContainer>
             {/* 슬라이드 컨테이너 */}
             <RectangleContainer>
-                <Swiper
+            <Swiper
           modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}
           spaceBetween={0}
           slidesPerView={2}

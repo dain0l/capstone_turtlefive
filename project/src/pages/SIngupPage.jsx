@@ -57,7 +57,6 @@ function SignupForm() {
         });
     };
 
-
     const styles = {
         header: {
             backgroundColor: '#f5f1ee84', // 원하는 배경색으로 변경
@@ -146,7 +145,6 @@ function SignupForm() {
         },
     };
 
-    
     return (
         <div style={styles.body}>
             <header style={styles.header}>
@@ -198,7 +196,11 @@ function SignupForm() {
                                 required
                             />
                             <div style={styles.formGroup}>
+
+                                <label style={styles.label} htmlFor="birthdate">성별:</label>
+
                                 <label style={styles.label} htmlFor="gender">성별:</label>
+
                                 <select
                                     style={styles.input}
                                     name="gender"
@@ -222,6 +224,10 @@ function SignupForm() {
                                     onChange={(e) => setBirthdate(e.target.value)}
                                     required
                                 />
+
+                               <button type="submit" style={styles.submit}>가입하기</button>
+
+
                             </div>
                             <button style={styles.submit} type="button" onClick={handleCancel}>취소하기</button>
                             <input style={styles.submit} type="submit" value="가입하기" />
@@ -234,11 +240,13 @@ function SignupForm() {
                     <p style={styles.footerContainerP}>welcome to docturtle website </p>
                 </div>
             </div>
+            <footer style={styles.footerContainer}>
+    <p style={styles.footerContainerP}>
+        이미 계정이 있으신가요? <Link to="/login">로그인</Link>
+    </p>
+</footer>
+
         </div>
     );
 }
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
 export default SignupForm;
