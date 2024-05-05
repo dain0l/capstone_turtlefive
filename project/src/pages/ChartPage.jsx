@@ -1,21 +1,8 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, {useEffect, useState}from 'react';
 import styled from 'styled-components';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
-import { data2 } from '../components/Data/data';
 
 // 스타일링을 위한 styled-components 사용
-
-const StyledLink = styled(Link)`
-    color: #000000;
-    text-decoration: none;
-    margin-right: 0.1rem;
-
-    &:hover {
-        text-decoration: underline;
-    }
-`;
-
 const StyledFooter = styled.footer`
     background-color: rgba(0, 0, 0, 0.452);
     color: #ffffffc3;
@@ -56,12 +43,34 @@ const ChartDescription = styled.div`
 const ChartPage = () => {
    
 
+
         // 가장 높은 UV 값을 가지는 데이터 찾기
         let maxUVData = data2.reduce((prev, current) => (prev.거북목감지 > current.거북목감지) ? prev : current);
         // UV 값의 총합 계산
         let totalUV = data2.reduce((acc, current) => acc + current.거북목감지, 0);
         // UV 값의 평균 계산
         let averageUV = totalUV / data2.length;
+        const [data2, setData2] = useState([]);
+
+        useEffect(() => {
+            fetchData().then(data => {
+                if (data) {
+                    setData2(data);
+                }
+            });
+        }, []);
+        const fetchData = async () => {
+            try {
+                const response = await fetch('/inquiry');
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                const data = await response.json();
+                return data;
+            } catch (error) {
+                console.error("Fetch error: ", error);
+            }
+        }
 
       return (
         <Container>

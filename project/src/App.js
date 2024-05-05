@@ -16,7 +16,7 @@ import ChartPage from './pages/ChartPage.jsx'
 import ChartPage2 from './pages/ChartPage2.jsx'
 import MyPage from './pages/MyPage.jsx'
 import Percent from './pages/PercentPage.jsx'
-import CameraCom from './components/Examine/CamerCom.jsx';
+import CameraCom from './components/Examine/CameraCom.jsx';
 
 
 
@@ -35,8 +35,8 @@ function App() {
         <Route path="/findID" element={<FindID />} />
         <Route path="/findPassword" element={<FindPassword />} />
         <Route path="/webcam" element={<Turtle />} />
-        <Route path="/chartPage" element={<ChartPage />} />
-        <Route path="/chartPage2" element={<ChartPage2 />} />
+        <Route path="/inquery" element={<ChartPage />} />
+        <Route path="/percentage" element={<ChartPage2 />} />
         <Route path="/mypage" element={<MyPage />} />
         <Route path="/percentPage" element={<Percent />} />
         <Route path="/cameracom" element={<CameraCom />} />
