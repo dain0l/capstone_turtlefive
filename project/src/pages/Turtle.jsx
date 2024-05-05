@@ -1,5 +1,5 @@
 import React from 'react';
-import CameraCom from "../components/Examine/CamerCom";
+import CameraCom from "../components/Examine/CameraCom";
 import LinkCom from '../components/Examine/LinkCom';
 
 import styled from 'styled-components';

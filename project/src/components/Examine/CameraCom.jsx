@@ -25,6 +25,7 @@ const StyledCanvas = styled.canvas`
 const CameraCom = () => { 
     const webcamRef = useRef(null);
     const canvasRef = useRef(null);
+    let alarmTimeout = useRef(null);
   
     useEffect(() => {
       const holistic = new Holistic({
@@ -76,11 +77,22 @@ const CameraCom = () => {
                   canvasCtx.font = "10px Arial";
                   canvasCtx.fillStyle = "red";
                   canvasCtx.fillText("You have to fix your pose.", 10, 30);
-                  //sendAlertToBackend(); // 백엔드로 알람
+
+                  if (!alarmTimeout.current) { // 현재 타이머가 실행 중이지 않을 때만 새 타이머 설정
+                    alarmTimeout.current = setTimeout(() => {
+                        sendAlarmLog(); // 백엔드로 알람 로그 보내는 함수 호출
+                        alarmTimeout.current = null; // 타이머 초기화
+                    }, 60000); // 1분 후 실행
+                }
                 }else {
                   canvasCtx.font = "10px Arial";
                   canvasCtx.fillStyle = "green";
                   canvasCtx.fillText("Your pose is normal", 10, 30);
+                   // 조건이 거짓이면 현재 설정된 타이머 취소
+                   if (alarmTimeout.current) {
+                    clearTimeout(alarmTimeout.current);
+                    alarmTimeout.current = null;
+                }
                 }
               }else{ // 0번 랜드마크 인식이 안될 경우 -> 예외 처리
                 canvasCtx.font = "10px Arial";
@@ -88,10 +100,6 @@ const CameraCom = () => {
                   canvasCtx.fillText("No recognized...", 10, 30);
               }
               
-              // Diaplay angle and distance in camera window 
-              // 두 함수가 True or False만 리턴하기 때문에 값을 직접적으로 받아올 수 없음.???
-              // canvasCtx.fillText(`Angle: ${...} degrees`);
-              // canvasCtx.fillText(`Distance: ${...} pixels`);
           }
           canvasCtx.restore();
         });
@@ -108,6 +116,30 @@ const CameraCom = () => {
       }
     }, []);
   
+     // 백엔드로 알람 로그를 보내는 함수
+     const sendAlarmLog = async () => {
+      const currentTime = new Date().toISOString(); // 현재 시간을 ISO 형식으로 변환
+      try {
+          const response = await fetch('/webcam/alarmlog', {
+              method: 'POST',
+              headers: {
+                  'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({
+                  dateTime: currentTime,
+              }),
+          });
+
+          if (!response.ok) {
+              throw new Error('Network response was not ok');
+          }
+
+          // 성공적으로 로그를 보냈을 때의 처리를 여기에 작성할 수 있습니다.
+          console.log('Alarm log sent successfully');
+      } catch (error) {
+          console.error('Failed to send alarm log', error);
+      }
+  };
     return (
       <CameraContainer>
         <Webcam ref={webcamRef} style={{ width: '100%', height: '100%' }} />
