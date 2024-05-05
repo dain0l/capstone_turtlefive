@@ -1,5 +1,5 @@
 import Beforehand from '../components/Home/Beforehand';
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { data1, data2 } from '../components/Data/data';
@@ -136,6 +136,41 @@ const StyledBar = styled.div`
 `;
 
 function Header() {
+
+     // 로그인 상태를 관리하는 상태 변수
+     const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+     // 컴포넌트가 마운트될 때 로그인 상태를 확인
+     useEffect(() => {
+         const token = localStorage.getItem('accessToken');
+         setIsLoggedIn(!!token); // token이 있으면 true, 없으면 false로 설정
+     }, []);
+ 
+     // 로그아웃 함수
+     const handleLogout = async () => {
+         const token = localStorage.getItem('accessToken');
+         try {
+             const response = await fetch('/logout', {
+                 method: 'POST',
+                 headers: {
+                     'Content-Type': 'application/json',
+                     'Authorization': `Bearer ${token}`
+                 },
+                 body: JSON.stringify({ accessToken: token })
+             });
+ 
+             if (response.ok) {
+                 console.log('Successfully logged out');
+                 localStorage.removeItem('accessToken'); // 로컬 스토리지에서 accessToken 제거
+                 setIsLoggedIn(false); // 로그인 상태 업데이트
+             } else {
+                 throw new Error('Logout failed');
+             }
+         } catch (error) {
+             console.error('Logout error:', error);
+         }
+     };
+
     return (
         <div>
             <HeaderContainer>
@@ -143,9 +178,17 @@ function Header() {
                 <Navigation>
                     <StyledLink to="/chartPage">1week-chart</StyledLink>
                     <StyledLink to="#">contact</StyledLink>
-                    <StyledLink to="/login">login</StyledLink> 
+                    {isLoggedIn ? (
+                        <>
+                        <StyledLink to="#" onClick={handleLogout}>logout</StyledLink>
+                        <StyledLink to="/myPage">my page</StyledLink>
+                        </>
+                    ) : (
+                        <StyledLink to="/login">login</StyledLink> // 로그아웃 상태일 때 로그인 버튼 표시
+                    )}
                     <StyledLink to="/explain">explain</StyledLink> 
-                    <StyledLink to="/myPage">my page</StyledLink>
+
+                    
                 </Navigation>
             </HeaderContainer>
             {/* 거북목 검사하러 가기 컨테이너 */}
