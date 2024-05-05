@@ -10,7 +10,7 @@ const StyledLink = styled(Link)`
     &:hover {
         text-decoration: underline;
     }
-`;
+`; 
 
 
 const LoginPage = () => {
@@ -31,9 +31,16 @@ const LoginPage = () => {
             });
             const data = await response.json();
             if (response.ok) {
+<<<<<<< Updated upstream
                 // 로그인 성공 시, 서버로부터 받은 JWT 토큰을 로컬 스토리지에 저장합니다.
                 localStorage.setItem('accessToken', data.accessToken);
                 navigate('/register');//홈화면으로 이동
+=======
+                localStorage.setItem('accessToken', data.accessToken);
+                localStorage.setItem('refreshToken', data.refreshToken);
+                setLoginMessage('로그인 성공');
+                // 로그인 성공 시 리다이렉트 또는 다른 작업 수행
+>>>>>>> Stashed changes
             } else {
                 setLoginMessage(data.message || '로그인에 실패했습니다. 아이디와 비밀번호를 다시 한번 확인해주세요.'); // 백엔드에서 반환한 오류 메시지 표시
             }

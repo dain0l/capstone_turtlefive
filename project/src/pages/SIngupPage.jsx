@@ -4,16 +4,25 @@ import styled from 'styled-components';
 
 function SignupForm() {
     const [name, setUsername] = useState('');
-    const [phoneNo, setphoneNo] = useState('');
+    const [phoneNo, setPhoneNo] = useState('');
     const [email, setEmail] = useState(''); //id 변수명을 email로 변경
     //const [id, setId] = useState('');  >> 필요없음 emial이 id이기 떄문
 
     const [password, setPassword] = useState('');
-    const [confirmPassword, setConfirmPassword] = useState('');
+    
     const [gender, setGender] = useState('');
     const [birth, setBirthdate] = useState('');
     const [signupSuccess, setSignupSuccess] = useState(false);
 
+    const handleCancel = () => {
+        // 입력된 값 초기화
+        name('');
+        email('');
+        phoneNo('');
+        password('');
+        gender('');
+        birth('');
+    };
 
     const handleSignup = (e) => {
         e.preventDefault();
@@ -47,6 +56,7 @@ function SignupForm() {
             console.error('회원가입 오류:', error);
         });
     };
+
 
     const styles = {
         header: {
@@ -136,12 +146,12 @@ function SignupForm() {
         },
     };
 
+    
     return (
         <div style={styles.body}>
             <header style={styles.header}>
                 <h1>docturtle🐢</h1>
             </header>
-
             <div style={styles.container}>
                 {signupSuccess ? (
                     <div>
@@ -151,56 +161,48 @@ function SignupForm() {
                     </div>
                 ) : (
                     <div>
-                        <h2>회원가입</h2>
+                        <h2 style={styles.h2}>회원가입</h2>
                         <form onSubmit={handleSignup}>
                             <input
-                            style={styles.input}
-                            type="text"
-                            value={name}
-                            placeholder="이름"
-                            onChange={(e) => setUsername(e.target.value)}
-                            required
+                                style={styles.input}
+                                type="text"
+                                value={name}
+                                placeholder="이름"
+                                onChange={(e) => setUsername(e.target.value)}
+                                required
                             />
                             <input
-                            style={styles.input}
-                            type="email"
-                            value={email}   //id 변수명을 email로 변경
-                            placeholder="아이디 (email)"
-                            onChange={(e) => setEmail(e.target.value)}
-                            required
+                                style={styles.input}
+                                type="email"
+                                value={email}
+                                placeholder="아이디 (email)"
+                                onChange={(e) => setEmail(e.target.value)}
+                                required
                             />
                             <input
                                 style={styles.input}
                                 type="tel"
                                 value={phoneNo}
                                 placeholder="휴대전화번호"
-                                onChange={(e) => setphoneNo(e.target.value)} // setNumber -> setphoneNo 로 수정
+                                onChange={(e) => setPhoneNo(e.target.value)}
                                 required
-                                pattern="[0-9]*" // 숫자만 입력되도록 정규표현식을 지정
-                                title="숫자만 입력해주세요" // 입력값이 일치하지 않을 때 표시될 메시지
-                            />  
-                            <input
-                            style={styles.input}
-                            type="password"
-                            value={password}
-                            placeholder="비밀번호"
-                            onChange={(e) => setPassword(e.target.value)}
-                            required
+                                pattern="[0-9]*"
+                                title="숫자만 입력해주세요"
                             />
                             <input
-                            style={styles.input}
-                            type="password"
-                            value={confirmPassword}
-                            placeholder="비밀번호 재입력"
-                            onChange={(e) => setConfirmPassword(e.target.value)}
-                            required
+                                style={styles.input}
+                                type="password"
+                                value={password}
+                                placeholder="비밀번호"
+                                onChange={(e) => setPassword(e.target.value)}
+                                required
                             />
-                            <input style={styles.button} type="button" value="확인" />
-
                             <div style={styles.formGroup}>
-                                <label style={styles.label} htmlFor="birthdate">생년월일:</label>
+                                <label style={styles.label} htmlFor="gender">성별:</label>
                                 <select
                                     style={styles.input}
+                                    name="gender"
+                                    id="gender"
                                     value={gender}
                                     onChange={(e) => setGender(e.target.value)}
                                     required
@@ -212,7 +214,7 @@ function SignupForm() {
                                 </select>
                             </div>
                             <div style={styles.formGroup}>
-                                <label style={styles.label} htmlFor="birth">생년월일:</label>
+                                <label style={styles.label} htmlFor="birthdate">생년월일:</label>
                                 <input
                                     style={styles.input}
                                     type="date"
@@ -220,17 +222,23 @@ function SignupForm() {
                                     onChange={(e) => setBirthdate(e.target.value)}
                                     required
                                 />
-                               
-                                
-                                <input type="submit" value="가입하기" />
                             </div>
-                         
+                            <button style={styles.submit} type="button" onClick={handleCancel}>취소하기</button>
+                            <input style={styles.submit} type="submit" value="가입하기" />
                         </form>
-                        
                     </div>
                 )}
+                <div style={styles.footerContainer}>
+                    <p style={styles.footerContainerP}>이 페이지는 docturtle🐢에서 제공하는 회원가입 양식입니다.</p>
+                    <p style={styles.footerContainerP}>♥</p>
+                    <p style={styles.footerContainerP}>welcome to docturtle website </p>
+                </div>
             </div>
         </div>
     );
 }
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
 export default SignupForm;
