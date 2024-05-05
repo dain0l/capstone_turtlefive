@@ -71,7 +71,7 @@ const containerStyle = {
     display: 'flex', // flexbox 사용
     justifyContent: 'space-around',
     alignItems: 'center', // 수직 가운데 정렬
-    width: '90%', // 부모 요소의 너비를 화면 너비의 80%로 지정
+    width: '80%', // 부모 요소의 너비를 화면 너비의 80%로 지정
     margin: '0 auto', // 수평 가운데 정렬
 };
 

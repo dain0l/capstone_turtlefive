@@ -47,7 +47,6 @@ function SignupForm() {
             console.error('회원가입 오류:', error);
         });
     };
-
     const styles = {
         header: {
             backgroundColor: '#f5f1ee84', // 원하는 배경색으로 변경
@@ -136,6 +135,7 @@ function SignupForm() {
         },
     };
 
+
     return (
         <div style={styles.body}>
             <header style={styles.header}>
@@ -198,7 +198,7 @@ function SignupForm() {
                             <input style={styles.button} type="button" value="확인" />
 
                             <div style={styles.formGroup}>
-                                <label style={styles.label} htmlFor="birthdate">생년월일:</label>
+                                <label style={styles.label} htmlFor="birthdate">성별:</label>
                                 <select
                                     style={styles.input}
                                     value={gender}
@@ -220,9 +220,8 @@ function SignupForm() {
                                     onChange={(e) => setBirthdate(e.target.value)}
                                     required
                                 />
-                               
-                                
-                                <input type="submit" value="가입하기" />
+                               <button type="submit" style={styles.submit}>가입하기</button>
+
                             </div>
                          
                         </form>
@@ -230,6 +229,12 @@ function SignupForm() {
                     </div>
                 )}
             </div>
+            <footer style={styles.footerContainer}>
+    <p style={styles.footerContainerP}>
+        이미 계정이 있으신가요? <Link to="/login">로그인</Link>
+    </p>
+</footer>
+
         </div>
     );
 }
