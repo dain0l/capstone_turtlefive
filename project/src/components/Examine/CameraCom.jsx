@@ -117,29 +117,32 @@ const CameraCom = () => {
     }, []);
   
      // 백엔드로 알람 로그를 보내는 함수
-     const sendAlarmLog = async () => {
-      const currentTime = new Date().toISOString(); // 현재 시간을 ISO 형식으로 변환
-      try {
-          const response = await fetch('/webcam/alarmlog', {
-              method: 'POST',
-              headers: {
-                  'Content-Type': 'application/json',
-              },
-              body: JSON.stringify({
-                  dateTime: currentTime,
-              }),
-          });
+const sendAlarmLog = async () => {
+  const currentTime = new Date().toISOString(); // 현재 시간을 ISO 형식으로 변환
+  const token = localStorage.getItem('accessToken'); // 로컬 스토리지에서 access 토큰을 가져옴
+  try {
+      const response = await fetch('/webcam/alarmlog', {
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/json',
+              'Authorization': `Bearer ${token}` // 헤더에 토큰을 추가
+          },
+          body: JSON.stringify({
+              dateTime: currentTime,
+          }),
+      });
 
-          if (!response.ok) {
-              throw new Error('Network response was not ok');
-          }
-
-          // 성공적으로 로그를 보냈을 때의 처리를 여기에 작성할 수 있습니다.
-          console.log('Alarm log sent successfully');
-      } catch (error) {
-          console.error('Failed to send alarm log', error);
+      if (!response.ok) {
+          throw new Error('Network response was not ok');
       }
-  };
+
+      // 성공적으로 로그를 보냈을 때의 처리를 여기에 작성할 수 있습니다.
+      console.log('Alarm log sent successfully');
+  } catch (error) {
+      console.error('Failed to send alarm log', error);
+  }
+};
+
     return (
       <CameraContainer>
         <Webcam ref={webcamRef} style={{ width: '100%', height: '100%' }} />
