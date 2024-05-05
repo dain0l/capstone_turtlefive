@@ -286,7 +286,7 @@ function Header() {
             <Row>
             {/* chart를 간략하게 보여주는 컨테이너1,2 */}
              {/* 컨테이너 1 */}
-            <Link to="/chartPage2" style={{ width: '46%', marginRight: '60px' }}>
+            <Link to="/chartPage2" style={{ width: '45%', marginRight: '80px' }}>
             <Rectangle2Container>
                 {/*<ProfileImage src={chart} alt="" /> */}
                 <ResponsiveContainer width="90%" height="90%">
@@ -315,7 +315,7 @@ function Header() {
             </Rectangle2Container>
             </Link>
              {/* 컨테이너 2 */}
-            <Link to="/chartPage"  style={{ width: '46%', }}>
+            <Link to="/chartPage"  style={{ width: '45%', }}>
             <Rectangle2Container>
             <ResponsiveContainer height="80%" width="80%">
                 <BarChart data={data2} margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
