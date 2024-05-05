@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate  } from 'react-router-dom';
 import styled from 'styled-components';
 
 const StyledLink = styled(Link)`
@@ -14,9 +14,10 @@ const StyledLink = styled(Link)`
 
 
 const LoginPage = () => {
-    const [name, setUsername] = useState('');
+    const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [loginMessage, setLoginMessage] = useState('');
+    const navigate = useNavigate();
 
     const handleLogin = async (e) => {
         e.preventDefault();
@@ -26,18 +27,19 @@ const LoginPage = () => {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ name, password }),
+                body: JSON.stringify({ email, password }),
             });
             const data = await response.json();
             if (response.ok) {
-                setLoginMessage('로그인 성공');
-                // 로그인 성공 시 리다이렉트 또는 다른 작업 수행
+                // 로그인 성공 시, 서버로부터 받은 JWT 토큰을 로컬 스토리지에 저장합니다.
+                localStorage.setItem('accessToken', data.accessToken);
+                navigate('/register');//홈화면으로 이동
             } else {
-                setLoginMessage(data.message); // 백엔드에서 반환한 오류 메시지 표시
+                setLoginMessage(data.message || '로그인에 실패했습니다. 아이디와 비밀번호를 다시 한번 확인해주세요.'); // 백엔드에서 반환한 오류 메시지 표시
             }
         } catch (error) {
             console.error('로그인 오류:', error);
-            setLoginMessage('로그인 중 오류가 발생했습니다.');
+            setLoginMessage('로그인에 실패했습니다. 아이디와 비밀번호를 다시 한번 확인해주세요.');
         }
     };
 
@@ -112,9 +114,9 @@ const LoginPage = () => {
                     <input
                         style={styles.input}
                         type="text"
-                        value={name}
+                        value={email}
                         placeholder="e-mail"
-                        onChange={(e) => setUsername(e.target.value)}
+                        onChange={(e) => setEmail(e.target.value)}
                         required
                     />
                     <input
@@ -127,6 +129,7 @@ const LoginPage = () => {
                     />
                     <input style={styles.submit} type="submit" value="로그인" />
                 </form>
+                {loginMessage && <p>{loginMessage}</p>}
                 <div className="additional-links" style={styles.additionalLinks}>
                 <p><StyledLink to ="/findID">아이디 찾기</StyledLink> | <StyledLink to ="/findPassword">비밀번호 찾기</StyledLink></p>
                 <p><StyledLink to="/agree">회원가입</StyledLink></p>
