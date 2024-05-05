@@ -16,6 +16,7 @@ import ChartPage from './pages/ChartPage.jsx'
 import ChartPage2 from './pages/ChartPage2.jsx'
 import MyPage from './pages/MyPage.jsx'
 import Percent from './pages/PercentPage.jsx'
+import CameraCom from './components/Examine/CamerCom.jsx';
 
 
 
@@ -38,7 +39,7 @@ function App() {
         <Route path="/chartPage2" element={<ChartPage2 />} />
         <Route path="/mypage" element={<MyPage />} />
         <Route path="/percentPage" element={<Percent />} />
-
+        <Route path="/cameracom" element={<CameraCom />} />
 
       </Routes>
     </Router>
