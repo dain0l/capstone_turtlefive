@@ -11,10 +11,13 @@ import Explain from './pages/ExplainPage.jsx'
 import Agree from './pages/AgreePage.jsx'
 import FindID from './components/Login/FindID.jsx'
 import FindPassword from './components/Login/FindPassword.jsx'
-import Turtle from './pages/Turtle.jsx'
+import Turtle from './pages/Turtle.jsx';
 import ChartPage from './pages/ChartPage.jsx'
 import ChartPage2 from './pages/ChartPage2.jsx'
 import MyPage from './pages/MyPage.jsx'
+import Percent from './pages/PercentPage.jsx'
+
+
 
 
 function App() {
@@ -30,10 +33,13 @@ function App() {
         <Route path="/agree" element={<Agree />} />
         <Route path="/findID" element={<FindID />} />
         <Route path="/findPassword" element={<FindPassword />} />
-        <Route path="/turtle" element={<Turtle />} />
+        <Route path="/webcam" element={<Turtle />} />
         <Route path="/chartPage" element={<ChartPage />} />
         <Route path="/chartPage2" element={<ChartPage2 />} />
         <Route path="/mypage" element={<MyPage />} />
+        <Route path="/percentPage" element={<Percent />} />
+
+
       </Routes>
     </Router>
   );
