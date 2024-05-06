@@ -23,21 +23,25 @@ function LinkCom() {
 
     const slideStyle = {
         marginBottom : '10px', // SwiperSlide 사이의 간격을 조정하기 위해 margin을 설정합니다.
-        backgroundColor: '#eeeeee', // 하얀색 배경
+        backgroundColor: '#4a4e4c', // 하얀색 배경
+        borderRadius: '20px', // Apply border radius to the slide
+        
+          
     };
+    
 
     return (
         <div style={boxStyle}>
             <Swiper
                 modules={[Navigation, Pagination, Scrollbar, A11y]}
                 direction="vertical" // Swiper를 세로 방향으로 설정
-                slidesPerView={3}
+                slidesPerView={2.6}
                 //navigation
                 pagination={{ clickable: true, renderBullet: function (index, className) { return `<span class="${className}" style="width: 15px; height: 15px;"></span>`; } }}
                 scrollbar={{ draggable: true }}
                 onSwiper={(swiper) => console.log(swiper)}
                 onSlideChange={() => console.log('slide change')}
-                style={{ width: '100%', height: '100%' }} // 스와이퍼의 너비와 높이를 부모 요소에 맞게 설정
+                style={{ width: '100%', height: '100%', backgroundColor: '#4a4e4c'}} // 스와이퍼의 너비와 높이를 부모 요소에 맞게 설정
             >
                 <SwiperSlide style={slideStyle}>
                     <iframe 
