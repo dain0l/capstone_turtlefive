@@ -8,7 +8,7 @@ function FindID() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await fetch('/api/find-email', {
+      const response = await fetch('/findID', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
