@@ -63,7 +63,7 @@ const HeaderContainer = styled.div`
     background: #DFF0D8;
     color: #FBFDF5;
     padding: 1rem;
-    width: 98%;
+    width: 100%;
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap; /* 필요에 따라 행을 여러 줄로 바꿉니다. */
@@ -71,7 +71,11 @@ const HeaderContainer = styled.div`
 
 //4a4e4c
 //ff69b44c - 핑크색
+// margin-left: 1.5%;
+// margin-right: 3%;
+// flex: 0 0 calc(50% - 1.5%);
 
+//반응형 수정중 -다인
 const RectangleContainer = styled.div`
     background-color: #4a4e4c;
     padding: 20px; 
@@ -82,12 +86,12 @@ const RectangleContainer = styled.div`
     flex-direction: column;
     align-items: center;
     width: 100%;
-    max-width: 1550px;
     height: 250px;
     margin-left: 1.5%;
-    margin-right: 3%;
-    flex: 0 0 calc(50% - 1.5%);
+    margin-right: 1.5%; 
     overflow: hidden;
+    
+    
 `;
 
 const Rectangle2Container = styled.div`
@@ -95,8 +99,8 @@ const Rectangle2Container = styled.div`
     padding: 20px; 
     border-radius: 10px;
     margin-top: 20px;
-    margin-bottom: 80px;
     display: flex;
+    margin-bottom: 80px;
     justify-content: center;
     flex-direction: column;
     align-items: center;
@@ -109,7 +113,7 @@ const StyledFooter = styled.footer`
     background-color: rgba(0, 0, 0, 0.452);
     color: #ffffffc3;
     padding: 2px;
-    height: 50px;
+    height: 40px;
     position: fixed;
     bottom: 0;
     left: 0;
@@ -144,7 +148,7 @@ const StyledLink = styled(Link)`
 
 const Row = styled.div`
     display: flex;
-    width: 99%;
+    width: 98%;
 `;
 
 const StyledButton = styled.button`
@@ -232,30 +236,30 @@ function Header() {
                     
                 </NavigationWrapper>
             </HeaderContainer>
-            {/* 거북목 검사하러 가기 컨테이너 */}
+            
             <RectangleContainer>
                 <Link to="/webcam">
                     <StyledButton>거북목 검사하러가기</StyledButton>
                 </Link>
             </RectangleContainer>
-            {/* 슬라이드 컨테이너 */}
+            
             <RectangleContainer>
             <Swiper
-          modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}
-          spaceBetween={0}
-          slidesPerView={2}
-          navigation = {true}
-          centeredSlides={true}
-          autoplay={{
-            delay: 2000,
-            disableOnInteraction: false,
-          }}
-          pagination={{ clickable: true }}
-          scrollbar={{ draggable: true }}
-          onSwiper={(swiper) => console.log(swiper)}
-          onSlideChange={() => console.log('slide change')}
-          style={{ width: '100%', height: '100%' }} // 스와이퍼의 너비와 높이를 부모 요소에 맞게 설정
-        >
+                modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}
+                spaceBetween={0}
+                slidesPerView={2}
+                navigation = {true}
+                centeredSlides={true}
+                autoplay={{
+                    delay: 2000,
+                    disableOnInteraction: false,
+                }}
+                pagination={{ clickable: true }}
+                scrollbar={{ draggable: true }}
+                onSwiper={(swiper) => console.log(swiper)}
+                onSlideChange={() => console.log('slide change')}
+                style={{ width: '100%', height: '100%' }} // 스와이퍼의 너비와 높이를 부모 요소에 맞게 설정
+            >
           <SwiperSlide>
             <img src={turtle1} alt="Slide 1" style={{ width: '90%', height: '90%' , borderRadius: '10px'}} />
           </SwiperSlide>
