@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { data2 } from '../components/Data/data';
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts';
+import { data2 } from '../components/Data/data';
 
 // 스타일링을 위한 styled-components 사용
 const StyledFooter = styled.footer`
@@ -42,47 +42,35 @@ const ChartDescription = styled.div`
 `;
 
 const ChartPage = () => {
-        const [data2, setData2] = useState([]);
+    const [data2, setData2] = useState([]);
 
-        useEffect(() => {
-            fetchData().then(data => {
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await fetch('/inquiry');
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                const data = await response.json();
                 if (data) {
-                    setData2(data);
+                    const transformedData = data.map(item => ({
+                        ...item,
+                        name: 요일변환함수(item.dayOfWeek),
+                        time: item.webcamDuration,
+                        거북목감지: item.alarmCount
+                    }));
+                    setData2(transformedData);
                 }
-            });
-        }, []);
+            } catch (error) {
+                console.error("Fetch error: ", error);
+            }
+        };
 
-const ChartPage = () => {
-        const [data2, setData2] = useState([]);
+        fetchData();
+    }, []);
 
-        
-        useEffect(() => {
-            const fetchData = async () => {
-                try {
-                    const response = await fetch('/inquiry');
-                    if (!response.ok) {
-                        throw new Error('Network response was not ok');
-                    }
-                    const data = await response.json();
-                    if (data) {
-                        const transformedData = data.map(item => ({
-                            ...item,
-                            name: 요일변환함수(item.dayOfWeek), // 예시 함수, 실제 요일 변환 로직 필요
-                            time: item.webcamDuration,
-                            거북목감지: item.alarmCount
-                        }));
-                        setData2(transformedData);
-                    }
-                } catch (error) {
-                    console.error("Fetch error: ", error);
-                }
-            };
-    
-            fetchData();
-        }, []);
-
-         // 예시 요일 변환 함수
-        const 요일변환함수 = (dayOfWeek) => {
+    // 예시 요일 변환 함수
+    const 요일변환함수 = (dayOfWeek) => {
         const dayMap = {
             MONDAY: '월요일',
             TUESDAY: '화요일',
@@ -95,7 +83,6 @@ const ChartPage = () => {
         return dayMap[dayOfWeek] || dayOfWeek;
     };
 
-
     // 여기에서 최대값과 평균값 계산
     let maxData = data2.length > 0 ? data2.reduce((prev, current) => (prev.거북목감지 > current.거북목감지) ? prev : current) : null;
     let totalUV = data2.reduce((acc, current) => acc + current.거북목감지, 0);
@@ -105,38 +92,21 @@ const ChartPage = () => {
     let totalTime = data2.reduce((acc, current) => acc + current.time, 0);
     let averageTime = data2.length > 0 ? totalTime / data2.length : 0;
 
-
-
-
-        const fetchData = async () => {
-            try {
-                const response = await fetch('/inquiry');
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                const data = await response.json();
-                return data;
-            } catch (error) {
-                console.error("Fetch error: ", error);
-            }
-        }
-
-      return (
+    return (
         <Container>
-             <header style={header}>
-             <h1>docturtle🐢</h1>
-             </header>
-           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '80%', marginLeft : '130px', marginTop : '130px' }}>
+            <header style={header}>
+                <h1>docturtle🐢</h1>
+            </header>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '80%', marginLeft : '130px', marginTop : '130px' }}>
                 <ResponsiveContainer height={400} width="100%">
-                <BarChart data={data2} margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
-                    <XAxis dataKey="name" scale="point" padding={{ left: 70, right: 10 }} />
-                    <YAxis />
-                    <Tooltip contentStyle={{ backgroundColor: 'white', color: 'black' }} />
-                    <Bar dataKey="거북목감지" fill="#8884d8" background={{ fill: '#eee' }} />
-                </BarChart>
+                    <BarChart data={data2} margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
+                        <XAxis dataKey="name" scale="point" padding={{ left: 70, right: 10 }} />
+                        <YAxis />
+                        <Tooltip contentStyle={{ backgroundColor: 'white', color: 'black' }} />
+                        <Bar dataKey="거북목감지" fill="#8884d8" background={{ fill: '#eee' }} />
+                    </BarChart>
                 </ResponsiveContainer>
                 <ChartDescription>
-                  {/* db 연결하면 turtle닉네임 연결할 수 있게 아이디 --> 이름 */}
                     <h2> 이 그래프는</h2>
                     <h2> [ turtle ] 님의 일주일 평균 알람 빈도수입니다.</h2>
                     <br></br>
@@ -154,7 +124,7 @@ const ChartPage = () => {
                 <p>&copy; 2024 docturtle chart website</p>
             </StyledFooter>
         </Container>
-     );
+    );
 }
 
 export default ChartPage;
