@@ -12,6 +12,7 @@ import Explain from './pages/ExplainPage.jsx'
 import Agree from './pages/AgreePage.jsx'
 import FindID from './components/Login/FindID.jsx'
 import FindPassword from './components/Login/FindPassword.jsx'
+import SetPassword from './components/Login/SetPassword.jsx';
 import Turtle from './pages/Turtle.jsx';
 import ChartPage from './pages/ChartPage.jsx'
 import ChartPage2 from './pages/ChartPage2.jsx'
@@ -36,6 +37,7 @@ function App() {
         <Route path="/agree" element={<Agree />} />
         <Route path="/findID" element={<FindID />} />
         <Route path="/findPassword" element={<FindPassword />} />
+        <Route path="/setPassword" element={<SetPassword />} />
         <Route path="/webcam" element={<Turtle />} />
         <Route path="/inquery" element={<ChartPage />} />
         <Route path="/percentage" element={<ChartPage2 />} />
