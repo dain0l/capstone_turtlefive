@@ -35,36 +35,43 @@ export const data1 = [
   export const data2 = [
     {
         name: '월요일',
-        거북목감지: 30,
+        time : null,
+        거북목감지: null,
   
       },
       {
         name: '화요일',
-        거북목감지: 10,
+        time : null,
+        거북목감지: null,
   
       },
       {
         name: '수요일',
-        거북목감지: 20,
+        time : null,
+        거북목감지: null,
   
       },
       {
         name: '목요일',
-        거북목감지: 27,
+        time : null,
+        거북목감지: null,
       },
       {
         name: '금요일',
-        거북목감지: 10,
+        time : null,
+        거북목감지: null,
   
       },
       {
         name: '토요일',
-        거북목감지: 23,
+        time : null,
+        거북목감지: null,
   
       },
       {
         name: '일요일',
-        거북목감지: 50,
+        time : null,
+        거북목감지: null,
   
       }
   ];
