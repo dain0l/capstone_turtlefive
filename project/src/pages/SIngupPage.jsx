@@ -15,12 +15,12 @@ function SignupForm() {
 
     const handleCancel = () => {
         // 입력된 값 초기화
-        name('');
-        email('');
-        phoneNo('');
-        password('');
-        gender('');
-        birth('');
+        setUsername('');
+        setEmail('');
+        setPhoneNo('');
+        setPassword('');
+        setGender('');
+        setBirthdate('');
     };
 
     const handleSignup = (e) => {
@@ -73,10 +73,10 @@ function SignupForm() {
             boxShadow: '0 0 10px rgba(11, 83, 67, 0.267)',
         },
         footerContainer: {
-            marginTop: '30px',
+            marginTop: '50px',
             maxWidth: '600px',
             margin: '20px auto',
-            marginBottom: '70px',
+            marginBottom: '30px',
             textAlign: 'center',
             padding: '20px',
             backgroundColor: '#ffffffbb',
@@ -225,7 +225,7 @@ function SignupForm() {
 
 
                             </div>
-                            <button style={styles.submit} type="button" onClick={handleCancel}>취소하기</button>
+                            <button style={styles.submit} type="submit" onClick={handleCancel}>취소하기</button>
                             <button type="submit" style={styles.submit}>가입하기</button>
                         </form>
                     </div>

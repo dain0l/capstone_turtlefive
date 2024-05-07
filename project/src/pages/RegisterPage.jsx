@@ -98,7 +98,7 @@ const Rectangle2Container = styled.div`
 
 
     @media screen and (min-width: 1000px) {
-        margin-left: 55px;
+        margin-left: 45px;
         width: 97%;
     }
 `;
