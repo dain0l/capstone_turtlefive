@@ -71,13 +71,13 @@ const CameraCom = () => {
               const angle = checkAngle(chinLandmark, leftShoulder, shoulderMidPoint);
 
               const ZvaluesBool =  Zvalues >= 0.38;
-              const distanceBool = distance <= 0.15;
-              // const angleBool = (angle <= 60 || angle >= 130);
+              const distanceBool = distance <= 0.1;
+              const angleBool = (angle <= 60 || angle >= 130);
 
               console.log("D:"+ distanceBool +distance + "\n" + "Z: "+ZvaluesBool + Zvalues);
 
               if(chinLandmark){ // 152번 랜드마크가 인식될 경우 
-                 if( distanceBool && ZvaluesBool ){
+                 if( distanceBool || ZvaluesBool || angleBool){
                   canvasCtx.font = "10px Arial";
                   canvasCtx.fillStyle = "red";
                   canvasCtx.fillText("You have to fix your pose.", 10, 30);
