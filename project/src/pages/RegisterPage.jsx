@@ -257,25 +257,25 @@ function Header() {
           style={{ width: '100%', height: '100%' }} // 스와이퍼의 너비와 높이를 부모 요소에 맞게 설정
         >
           <SwiperSlide>
-            <img src={turtle1} alt="Slide 1" style={{ width: '90%', height: '90%' }} />
+            <img src={turtle1} alt="Slide 1" style={{ width: '90%', height: '90%' , borderRadius: '10px'}} />
           </SwiperSlide>
           <SwiperSlide>
-            <img src={turtle3} alt="Slide 2" style={{ width: '90%', height: '90%' }} />
+            <img src={turtle3} alt="Slide 2" style={{ width: '90%', height: '90%', borderRadius: '10px' }} />
           </SwiperSlide>
           <SwiperSlide>
-            <img src={turtle2} alt="Slide 3" style={{ width: '90%', height: '90%' }} />
+            <img src={turtle2} alt="Slide 3" style={{ width: '90%', height: '90%' , borderRadius: '10px'}} />
           </SwiperSlide>
           <SwiperSlide>
-            <img src={turtle4} alt="Slide 4" style={{ width: '90%', height: '90%' }} />
+            <img src={turtle4} alt="Slide 4" style={{ width: '90%', height: '90%' , borderRadius: '10px'}} />
           </SwiperSlide>
           <SwiperSlide>
-            <img src={turtle5} alt="Slide 4" style={{ width: '90%', height: '90%' }} />
+            <img src={turtle5} alt="Slide 4" style={{ width: '90%', height: '90%' , borderRadius: '10px'}} />
           </SwiperSlide>
           <SwiperSlide>
-            <img src={turtle6} alt="Slide 4" style={{ width: '90%', height: '90%' }} />
+            <img src={turtle6} alt="Slide 4" style={{ width: '90%', height: '90%', borderRadius: '10px' }} />
           </SwiperSlide>
           <SwiperSlide>
-            <img src={turtle7} alt="Slide 4" style={{ width: '90%', height: '90%' }} />
+            <img src={turtle7} alt="Slide 4" style={{ width: '90%', height: '90%' , borderRadius: '10px'}} />
           </SwiperSlide>
         </Swiper>
             </RectangleContainer>
