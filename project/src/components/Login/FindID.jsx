@@ -1,24 +1,36 @@
 import React, { useState } from 'react';
 
 function FindID() {
-  const [username, setUsername] = useState('');
-  const [number, setNumber] = useState('');
+  const [name, setUsername] = useState('');
+  const [phoneNo, setPhoneNo] = useState('');
   const [email, setEmail] = useState('');
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    // 여기에 이메일 찾기 로직을 추가하세요
-    // 이름과 전화번호를 이용하여 사용자의 이메일을 찾는 API 호출 등
-    // 아래의 setEmail 함수를 사용하여 찾은 이메일을 설정합니다
-    const foundEmail = 'found_email@example.com'; // 예시로 사용자 이메일을 found_email@example.com으로 설정
-    setEmail(foundEmail);
+    try {
+      const response = await fetch('/api/find-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ name, phoneNo }),
+      });
+      if (!response.ok) {
+        throw new Error('회원 정보를 조회할 수 없습니다.');
+      }
+      const data = await response.json();
+      setEmail(data.email);
+    } catch (error) {
+      alert(error.message);
+    }
   };
+  
 
 
   const handleCancel = () => {
     // 입력된 값 초기화
     setUsername('');
-    setNumber('');
+    setPhoneNo('');
 
 };
 
@@ -101,7 +113,7 @@ function FindID() {
             style={styles.input}
             type="text"
             id="text"
-            value={username}
+            value={name}
             onChange={(e) => setUsername(e.target.value)}
             required
           />
@@ -112,19 +124,21 @@ function FindID() {
             style={styles.input}
             type="tel"
             id="number"
-            value={number}
-            onChange={(e) => setNumber(e.target.value)}
+            value={phoneNo}
+            onChange={(e) => setPhoneNo(e.target.value)}
             required
           />
         </div>
            <button style={styles.button} type="button" onClick={handleCancel}>취소하기</button>
         <button style={styles.button} type="submit">아이디 찾기</button>
       </form>
-      {email && (
-        <div>
-          <p style={styles.paragraph}>🐻‍❄️ ID는 {email} 입니다. 🐻‍❄️</p>
-        </div>
-      )}
+        {email && (
+          <div>
+            <p style={styles.paragraph}>
+              🐻‍❄️ ID는 <strong>{email}</strong> 입니다. 🐻‍❄️
+            </p>
+          </div>
+        )}
     </div>
     </div>
   );
