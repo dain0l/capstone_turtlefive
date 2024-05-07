@@ -92,12 +92,13 @@ const Rectangle2Container = styled.div`
     align-items: center;
     width: 87%;
     height: 250px;
-    margin-left: 15px;
+    margin-left: 20px;
     margin-right: auto;
     overflow: hidden;
 
+
     @media screen and (min-width: 1000px) {
-        margin-left: 45px;
+        margin-left: 55px;
         width: 97%;
     }
 `;
