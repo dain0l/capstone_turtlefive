@@ -31,9 +31,12 @@ const LoginPage = () => {
             });
             const data = await response.json();
             if (response.ok) {
+
                 // 로그인 성공 시, 서버로부터 받은 JWT 토큰을 로컬 스토리지에 저장합니다.
                 localStorage.setItem('accessToken', data.accessToken);
                 navigate('/register');//홈화면으로 이동
+
+
             } else {
                 setLoginMessage(data.message || '로그인에 실패했습니다. 아이디와 비밀번호를 다시 한번 확인해주세요.'); // 백엔드에서 반환한 오류 메시지 표시
             }
