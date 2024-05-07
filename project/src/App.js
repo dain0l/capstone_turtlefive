@@ -37,7 +37,7 @@ function App() {
         <Route path="/findID" element={<FindID />} />
         <Route path="/findPassword" element={<FindPassword />} />
         <Route path="/webcam" element={<Turtle />} />
-        <Route path="/inquery" element={<ChartPage />} />
+        <Route path="/inquiry" element={<ChartPage />} />
         <Route path="/percentage" element={<ChartPage2 />} />
         <Route path="/mypage" element={<MyPage />} />
         <Route path="/percentPage" element={<Percent />} />
