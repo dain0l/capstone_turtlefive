@@ -63,15 +63,14 @@ const HeaderContainer = styled.div`
     background: #DFF0D8;
     color: #FBFDF5;
     padding: 1rem;
-    width: 100%;
+    width: 98%;
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap; /* 필요에 따라 행을 여러 줄로 바꿉니다. */
 `;
 
-
-
-
+//4a4e4c
+//ff69b44c - 핑크색
 
 const RectangleContainer = styled.div`
     background-color: #4a4e4c;
@@ -83,10 +82,11 @@ const RectangleContainer = styled.div`
     flex-direction: column;
     align-items: center;
     width: 100%;
-    max-width: 1600px;
+    max-width: 1550px;
     height: 250px;
-    margin-left: 3%;
-    flex: 0 0 calc(50% - 3%);
+    margin-left: 1.5%;
+    margin-right: 3%;
+    flex: 0 0 calc(50% - 1.5%);
     overflow: hidden;
 `;
 
