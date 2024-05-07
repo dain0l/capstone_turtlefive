@@ -217,6 +217,8 @@ function Header() {
             <HeaderContainer>
                 <Logo>TurtleFive</Logo>
                 <NavigationWrapper>
+                    <StyledLink to="/inquiry">1week-chart</StyledLink>
+                    <StyledLink to="#">contact</StyledLink>
                     {isLoggedIn ? (
                         <>
                         <StyledLink to="#" onClick={handleLogout}>logout</StyledLink>
@@ -309,7 +311,7 @@ function Header() {
             </Rectangle2Container>
             </Link>
              {/* 컨테이너 2 */}
-            <Link to="/inquery"  style={{ width: '46%', }}>
+            <Link to="/inquiry"  style={{ width: '46%', }}>
             <Rectangle2Container>
             <ResponsiveContainer height="80%" width="80%">
                 <BarChart data={data2} margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
