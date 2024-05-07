@@ -5,6 +5,7 @@ import Start from './pages/StartPage.jsx';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Register from './pages/RegisterPage.jsx';
 import Login from './pages/LoginPage.jsx'
+import LogoutPage from './pages/LogoutPage.jsx';
 import Singup from './pages/SIngupPage.jsx'
 import Inspect from './components/Home/Inspect.jsx';
 import Explain from './pages/ExplainPage.jsx'
@@ -28,6 +29,7 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="" element={<Start />} index />
         <Route path="/login" element={<Login />} />
+        <Route path="/logout" element={<LogoutPage />} />
         <Route path="/singup" element={<Singup />} />
         <Route path="/inspect" element={<Inspect />} />
         <Route path="/explain" element={<Explain />} />
@@ -35,7 +37,7 @@ function App() {
         <Route path="/findID" element={<FindID />} />
         <Route path="/findPassword" element={<FindPassword />} />
         <Route path="/webcam" element={<Turtle />} />
-        <Route path="/inquery" element={<ChartPage />} />
+        <Route path="/inquiry" element={<ChartPage />} />
         <Route path="/percentage" element={<ChartPage2 />} />
         <Route path="/mypage" element={<MyPage />} />
         <Route path="/percentPage" element={<Percent />} />

@@ -31,6 +31,8 @@ import {
 // import Swiper core and required modules
 import { Navigation, Pagination, Scrollbar, A11y, Autoplay } from 'swiper/modules';
 
+
+
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -56,11 +58,6 @@ import imglogo from '../img/tree.jpg';
 //import chart from '../img/chart.png';
 
 
-const AppContainer = styled.div`
-    overflow-x: hidden; /* 가로 스크롤을 숨깁니다. */
-`;
-
-
 const HeaderContainer = styled.div`
     display: flex;
     background: #DFF0D8;
@@ -70,13 +67,15 @@ const HeaderContainer = styled.div`
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap; /* 필요에 따라 행을 여러 줄로 바꿉니다. */
-    overflow-x: hidden; /* 가로 스크롤을 숨깁니다. */
 `;
 
+//4a4e4c
+//ff69b44c - 핑크색
+// margin-left: 1.5%;
+// margin-right: 3%;
+// flex: 0 0 calc(50% - 1.5%);
 
-
-
-
+//반응형 수정중 -다인
 const RectangleContainer = styled.div`
     background-color: #4a4e4c;
     padding: 20px; 
@@ -86,34 +85,35 @@ const RectangleContainer = styled.div`
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    width: 100%; /* 너비를 100%로 설정 */
-    max-width: 1600px; /* 최대 너비 지정 */
+    width: 100%;
     height: 250px;
-    margin-left: 33px;
-    flex: 0 0 calc(50% - 33px);
+    margin-left: 1.5%;
+    margin-right: 1.5%; 
+    overflow: hidden;
+    
+    
 `;
-
 
 const Rectangle2Container = styled.div`
     background-color: #4a4e4c;
     padding: 20px; 
     border-radius: 10px;
     margin-top: 20px;
-    margin-bottom: 80px;
     display: flex;
+    margin-bottom: 80px;
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    width: 100%; /* 반응형을 위해 50%로 설정합니다. */
+    width: 100%;
     height: 250px;
-    margin-left: 33px;
+    margin-left: 3%;
 `;
 
 const StyledFooter = styled.footer`
     background-color: rgba(0, 0, 0, 0.452);
     color: #ffffffc3;
     padding: 2px;
-    height: 50px;
+    height: 40px;
     position: fixed;
     bottom: 0;
     left: 0;
@@ -148,8 +148,7 @@ const StyledLink = styled(Link)`
 
 const Row = styled.div`
     display: flex;
-    width: 100%; /* 전체 너비를 사용하도록 설정 */
-    overflow-x: hidden; /* 가로 스크롤을 숨깁니다. */
+    width: 98%;
 `;
 
 const StyledButton = styled.button`
@@ -219,10 +218,11 @@ function Header() {
 
     return (
         <div>
-            <AppContainer>
             <HeaderContainer>
                 <Logo>TurtleFive</Logo>
                 <NavigationWrapper>
+                    <StyledLink to="/chartPage">1week-chart</StyledLink>
+                    <StyledLink to="#">contact</StyledLink>
                     {isLoggedIn ? (
                         <>
                         <StyledLink to="#" onClick={handleLogout}>logout</StyledLink>
@@ -236,57 +236,57 @@ function Header() {
                     
                 </NavigationWrapper>
             </HeaderContainer>
-            {/* 거북목 검사하러 가기 컨테이너 */}
+            
             <RectangleContainer>
                 <Link to="/webcam">
                     <StyledButton>거북목 검사하러가기</StyledButton>
                 </Link>
             </RectangleContainer>
-            {/* 슬라이드 컨테이너 */}
+            
             <RectangleContainer>
             <Swiper
-          modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}
-          spaceBetween={0}
-          slidesPerView={2}
-          navigation = {true}
-          centeredSlides={true}
-          autoplay={{
-            delay: 2000,
-            disableOnInteraction: false,
-          }}
-          pagination={{ clickable: true }}
-          scrollbar={{ draggable: true }}
-          onSwiper={(swiper) => console.log(swiper)}
-          onSlideChange={() => console.log('slide change')}
-          style={{ width: '100%', height: '100%' }} // 스와이퍼의 너비와 높이를 부모 요소에 맞게 설정
-        >
+                modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}
+                spaceBetween={0}
+                slidesPerView={2}
+                navigation = {true}
+                centeredSlides={true}
+                autoplay={{
+                    delay: 2000,
+                    disableOnInteraction: false,
+                }}
+                pagination={{ clickable: true }}
+                scrollbar={{ draggable: true }}
+                onSwiper={(swiper) => console.log(swiper)}
+                onSlideChange={() => console.log('slide change')}
+                style={{ width: '100%', height: '100%' }} // 스와이퍼의 너비와 높이를 부모 요소에 맞게 설정
+            >
           <SwiperSlide>
-            <img src={turtle1} alt="Slide 1" style={{ width: '90%', height: '90%' }} />
+            <img src={turtle1} alt="Slide 1" style={{ width: '90%', height: '90%' , borderRadius: '10px'}} />
           </SwiperSlide>
           <SwiperSlide>
-            <img src={turtle3} alt="Slide 2" style={{ width: '90%', height: '90%' }} />
+            <img src={turtle3} alt="Slide 2" style={{ width: '90%', height: '90%', borderRadius: '10px' }} />
           </SwiperSlide>
           <SwiperSlide>
-            <img src={turtle2} alt="Slide 3" style={{ width: '90%', height: '90%' }} />
+            <img src={turtle2} alt="Slide 3" style={{ width: '90%', height: '90%' , borderRadius: '10px'}} />
           </SwiperSlide>
           <SwiperSlide>
-            <img src={turtle4} alt="Slide 4" style={{ width: '90%', height: '90%' }} />
+            <img src={turtle4} alt="Slide 4" style={{ width: '90%', height: '90%' , borderRadius: '10px'}} />
           </SwiperSlide>
           <SwiperSlide>
-            <img src={turtle5} alt="Slide 4" style={{ width: '90%', height: '90%' }} />
+            <img src={turtle5} alt="Slide 4" style={{ width: '90%', height: '90%' , borderRadius: '10px'}} />
           </SwiperSlide>
           <SwiperSlide>
-            <img src={turtle6} alt="Slide 4" style={{ width: '90%', height: '90%' }} />
+            <img src={turtle6} alt="Slide 4" style={{ width: '90%', height: '90%', borderRadius: '10px' }} />
           </SwiperSlide>
           <SwiperSlide>
-            <img src={turtle7} alt="Slide 4" style={{ width: '90%', height: '90%' }} />
+            <img src={turtle7} alt="Slide 4" style={{ width: '90%', height: '90%' , borderRadius: '10px'}} />
           </SwiperSlide>
         </Swiper>
             </RectangleContainer>
             <Row>
             {/* chart를 간략하게 보여주는 컨테이너1,2 */}
              {/* 컨테이너 1 */}
-            <Link to="/chartPage2" style={{ width: '45%', marginRight: '80px' }}>
+            <Link to="/percentage" style={{ width: '46%', marginRight: '60px' }}>
             <Rectangle2Container>
                 {/*<ProfileImage src={chart} alt="" /> */}
                 <ResponsiveContainer width="90%" height="90%">
@@ -315,7 +315,7 @@ function Header() {
             </Rectangle2Container>
             </Link>
              {/* 컨테이너 2 */}
-            <Link to="/chartPage"  style={{ width: '45%', }}>
+            <Link to="/inquery"  style={{ width: '46%', }}>
             <Rectangle2Container>
             <ResponsiveContainer height="80%" width="80%">
                 <BarChart data={data2} margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
@@ -331,7 +331,6 @@ function Header() {
             <StyledFooter>
                 <p>&copy; 2024 docturtle website</p>
             </StyledFooter>
-            </AppContainer>
         </div>
     );
 }

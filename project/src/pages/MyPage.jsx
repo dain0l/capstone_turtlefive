@@ -1,7 +1,8 @@
-import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom'; 
 import imglogo from '../img/tree.jpg';
+import axios from 'axios'; // axios 라이브러리 불러오기
+import React, { useState, useEffect } from 'react';
 
 
 // header 스타일 정의
@@ -73,6 +74,7 @@ const AltText = styled.span`
     white-space: nowrap; /* 텍스트가 길어도 한 줄로 표시되도록 설정 */
 `;
 
+/*
 const Name = styled.h2`
     font-size: 1.5rem;
     margin-bottom: 10px;
@@ -83,9 +85,38 @@ const Info = styled.p`
     color: #666;
     margin-bottom: 10px;
 `;
+*/
 
 // 프로필 컴포넌트 정의
 function MyPage() {
+    const [userInfo, setUserInfo] = useState(null);
+    const [name, setUsername] = useState('');
+    const [phoneNo, setPhoneNo] = useState('');
+    const [gender, setGender] = useState('');
+
+    useEffect(() => {
+        // 사용자 정보를 불러오는 함수 실행
+        fetchUserInfo();
+    }, []);
+
+    const fetchUserInfo = () => {
+        fetch('/mypage', { // userId는 현재 로그인한 사용자의 ID입니다.
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                // 필요한 경우 인증 토큰 등을 추가해주세요.
+            },
+        })
+        .then(response => response.json())
+        .then(data => {
+            setUserInfo(data);
+            // 알람 빈도수와 웹캠 실행 시간을 상태에 설정
+        })
+        .catch(error => {
+            console.error('Error fetching user info:', error);
+        });
+    };
+
     return (
         
         <Container>
@@ -94,16 +125,18 @@ function MyPage() {
             </header>
             <ProfileImageContainer>
                 <ProfileImage src={imglogo} alt="" />
-                <AltText>프로필 이미지</AltText>
+                <AltText> DOCTURTLE </AltText>
             </ProfileImageContainer>
-            <Name>사용자 이름</Name>
-            <Info>번호: 010-1234-5678</Info>
-            <Info>성별: 여자</Info>
-            <Info>가입일: 가입일자</Info>
+            <p>Name: {userInfo?.name}</p>
+            <p>Email: {userInfo?.email}</p>
+            <p>Phone: {userInfo?.phoneNo}</p>
+            <p>알림빈도수: {userInfo?.alarmCount}</p>
+            <p>웹캠 실행시간: {userInfo?.webcamDuration}분</p>
+                    
             {/* 추가적인 사용자 정보 */}
             <BottomContainer>
                 <LinkButtonStyle to="/login">Log in</LinkButtonStyle>
-                <LinkButtonStyle to="/logout">Log out   </LinkButtonStyle>
+                <LinkButtonStyle to="/logout">Log out</LinkButtonStyle>
             </BottomContainer>
         </Container>
     );

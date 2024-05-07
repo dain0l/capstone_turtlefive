@@ -7,7 +7,7 @@ import styled from 'styled-components';
 
 const Button = styled.button`
   padding: 10px 20px;
-  background-color: #4CAF50; /* Green */
+  background-color: #779787; /* Green */
   border: none;
   color: white;
   text-align: center;
@@ -19,7 +19,7 @@ const Button = styled.button`
   border-radius: 4px;
   
   &:hover {
-    background-color: #45a049;
+    background-color: #50655b;
   }
 `;
 
