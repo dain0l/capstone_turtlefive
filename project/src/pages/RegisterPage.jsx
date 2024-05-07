@@ -40,23 +40,9 @@ import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 
 
-/*
-import {
-    Navigation,
-    Pagination,
-    Scrollbar,
-    A11y,
-    Autoplay,
-  } from 'swiper/modules';
-import {Swiper, SwiperSlide} from "swiper/react";
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
-import imglogo from '../img/tree.jpg';
-*/
-
-//import chart from '../img/chart.png';
-
+const Container = styled.div`
+    overflow-x: hidden; /* 좌우 스크롤 제거 */
+`;
 
 const HeaderContainer = styled.div`
     display: flex;
@@ -74,8 +60,6 @@ const HeaderContainer = styled.div`
 // margin-left: 1.5%;
 // margin-right: 3%;
 // flex: 0 0 calc(50% - 1.5%);
-
-//반응형 수정중 -다인
 const RectangleContainer = styled.div`
     background-color: #4a4e4c;
     padding: 20px; 
@@ -85,13 +69,15 @@ const RectangleContainer = styled.div`
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    width: 100%;
+    width: calc(95% - 3%);
     height: 250px;
-    margin-left: 1.5%;
-    margin-right: 1.5%; 
+    margin-right: auto;
+    margin-left: auto;
     overflow: hidden;
-    
-    
+
+    @media screen and (max-width: 768px) {
+        width: calc(100% - 6%);
+    }
 `;
 
 const Rectangle2Container = styled.div`
@@ -99,15 +85,24 @@ const Rectangle2Container = styled.div`
     padding: 20px; 
     border-radius: 10px;
     margin-top: 20px;
-    display: flex;
     margin-bottom: 80px;
+    display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    width: 100%;
+    width: 87%;
     height: 250px;
-    margin-left: 3%;
+    margin-left: 20px;
+    margin-right: auto;
+    overflow: hidden;
+
+
+    @media screen and (min-width: 1000px) {
+        margin-left: 55px;
+        width: 97%;
+    }
 `;
+
 
 const StyledFooter = styled.footer`
     background-color: rgba(0, 0, 0, 0.452);
@@ -218,11 +213,10 @@ function Header() {
 
     return (
         <div>
+            <Container>
             <HeaderContainer>
                 <Logo>TurtleFive</Logo>
                 <NavigationWrapper>
-                    <StyledLink to="/chartPage">1week-chart</StyledLink>
-                    <StyledLink to="#">contact</StyledLink>
                     {isLoggedIn ? (
                         <>
                         <StyledLink to="#" onClick={handleLogout}>logout</StyledLink>
@@ -233,10 +227,9 @@ function Header() {
                     )}
                     <StyledLink to="/explain">explain</StyledLink> 
 
-                    
                 </NavigationWrapper>
             </HeaderContainer>
-            
+
             <RectangleContainer>
                 <Link to="/webcam">
                     <StyledButton>거북목 검사하러가기</StyledButton>
@@ -283,6 +276,7 @@ function Header() {
           </SwiperSlide>
         </Swiper>
             </RectangleContainer>
+
             <Row>
             {/* chart를 간략하게 보여주는 컨테이너1,2 */}
              {/* 컨테이너 1 */}
@@ -328,9 +322,11 @@ function Header() {
             </Rectangle2Container>
             </Link>
             </Row>
+
             <StyledFooter>
                 <p>&copy; 2024 docturtle website</p>
             </StyledFooter>
+        </Container>    
         </div>
     );
 }
