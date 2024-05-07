@@ -5,17 +5,6 @@ import { data2 } from '../components/Data/data';
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts';
 
 // 스타일링을 위한 styled-components 사용
-
-const StyledLink = styled(Link)`
-    color: #000000;
-    text-decoration: none;
-    margin-right: 0.1rem;
-
-    &:hover {
-        text-decoration: underline;
-    }
-`;
-
 const StyledFooter = styled.footer`
     background-color: rgba(0, 0, 0, 0.452);
     color: #ffffffc3;
@@ -52,6 +41,16 @@ const ChartDescription = styled.div`
     width: 55%; /* 설명 영역의 너비 조정 */
 `;
 
+const ChartPage = () => {
+        const [data2, setData2] = useState([]);
+
+        useEffect(() => {
+            fetchData().then(data => {
+                if (data) {
+                    setData2(data);
+                }
+            });
+        }, []);
 
 const ChartPage = () => {
         const [data2, setData2] = useState([]);
@@ -108,6 +107,20 @@ const ChartPage = () => {
 
 
 
+
+        const fetchData = async () => {
+            try {
+                const response = await fetch('/inquiry');
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                const data = await response.json();
+                return data;
+            } catch (error) {
+                console.error("Fetch error: ", error);
+            }
+        }
+
       return (
         <Container>
              <header style={header}>
@@ -125,7 +138,7 @@ const ChartPage = () => {
                 <ChartDescription>
                   {/* db 연결하면 turtle닉네임 연결할 수 있게 아이디 --> 이름 */}
                     <h2> 이 그래프는</h2>
-                    <h2> [ turtle ] 님의 일주일 평균 빈도수입니다.</h2>
+                    <h2> [ turtle ] 님의 일주일 평균 알람 빈도수입니다.</h2>
                     <br></br>
                     <hr></hr>
                     <br></br>

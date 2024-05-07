@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import styled from 'styled-components';
 
 function SignupForm() {
     const [name, setUsername] = useState('');
@@ -198,9 +197,6 @@ function SignupForm() {
                             <div style={styles.formGroup}>
 
                                 <label style={styles.label} htmlFor="birthdate">성별:</label>
-
-                                <label style={styles.label} htmlFor="gender">성별:</label>
-
                                 <select
                                     style={styles.input}
                                     name="gender"
@@ -225,12 +221,12 @@ function SignupForm() {
                                     required
                                 />
 
-                               <button type="submit" style={styles.submit}>가입하기</button>
+                               
 
 
                             </div>
                             <button style={styles.submit} type="button" onClick={handleCancel}>취소하기</button>
-                            <input style={styles.submit} type="submit" value="가입하기" />
+                            <button type="submit" style={styles.submit}>가입하기</button>
                         </form>
                     </div>
                 )}
