@@ -54,9 +54,10 @@ const ChartPage = () => {
                 if (data) {
                     const transformedData = data.map(item => ({
                         ...item,
-                        name: 요일변환함수(item.dayOfWeek),
+                        day: 요일변환함수(item.dayOfWeek),
                         time: item.webcamDuration,
-                        거북목감지: item.alarmCount
+                        거북목감지: item.alarmCount,
+                        name: item.name
                     }));
                     setData2(transformedData);
                 }
@@ -107,7 +108,7 @@ const ChartPage = () => {
                 </ResponsiveContainer>
                 <ChartDescription>
                     <h2> 이 그래프는</h2>
-                    <h2> [ turtle ] 님의 일주일 평균 알람 빈도수입니다.</h2>
+                    <h2> {data2.name}님의 일주일 평균 알람 빈도수입니다.</h2>
                     <br></br>
                     <hr></hr>
                     <br></br>
