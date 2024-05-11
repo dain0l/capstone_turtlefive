@@ -9,6 +9,7 @@ import { checkDistance } from "../Algorithms/checkDistance";
 import { checkAngle } from "../Algorithms/checkAngle";
 import api from '../../services/api';
 
+
 const CameraContainer = styled.div`
   position: relative;
   display: flex;
@@ -44,6 +45,8 @@ const CameraCom = () => {
         if (cameraRef.current) {
           cameraRef.current.stop(); // Camera 인스턴스 종료
         }
+        clearTimeout(alarmTimeout.current);
+        
       };
 
   
@@ -82,7 +85,7 @@ const CameraCom = () => {
               const distanceBool = distance <= 0.1;
               const angleBool = (angle <= 60 || angle >= 130);
 
-              console.log("D:"+ distanceBool +distance + "\n" + "Z: "+ZvaluesBool + Zvalues);
+              //console.log("D:"+ distanceBool +distance + "\n" + "Z: "+ZvaluesBool + Zvalues);
 
               if(chinLandmark){ // 152번 랜드마크가 인식될 경우 
                  if( distanceBool || ZvaluesBool || angleBool){
@@ -123,8 +126,8 @@ const CameraCom = () => {
                 await holistic.send({image: webcamRef.current.video});
               }
             },
-            width: 2000,
-            height: 1800,
+            width: 4000,
+            height: 3800,
           });
           camera.start();
           cameraRef.current = camera; // Camera 인스턴스를 저장할 ref 추가
@@ -136,18 +139,38 @@ const CameraCom = () => {
  // 백엔드로 알람 로그를 보내는 함수
  const sendAlarmLog = async () => {
   const currentTime = formatLocalDateToISOString(); // 현재 시간을 ISO 형식으로 변환
+  
+  // 알림을 표시하는 함수를 먼저 선언
+  const showNotification = () => {
+    const notification = new Notification("잘못된 자세 감지", {
+      body: "자세를 교정해 주세요. 1분 동안 잘못된 자세를 유지하셨습니다.",
+      // icon: ' http://yourserver.com/img/turtle9.png' // 알림에 표시할 아이콘 경로
+    });
+  };
+
   try {
-    // axios 인스턴스를 사용하여 POST 요청을 보냄.
+    // axios 인스턴스를 사용하여 POST 요청을 보냄
     const response = await api.post('/webcam/alarmlog', {
       dateTime: currentTime,
     });
-    if (response.status < 200 || response.status >= 300) { // 상태 코드 확인으로 수정된 부분
+    if (response.status < 200 || response.status >= 300) {
       throw new Error('Network response was not ok');
-  }
-    // 성공적으로 로그를 보냈을 때의 처리를 여기에 작성
+    }
     console.log('Alarm log sent successfully');
   } catch (error) {
     console.error('Failed to send alarm log', error);
+  }
+
+  // 사용자의 권한 요청
+  if (Notification.permission === "granted") {
+    // 알림 표시
+    showNotification();
+  } else if (Notification.permission !== "denied") {
+    // 'await'를 사용하여 비동기 요청 처리
+    const permission = await Notification.requestPermission();
+    if (permission === "granted") {
+      showNotification();
+    }
   }
 };
 
