@@ -123,8 +123,8 @@ const CameraCom = () => {
                 await holistic.send({image: webcamRef.current.video});
               }
             },
-            width: 2000,
-            height: 1800,
+            width: 4000,
+            height: 3800,
           });
           camera.start();
           cameraRef.current = camera; // Camera 인스턴스를 저장할 ref 추가
