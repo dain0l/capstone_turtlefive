@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React,{ useState} from 'react';
 import CameraCom from "../components/Examine/CameraCom";
 import LinkCom from '../components/Examine/LinkCom';
 import api from '../services/api';
@@ -85,7 +85,7 @@ const containerStyle = {
 return (
     <div style={backgroundContainerStyle}>
 
-        <div style={titleStyle}>거북목 검사하기</div>
+        <div style={titleStyle}>자세교정 서비스</div>
         <div style={containerStyle}>
             <CameraCom /> {/* CameraCom 컴포넌트를 왼쪽에 배치합니다. */}
             <LinkCom /> {/* LinkCom 컴포넌트를 오른쪽에 배치합니다. */}

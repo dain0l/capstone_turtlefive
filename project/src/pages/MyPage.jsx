@@ -102,7 +102,6 @@ const Info = styled.p`
         if (response.ok) {
             console.log('Successfully logged out');
             localStorage.removeItem('accessToken'); // 로컬 스토리지에서 accessToken 제거
-            setIsLoggedIn(false); // 로그인 상태 업데이트
         } else {
             throw new Error('Logout failed');
         }
@@ -150,7 +149,6 @@ function MyPage() {
                     
             {/* 추가적인 사용자 정보 */}
             <BottomContainer>
-                <LinkButtonStyle to="/login">Log in</LinkButtonStyle>
                 <LinkButtonStyle to="/logout" onClick={handleLogout}>Log out</LinkButtonStyle>
             </BottomContainer>
         </Container>

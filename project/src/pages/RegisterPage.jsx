@@ -234,7 +234,7 @@ function Header() {
 
             <RectangleContainer>
                 <Link to="/webcam">
-                    <StyledButton>거북목 검사하러가기</StyledButton>
+                    <StyledButton>자세교정 서비스 이용하기</StyledButton>
                 </Link>
             </RectangleContainer>
             
