@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom'; 
 import imglogo from '../img/tree.jpg';
-import axios from 'axios'; // axios 라이브러리 불러오기
+import api from '../services/api';
 import React, { useState, useEffect } from 'react';
 
 
@@ -86,13 +86,34 @@ const Info = styled.p`
     margin-bottom: 10px;
 `;
 */
+ // 로그아웃 함수
+ const handleLogout = async () => {
+    const token = localStorage.getItem('accessToken');
+    try {
+        const response = await fetch('/logout', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            },
+            body: JSON.stringify({ accessToken: token })
+        });
+
+        if (response.ok) {
+            console.log('Successfully logged out');
+            localStorage.removeItem('accessToken'); // 로컬 스토리지에서 accessToken 제거
+            setIsLoggedIn(false); // 로그인 상태 업데이트
+        } else {
+            throw new Error('Logout failed');
+        }
+    } catch (error) {
+        console.error('Logout error:', error);
+    }
+};
 
 // 프로필 컴포넌트 정의
 function MyPage() {
     const [userInfo, setUserInfo] = useState(null);
-    const [name, setUsername] = useState('');
-    const [phoneNo, setPhoneNo] = useState('');
-    const [gender, setGender] = useState('');
 
     useEffect(() => {
         // 사용자 정보를 불러오는 함수 실행
@@ -100,13 +121,7 @@ function MyPage() {
     }, []);
 
     const fetchUserInfo = () => {
-        fetch('/mypage', { // userId는 현재 로그인한 사용자의 ID입니다.
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-                // 필요한 경우 인증 토큰 등을 추가해주세요.
-            },
-        })
+        api.get('/mypage')
         .then(response => response.json())
         .then(data => {
             setUserInfo(data);
@@ -136,7 +151,7 @@ function MyPage() {
             {/* 추가적인 사용자 정보 */}
             <BottomContainer>
                 <LinkButtonStyle to="/login">Log in</LinkButtonStyle>
-                <LinkButtonStyle to="/logout">Log out</LinkButtonStyle>
+                <LinkButtonStyle to="/logout" onClick={handleLogout}>Log out</LinkButtonStyle>
             </BottomContainer>
         </Container>
     );
