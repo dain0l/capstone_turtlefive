@@ -20,12 +20,17 @@ const StyledCanvas = styled.canvas`
   position: absolute;
   top: 0;
 `;
-
+function formatLocalDateToISOString() {
+  const offset = new Date().getTimezoneOffset() * 60000; // getTimezoneOffset()은 분 단위로 시간대 차이를 반환합니다.
+  const localISOTime = (new Date(Date.now() - offset)).toISOString().slice(0, 19);
+  return localISOTime;
+}
 
 const CameraCom = () => { 
     const webcamRef = useRef(null);
     const canvasRef = useRef(null);
     let alarmTimeout = useRef(null);
+    const cameraRef = useRef(null); // Camera 인스턴스를 저장할 ref 추가
 
   //미디어 파이프 관련 함수
     useEffect(() => {
@@ -36,6 +41,9 @@ const CameraCom = () => {
       });
       const cleanup = () => {
         holistic.close(); // holistic 인스턴스를 닫음
+        if (cameraRef.current) {
+          cameraRef.current.stop(); // Camera 인스턴스 종료
+        }
       };
 
   
@@ -115,10 +123,11 @@ const CameraCom = () => {
                 await holistic.send({image: webcamRef.current.video});
               }
             },
-            width: 640,
-            height: 480,
+            width: 2000,
+            height: 1800,
           });
           camera.start();
+          cameraRef.current = camera; // Camera 인스턴스를 저장할 ref 추가
         }
       // useEffect 내에서 반환하는 함수는 컴포넌트가 언마운트될 때 실행됨
       return cleanup;
@@ -126,7 +135,7 @@ const CameraCom = () => {
   
  // 백엔드로 알람 로그를 보내는 함수
  const sendAlarmLog = async () => {
-  const currentTime = new Date().toISOString(); // 현재 시간을 ISO 형식으로 변환
+  const currentTime = formatLocalDateToISOString(); // 현재 시간을 ISO 형식으로 변환
   try {
     // axios 인스턴스를 사용하여 POST 요청을 보냄.
     const response = await api.post('/webcam/alarmlog', {

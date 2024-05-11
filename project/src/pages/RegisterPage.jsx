@@ -217,8 +217,8 @@ function Header() {
             <HeaderContainer>
                 <Logo>TurtleFive</Logo>
                 <NavigationWrapper>
-                    <StyledLink to="/inquiry">1week-chart</StyledLink>
-                    <StyledLink to="#">contact</StyledLink>
+                    {/* <StyledLink to="/inquiry">1week-chart</StyledLink>
+                    <StyledLink to="#">contact</StyledLink> */}
                     {isLoggedIn ? (
                         <>
                         <StyledLink to="#" onClick={handleLogout}>logout</StyledLink>

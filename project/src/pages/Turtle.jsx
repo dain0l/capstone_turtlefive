@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState} from 'react';
 import CameraCom from "../components/Examine/CameraCom";
 import LinkCom from '../components/Examine/LinkCom';
 import api from '../services/api';
@@ -23,21 +23,26 @@ const Button = styled.button`
   }
 `;
 
+function formatLocalDateToISOString() {
+    const offset = new Date().getTimezoneOffset() * 60000; // getTimezoneOffset()은 분 단위로 시간대 차이를 반환합니다.
+    const localISOTime = (new Date(Date.now() - offset)).toISOString().slice(0, 19);
+    return localISOTime;
+}
+
 function Turtle() {
     const navigator = useNavigate();
+    const [startTime] = useState(formatLocalDateToISOString());
 
-    const start = new Date().toISOString(); 
-localStorage.setItem("startTime",start)
 
 const sendToWebcamlog = async () =>{
-    const startTime = localStorage.getItem("startTime");
-    const closeTime = new Date().toISOString;
+    const endTime = formatLocalDateToISOString();
+    console.log(endTime);
     try{
-        const response = await api.post('/webacam/log',{
+        const response = await api.post('/webcam/log',{
             startTime: startTime,
-            endTime : closeTime
+            endTime : endTime
         });
-        if(!response.ok){
+        if (response.status < 200 || response.status >= 300) { // 상태 코드 확인으로 수정된 부분
             throw new Error('Network response was not ok');
         }
         console.log('weblog sent successfully');
