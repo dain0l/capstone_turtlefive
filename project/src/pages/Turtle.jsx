@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState} from 'react';
 import CameraCom from "../components/Examine/CameraCom";
 import LinkCom from '../components/Examine/LinkCom';
 import api from '../services/api';
@@ -31,19 +31,18 @@ function formatLocalDateToISOString() {
 
 function Turtle() {
     const navigator = useNavigate();
+    const [startTime] = useState(formatLocalDateToISOString());
 
-    const start =formatLocalDateToISOString(); 
-localStorage.setItem("startTime",start)
 
 const sendToWebcamlog = async () =>{
-    const startTime = localStorage.getItem("startTime");
-    const closeTime =formatLocalDateToISOString();
+    const endTime = formatLocalDateToISOString();
+    console.log(endTime);
     try{
-        const response = await api.post('/webacam/log',{
+        const response = await api.post('/webcam/log',{
             startTime: startTime,
-            endTime : closeTime
+            endTime : endTime
         });
-        if(!response.ok){
+        if (response.status < 200 || response.status >= 300) { // 상태 코드 확인으로 수정된 부분
             throw new Error('Network response was not ok');
         }
         console.log('weblog sent successfully');

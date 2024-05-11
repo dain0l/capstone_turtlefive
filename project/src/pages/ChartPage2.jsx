@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { data1 } from '../components/Data/data';
-import axios from 'axios';
+import api from '../services/api';
 
 import {
     ComposedChart,
@@ -65,9 +65,9 @@ const ChartPage2 = () => {
       const fetchUserInfo = async () => {
         try {
           // 예시 URL입니다. 실제 요청 URL로 변경해야 합니다.
-          const response = await axios.get('https://example.com/api/user/info');
+          const response = await api.get('/percentage');
           // 응답에서 사용자 정보를 상태에 저장합니다.
-          setUserInfo({ name: response.data.name, percentage: response.data.percentage });
+          setUserInfo({ name: response.data.name, percentage: response.data.posturePercentage, rankPercentage: response.data.rankPercentage });
         } catch (error) {
           console.error('사용자 정보를 가져오는데 실패했습니다.', error);
         }
@@ -110,7 +110,7 @@ const ChartPage2 = () => {
                   {/* db 연결하면 turtle닉네임 연결할 수 있게 아이디 --> 이름 */}
                     <h2> 이 그래프는</h2>
                     <h2> 상위 퍼센트 분포도입니다.</h2>
-                    <h2> {userInfo.name}은  {userInfo.percentage}%입니다.</h2>
+                    <h2> {userInfo.name}은  {userInfo.rankPercentage}%입니다.</h2>
                     <br></br>
                     <hr></hr>
                     <br></br>

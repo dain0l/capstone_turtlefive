@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts';
+import api from '../services/api';
 
 // 스타일링을 위한 styled-components 사용
 const StyledFooter = styled.footer`
@@ -46,8 +46,8 @@ const ChartPage = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch('/inquiry');
-                if (!response.ok) {
+                const response = await api.get('/inquiry');
+                if (response.status < 200 || response.status >= 300) { // 상태 코드 확인으로 수정된 부분
                     throw new Error('Network response was not ok');
                 }
                 const data = await response.json();
