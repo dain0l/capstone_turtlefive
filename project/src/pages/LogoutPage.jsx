@@ -48,33 +48,6 @@ function LogoutPage() {
        setIsLoggedIn(!!token); // token이 있으면 true, 없으면 false로 설정
    }, []);
 
-
-   // 로그아웃 함수
-   const handleLogout = async () => {
-    const token = localStorage.getItem('accessToken');
-    try {
-        const response = await fetch('/logout', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`
-            },
-            body: JSON.stringify({ accessToken: token })
-        });
-
-        if (response.ok) {
-            console.log('Successfully logged out');
-            localStorage.removeItem('accessToken'); // 로컬 스토리지에서 accessToken 제거
-            setIsLoggedIn(false); // 로그인 상태 업데이트
-        } else {
-            throw new Error('Logout failed');
-        }
-    } catch (error) {
-        console.error('Logout error:', error);
-    }
-};
-
-
   return (
     <LogoutContainer>
       <Logo>TurtleFive</Logo>
