@@ -86,22 +86,22 @@ const Info = styled.p`
     margin-bottom: 10px;
 `;
 */
- // 로그아웃 함수
- const handleLogout = async () => {
-    const token = localStorage.getItem('accessToken');
+  // 로그아웃 함수
+  const handleLogout = async () => {
     try {
         const response = await fetch('/logout', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`
+                // 여기서는 더 이상 'Authorization' 헤더를 설정할 필요가 없습니다.
+                // 왜냐하면 쿠키는 자동으로 요청과 함께 전송되기 때문입니다.
             },
-            body: JSON.stringify({ accessToken: token })
+            // 백엔드에서는 요청 본문을 사용하지 않으므로, 이 부분도 제거합니다.
         });
 
         if (response.ok) {
             console.log('Successfully logged out');
-            localStorage.removeItem('accessToken'); // 로컬 스토리지에서 accessToken 제거
+            setIsLoggedIn(false); // 로그인 상태 업데이트
         } else {
             throw new Error('Logout failed');
         }
