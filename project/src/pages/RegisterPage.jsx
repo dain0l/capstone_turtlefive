@@ -1,8 +1,8 @@
-import Beforehand from '../components/Home/Beforehand';
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import {data1, data2 } from '../components/Data/data';
+import api from '../services/api';
 
 import turtle1 from '../img/turtle1.jpg';
 import turtle2 from '../img/turtle2.jpg';
@@ -186,30 +186,30 @@ function Header() {
          setIsLoggedIn(!!token); // token이 있으면 true, 없으면 false로 설정
      }, []);
  
-     // 로그아웃 함수
-     const handleLogout = async () => {
-         const token = localStorage.getItem('accessToken');
-         try {
-             const response = await fetch('/logout', {
-                 method: 'POST',
-                 headers: {
-                     'Content-Type': 'application/json',
-                     'Authorization': `Bearer ${token}`
-                 },
-                 body: JSON.stringify({ accessToken: token })
-             });
- 
-             if (response.ok) {
-                 console.log('Successfully logged out');
-                 localStorage.removeItem('accessToken'); // 로컬 스토리지에서 accessToken 제거
-                 setIsLoggedIn(false); // 로그인 상태 업데이트
-             } else {
-                 throw new Error('Logout failed');
-             }
-         } catch (error) {
-             console.error('Logout error:', error);
-         }
-     };
+ // 로그아웃 함수
+ const handleLogout = async () => {
+    const token = localStorage.getItem('accessToken');
+    try {
+        const response = await fetch('/logout', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            },
+            body: JSON.stringify({ accessToken: token })
+        });
+
+        if (response.ok) {
+            console.log('Successfully logged out');
+            localStorage.removeItem('accessToken'); // 로컬 스토리지에서 accessToken 제거
+            setIsLoggedIn(false); // 로그인 상태 업데이트
+        } else {
+            throw new Error('Logout failed');
+        }
+    } catch (error) {
+        console.error('Logout error:', error);
+    }
+};
 
     return (
         <div>
