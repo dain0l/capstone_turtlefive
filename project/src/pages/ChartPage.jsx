@@ -108,8 +108,12 @@ const ChartPage = () => {
                     </BarChart>
                 </ResponsiveContainer>
                 <ChartDescription>
-                    <h2> 이 그래프는</h2>
+                     <h2> 이 그래프는</h2>
+                    {data2.length > 0 ? (
                     <h2> {data2[0].name}님의 일주일 평균 알람 빈도수입니다.</h2>
+                    ) : (
+                    <h2> 로딩 중...</h2>
+                    )}
                     <br></br>
                     <hr></hr>
                     <br></br>
