@@ -47,7 +47,7 @@ function StartPage() {
     return (
         <BackStyle>
             <TitleStyle>TurtleFIve</TitleStyle>  
-            <LinkButtonStyle to="/register">START</LinkButtonStyle>
+            <LinkButtonStyle to="/home">START</LinkButtonStyle>
         </BackStyle>
     );
 }

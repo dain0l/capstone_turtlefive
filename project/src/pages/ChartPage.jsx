@@ -2,6 +2,32 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts';
 import api from '../services/api';
+import { useNavigate } from 'react-router-dom';
+
+const Button = styled.button`
+  padding: 10px 20px;
+  background-color: #779787; /* Green */
+  border: none;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 10px 2px;
+  cursor: pointer;
+  border-radius: 4px;
+  
+  &:hover {
+    background-color: #50655b;
+  }
+`;
+
+const ButtonContainer = styled.div`
+  display: flex;
+  justify-content: center; /* 수평 중앙 정렬 */
+  align-items: center; /* 수직 중앙 정렬 */
+  height: 20vh; /* 전체 뷰포트 높이 */
+`;
 
 // 스타일링을 위한 styled-components 사용
 const StyledFooter = styled.footer`
@@ -16,7 +42,7 @@ const StyledFooter = styled.footer`
     display: flex;
     align-items: center;
     justify-content: center; /* 수평 중앙 정렬 */
-`;
+`
 
 // header 스타일 정의
 const header = {
@@ -31,7 +57,7 @@ const header = {
 const Container = styled.div`
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center; /* 변경된 부분: flex-start -> center */
     overflow: hidden; /* 스크롤 없애기 */
 `;
 
@@ -42,6 +68,11 @@ const ChartDescription = styled.div`
 
 const ChartPage = () => {
     const [data2, setData2] = useState([]);
+    const navigator = useNavigate();
+
+    const goToHome = ()=>{
+        navigator('/home');
+    };
 
     useEffect(() => {
         const fetchData = async () => {
@@ -96,7 +127,7 @@ const ChartPage = () => {
     return (
         <Container>
             <header style={header}>
-                <h1>docturtle🐢</h1>
+                <h1 onClick={goToHome}>docturtle🐢</h1>
             </header>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '80%', marginLeft : '130px', marginTop : '130px' }}>
                 <ResponsiveContainer height={400} width="100%">
@@ -125,6 +156,9 @@ const ChartPage = () => {
                     {data2.length > 0 && <p><span style={{ color: 'green' }}>일주일 평균 웹캠 사용 시간</span>은 " {averageTime.toFixed(2)}분 " 입니다.</p>}
                 </ChartDescription>
             </div>
+            <ButtonContainer>
+                <Button onClick={goToHome}>돌아가기</Button>
+            </ButtonContainer>
             <StyledFooter>
                 <p>&copy; 2024 docturtle chart website</p>
             </StyledFooter>

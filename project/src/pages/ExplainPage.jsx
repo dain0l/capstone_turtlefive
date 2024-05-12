@@ -1,5 +1,31 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom'; 
+
+const LinkButtonStyle = styled(Link)`
+    padding: 10px 20px;
+    background-color: #779787; /* Green */
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 10px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+
+    &:hover {
+    background-color: #50655b;
+    }
+`;
+
+const BottomContainer = styled.div`
+    display: flex;
+    justify-content: center; /* 수평 중앙 정렬 */
+    align-items: center; /* 수직 중앙 정렬 */
+    height: 10vh; /* 전체 뷰포트 높이 */
+`;
 
 const StyledApp = styled.div`
     text-align: center;
@@ -202,6 +228,9 @@ function ExplainPage() {
                     </StyledThirdContent>
                 </StyledSection>
             </StyledMain>
+            <BottomContainer>
+                <LinkButtonStyle to='/home'>돌아가기</LinkButtonStyle>
+            </BottomContainer>
             <StyledFooter>
                 <p>&copy; 2024 docturtle guide website</p>
             </StyledFooter>
