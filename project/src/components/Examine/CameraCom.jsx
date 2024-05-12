@@ -35,7 +35,7 @@ function fixAlarm(){
       //Notification을 이미 허용한 사람들에게 보여주는 알람창
       notification = new Notification('You have to fix your pose!!', {
           body: '올바른 자세를 유지해주세요.',
-          icon:"../../img/turtle9.png"
+          icon:"http://localhost:8080/image/turtle9.png"
       });
   } else if (notificationPermission !== 'denied') {
       //Notification을 거부했을 경우 재 허용 창 띄우기
@@ -43,7 +43,7 @@ function fixAlarm(){
           if (permission === "granted") {
               notification = new Notification('You have to fix your pose!!', {
                   body: '올바른 자세를 유지해주세요.',
-                  icon:"../../img/turtle9.png"
+                  icon:"http://localhost:8080/image/turtle9.png"
               });
           }else {
               alert("알람 허용이 거부되었습니다.")
@@ -128,13 +128,6 @@ const CameraCom = () => {
                         alarmTimeout.current = null; // 타이머 초기화
                     }, 10000); // 10초 후 실행(테스트때문에 임의로 해둔 시간!!)
                 }
-
-                //   if (!alarmTimeout.current) { // 현재 타이머가 실행 중이지 않을 때만 새 타이머 설정
-                //     alarmTimeout.current = setTimeout(() => {
-                //         sendAlarmLog(); // 백엔드로 알람 로그 보내는 함수 호출
-                //         alarmTimeout.current = null; // 타이머 초기화
-                //     }, 60000); // 1분 후 실행
-                // }
                 }else {
                   canvasCtx.font = "10px Arial";
                   canvasCtx.fillStyle = "green";
