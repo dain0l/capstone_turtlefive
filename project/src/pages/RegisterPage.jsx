@@ -1,8 +1,8 @@
-import Beforehand from '../components/Home/Beforehand';
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import {data1, data2 } from '../components/Data/data';
+import api from '../services/api';
 
 import turtle1 from '../img/turtle1.jpg';
 import turtle2 from '../img/turtle2.jpg';
@@ -186,21 +186,22 @@ function Header() {
          setIsLoggedIn(!!token); // token이 있으면 true, 없으면 false로 설정
      }, []);
  
-  // 로그아웃 함수
-  const handleLogout = async () => {
+ // 로그아웃 함수
+ const handleLogout = async () => {
+    const token = localStorage.getItem('accessToken');
     try {
         const response = await fetch('/logout', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                // 여기서는 더 이상 'Authorization' 헤더를 설정할 필요가 없습니다.
-                // 왜냐하면 쿠키는 자동으로 요청과 함께 전송되기 때문입니다.
+                'Authorization': `Bearer ${token}`
             },
-            // 백엔드에서는 요청 본문을 사용하지 않으므로, 이 부분도 제거합니다.
+            body: JSON.stringify({ accessToken: token })
         });
 
         if (response.ok) {
             console.log('Successfully logged out');
+            localStorage.removeItem('accessToken'); // 로컬 스토리지에서 accessToken 제거
             setIsLoggedIn(false); // 로그인 상태 업데이트
         } else {
             throw new Error('Logout failed');

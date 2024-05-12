@@ -92,7 +92,7 @@ const LoginPage = () => {
             const data = await response.json();
             if (response.ok) {
                 navigate('/register');//홈화면으로 이동
-
+                localStorage.setItem('accessToken', data.accessToken)
 
             } else {
                 setLoginMessage(data.message || '로그인에 실패했습니다. 아이디와 비밀번호를 다시 한번 확인해주세요.'); // 백엔드에서 반환한 오류 메시지 표시
