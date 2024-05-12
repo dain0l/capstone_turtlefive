@@ -27,6 +27,29 @@ function formatLocalDateToISOString() {
   return localISOTime;
 }
 
+function fixAlarm(){
+  let date = new Date().toLocaleString();
+  let notification;
+  let notificationPermission = Notification.permission;
+  if (notificationPermission === "granted") {
+      //Notification을 이미 허용한 사람들에게 보여주는 알람창
+      notification = new Notification('You have to fix your pose!!', {
+          body: '올바른 자세를 유지해주세요.'
+      });
+  } else if (notificationPermission !== 'denied') {
+      //Notification을 거부했을 경우 재 허용 창 띄우기
+      Notification.requestPermission(function (permission) {
+          if (permission === "granted") {
+              notification = new Notification('You have to fix your pose!!', {
+                  body: '올바른 자세를 유지해주세요.'
+              });
+          }else {
+              alert("알람 허용이 거부되었습니다.")
+          }
+      });
+  }
+}
+
 const CameraCom = () => { 
     const webcamRef = useRef(null);
     const canvasRef = useRef(null);
@@ -92,6 +115,16 @@ const CameraCom = () => {
                   canvasCtx.font = "10px Arial";
                   canvasCtx.fillStyle = "red";
                   canvasCtx.fillText("You have to fix your pose.", 10, 30);
+
+                  if (!alarmTimeout.current) { // 현재 타이머가 실행 중이지 않을 때만 새 타이머 설정
+                    alarmTimeout.current = setTimeout(() => {
+                        // 타이머가 실행될 때 조건을 다시 확인
+                        if (distanceBool || ZvaluesBool || angleBool) {
+                            fixAlarm(); // 조건이 여전히 참이라면 알람 보내기
+                        }
+                        alarmTimeout.current = null; // 타이머 초기화
+                    }, 15000); // 15초 후 실행(테스트때문에 임의로 해둔 시간!!)
+                }
 
                   if (!alarmTimeout.current) { // 현재 타이머가 실행 중이지 않을 때만 새 타이머 설정
                     alarmTimeout.current = setTimeout(() => {
