@@ -24,7 +24,6 @@ import CameraCom from './components/Examine/CameraCom.jsx';
 
 
 function App() {
-  localStorage.setItem('accessToken', '');
   return (
     <Router>
       <Routes>
