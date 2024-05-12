@@ -91,7 +91,7 @@ const LoginPage = () => {
             });
             const data = await response.json();
             if (response.ok) {
-                navigate('/register');//홈화면으로 이동
+                navigate('/home');//홈화면으로 이동
                 localStorage.setItem('accessToken', data.accessToken)
 
             } else {
