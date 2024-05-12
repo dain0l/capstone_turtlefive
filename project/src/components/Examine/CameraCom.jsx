@@ -28,20 +28,22 @@ function formatLocalDateToISOString() {
 }
 
 function fixAlarm(){
-  let date = new Date().toLocaleString();
+  //let date = new Date().toLocaleString();
   let notification;
   let notificationPermission = Notification.permission;
   if (notificationPermission === "granted") {
       //Notification을 이미 허용한 사람들에게 보여주는 알람창
       notification = new Notification('You have to fix your pose!!', {
-          body: '올바른 자세를 유지해주세요.'
+          body: '올바른 자세를 유지해주세요.',
+          icon:"../../img/turtle9.png"
       });
   } else if (notificationPermission !== 'denied') {
       //Notification을 거부했을 경우 재 허용 창 띄우기
       Notification.requestPermission(function (permission) {
           if (permission === "granted") {
               notification = new Notification('You have to fix your pose!!', {
-                  body: '올바른 자세를 유지해주세요.'
+                  body: '올바른 자세를 유지해주세요.',
+                  icon:"../../img/turtle9.png"
               });
           }else {
               alert("알람 허용이 거부되었습니다.")
@@ -121,17 +123,18 @@ const CameraCom = () => {
                         // 타이머가 실행될 때 조건을 다시 확인
                         if (distanceBool || ZvaluesBool || angleBool) {
                             fixAlarm(); // 조건이 여전히 참이라면 알람 보내기
+                            sendAlarmLog(); // 백엔드로 알람 로그 보내는 함수 호출
                         }
                         alarmTimeout.current = null; // 타이머 초기화
                     }, 10000); // 10초 후 실행(테스트때문에 임의로 해둔 시간!!)
                 }
 
-                  if (!alarmTimeout.current) { // 현재 타이머가 실행 중이지 않을 때만 새 타이머 설정
-                    alarmTimeout.current = setTimeout(() => {
-                        sendAlarmLog(); // 백엔드로 알람 로그 보내는 함수 호출
-                        alarmTimeout.current = null; // 타이머 초기화
-                    }, 60000); // 1분 후 실행
-                }
+                //   if (!alarmTimeout.current) { // 현재 타이머가 실행 중이지 않을 때만 새 타이머 설정
+                //     alarmTimeout.current = setTimeout(() => {
+                //         sendAlarmLog(); // 백엔드로 알람 로그 보내는 함수 호출
+                //         alarmTimeout.current = null; // 타이머 초기화
+                //     }, 60000); // 1분 후 실행
+                // }
                 }else {
                   canvasCtx.font = "10px Arial";
                   canvasCtx.fillStyle = "green";
@@ -172,14 +175,6 @@ const CameraCom = () => {
  // 백엔드로 알람 로그를 보내는 함수
  const sendAlarmLog = async () => {
   const currentTime = formatLocalDateToISOString(); // 현재 시간을 ISO 형식으로 변환
-  
-  // 알림을 표시하는 함수를 먼저 선언
-  const showNotification = () => {
-    const notification = new Notification("잘못된 자세 감지", {
-      body: "자세를 교정해 주세요. 1분 동안 잘못된 자세를 유지하셨습니다.",
-      // icon: ' http://yourserver.com/img/turtle9.png' // 알림에 표시할 아이콘 경로
-    });
-  };
 
   try {
     // axios 인스턴스를 사용하여 POST 요청을 보냄
@@ -192,18 +187,6 @@ const CameraCom = () => {
     console.log('Alarm log sent successfully');
   } catch (error) {
     console.error('Failed to send alarm log', error);
-  }
-
-  // 사용자의 권한 요청
-  if (Notification.permission === "granted") {
-    // 알림 표시
-    showNotification();
-  } else if (Notification.permission !== "denied") {
-    // 'await'를 사용하여 비동기 요청 처리
-    const permission = await Notification.requestPermission();
-    if (permission === "granted") {
-      showNotification();
-    }
   }
 };
 

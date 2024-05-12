@@ -118,13 +118,11 @@ function MyPage() {
         // 사용자 정보를 불러오는 함수 실행
         fetchUserInfo();
     }, []);
-
     const fetchUserInfo = () => {
         api.get('/mypage')
-        .then(response => response.json())
-        .then(data => {
-            setUserInfo(data);
-            // 알람 빈도수와 웹캠 실행 시간을 상태에 설정
+        .then(response => {
+            setUserInfo(response.data); // 변경된 부분
+            console.log(response.data);
         })
         .catch(error => {
             console.error('Error fetching user info:', error);

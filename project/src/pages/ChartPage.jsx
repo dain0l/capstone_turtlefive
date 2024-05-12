@@ -47,10 +47,10 @@ const ChartPage = () => {
         const fetchData = async () => {
             try {
                 const response = await api.get('/inquiry');
-                if (response.status < 200 || response.status >= 300) { // 상태 코드 확인으로 수정된 부분
+                if (response.status < 200 || response.status >= 300) { // 상태 코드 확인
                     throw new Error('Network response was not ok');
                 }
-                const data = await response.json();
+                const data = response.data;
                 if (data) {
                     const transformedData = data.map(item => ({
                         ...item,
@@ -65,9 +65,10 @@ const ChartPage = () => {
                 console.error("Fetch error: ", error);
             }
         };
-
+    
         fetchData();
     }, []);
+    
 
     // 예시 요일 변환 함수
     const 요일변환함수 = (dayOfWeek) => {
@@ -113,7 +114,7 @@ const ChartPage = () => {
                     <hr></hr>
                     <br></br>
                     <p>월요일부터 일요일까지의 데이터가 포함되어 있습니다.</p>
-                    {maxData && <p>거북목 빈도수가 높은 요일은 <span style={{color: 'blue'}}>" {maxData.name} "</span> 입니다.</p>}
+                    {maxData && <p>거북목 빈도수가 높은 요일은 <span style={{color: 'blue'}}>" {maxData.day} "</span> 입니다.</p>}
                     {data2.length > 0 && <p><span style={{ color: 'blue' }}>일주일 평균</span> 거북목 알림 횟수는 " {averageUV.toFixed(2)}회 " 입니다.</p>} 
                     <br></br>
                     {data2.length > 0 && <p><span style={{ color: 'green' }}>일주일 총 웹캠 사용 시간</span>은 " {totalTime}분 " 입니다.</p>}
