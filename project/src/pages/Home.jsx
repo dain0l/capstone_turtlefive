@@ -175,10 +175,11 @@ const StyledBar = styled.div`
     }
 `;
 
-function Header() {
+function Home() {
 
      // 로그인 상태를 관리하는 상태 변수
      const [isLoggedIn, setIsLoggedIn] = useState(false);
+     
 
      // 컴포넌트가 마운트될 때 로그인 상태를 확인
      useEffect(() => {
@@ -215,7 +216,7 @@ function Header() {
         <div>
             <Container>
             <HeaderContainer>
-                <Logo>TurtleFive</Logo>
+                <Logo to="/register">TurtleFive</Logo>
                 <NavigationWrapper>
                     {/* <StyledLink to="/inquiry">1week-chart</StyledLink>
                     <StyledLink to="#">contact</StyledLink> */}
@@ -333,4 +334,4 @@ function Header() {
     );
 }
 
-export default Header;
+export default Home;

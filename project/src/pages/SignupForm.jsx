@@ -147,7 +147,7 @@ function SignupForm() {
     return (
         <div style={styles.body}>
             <header style={styles.header}>
-                <h1>docturtle🐢</h1>
+                <h1 to="/register">docturtle🐢</h1>
             </header>
             <div style={styles.container}>
                 {signupSuccess ? (

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Link } from 'react-router-dom'; 
+import { Link, useNavigate } from 'react-router-dom'; 
 import imglogo from '../img/tree.jpg';
 import api from '../services/api';
 import React, { useState, useEffect } from 'react';
@@ -113,6 +113,11 @@ const Info = styled.p`
 // 프로필 컴포넌트 정의
 function MyPage() {
     const [userInfo, setUserInfo] = useState(null);
+    const navigator = useNavigate();
+
+    const goToHome = ()=>{
+        navigator('/home');
+    };
 
     useEffect(() => {
         // 사용자 정보를 불러오는 함수 실행
@@ -147,7 +152,8 @@ function MyPage() {
                     
             {/* 추가적인 사용자 정보 */}
             <BottomContainer>
-                <LinkButtonStyle to="/logout" onClick={handleLogout}>Log out</LinkButtonStyle>
+            <LinkButtonStyle to="/home" onClick={goToHome}>Home</LinkButtonStyle>
+            <LinkButtonStyle to="/logout" onClick={handleLogout}>Log out</LinkButtonStyle>
             </BottomContainer>
         </Container>
     );
