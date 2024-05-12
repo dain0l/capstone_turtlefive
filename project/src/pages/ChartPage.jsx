@@ -101,7 +101,7 @@ const ChartPage = () => {
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '80%', marginLeft : '130px', marginTop : '130px' }}>
                 <ResponsiveContainer height={400} width="100%">
                     <BarChart data={data2} margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
-                        <XAxis dataKey="name" scale="point" padding={{ left: 70, right: 10 }} />
+                        <XAxis dataKey="day" scale="point" padding={{ left: 70, right: 10 }} />
                         <YAxis />
                         <Tooltip contentStyle={{ backgroundColor: 'white', color: 'black' }} />
                         <Bar dataKey="거북목감지" fill="#8884d8" background={{ fill: '#eee' }} />
@@ -109,7 +109,7 @@ const ChartPage = () => {
                 </ResponsiveContainer>
                 <ChartDescription>
                     <h2> 이 그래프는</h2>
-                    <h2> {data2.name}님의 일주일 평균 알람 빈도수입니다.</h2>
+                    <h2> {data2[0].name}님의 일주일 평균 알람 빈도수입니다.</h2>
                     <br></br>
                     <hr></hr>
                     <br></br>
