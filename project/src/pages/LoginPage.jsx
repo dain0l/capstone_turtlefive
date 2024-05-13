@@ -79,6 +79,10 @@ const LoginPage = () => {
     const [loginMessage, setLoginMessage] = useState('');
     const navigate = useNavigate();
 
+    const goToHome = ()=>{
+        navigate('/home');
+    };
+
     const handleLogin = async (e) => {
         e.preventDefault();
         try {
@@ -108,7 +112,7 @@ const LoginPage = () => {
     return (
         <div style={styles.body}>
            <header style={styles.header}>
-             <h1>docturtle🐢</h1>
+             <h1 onClick={goToHome}>docturtle🐢</h1>
              </header>
             <div style={styles.loginContainer} className="login-container">
                 <h2 style={styles.h2}>로그인</h2>

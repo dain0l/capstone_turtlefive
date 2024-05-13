@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const styles = {
     header: {
@@ -52,8 +52,14 @@ function SetPassword() {
     const [message, setMessage] = useState('');
     const location = useLocation();
     const email = location.state.email;
+    const navigator = useNavigate('');
 
     console.log(email);
+
+    
+    const goToHome= () =>{
+        navigator('/home');
+    };
 
     const handleSubmit = async (event) => {
         event.preventDefault();
