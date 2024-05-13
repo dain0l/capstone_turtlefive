@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react';
+
 import Webcam from 'react-webcam';
 import styled from 'styled-components';
 import { Holistic, POSE_CONNECTIONS, FACEMESH_TESSELATION } from "@mediapipe/holistic";
@@ -8,6 +8,7 @@ import { checkZValues } from "../Algorithms/checkZValues";
 import { checkDistance } from "../Algorithms/checkDistance"; 
 import { checkAngle } from "../Algorithms/checkAngle";
 import api from '../../services/api';
+import React, { useRef, useEffect, useState } from 'react';
 
 
 const CameraContainer = styled.div`
@@ -52,7 +53,9 @@ function fixAlarm(){
   }
 }
 
+
 const CameraCom = () => { 
+    const [cameraActive, setCameraActive] = useState(true);
     const webcamRef = useRef(null);
     const canvasRef = useRef(null);
     let alarmTimeout = useRef(null);
@@ -165,6 +168,8 @@ const CameraCom = () => {
       return cleanup;
     }, []);
   
+
+
  // 백엔드로 알람 로그를 보내는 함수
  const sendAlarmLog = async () => {
   const currentTime = formatLocalDateToISOString(); // 현재 시간을 ISO 형식으로 변환
