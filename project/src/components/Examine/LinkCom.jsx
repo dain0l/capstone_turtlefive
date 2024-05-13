@@ -5,6 +5,18 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
+import styled from 'styled-components';
+
+const StyledSelect = styled.select`
+padding: 0.5em;
+font-size: 1em;
+border-radius: 5px;
+border: 1px solid #ccc;
+background-color: #fff;
+color: #333;
+outline: none;
+cursor: pointer;
+`;
 
 function LinkCom() {
 
@@ -34,16 +46,18 @@ function LinkCom() {
         
           
     };
+
+
     
 
     return (
         <div>
             {/* 드롭다운 메뉴 추가 */}
-            <select value={selectedPlace} onChange={handlePlaceChange}>
+            <StyledSelect value={selectedPlace} onChange={handlePlaceChange}>
                 <option value="집">집</option>
                 <option value="카페">카페</option>
                 <option value="야외">야외</option>
-            </select>
+            </StyledSelect>
 
             {/* 선택된 장소에 따라 다른 동영상 표시 */}
             {selectedPlace === '집' && (
