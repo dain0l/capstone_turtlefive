@@ -14,6 +14,11 @@ function FindPassword() {
     setEmail(event.target.value);
   };
 
+  const goToHome= () =>{
+    navigator('/home');
+  };
+
+
   const handleCancel = () => {
     // 입력된 값 초기화
     setUsername('');
@@ -108,7 +113,7 @@ function FindPassword() {
   return (
     <div style={styles.body}>
       <header style={styles.header}>
-        <h1>docturtle🐢</h1>
+        <h1 onClick={goToHome}>docturtle🐢</h1>
       </header>
       <div style={styles.findPasswordContainer}>
         <h2 style={{ textAlign: 'center', marginBottom: '50px' }}>비밀번호 찾기</h2>

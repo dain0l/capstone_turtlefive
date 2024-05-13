@@ -1,9 +1,15 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function FindID() {
   const [name, setUsername] = useState('');
   const [phoneNo, setPhoneNo] = useState('');
   const [email, setEmail] = useState('');
+  const navigator = useNavigate('')
+
+  const goToHome = ()=>{
+    navigator('/home');
+};
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -102,7 +108,7 @@ function FindID() {
   return (
     <div style={styles.body}>
        <header style={styles.header}>
-            <h1>docturtle🐢</h1>
+            <h1 onClick={goToHome}>docturtle🐢</h1>
         </header>
         <div style={styles.findIDContainer}>
       <h2 style={{ textAlign: 'center', marginBottom: '50px' }}>아이디 찾기</h2>
