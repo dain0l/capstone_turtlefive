@@ -54,7 +54,7 @@ function LogoutPage() {
       <Message>You have been successfully logged out.</Message>
       <br></br>
       <StyledLink to="/login">Login again</StyledLink>
-      <StyledLink to="/register">Home again</StyledLink>
+      <StyledLink to="/home">Home again</StyledLink>
     </LogoutContainer>
   );
 }
