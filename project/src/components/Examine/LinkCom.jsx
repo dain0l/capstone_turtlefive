@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react'; // React와 useState를 import합니다.
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -8,6 +8,12 @@ import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
 
 function LinkCom() {
 
+    const [selectedPlace, setSelectedPlace] = useState('집');
+
+    // 드롭다운 메뉴에서 선택한 항목이 변경될 때 호출될 이벤트 핸들러 작성
+    const handlePlaceChange = (event) => {
+        setSelectedPlace(event.target.value);
+    };
     
     const boxStyle = {
         width: '170%', // 상자의 너비를 화면 너비의 80%로 지정
@@ -31,86 +37,267 @@ function LinkCom() {
     
 
     return (
-        <div style={boxStyle}>
-            <Swiper
-                modules={[Navigation, Pagination, Scrollbar, A11y]}
-                direction="vertical" // Swiper를 세로 방향으로 설정
-                slidesPerView={2.6}
-                //navigation
-                pagination={{ clickable: true, renderBullet: function (index, className) { return `<span class="${className}" style="width: 15px; height: 15px;"></span>`; } }}
-                scrollbar={{ draggable: true }}
-                onSwiper={(swiper) => console.log(swiper)}
-                onSlideChange={() => console.log('slide change')}
-                style={{ width: '100%', height: '100%', backgroundColor: '#4a4e4c'}} // 스와이퍼의 너비와 높이를 부모 요소에 맞게 설정
+        <div>
+            {/* 드롭다운 메뉴 추가 */}
+            <select value={selectedPlace} onChange={handlePlaceChange}>
+                <option value="집">집</option>
+                <option value="카페">카페</option>
+                <option value="야외">야외</option>
+            </select>
+
+            {/* 선택된 장소에 따라 다른 동영상 표시 */}
+            {selectedPlace === '집' && (
+                // 여기에는 집에 해당하는 동영상을 표시하는 코드 작성
+                <div style={boxStyle}>
+                <Swiper
+                    modules={[Navigation, Pagination, Scrollbar, A11y]}
+                    direction="vertical" // Swiper를 세로 방향으로 설정
+                    slidesPerView={2.6}
+                    //navigation
+                    pagination={{ clickable: true, renderBullet: function (index, className) { return `<span class="${className}" style="width: 15px; height: 15px;"></span>`; } }}
+                    scrollbar={{ draggable: true }}
+                    onSwiper={(swiper) => console.log(swiper)}
+                    onSlideChange={() => console.log('slide change')}
+                    style={{ width: '100%', height: '100%', backgroundColor: '#4a4e4c'}} // 스와이퍼의 너비와 높이를 부모 요소에 맞게 설정
             >
-                <SwiperSlide style={slideStyle}>
-                    <iframe 
-                        width="420" 
-                        height="250" 
-                        src="https://www.youtube.com/embed/kgCj8UUEWjU?si=f8zHvSLq8Ve6WBrl" 
-                        title="YouTube video player" 
-                        frameborder="0" 
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                        allowfullscreen
-                    ></iframe>
-                </SwiperSlide>
-                <SwiperSlide style={slideStyle}>
-                    <iframe 
-                        width="420" 
-                        height="250" 
-                        src="https://www.youtube.com/embed/5kjKYj7Dyh0?si=ZzsTzHHvWEQI69Za" 
-                        title="YouTube video player" 
-                        frameborder="0" 
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                        allowfullscreen
-                    ></iframe>
-                </SwiperSlide>
-                <SwiperSlide style={slideStyle}>
-                    <iframe 
-                        width="420" 
-                        height="250"  
-                        src="https://www.youtube.com/embed/JBa6eGtLDIM?si=e5vLP0SWMGCMq9wr" 
-                        title="YouTube video player" 
-                        frameborder="0" 
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                        allowfullscreen
-                    ></iframe>
-                </SwiperSlide>
-                <SwiperSlide style={slideStyle}>
-                    <iframe 
-                        width="420" 
-                        height="250" 
-                        src="https://www.youtube.com/embed/plKOdIiiKEQ?si=90k9HOI_AGvYlTgb" 
-                        title="YouTube video player" 
-                        frameborder="0" 
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                        allowfullscreen
-                    ></iframe>
-                </SwiperSlide>
-                <SwiperSlide style={slideStyle}>
-                    <iframe 
-                        width="420" 
-                        height="250" 
-                        src="https://www.youtube.com/embed/I81IixZqFKY?si=hl2RL20qm_2jdo31" 
-                        title="YouTube video player" 
-                        frameborder="0" 
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                        allowfullscreen
-                    ></iframe>
-                </SwiperSlide>
-                <SwiperSlide style={slideStyle}>
-                    <iframe 
-                        width="420" 
-                        height="250" 
-                        src="https://www.youtube.com/embed/D54J2mfCME4?si=CtHZ9F1uDaI09J3b" 
-                        title="YouTube video player" 
-                        frameborder="0" 
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                        allowfullscreen
-                    ></iframe>
-                </SwiperSlide>
-            </Swiper>
+                    <SwiperSlide style={slideStyle}>
+                        <iframe 
+                            width="420" 
+                            height="250" 
+                            src="https://www.youtube.com/embed/kgCj8UUEWjU?si=f8zHvSLq8Ve6WBrl" 
+                            title="YouTube video player" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen
+                        ></iframe>
+                    </SwiperSlide>
+                    <SwiperSlide style={slideStyle}>
+                        <iframe 
+                            width="420" 
+                            height="250" 
+                            src="https://www.youtube.com/embed/5kjKYj7Dyh0?si=ZzsTzHHvWEQI69Za" 
+                            title="YouTube video player" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen
+                        ></iframe>
+                    </SwiperSlide>
+                    <SwiperSlide style={slideStyle}>
+                        <iframe 
+                            width="420" 
+                            height="250"  
+                            src="https://www.youtube.com/watch?v=odmaK53mr68" 
+                            title="YouTube video player" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen
+                        ></iframe>
+                    </SwiperSlide>
+                    <SwiperSlide style={slideStyle}>
+                        <iframe 
+                            width="420" 
+                            height="250" 
+                            src="https://www.youtube.com/embed/plKOdIiiKEQ?si=90k9HOI_AGvYlTgb" 
+                            title="YouTube video player" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen
+                        ></iframe>
+                    </SwiperSlide>
+                    <SwiperSlide style={slideStyle}>
+                        <iframe 
+                            width="420" 
+                            height="250" 
+                            src="https://www.youtube.com/embed/I81IixZqFKY?si=hl2RL20qm_2jdo31" 
+                            title="YouTube video player" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen
+                        ></iframe>
+                    </SwiperSlide>
+                    <SwiperSlide style={slideStyle}>
+                        <iframe 
+                            width="420" 
+                            height="250" 
+                            src="https://www.youtube.com/embed/D54J2mfCME4?si=CtHZ9F1uDaI09J3b" 
+                            title="YouTube video player" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen
+                        ></iframe>
+                    </SwiperSlide>
+                </Swiper>
+                </div>
+            )}
+           
+            {selectedPlace === '카페' && (
+                // 여기에는 카페에 해당하는 동영상을 표시하는 코드 작성
+                <div style={boxStyle}>
+                <Swiper
+                    modules={[Navigation, Pagination, Scrollbar, A11y]}
+                    direction="vertical" // Swiper를 세로 방향으로 설정
+                    slidesPerView={2.6}
+                    //navigation
+                    pagination={{ clickable: true, renderBullet: function (index, className) { return `<span class="${className}" style="width: 15px; height: 15px;"></span>`; } }}
+                    scrollbar={{ draggable: true }}
+                    onSwiper={(swiper) => console.log(swiper)}
+                    onSlideChange={() => console.log('slide change')}
+                    style={{ width: '100%', height: '100%', backgroundColor: '#4a4e4c'}} // 스와이퍼의 너비와 높이를 부모 요소에 맞게 설정
+            >
+                    <SwiperSlide style={slideStyle}>
+                        <iframe 
+                            width="420" 
+                            height="250" 
+                            src="https://www.youtube.com/watch?v=vvHZhhI9TdE" 
+                            title="YouTube video player" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen
+                        ></iframe>
+                    </SwiperSlide>
+                    <SwiperSlide style={slideStyle}>
+                        <iframe 
+                            width="420" 
+                            height="250" 
+                            src="https://www.youtube.com/embed/JBa6eGtLDIM?si=e5vLP0SWMGCMq9wr" 
+                            title="YouTube video player" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen
+                        ></iframe>
+                    </SwiperSlide>
+                    <SwiperSlide style={slideStyle}>
+                        <iframe 
+                            width="420" 
+                            height="250"  
+                            src="https://www.youtube.com/embed/JBa6eGtLDIM?si=e5vLP0SWMGCMq9wr" 
+                            title="YouTube video player" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen
+                        ></iframe>
+                    </SwiperSlide>
+                    <SwiperSlide style={slideStyle}>
+                        <iframe 
+                            width="420" 
+                            height="250" 
+                            src="https://www.youtube.com/embed/plKOdIiiKEQ?si=90k9HOI_AGvYlTgb" 
+                            title="YouTube video player" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen
+                        ></iframe>
+                    </SwiperSlide>
+                    <SwiperSlide style={slideStyle}>
+                        <iframe 
+                            width="420" 
+                            height="250" 
+                            src="https://www.youtube.com/embed/I81IixZqFKY?si=hl2RL20qm_2jdo31" 
+                            title="YouTube video player" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen
+                        ></iframe>
+                    </SwiperSlide>
+                    <SwiperSlide style={slideStyle}>
+                        <iframe 
+                            width="420" 
+                            height="250" 
+                            src="https://www.youtube.com/embed/D54J2mfCME4?si=CtHZ9F1uDaI09J3b" 
+                            title="YouTube video player" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen
+                        ></iframe>
+                    </SwiperSlide>
+                </Swiper>
+                </div>
+            )}
+            {selectedPlace === '야외' && (
+                // 여기에는 야외에 해당하는 동영상을 표시하는 코드 작성
+                <div style={boxStyle}>
+                <Swiper
+                    modules={[Navigation, Pagination, Scrollbar, A11y]}
+                    direction="vertical" // Swiper를 세로 방향으로 설정
+                    slidesPerView={2.6}
+                    //navigation
+                    pagination={{ clickable: true, renderBullet: function (index, className) { return `<span class="${className}" style="width: 15px; height: 15px;"></span>`; } }}
+                    scrollbar={{ draggable: true }}
+                    onSwiper={(swiper) => console.log(swiper)}
+                    onSlideChange={() => console.log('slide change')}
+                    style={{ width: '100%', height: '100%', backgroundColor: '#4a4e4c'}} // 스와이퍼의 너비와 높이를 부모 요소에 맞게 설정
+            >
+                    <SwiperSlide style={slideStyle}>
+                        <iframe 
+                            width="420" 
+                            height="250" 
+                            src="https://www.youtube.com/embed/kgCj8UUEWjU?si=f8zHvSLq8Ve6WBrl" 
+                            title="YouTube video player" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen
+                        ></iframe>
+                    </SwiperSlide>
+                    <SwiperSlide style={slideStyle}>
+                        <iframe 
+                            width="420" 
+                            height="250" 
+                            src="https://www.youtube.com/embed/5kjKYj7Dyh0?si=ZzsTzHHvWEQI69Za" 
+                            title="YouTube video player" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen
+                        ></iframe>
+                    </SwiperSlide>
+                    <SwiperSlide style={slideStyle}>
+                        <iframe 
+                            width="420" 
+                            height="250"  
+                            src="https://www.youtube.com/embed/JBa6eGtLDIM?si=e5vLP0SWMGCMq9wr" 
+                            title="YouTube video player" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen
+                        ></iframe>
+                    </SwiperSlide>
+                    <SwiperSlide style={slideStyle}>
+                        <iframe 
+                            width="420" 
+                            height="250" 
+                            src="https://www.youtube.com/embed/plKOdIiiKEQ?si=90k9HOI_AGvYlTgb" 
+                            title="YouTube video player" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen
+                        ></iframe>
+                    </SwiperSlide>
+                    <SwiperSlide style={slideStyle}>
+                        <iframe 
+                            width="420" 
+                            height="250" 
+                            src="https://www.youtube.com/embed/I81IixZqFKY?si=hl2RL20qm_2jdo31" 
+                            title="YouTube video player" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen
+                        ></iframe>
+                    </SwiperSlide>
+                    <SwiperSlide style={slideStyle}>
+                        <iframe 
+                            width="420" 
+                            height="250" 
+                            src="https://www.youtube.com/embed/D54J2mfCME4?si=CtHZ9F1uDaI09J3b" 
+                            title="YouTube video player" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen
+                        ></iframe>
+                    </SwiperSlide>
+                </Swiper>
+                </div>
+            )}
         </div>
+        
     );
 }
 
