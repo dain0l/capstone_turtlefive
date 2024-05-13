@@ -8,14 +8,24 @@ import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
 import styled from 'styled-components';
 
 const StyledSelect = styled.select`
-padding: 0.5em;
-font-size: 1em;
-border-radius: 5px;
-border: 1px solid #ccc;
-background-color: #fff;
-color: #333;
-outline: none;
-cursor: pointer;
+    padding: 0.7em;
+    font-size: 1em;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    color: #333;
+    outline: none;
+    cursor: pointer;
+
+    @media screen and (max-width: 768px) {
+        font-size: 0.9em;
+        padding: 0.5em;
+    }
+
+    @media screen and (max-width: 480px) {
+        font-size: 0.8em;
+        padding: 0.4em;
+    }
 `;
 
 function LinkCom() {
@@ -100,7 +110,7 @@ function LinkCom() {
                         <iframe 
                             width="420" 
                             height="250"  
-                            src="https://www.youtube.com/watch?v=odmaK53mr68" 
+                            src="https://youtu.be/odmaK53mr68?si=rBN0neOSDXbm1DzO" 
                             title="YouTube video player" 
                             frameborder="0" 
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
