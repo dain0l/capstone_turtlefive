@@ -1,9 +1,10 @@
-import React,{ useState} from 'react';
+import React from 'react';
 import CameraCom from "../components/Examine/CameraCom";
 import LinkCom from '../components/Examine/LinkCom';
 import api from '../services/api';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
+
 
 const Button = styled.button`
   padding: 10px 20px;
@@ -23,34 +24,40 @@ const Button = styled.button`
   }
 `;
 
-function formatLocalDateToISOString() {
-    const offset = new Date().getTimezoneOffset() * 60000; // getTimezoneOffset()은 분 단위로 시간대 차이를 반환합니다.
-    const localISOTime = (new Date(Date.now() - offset)).toISOString().slice(0, 19);
-    return localISOTime;
-}
-
 function Turtle() {
     const navigator = useNavigate();
-    const [startTime] = useState(formatLocalDateToISOString());
 
+    const start = new Date().toISOString(); 
+    localStorage.setItem("startTime",start)
 
 const sendToWebcamlog = async () =>{
-    const endTime = formatLocalDateToISOString();
-    console.log(endTime);
+    const startTime = localStorage.getItem("startTime");
+    const closeTime = new Date().toISOString;
     try{
-        const response = await api.post('/webcam/log',{
+        const response = await api.post('/webacam/log',{
             startTime: startTime,
-            endTime : endTime
+            endTime : closeTime
         });
-        if (response.status < 200 || response.status >= 300) { // 상태 코드 확인으로 수정된 부분
+        if(!response.ok){
             throw new Error('Network response was not ok');
         }
         console.log('weblog sent successfully');
     } catch(error){
         console.error("Failed to send webcamlog",error);
     }
-    navigator('/home');
+    navigator('/register');
 };
+
+//수정
+const stopCamera = () => {
+    
+};
+
+  const handleStopCamera = () => {
+    stopCamera(); // 카메라 중지 함수 호출
+    sendToWebcamlog(); // 종료 시 로그 전송 함수 호출
+};
+//수정
 
 const backgroundContainerStyle = {
     display: "flex",    
@@ -85,12 +92,12 @@ const containerStyle = {
 return (
     <div style={backgroundContainerStyle}>
 
-        <div style={titleStyle}>자세교정 서비스</div>
+        <div style={titleStyle}>거북목 검사하기</div>
         <div style={containerStyle}>
             <CameraCom /> {/* CameraCom 컴포넌트를 왼쪽에 배치합니다. */}
             <LinkCom /> {/* LinkCom 컴포넌트를 오른쪽에 배치합니다. */}
         </div>
-        <Button onClick={sendToWebcamlog}>종료하기</Button>
+        <Button onClick={handleStopCamera}>종료하기</Button>
     </div>
 );
 }
