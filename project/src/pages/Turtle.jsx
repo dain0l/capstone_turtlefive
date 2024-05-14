@@ -45,7 +45,7 @@ const sendToWebcamlog = async () =>{
     } catch(error){
         console.error("Failed to send webcamlog",error);
     }
-    navigator('/register');
+    navigator('/home');
 };
 
 //수정
