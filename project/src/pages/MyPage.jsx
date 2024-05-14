@@ -40,7 +40,7 @@ const BottomContainer = styled.div`
 
 const LinkButtonStyle = styled(Link)`
     color: #FFF;
-    background-color: #779787;
+    background-color: #8fae99;
     font-family: Roboto;
     font-size: 1.5rem;
     font-style: normal;
@@ -53,7 +53,7 @@ const LinkButtonStyle = styled(Link)`
     transition: background-color 0.3s ease;
 
     &:hover {
-        background-color: #50655b;
+        background-color: #638d88;
     }
 `;
 
@@ -138,7 +138,7 @@ function MyPage() {
         
         <Container>
             <header style={header}>
-            <h1>docturtle🐢</h1>
+            <h1 onClick={goToHome}>docturtle🐢</h1>
             </header>
             <ProfileImageContainer>
                 <ProfileImage src={imglogo} alt="" />

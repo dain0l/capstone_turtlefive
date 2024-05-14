@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate  } from 'react-router-dom';
 
 function SignupForm() {
     const [name, setUsername] = useState('');
@@ -12,6 +12,11 @@ function SignupForm() {
     const [gender, setGender] = useState('');
     const [birth, setBirthdate] = useState('');
     const [signupSuccess, setSignupSuccess] = useState(false);
+    const navigate = useNavigate();
+
+    const goToHome = ()=>{
+        navigate('/home');
+    };
 
     const handleCancel = () => {
         // 입력된 값 초기화
@@ -147,7 +152,7 @@ function SignupForm() {
     return (
         <div style={styles.body}>
             <header style={styles.header}>
-                <h1 to="/register">docturtle🐢</h1>
+            <h1 onClick={goToHome}>docturtle🐢</h1>
             </header>
             <div style={styles.container}>
                 {signupSuccess ? (
