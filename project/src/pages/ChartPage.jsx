@@ -87,7 +87,7 @@ const ChartPage = () => {
                         ...item,
                         day: 요일변환함수(item.dayOfWeek),
                         time: item.webcamDuration,
-                        거북목감지: item.alarmCount,
+                        알림빈도수: item.alarmCount,
                         name: item.name
                     }));
                     setData2(transformedData);
@@ -135,7 +135,7 @@ const ChartPage = () => {
                         <XAxis dataKey="day" scale="point" padding={{ left: 70, right: 10 }} />
                         <YAxis />
                         <Tooltip contentStyle={{ backgroundColor: 'white', color: 'black' }} />
-                        <Bar dataKey="거북목감지" fill="#8884d8" background={{ fill: '#eee' }} />
+                        <Bar dataKey="알림빈도수" fill="#FFBD83" background={{ fill: '#eee' }} />
                     </BarChart>
                 </ResponsiveContainer>
                 <ChartDescription>
@@ -149,11 +149,11 @@ const ChartPage = () => {
                     <hr></hr>
                     <br></br>
                     <p>월요일부터 일요일까지의 데이터가 포함되어 있습니다.</p>
-                    {maxData && <p>거북목 빈도수가 높은 요일은 <span style={{color: 'blue'}}>" {maxData.day} "</span> 입니다.</p>}
-                    {data2.length > 0 && <p><span style={{ color: 'blue' }}>일주일 평균</span> 거북목 알림 횟수는 " {averageUV.toFixed(2)}회 " 입니다.</p>} 
+                    {maxData && <p>알림 빈도수가 높은 요일은 <span style={{color: 'blue'}}>" {maxData.day} "</span> 입니다.</p>}
+                    {averageUV.toFixed(2) > 0 && <p><span style={{ color: 'blue' }}>일주일 평균</span> 알림 횟수는 " {averageUV.toFixed(2)}회 " 입니다.</p>} 
                     <br></br>
-                    {data2.length > 0 && <p><span style={{ color: 'green' }}>일주일 총 웹캠 사용 시간</span>은 " {totalTime}분 " 입니다.</p>}
-                    {data2.length > 0 && <p><span style={{ color: 'green' }}>일주일 평균 웹캠 사용 시간</span>은 " {averageTime.toFixed(2)}분 " 입니다.</p>}
+                    {totalTime > 0 && <p><span style={{ color: 'green' }}>일주일 총 웹캠 사용 시간</span>은 " {totalTime}분 " 입니다.</p>}
+                    {averageTime.toFixed(2) > 0 && <p><span style={{ color: 'green' }}>일주일 평균 웹캠 사용 시간</span>은 " {averageTime.toFixed(2)}분 " 입니다.</p>}
                 </ChartDescription>
             </div>
             <ButtonContainer>
