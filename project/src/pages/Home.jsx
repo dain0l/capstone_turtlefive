@@ -185,72 +185,80 @@ function Home() {
     }
   };
 
-  return (
-    <div>
-      <Container>
-        <HeaderContainer>
-          <Logo to="/register">TurtleFive</Logo>
-          <NavigationWrapper>
-            {isLoggedIn ? (
-              <>
-                <StyledLink to="#" onClick={handleLogout}>
-                  logout
-                </StyledLink>
-                <StyledLink to="/myPage">my page</StyledLink>
-              </>
-            ) : (
-              <StyledLink to="/login">login</StyledLink>
-            )}
-            <StyledLink to="/explain">explain</StyledLink>
-          </NavigationWrapper>
+const handleServiceButtonClick = () => {
+    if (!isLoggedIn) {
+        alert('로그인 후 이용해주세요');
+    } else {
+        // 서비스 이용 로직 구현
+    }
+};
+
+    return (
+        <div>
+            <Container>
+            <HeaderContainer>
+                <Logo to="/register">TurtleFive</Logo>
+                <NavigationWrapper>
+                    {/* <StyledLink to="/inquiry">1week-chart</StyledLink>
+                    <StyledLink to="#">contact</StyledLink> */}
+                    {isLoggedIn ? (
+                        <>
+                        <StyledLink to="#" onClick={handleLogout}>logout</StyledLink>
+                        <StyledLink to="/myPage">my page</StyledLink>
+                        </>
+                    ) : (
+                        <StyledLink to="/login">login</StyledLink> // 로그아웃 상태일 때 로그인 버튼 표시
+                    )}
+                    <StyledLink to="/explain">explain</StyledLink> 
+                    </NavigationWrapper>
         </HeaderContainer>
 
-        <RectangleContainer>
-          <Link to="/webcam">
-            <StyledButton>자세교정 서비스 이용하기</StyledButton>
-          </Link>
-        </RectangleContainer>
-
-        <RectangleContainer>
-          <Swiper
-            modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}
-            spaceBetween={0}
-            slidesPerView={2}
-            navigation={true}
-            centeredSlides={true}
-            autoplay={{
-              delay: 2000,
-              disableOnInteraction: false,
-            }}
-            pagination={{ clickable: true }}
-            scrollbar={{ draggable: true }}
-            onSwiper={(swiper) => console.log(swiper)}
-            onSlideChange={() => console.log('slide change')}
-            style={{ width: '100%', height: '100%' }} // 스와이퍼의 너비와 높이를 부모 요소에 맞게 설정
-          >
-            <SwiperSlide>
-              <img src={turtle1} alt="Slide 1" style={{ width: '90%', height: '90%', borderRadius: '10px' }} />
-            </SwiperSlide>
-            <SwiperSlide>
-              <img src={turtle3} alt="Slide 2" style={{ width: '90%', height: '90%', borderRadius: '10px' }} />
-            </SwiperSlide>
-            <SwiperSlide>
-              <img src={turtle2} alt="Slide 3" style={{ width: '90%', height: '90%', borderRadius: '10px' }} />
-            </SwiperSlide>
-            <SwiperSlide>
-              <img src={turtle4} alt="Slide 4" style={{ width: '90%', height: '90%', borderRadius: '10px' }} />
-            </SwiperSlide>
-            <SwiperSlide>
-              <img src={turtle5} alt="Slide 4" style={{ width: '90%', height: '90%', borderRadius: '10px' }} />
-            </SwiperSlide>
-            <SwiperSlide>
-              <img src={turtle6} alt="Slide 4" style={{ width: '90%', height: '90%', borderRadius: '10px' }} />
-            </SwiperSlide>
-            <SwiperSlide>
-              <img src={turtle7} alt="Slide 4" style={{ width: '90%', height: '90%', borderRadius: '10px' }} />
-            </SwiperSlide>
-          </Swiper>
-        </RectangleContainer>
+            <RectangleContainer>
+                {/*<Link to="/webcam">*/}
+                <StyledButton onClick={handleServiceButtonClick}>자세교정 서비스 이용하기</StyledButton>
+                {/*</Link>*/}
+            </RectangleContainer>
+            
+            <RectangleContainer>
+            <Swiper
+                modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}
+                spaceBetween={0}
+                slidesPerView={2}
+                navigation = {true}
+                centeredSlides={true}
+                autoplay={{
+                    delay: 2000,
+                    disableOnInteraction: false,
+                }}
+                pagination={{ clickable: true }}
+                scrollbar={{ draggable: true }}
+                onSwiper={(swiper) => console.log(swiper)}
+                onSlideChange={() => console.log('slide change')}
+                style={{ width: '100%', height: '100%' }} // 스와이퍼의 너비와 높이를 부모 요소에 맞게 설정
+            >
+          <SwiperSlide>
+            <img src={turtle1} alt="Slide 1" style={{ width: '90%', height: '90%' , borderRadius: '10px'}} />
+          </SwiperSlide>
+          <SwiperSlide>
+            <img src={turtle3} alt="Slide 2" style={{ width: '90%', height: '90%', borderRadius: '10px' }} />
+          </SwiperSlide>
+          <SwiperSlide>
+            <img src={turtle2} alt="Slide 3" style={{ width: '90%', height: '90%' , borderRadius: '10px'}} />
+          </SwiperSlide>
+          <SwiperSlide>
+            <img src={turtle4} alt="Slide 4" style={{ width: '90%', height: '90%' , borderRadius: '10px'}} />
+          </SwiperSlide>
+          <SwiperSlide>
+            <img src={turtle5} alt="Slide 4" style={{ width: '90%', height: '90%' , borderRadius: '10px'}} />
+          </SwiperSlide>
+          <SwiperSlide>
+            <img src={turtle6} alt="Slide 4" style={{ width: '90%', height: '90%', borderRadius: '10px' }} />
+          </SwiperSlide>
+          <SwiperSlide>
+            <img src={turtle7} alt="Slide 4" style={{ width: '90%', height: '90%' , borderRadius: '10px'}} />
+          </SwiperSlide>
+        </Swiper>
+            </RectangleContainer>
 
         <Row>
           {/* chart를 간략하게 보여주는 컨테이너1,2 */}
