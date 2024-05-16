@@ -110,7 +110,7 @@ const StyledFooter = styled.footer`
 `;
 
 const Logo = styled.div`
-  color: #2e7d32;
+  color: #288A72;
   font-size: 1.5rem;
   font-weight: bold;
 `;
@@ -120,7 +120,7 @@ const NavigationWrapper = styled.nav`
 `;
 
 const StyledLink = styled(Link)`
-  color: #2e7d32;
+  color: #288A72;
   text-decoration: none;
   margin-right: 2rem;
 
