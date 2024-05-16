@@ -329,7 +329,7 @@ const handleServiceButtonClick = () => {
                   <XAxis dataKey="day" scale="point" padding={{ left: 70, right: 10 }} />
                   <YAxis />
                   <Tooltip contentStyle={{ backgroundColor: 'white', color: 'black' }} />
-                  <Bar dataKey="거북목감지" fill="#8884d8" background={{ fill: '#eee' }} />
+                  <Bar dataKey="거북목감지" fill="#FFBD83" background={{ fill: '#eee' }} />
                 </BarChart>
               </ResponsiveContainer>
             </Rectangle2Container>
