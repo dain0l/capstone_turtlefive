@@ -270,9 +270,9 @@ const handleServiceButtonClick = () => {
                     </NavigationWrapper>
         </HeaderContainer>
             <RectangleContainer>
-               <Link to="/webcam">
+               
                 <StyledButton onClick={handleServiceButtonClick} >자세교정 서비스 이용하기</StyledButton>
-               </Link>
+               
             </RectangleContainer>
             
             <RectangleContainer>
