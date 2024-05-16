@@ -8,7 +8,7 @@ import styled from 'styled-components';
 
 const Button = styled.button`
   padding: 10px 20px;
-  background-color: #779787; /* Green */
+  background-color: #8fae99; /* Green */
   border: none;
   color: white;
   text-align: center;
@@ -20,7 +20,7 @@ const Button = styled.button`
   border-radius: 4px;
   
   &:hover {
-    background-color: #50655b;
+    background-color: #638d88;
   }
 `;
 
@@ -83,23 +83,26 @@ const containerStyle = {
     display: 'flex', // flexbox 사용
     justifyContent: 'space-around',
     alignItems: 'center', // 수직 가운데 정렬
-    width: '80%', // 부모 요소의 너비를 화면 너비의 80%로 지정
+    width: '70%', // 부모 요소의 너비를 화면 너비의 70%로 지정
     margin: '0 auto', // 수평 가운데 정렬
+    marginLeft: '10%', // 좌측 여백 추가
 };
 
 
 
 return (
     <div style={backgroundContainerStyle}>
-
-        <div style={titleStyle}>거북목 검사하기</div>
-        <div style={containerStyle}>
-            <CameraCom /> {/* CameraCom 컴포넌트를 왼쪽에 배치합니다. */}
-            <LinkCom /> {/* LinkCom 컴포넌트를 오른쪽에 배치합니다. */}
-        </div>
-        <Button onClick={handleStopCamera}>종료하기</Button>
+      <div style={titleStyle}>거북목 검사하기</div>
+      <div style={containerStyle}>
+        {/* CameraCom 컴포넌트를 왼쪽에 배치합니다. */}
+        <CameraCom />
+        {/* LinkCom 컴포넌트를 오른쪽에 배치합니다. */}
+        <LinkCom />
+      </div>
+      <Button onClick={handleStopCamera}>종료하기</Button>
     </div>
-);
+  );
+  
 }
 
 export default Turtle;
