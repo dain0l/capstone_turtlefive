@@ -328,8 +328,8 @@ const handleServiceButtonClick = () => {
                 </div>
               </div>
               <h3 style={{ marginTop: '20px' }}>총 이용자 중에서 👑상위{data.rankPercentage}%</h3>
-              <div style={{ width: '100%', backgroundColor: '#eee', borderRadius: '10px', overflow: 'hidden' }}>
-                <div style={{ width: `${data.rankPercentage}%`, backgroundColor: '#FFA07A', textAlign: 'right', lineHeight: '40px', borderRadius: '10px 0 0 10px', color: 'white', paddingRight: '10px' }}>
+              <div style={{ width: '100%', backgroundColor: '#FFA07A', borderRadius: '10px', overflow: 'hidden' }}>
+                <div style={{ width: `${data.rankPercentage}%`, backgroundColor: '#eee', textAlign: 'right', lineHeight: '40px', borderRadius: '10px 0 0 10px', color: 'black', paddingRight: '10px' }}>
                   {data.rankPercentage}%
                 </div>
               </div>
