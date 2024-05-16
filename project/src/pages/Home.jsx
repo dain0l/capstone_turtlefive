@@ -249,6 +249,7 @@ function Home() {
 
   };
 
+
 const handleServiceButtonClick = () => {
     if (!isLoggedIn) {
         alert('로그인 후 이용해주세요');
@@ -281,9 +282,9 @@ const handleServiceButtonClick = () => {
         </HeaderContainer>
 
             <RectangleContainer>
-                {/*<Link to="/webcam">*/}
-                <StyledButton onClick={handleServiceButtonClick}>자세교정 서비스 이용하기</StyledButton>
-                {/*</Link>*/}
+               <Link to="/webcam">
+                <StyledButton >자세교정 서비스 이용하기</StyledButton>
+               </Link>
             </RectangleContainer>
             
             <RectangleContainer>
