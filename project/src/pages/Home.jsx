@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import { data1, data2 } from '../components/Data/data';
 import api from '../services/api';
 
 import turtle1 from '../img/turtle1.jpg';
@@ -71,7 +70,6 @@ const RectangleContainer = styled.div`
     width: calc(100% - 6%);
   }
 `;
-
 const Rectangle2Container = styled.div`
   background-color: #f5ede6d6;
   padding: 20px;
@@ -81,19 +79,27 @@ const Rectangle2Container = styled.div`
   display: flex;
   justify-content: center;
   flex-direction: column;
-  align-items: center;
+  align-items: center; /* 차트를 중앙에 위치시키기 위해 center로 변경 */
   width: 87%;
   height: 250px;
   margin-left: 20px;
   overflow: hidden;
-  border: 1.5px solid #8fae99; /* 테두리 속성 추가 */
-  margin-right: 20px; /* 컨테이너1 옆에 오른쪽 마진 추가 */
+  border: 1.5px solid #8fae99;
+  margin-right: 20px;
+  text-align: left;
 
   @media screen and (min-width: 1000px) {
     margin-left: 45px;
-    width: 90%
+    width: 90%;
   }
 `;
+
+const TextContainer = styled.div`
+  width: 100%;
+  text-align: left; /* 텍스트를 왼쪽 정렬 */
+  margin-bottom: 30px; /* 텍스트와 차트 사이의 간격을 추가 */
+`;
+
 
 const StyledFooter = styled.footer`
   background-color: rgba(0, 0, 0, 0.452);
@@ -152,13 +158,52 @@ const StyledButton = styled.button`
 
 function Home() {
   // 로그인 상태를 관리하는 상태 변수
+  const [data2, setData2] = useState([]);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   // 컴포넌트가 마운트될 때 로그인 상태를 확인
   useEffect(() => {
     const token = localStorage.getItem('accessToken');
     setIsLoggedIn(!!token); // token이 있으면 true, 없으면 false로 설정
+
+    const fetchData = async () => {
+      try {
+          const response = await api.get('/inquiry');
+          if (response.status < 200 || response.status >= 300) { // 상태 코드 확인
+              throw new Error('Network response was not ok');
+          }
+          const data = response.data;
+          if (data) {
+              const transformedData = data.map(item => ({
+                  ...item,
+                  day: 요일변환함수(item.dayOfWeek),
+                  time: item.webcamDuration,
+                  알림빈도수: item.alarmCount,
+                  name: item.name
+              }));
+              setData2(transformedData);
+          }
+      } catch (error) {
+          console.error("Fetch error: ", error);
+      }
+  };
+
+  fetchData();
   }, []);
+
+  // 예시 요일 변환 함수
+  const 요일변환함수 = (dayOfWeek) => {
+    const dayMap = {
+        MONDAY: '월요일',
+        TUESDAY: '화요일',
+        WEDNESDAY: '수요일',
+        THURSDAY: '목요일',
+        FRIDAY: '금요일',
+        SATURDAY: '토요일',
+        SUNDAY: '일요일'
+    };
+    return dayMap[dayOfWeek] || dayOfWeek;
+};
 
   // 로그아웃 함수
   const handleLogout = async () => {
@@ -183,6 +228,9 @@ function Home() {
     } catch (error) {
       console.error('Logout error:', error);
     }
+
+  
+
   };
 
 const handleServiceButtonClick = () => {
@@ -267,14 +315,21 @@ const handleServiceButtonClick = () => {
             <Rectangle2Container></Rectangle2Container>
           </Link>
           {/* 컨테이너 2 */}
-          <Link to="/inquiry" style={{ width: '77%' }}>
+          <Link to="/inquiry" style={{ width: '77%',  textDecoration: 'none' , color: 'black' }}>
             <Rectangle2Container>
-              <ResponsiveContainer height="80%" width="100%">
+            <TextContainer>
+                  {data2.length > 0 ? (
+                    <h2 style={{ margin: 0 }}>  🦖{data2[0].name}님의 일주일간의 알람 빈도수입니다.</h2>
+                  ) : (
+                    <h2 style={{ margin: 0 }}> </h2>
+                  )}
+            </TextContainer>
+              <ResponsiveContainer height="80%" width="80%" >
                 <BarChart data={data2} margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
-                  <XAxis dataKey="name" scale="point" padding={{ left: 70, right: 10 }} />
+                  <XAxis dataKey="day" scale="point" padding={{ left: 70, right: 10 }} />
                   <YAxis />
                   <Tooltip contentStyle={{ backgroundColor: 'white', color: 'black' }} />
-                  <Bar dataKey="거북목감지" fill="#8884d8" background={{ fill: '#eee' }} />
+                  <Bar dataKey="알림빈도수" fill="#FFBD83" background={{ fill: '#eee' }} />
                 </BarChart>
               </ResponsiveContainer>
             </Rectangle2Container>

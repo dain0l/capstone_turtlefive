@@ -87,7 +87,7 @@ const ChartPage = () => {
                         ...item,
                         day: 요일변환함수(item.dayOfWeek),
                         time: item.webcamDuration,
-                        거북목감지: item.alarmCount,
+                        알림빈도수: item.alarmCount,
                         name: item.name
                     }));
                     setData2(transformedData);
@@ -135,7 +135,7 @@ const ChartPage = () => {
                         <XAxis dataKey="day" scale="point" padding={{ left: 70, right: 10 }} />
                         <YAxis />
                         <Tooltip contentStyle={{ backgroundColor: 'white', color: 'black' }} />
-                        <Bar dataKey="거북목감지" fill="#8884d8" background={{ fill: '#eee' }} />
+                        <Bar dataKey="알림빈도수" fill="#FFBD83" background={{ fill: '#eee' }} />
                     </BarChart>
                 </ResponsiveContainer>
                 <ChartDescription>
