@@ -249,12 +249,13 @@ function Home() {
 
   };
 
+
 const handleServiceButtonClick = () => {
     if (!isLoggedIn) {
         alert('로그인 후 이용해주세요');
         navigate("/login");
     } else {
-        // 서비스 이용 로직 구현
+      navigate("/webcam");
     }
 };
   // API로부터 데이터를 성공적으로 받아온 경우, 데이터를 화면에 표시합니다.
@@ -279,9 +280,9 @@ const handleServiceButtonClick = () => {
         </HeaderContainer>
 
             <RectangleContainer>
-                {/*<Link to="/webcam">*/}
-                <StyledButton onClick={handleServiceButtonClick}>자세교정 서비스 이용하기</StyledButton>
-                {/*</Link>*/}
+               <Link to="/webcam">
+                <StyledButton >자세교정 서비스 이용하기</StyledButton>
+               </Link>
             </RectangleContainer>
             
             <RectangleContainer>
