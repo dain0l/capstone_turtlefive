@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate  } from 'react-router-dom';
 import styled from 'styled-components';
-
 
 const StyledLink = styled(Link)`
     color: #000000;
@@ -121,8 +120,9 @@ const LoginPage = () => {
                     <input
                         style={styles.input}
                         type="text"
+                        value={email}
                         placeholder="e-mail"
-                        onChange={(e) => setUsername(e.target.value)}
+                        onChange={(e) => setEmail(e.target.value)}
                         required
                     />
                     <input
@@ -135,6 +135,7 @@ const LoginPage = () => {
                     />
                     <input style={styles.submit} type="submit" value="로그인" />
                 </form>
+                {loginMessage && <p>{loginMessage}</p>}
                 <div className="additional-links" style={styles.additionalLinks}>
                 <p><StyledLink to ="/findID">아이디 찾기</StyledLink> | <StyledLink to ="/findPassword">비밀번호 찾기</StyledLink></p>
                 <p><StyledLink to="/agree">회원가입</StyledLink></p>
