@@ -55,7 +55,6 @@ function fixAlarm(){
 
 
 const CameraCom = () => { 
-  const [cameraActive, setCameraActive] = useState(true);
     const webcamRef = useRef(null);
     const canvasRef = useRef(null);
     let alarmTimeout = useRef(null);
