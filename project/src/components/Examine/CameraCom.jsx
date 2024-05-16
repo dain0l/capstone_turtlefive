@@ -44,7 +44,7 @@ function fixAlarm(){
           if (permission === "granted") {
               notification = new Notification('You have to fix your pose!!', {
                   body: '올바른 자세를 유지해주세요.',
-                  icon:"http://localhost:8080/image/turtle9.png"
+                  icon:"http://docturtle.site/image/turtle9.png"
               });
           }else {
               alert("알람 허용이 거부되었습니다.")
@@ -55,7 +55,6 @@ function fixAlarm(){
 
 
 const CameraCom = () => { 
-    const [cameraActive, setCameraActive] = useState(true);
     const webcamRef = useRef(null);
     const canvasRef = useRef(null);
     let alarmTimeout = useRef(null);
