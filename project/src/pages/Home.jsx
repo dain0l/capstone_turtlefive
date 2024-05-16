@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useCallback, useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { Link, useNavigate } from 'react-router-dom';
 import api from '../services/api';
@@ -155,18 +155,23 @@ function Home() {
   const [data, setData] = useState([]);
   const [data2, setData2] = useState([]);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const navigate = useNavigate();
+  const navigate = useNavigate('');
 
-  // 컴포넌트가 마운트될 때 로그인 상태를 확인
-  useEffect(() => {
-    const token = localStorage.getItem('accessToken');
-    setIsLoggedIn(!!token); // token이 있으면 true, 없으면 false로 설정
-    fetchDataforWeek();
-    fetchDataforPercentange();
-    
-  }, []);
+    const 요일변환함수 = useCallback((dayOfWeek) => {
+      const dayMap = {
+        MONDAY: '월요일',
+        TUESDAY: '화요일',
+        WEDNESDAY: '수요일',
+        THURSDAY: '목요일',
+        FRIDAY: '금요일',
+        SATURDAY: '토요일',
+        SUNDAY: '일요일'
+      };
+      return dayMap[dayOfWeek] || dayOfWeek;
+    }, []); // 요일변환함수는 의존성이 없으므로 빈 배열을 사용
 
-  const fetchDataforPercentange = async () => {
+
+  const fetchDataforPercentange =useCallback( async () => {
     try {
         const response = await api.get('/percentage');
         if (response.status < 200 || response.status >= 300) { // 상태 코드 확인
@@ -178,9 +183,9 @@ function Home() {
     } catch (error) {
         console.error("Fetch error: ", error);
     }
-};
-
-  const fetchDataforWeek = async () => {
+  },[]);
+  
+  const fetchDataforWeek = useCallback(async () => {
     try {
         const response = await api.get('/inquiry');
         if (response.status < 200 || response.status >= 300) { // 상태 코드 확인
@@ -200,20 +205,15 @@ function Home() {
     } catch (error) {
         console.error("Fetch error: ", error);
     }
-};
-  // 예시 요일 변환 함수
-  const 요일변환함수 = (dayOfWeek) => {
-    const dayMap = {
-        MONDAY: '월요일',
-        TUESDAY: '화요일',
-        WEDNESDAY: '수요일',
-        THURSDAY: '목요일',
-        FRIDAY: '금요일',
-        SATURDAY: '토요일',
-        SUNDAY: '일요일'
-    };
-    return dayMap[dayOfWeek] || dayOfWeek;
-};
+  },[요일변환함수]);
+
+  // 컴포넌트가 마운트될 때 로그인 상태를 확인
+  useEffect(() => {
+    const token = localStorage.getItem('accessToken');
+    setIsLoggedIn(!!token); // token이 있으면 true, 없으면 false로 설정
+    fetchDataforWeek();
+    fetchDataforPercentange();
+  },[fetchDataforWeek, fetchDataforPercentange]); // 함수들을 dependency array에 추가
 
   // 로그아웃 함수
   const handleLogout = async () => {
@@ -239,17 +239,14 @@ function Home() {
       console.error('Logout error:', error);
     }
 
-  
-
   };
-
 
 const handleServiceButtonClick = () => {
     if (!isLoggedIn) {
         alert('로그인 후 이용해주세요');
         navigate("/login");
     } else {
-      navigate("/webcam");
+        navigate("/webcam");
     }
 };
   // API로부터 데이터를 성공적으로 받아온 경우, 데이터를 화면에 표시합니다.
@@ -257,7 +254,7 @@ const handleServiceButtonClick = () => {
         <div>
             <Container>
             <HeaderContainer>
-                <Logo to="/register">TurtleFive</Logo>
+                <Logo to="/register">DocTurtle</Logo>
                 <NavigationWrapper>
                     {/* <StyledLink to="/inquiry">1week-chart</StyledLink>
                     <StyledLink to="#">contact</StyledLink> */}
@@ -272,11 +269,8 @@ const handleServiceButtonClick = () => {
                     <StyledLink to="/explain">explain</StyledLink> 
                     </NavigationWrapper>
         </HeaderContainer>
-
             <RectangleContainer>
-               <Link to="/webcam">
-                <StyledButton >자세교정 서비스 이용하기</StyledButton>
-               </Link>
+               <StyledButton onClick={handleServiceButtonClick} >자세교정 서비스 이용하기</StyledButton>
             </RectangleContainer>
             
             <RectangleContainer>
@@ -323,7 +317,8 @@ const handleServiceButtonClick = () => {
             {isLoggedIn && ( // 로그인 상태일 때만 아래 컨텐츠를 렌더링
         <Row>
           {/* 컨테이너 1 */}
-          <Link to="/???" style={{ width: '20%', marginRight: '3%' ,textDecoration: 'none', color: 'black'}}>
+        <div style={{ width: '20%', marginRight: '3%' ,textDecoration: 'none', color: 'black'}}>
+
           <Rectangle2Container>
             <div style={{ padding: '20px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
               <h2>{data.name}님의 자세 비율👏</h2>
@@ -340,9 +335,8 @@ const handleServiceButtonClick = () => {
               </div>
             </div>
           </Rectangle2Container>
+          </div>
 
-          </Link>
-          
           {/* 컨테이너 2 */}
           <Link to="/inquiry" style={{ width: '77%', textDecoration: 'none', color: 'black' }}>
             <Rectangle2Container>

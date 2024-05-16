@@ -6,7 +6,7 @@ function AgreePage() {
     const [agreeAll, setAgreeAll] = useState(false);
     const [agreeTerms, setAgreeTerms] = useState(false);
     const [agreePrivacy, setAgreePrivacy] = useState(false);
-    const [dateTime, setDateTime] = useState(new Date());
+    const [dateTime] = useState(new Date());
 
     const formatDate = (date) => {
         const year = date.getFullYear();
