@@ -258,8 +258,6 @@ const handleServiceButtonClick = () => {
     }
 };
   // API로부터 데이터를 성공적으로 받아온 경우, 데이터를 화면에 표시합니다.
-  if (!data) return <div>Loading...</div>; // 데이터가 없는 경우 로딩 표시
-
     return (
         <div>
             <Container>
