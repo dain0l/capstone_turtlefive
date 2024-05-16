@@ -37,7 +37,7 @@ function Turtle() {
 const sendToWebcamlog = async () =>{
     const endTime = formatLocalDateToISOString;
     try{
-        const response = await api.post('/webacam/log',{
+        const response = await api.post('/webcam/log',{
             startTime: startTime,
             endTime : endTime
         });
@@ -51,13 +51,7 @@ const sendToWebcamlog = async () =>{
     navigator('/home');
 };
 
-//수정
-const stopCamera = () => {
-    
-};
-
   const handleStopCamera = () => {
-    stopCamera(); // 카메라 중지 함수 호출
     sendToWebcamlog(); // 종료 시 로그 전송 함수 호출
 };
 //수정
