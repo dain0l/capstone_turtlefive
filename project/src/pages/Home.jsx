@@ -254,7 +254,7 @@ const handleServiceButtonClick = () => {
         alert('로그인 후 이용해주세요');
         navigate("/login");
     } else {
-        // 서비스 이용 로직 구현
+      navigate("/webcam");
     }
 };
   // API로부터 데이터를 성공적으로 받아온 경우, 데이터를 화면에 표시합니다.
