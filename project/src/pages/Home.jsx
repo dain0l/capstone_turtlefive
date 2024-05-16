@@ -158,6 +158,7 @@ const StyledButton = styled.button`
 
 function Home() {
   // 로그인 상태를 관리하는 상태 변수
+  const [data, setData] = useState([]);
   const [data2, setData2] = useState([]);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
@@ -165,32 +166,46 @@ function Home() {
   useEffect(() => {
     const token = localStorage.getItem('accessToken');
     setIsLoggedIn(!!token); // token이 있으면 true, 없으면 false로 설정
-
-    const fetchData = async () => {
-      try {
-          const response = await api.get('/inquiry');
-          if (response.status < 200 || response.status >= 300) { // 상태 코드 확인
-              throw new Error('Network response was not ok');
-          }
-          const data = response.data;
-          if (data) {
-              const transformedData = data.map(item => ({
-                  ...item,
-                  day: 요일변환함수(item.dayOfWeek),
-                  time: item.webcamDuration,
-                  알림빈도수: item.alarmCount,
-                  name: item.name
-              }));
-              setData2(transformedData);
-          }
-      } catch (error) {
-          console.error("Fetch error: ", error);
-      }
-  };
-
-  fetchData();
+    fetchDataforWeek();
+    fetchDataforPercentange();
+    
   }, []);
 
+  const fetchDataforPercentange = async () => {
+    try {
+        const response = await api.get('/percentage');
+        if (response.status < 200 || response.status >= 300) { // 상태 코드 확인
+            throw new Error('Network response was not ok');
+        }
+        const data = response.data;
+        setData(data);
+        
+    } catch (error) {
+        console.error("Fetch error: ", error);
+    }
+};
+
+  const fetchDataforWeek = async () => {
+    try {
+        const response = await api.get('/inquiry');
+        if (response.status < 200 || response.status >= 300) { // 상태 코드 확인
+            throw new Error('Network response was not ok');
+        }
+        const data = response.data;
+        if (data) {
+            const transformedData = data.map(item => ({
+                ...item,
+                day: 요일변환함수(item.dayOfWeek),
+                time: item.webcamDuration,
+                알림빈도수: item.alarmCount,
+                name: item.name
+            }));
+            setData2(transformedData);
+        }
+    } catch (error) {
+        console.error("Fetch error: ", error);
+    }
+};
   // 예시 요일 변환 함수
   const 요일변환함수 = (dayOfWeek) => {
     const dayMap = {
@@ -240,6 +255,8 @@ const handleServiceButtonClick = () => {
         // 서비스 이용 로직 구현
     }
 };
+  // API로부터 데이터를 성공적으로 받아온 경우, 데이터를 화면에 표시합니다.
+  if (!data) return <div>Loading...</div>; // 데이터가 없는 경우 로딩 표시
 
     return (
         <div>
@@ -308,23 +325,40 @@ const handleServiceButtonClick = () => {
         </Swiper>
             </RectangleContainer>
 
+            {isLoggedIn && ( // 로그인 상태일 때만 아래 컨텐츠를 렌더링
         <Row>
-          {/* chart를 간략하게 보여주는 컨테이너1,2 */}
           {/* 컨테이너 1 */}
-          <Link to="/???" style={{ width: '20%', marginRight: '3%' }}>
-            <Rectangle2Container></Rectangle2Container>
+          <Link to="/???" style={{ width: '20%', marginRight: '3%' ,textDecoration: 'none', color: 'black'}}>
+          <Rectangle2Container>
+            <div style={{ padding: '20px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+              <h2>{data.name}님의 자세 비율</h2>
+              <div style={{ width: '100%', backgroundColor: '#eee', borderRadius: '10px', overflow: 'hidden' }}>
+                <div style={{ width: `${data.posturePercentage}%`, backgroundColor: '#4CAF50', textAlign: 'right', lineHeight: '40px', borderRadius: '10px 0 0 10px', color: 'white', paddingRight: '10px' }}>
+                  {data.posturePercentage}%
+                </div>
+              </div>
+              <h3 style={{ marginTop: '20px' }}>총 이용자 중에서 상위 {data.rankPercentage}%</h3>
+              <div style={{ width: '100%', backgroundColor: '#eee', borderRadius: '10px', overflow: 'hidden' }}>
+                <div style={{ width: `${data.rankPercentage}%`, backgroundColor: '#FFA07A', textAlign: 'right', lineHeight: '40px', borderRadius: '10px 0 0 10px', color: 'white', paddingRight: '10px' }}>
+                  {data.rankPercentage}%
+                </div>
+              </div>
+            </div>
+          </Rectangle2Container>
+
           </Link>
+          
           {/* 컨테이너 2 */}
-          <Link to="/inquiry" style={{ width: '77%',  textDecoration: 'none' , color: 'black' }}>
+          <Link to="/inquiry" style={{ width: '77%', textDecoration: 'none', color: 'black' }}>
             <Rectangle2Container>
-            <TextContainer>
-                  {data2.length > 0 ? (
-                    <h2 style={{ margin: 0 }}>  🦖{data2[0].name}님의 일주일간의 알람 빈도수입니다.</h2>
-                  ) : (
-                    <h2 style={{ margin: 0 }}> </h2>
-                  )}
-            </TextContainer>
-              <ResponsiveContainer height="80%" width="80%" >
+              <TextContainer>
+                {data2.length > 0 ? (
+                  <h2 style={{ margin: 0 }}>🦖{data2[0].name}님의 일주일간의 알람 빈도수입니다.</h2>
+                ) : (
+                  <h2 style={{ margin: 0 }}>이 서비스는 로그인이 필요합니다.</h2>
+                )}
+              </TextContainer>
+              <ResponsiveContainer height="80%" width="80%">
                 <BarChart data={data2} margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
                   <XAxis dataKey="day" scale="point" padding={{ left: 70, right: 10 }} />
                   <YAxis />
@@ -335,6 +369,7 @@ const handleServiceButtonClick = () => {
             </Rectangle2Container>
           </Link>
         </Row>
+      )}
         <StyledFooter>
           <p>&copy; 2024 docturtle website</p>
         </StyledFooter>
