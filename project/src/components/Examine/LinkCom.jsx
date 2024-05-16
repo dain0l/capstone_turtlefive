@@ -110,7 +110,7 @@ function LinkCom() {
                         <iframe 
                             width="420" 
                             height="250"  
-                            src="https://youtu.be/odmaK53mr68?si=rBN0neOSDXbm1DzO" 
+                            src="https://www.youtube.com/embed/odmaK53mr68?si=NpiiJRGsZX9y-MfT" 
                             title="YouTube video player" 
                             frameborder="0" 
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
@@ -121,7 +121,7 @@ function LinkCom() {
                         <iframe 
                             width="420" 
                             height="250" 
-                            src="https://www.youtube.com/embed/plKOdIiiKEQ?si=90k9HOI_AGvYlTgb" 
+                            src="https://www.youtube.com/embed/FMOISIlhLEY?si=TxJW2qbjEKNqQmWE" 
                             title="YouTube video player" 
                             frameborder="0" 
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
@@ -143,7 +143,7 @@ function LinkCom() {
                         <iframe 
                             width="420" 
                             height="250" 
-                            src="https://www.youtube.com/embed/D54J2mfCME4?si=CtHZ9F1uDaI09J3b" 
+                            src="https://www.youtube.com/embed/6iDjVxo0wxw?si=9QqS6sgC7m2YKvtU"
                             title="YouTube video player" 
                             frameborder="0" 
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
@@ -172,7 +172,8 @@ function LinkCom() {
                         <iframe 
                             width="420" 
                             height="250" 
-                            src="https://www.youtube.com/watch?v=vvHZhhI9TdE" 
+                            src="https://www.youtube.com/embed/zRaPfQUaSUY?si=e0vBssA2BYJYLJV0" 
+                            
                             title="YouTube video player" 
                             frameborder="0" 
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
@@ -194,40 +195,40 @@ function LinkCom() {
                         <iframe 
                             width="420" 
                             height="250"  
-                            src="https://www.youtube.com/embed/JBa6eGtLDIM?si=e5vLP0SWMGCMq9wr" 
-                            title="YouTube video player" 
-                            frameborder="0" 
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                            allowfullscreen
-                        ></iframe>
-                    </SwiperSlide>
-                    <SwiperSlide style={slideStyle}>
-                        <iframe 
-                            width="420" 
-                            height="250" 
-                            src="https://www.youtube.com/embed/plKOdIiiKEQ?si=90k9HOI_AGvYlTgb" 
-                            title="YouTube video player" 
-                            frameborder="0" 
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                            allowfullscreen
-                        ></iframe>
-                    </SwiperSlide>
-                    <SwiperSlide style={slideStyle}>
-                        <iframe 
-                            width="420" 
-                            height="250" 
-                            src="https://www.youtube.com/embed/I81IixZqFKY?si=hl2RL20qm_2jdo31" 
-                            title="YouTube video player" 
-                            frameborder="0" 
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                            allowfullscreen
-                        ></iframe>
-                    </SwiperSlide>
-                    <SwiperSlide style={slideStyle}>
-                        <iframe 
-                            width="420" 
-                            height="250" 
                             src="https://www.youtube.com/embed/D54J2mfCME4?si=CtHZ9F1uDaI09J3b" 
+                            title="YouTube video player" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen
+                        ></iframe>
+                    </SwiperSlide>
+                    <SwiperSlide style={slideStyle}>
+                        <iframe 
+                            width="420" 
+                            height="250" 
+                            src="https://www.youtube.com/embed/I1AezPD7Ekw?si=sXSdWCUoUAbzZCf_" 
+                            title="YouTube video player" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen
+                        ></iframe>
+                    </SwiperSlide>
+                    <SwiperSlide style={slideStyle}>
+                        <iframe 
+                            width="420" 
+                            height="250" 
+                            src="https://www.youtube.com/embed/iyTd09JlB0k?si=DusRUK8klh6G35kf" 
+                            title="YouTube video player" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen
+                        ></iframe>
+                    </SwiperSlide>
+                    <SwiperSlide style={slideStyle}>
+                        <iframe 
+                            width="420" 
+                            height="250" 
+                            src="https://www.youtube.com/embed/vvHZhhI9TdE?si=k-M3kqtkBzHeyHXJ" 
                             title="YouTube video player" 
                             frameborder="0" 
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
@@ -237,6 +238,8 @@ function LinkCom() {
                 </Swiper>
                 </div>
             )}
+
+
             {selectedPlace === '야외' && (
                 // 여기에는 야외에 해당하는 동영상을 표시하는 코드 작성
                 <div style={boxStyle}>

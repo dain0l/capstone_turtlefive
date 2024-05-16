@@ -212,6 +212,14 @@ function Home() {
     }
 };
 
+const handleServiceButtonClick = () => {
+    if (!isLoggedIn) {
+        alert('로그인 후 이용해주세요');
+    } else {
+        // 서비스 이용 로직 구현
+    }
+};
+
     return (
         <div>
             <Container>
@@ -234,9 +242,9 @@ function Home() {
             </HeaderContainer>
 
             <RectangleContainer>
-                <Link to="/webcam">
-                    <StyledButton>자세교정 서비스 이용하기</StyledButton>
-                </Link>
+                {/*<Link to="/webcam">*/}
+                <StyledButton onClick={handleServiceButtonClick}>자세교정 서비스 이용하기</StyledButton>
+                {/*</Link>*/}
             </RectangleContainer>
             
             <RectangleContainer>
