@@ -116,8 +116,8 @@ const ChartPage = () => {
     };
 
     // 여기에서 최대값과 평균값 계산
-    let maxData = data2.length > 0 ? data2.reduce((prev, current) => (prev.거북목감지 > current.거북목감지) ? prev : current) : null;
-    let totalUV = data2.reduce((acc, current) => acc + current.거북목감지, 0);
+    let maxData = data2.length > 0 ? data2.reduce((prev, current) => (prev.알림빈도수 > current.알림빈도수) ? prev : current) : null;
+    let totalUV = data2.reduce((acc, current) => acc + current.알림빈도수, 0);
     let averageUV = data2.length > 0 ? totalUV / data2.length : 0;
 
     // 여기에서 웹캠에 대한 총합, 평균값 계산

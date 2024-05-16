@@ -46,7 +46,7 @@ function LogoutPage() {
    useEffect(() => {
        const token = localStorage.getItem('accessToken');
        setIsLoggedIn(!!token); // token이 있으면 true, 없으면 false로 설정
-   }, []);
+   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <LogoutContainer>
