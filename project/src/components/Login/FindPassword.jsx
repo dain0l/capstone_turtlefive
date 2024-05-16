@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import styled from 'styled-components';
-import { Link , useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 function FindPassword() {
   const [name, setUsername] = useState('');
@@ -8,7 +7,6 @@ function FindPassword() {
   const [email, setEmail] = useState('');
   const navigator = useNavigate();
   const [message, setMessage] = useState('');
-  const [password, setPassword] = useState('');
 
   const handleEmailChange = (event) => {
     setEmail(event.target.value);

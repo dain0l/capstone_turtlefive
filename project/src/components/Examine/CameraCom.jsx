@@ -8,7 +8,7 @@ import { checkZValues } from "../Algorithms/checkZValues";
 import { checkDistance } from "../Algorithms/checkDistance"; 
 import { checkAngle } from "../Algorithms/checkAngle";
 import api from '../../services/api';
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useRef, useEffect } from 'react';
 
 
 const CameraContainer = styled.div`
@@ -29,12 +29,10 @@ function formatLocalDateToISOString() {
 }
 
 function fixAlarm(){
-  //let date = new Date().toLocaleString();
-  let notification;
   let notificationPermission = Notification.permission;
   if (notificationPermission === "granted") {
       //Notification을 이미 허용한 사람들에게 보여주는 알람창
-      notification = new Notification('You have to fix your pose!!', {
+      new Notification('You have to fix your pose!!', {
           body: '올바른 자세를 유지해주세요.',
           icon:"http://docturtle.site/image/turtle9.png"
       });
@@ -42,7 +40,7 @@ function fixAlarm(){
       //Notification을 거부했을 경우 재 허용 창 띄우기
       Notification.requestPermission(function (permission) {
           if (permission === "granted") {
-              notification = new Notification('You have to fix your pose!!', {
+              new Notification('You have to fix your pose!!', {
                   body: '올바른 자세를 유지해주세요.',
                   icon:"http://docturtle.site/image/turtle9.png"
               });
@@ -52,6 +50,7 @@ function fixAlarm(){
       });
   }
 }
+
 
 
 const CameraCom = () => { 
