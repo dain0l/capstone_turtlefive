@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import api from '../services/api';
 
 import turtle1 from '../img/turtle1.jpg';
@@ -161,6 +161,7 @@ function Home() {
   const [data, setData] = useState([]);
   const [data2, setData2] = useState([]);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const navigate = useNavigate();
 
   // 컴포넌트가 마운트될 때 로그인 상태를 확인
   useEffect(() => {
@@ -251,6 +252,7 @@ function Home() {
 const handleServiceButtonClick = () => {
     if (!isLoggedIn) {
         alert('로그인 후 이용해주세요');
+        navigate("/login");
     } else {
         // 서비스 이용 로직 구현
     }
@@ -331,13 +333,13 @@ const handleServiceButtonClick = () => {
           <Link to="/???" style={{ width: '20%', marginRight: '3%' ,textDecoration: 'none', color: 'black'}}>
           <Rectangle2Container>
             <div style={{ padding: '20px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
-              <h2>{data.name}님의 자세 비율</h2>
+              <h2>{data.name}님의 자세 비율👏</h2>
               <div style={{ width: '100%', backgroundColor: '#eee', borderRadius: '10px', overflow: 'hidden' }}>
                 <div style={{ width: `${data.posturePercentage}%`, backgroundColor: '#4CAF50', textAlign: 'right', lineHeight: '40px', borderRadius: '10px 0 0 10px', color: 'white', paddingRight: '10px' }}>
                   {data.posturePercentage}%
                 </div>
               </div>
-              <h3 style={{ marginTop: '20px' }}>총 이용자 중에서 상위 {data.rankPercentage}%</h3>
+              <h3 style={{ marginTop: '20px' }}>총 이용자 중에서 👑상위{data.rankPercentage}%</h3>
               <div style={{ width: '100%', backgroundColor: '#eee', borderRadius: '10px', overflow: 'hidden' }}>
                 <div style={{ width: `${data.rankPercentage}%`, backgroundColor: '#FFA07A', textAlign: 'right', lineHeight: '40px', borderRadius: '10px 0 0 10px', color: 'white', paddingRight: '10px' }}>
                   {data.rankPercentage}%
@@ -355,7 +357,7 @@ const handleServiceButtonClick = () => {
                 {data2.length > 0 ? (
                   <h2 style={{ margin: 0 }}>🦖{data2[0].name}님의 일주일간의 알람 빈도수입니다.</h2>
                 ) : (
-                  <h2 style={{ margin: 0 }}>이 서비스는 로그인이 필요합니다.</h2>
+                  <h2 style={{ margin: 0 }}>..로딩중</h2>
                 )}
               </TextContainer>
               <ResponsiveContainer height="80%" width="80%">
