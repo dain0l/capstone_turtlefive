@@ -321,13 +321,13 @@ const handleServiceButtonClick = () => {
 
           <Rectangle2Container>
             <div style={{ padding: '20px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
-              <h2>{data.name}님의 자세 비율👏</h2>
+              <h3>오늘 {data.name}님의 자세 유지 비율👏</h3>
               <div style={{ width: '100%', backgroundColor: '#eee', borderRadius: '10px', overflow: 'hidden' }}>
                 <div style={{ width: `${data.posturePercentage}%`, backgroundColor: '#4CAF50', textAlign: 'right', lineHeight: '40px', borderRadius: '10px 0 0 10px', color: 'white', paddingRight: '10px' }}>
                   {data.posturePercentage}%
                 </div>
               </div>
-              <h3 style={{ marginTop: '20px' }}>총 이용자 중에서 👑상위{data.rankPercentage}%</h3>
+              <h3 style={{ marginTop: '20px' }}>오늘 총 이용자 중에서 👑상위{data.rankPercentage}%</h3>
               <div style={{ width: '100%', backgroundColor: '#FFA07A', borderRadius: '10px', overflow: 'hidden' }}>
                 <div style={{ width: `${data.rankPercentage}%`, backgroundColor: '#eee', textAlign: 'right', lineHeight: '40px', borderRadius: '10px 0 0 10px', color: 'black', paddingRight: '10px' }}>
                   {data.rankPercentage}%
