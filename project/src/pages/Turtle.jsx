@@ -32,22 +32,23 @@ function formatLocalDateToISOString() {
 
 function Turtle() {
     const navigator = useNavigate();
-    const [startTime] = useState(formatLocalDateToISOString);
+    const [startTime] = useState(formatLocalDateToISOString());
 
 const sendToWebcamlog = async () =>{
-    const endTime = formatLocalDateToISOString;
+    const endTime = formatLocalDateToISOString();
+    console.log("startTime:"+startTime,endTime)
     try{
         const response = await api.post('/webcam/log',{
-            startTime: startTime,
-            endTime : endTime
+          startTime: startTime,
+          endTime: endTime
         });
-        if(!response.ok){
-            throw new Error('Network response was not ok');
+        if (response.status < 200 || response.status >= 300) {
+          throw new Error('Network response was not ok');
         }
-        console.log('weblog sent successfully');
-    } catch(error){
-        console.error("Failed to send webcamlog",error);
-    }
+        console.log('Webcam log sent successfully');
+      } catch (error) {
+        console.error('Failed to send Webcam log', error);
+      }
     navigator('/home');
 };
 
@@ -89,7 +90,7 @@ const containerStyle = {
 
 return (
     <div style={backgroundContainerStyle}>
-      <div style={titleStyle}>거북목 검사하기</div>
+      <div style={titleStyle}>자세 교정 시스템</div>
       <div style={containerStyle}>
         {/* CameraCom 컴포넌트를 왼쪽에 배치합니다. */}
         <CameraCom />
