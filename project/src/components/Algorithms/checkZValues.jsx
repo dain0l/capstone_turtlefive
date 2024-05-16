@@ -7,6 +7,6 @@ export function checkZValues(noseLandmark, shoulderMidPoint) {
 
         return distance;
         
-    } 
+    }
 }
  
