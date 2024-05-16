@@ -13,17 +13,11 @@ import turtle7 from '../img/turtle7.jpg';
 
 import {
   BarChart,
-  ComposedChart,
-  Line,
-  Area,
   Bar,
   XAxis,
   YAxis,
-  CartesianGrid,
   Tooltip,
-  Legend,
-  Scatter,
-  ResponsiveContainer,
+  ResponsiveContainer
 } from 'recharts';
 
 // import Swiper core and required modules
