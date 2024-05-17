@@ -127,7 +127,7 @@ const CameraCom = () => {
                             sendAlarmLog(); // 백엔드로 알람 로그 보내는 함수 호출
                         }
                         alarmTimeout.current = null; // 타이머 초기화
-                    }, 5000); // 10초 후 실행(테스트때문에 임의로 해둔 시간!!)
+                    }, 5000); // 5초 후 실행(테스트때문에 임의로 해둔 시간!!)
                 }
                 }else {
                   canvasCtx.font = "10px Arial";
@@ -156,8 +156,8 @@ const CameraCom = () => {
                 await holistic.send({image: webcamRef.current.video});
               }
             },
-            width: 4000,
-            height: 3800,
+            width: 1600,
+            height: 900,
           });
           camera.start();
           cameraRef.current = camera; // Camera 인스턴스를 저장할 ref 추가
@@ -188,8 +188,8 @@ const CameraCom = () => {
 
     return (
       <CameraContainer>
-        <Webcam ref={webcamRef} style={{ width: '100%', height: '100%' }} />
-        <StyledCanvas ref={canvasRef} style={{ width: '100%', height: '100%' }}/>
+        <Webcam ref={webcamRef} style={{ width: '90%', height: '100%' }} />
+        <StyledCanvas ref={canvasRef} style={{ width: '90%', height: '100%' }}/>
     </CameraContainer>
     );
   }
