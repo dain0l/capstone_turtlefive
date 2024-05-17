@@ -63,7 +63,7 @@ const Container = styled.div`
 
 const ChartDescription = styled.div`
     margin-left: 100px;
-    width: 55%; /* 설명 영역의 너비 조정 */
+    width: 65%; /* 설명 영역의 너비 조정 */
 `;
 
 const ChartPage = () => {
