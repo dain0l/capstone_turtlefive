@@ -39,8 +39,8 @@ const BottomContainer = styled.div`
 `;
 
 const LinkButtonStyle = styled(Link)`
-    color: #FFF;
-    background-color: #8fae99;
+    color: #5EAE89;
+    background-color: #E8FAF2;
     font-family: Roboto;
     font-size: 1.5rem;
     font-style: normal;
@@ -50,13 +50,15 @@ const LinkButtonStyle = styled(Link)`
     text-decoration: none;
     padding: 10px 20px;
     border-radius: 10px;
-    transition: background-color 0.3s ease;
+    border: 1px solid #5EAE89;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 추가된 box-shadow 스타일 */
 
     &:hover {
-        background-color: #638d88;
+        background-color: #C5E1A5;
+        box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15); /* hover 상태에서의 그림자 변경 */
     }
 `;
-
 
 const ProfileImage = styled.img`
     width: 100%;

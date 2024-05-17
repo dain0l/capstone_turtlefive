@@ -29,9 +29,11 @@ const StyledLink = styled(Link)`
   background-color: #DFF0D8;
   border-radius: 5px;
   margin-bottom: 20px;
+  border: 1px solid #2E7D32;  
 
   &:hover {
     background-color: #C5E1A5;
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15); /* hover 상태에서의 그림자 변경 */
   }
 `;
 
