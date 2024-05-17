@@ -327,16 +327,15 @@ const handleServiceButtonClick = () => {
                   {data.posturePercentage}%
                 </div>
               </div>
-              <h3 style={{ marginTop: '20px' }}>오늘 총 이용자 중에서 👑상위{data.rankPercentage}%</h3>
-              <div style={{ width: '100%', backgroundColor: '#FFA07A', borderRadius: '10px', overflow: 'hidden' }}>
-                <div style={{ width: `${data.rankPercentage}%`, backgroundColor: '#eee', textAlign: 'right', lineHeight: '40px', borderRadius: '10px 0 0 10px', color: 'black', paddingRight: '10px' }}>
-                  {data.rankPercentage}%
-                </div>
               </div>
-            </div>
-          </Rectangle2Container>
-          </div>
-
+              <h3 style={{ marginTop: '20px' }}>오늘 총 이용자 중에서 👑상위{data.rankPercentage < 1 ? 1 : data.rankPercentage}%</h3>
+                <div style={{ width: '100%', backgroundColor: '#FFA07A', borderRadius: '10px', overflow: 'hidden' }}>
+                  <div style={{ width: `${data.rankPercentage < 1 ? 1 : data.rankPercentage}%`, backgroundColor: '#eee', textAlign: 'right', lineHeight: '40px', borderRadius: '10px 0 0 10px', color: 'black', paddingRight: '10px' }}>
+                    {data.rankPercentage < 1 ? 1 : data.rankPercentage}%
+                  </div>
+                </div>
+                </Rectangle2Container>
+              </div>
           {/* 컨테이너 2 */}
           <Link to="/inquiry" style={{ width: '77%', textDecoration: 'none', color: 'black' }}>
             <Rectangle2Container>

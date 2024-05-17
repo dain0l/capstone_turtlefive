@@ -156,8 +156,8 @@ const CameraCom = () => {
                 await holistic.send({image: webcamRef.current.video});
               }
             },
-            width: 4000,
-            height: 3800,
+            width: 1600,
+            height: 900,
           });
           camera.start();
           cameraRef.current = camera; // Camera 인스턴스를 저장할 ref 추가
@@ -188,8 +188,8 @@ const CameraCom = () => {
 
     return (
       <CameraContainer>
-        <Webcam ref={webcamRef} style={{ width: '100%', height: '100%' }} />
-        <StyledCanvas ref={canvasRef} style={{ width: '100%', height: '100%' }}/>
+        <Webcam ref={webcamRef} style={{ width: '90%', height: '100%' }} />
+        <StyledCanvas ref={canvasRef} style={{ width: '90%', height: '100%' }}/>
     </CameraContainer>
     );
   }

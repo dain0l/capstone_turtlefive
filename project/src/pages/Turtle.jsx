@@ -66,25 +66,27 @@ const backgroundContainerStyle = {
 };
 
 const titleStyle = {
-    //backgroundColor: '#f5f1ee84',
-    color: "#333",
-    fontFamily: "Roboto",
-    fontSize: "2.5rem",
-    fontStyle: "normal",
-    fontWeight: "600",
-    lineHeight: "normal",
-    marginTop: "50px",
-    marginBottom: "2.19rem",
+  //backgroundColor: '#f5f1ee84',
+  color: "#288A72",
+  fontFamily: "Roboto",
+  fontSize: "2.5rem",
+  fontStyle: "normal",
+  fontWeight: "600",
+  lineHeight: "normal",
+  marginTop: "50px",
+  marginBottom: "2.19rem",
 };
 
+
 const containerStyle = {
-    display: 'flex', // flexbox 사용
-    justifyContent: 'space-around',
-    alignItems: 'center', // 수직 가운데 정렬
-    width: '70%', // 부모 요소의 너비를 화면 너비의 70%로 지정
-    margin: '0 auto', // 수평 가운데 정렬
-    marginLeft: '10%', // 좌측 여백 추가
+  display: 'flex', // flexbox 사용
+  justifyContent: 'space-around',
+  alignItems: 'center', // 수직 가운데 정렬
+  width: '85%', // 부모 요소의 너비를 화면 너비의 70%로 지정
+  margin: '0 auto', // 수평 가운데 정렬
+  gap: '20px', // 컴포넌트 간 간격 추가
 };
+
 
 
 
