@@ -19,6 +19,7 @@ const Container = styled.div`
     flex-direction: column;
     align-items: center;
     border-radius: 8px;
+    overflow-x: hidden;
 `;
 
 const ProfileImageContainer = styled.div`
@@ -75,6 +76,13 @@ const AltText = styled.span`
     font-size: 1rem;
     white-space: nowrap; /* 텍스트가 길어도 한 줄로 표시되도록 설정 */
 `;
+
+const UserInfoContainer = styled.span`
+
+    align-items: flex-start; /* 좌측 정렬 */
+    max-width: 600px; /* 최대 넓이 설정 */
+`;
+
 
 /*
 const Name = styled.h2`
@@ -146,11 +154,14 @@ function MyPage() {
                 <ProfileImage src={imglogo} alt="" />
                 <AltText> DOCTURTLE </AltText>
             </ProfileImageContainer>
-            <p>Name: {userInfo?.name}</p>
-            <p>Email: {userInfo?.email}</p>
-            <p>Phone: {userInfo?.phoneNo}</p>
+            <UserInfoContainer>
+            <p>name: {userInfo?.name}</p>
+            <p>e-mail: {userInfo?.email}</p>
+            <p>phone: {userInfo?.phoneNo}</p>
             <p>알림빈도수: {userInfo?.alarmCount}</p>
             <p>웹캠 실행시간: {userInfo?.webcamDuration}분</p>
+
+            </UserInfoContainer>
                     
             {/* 추가적인 사용자 정보 */}
             <BottomContainer>
