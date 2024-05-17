@@ -259,7 +259,7 @@ const handleServiceButtonClick = () => {
         <div>
             <Container>
             <HeaderContainer>
-                <Logo to="/register">DocTurtle</Logo>
+                <Logo to="/register">Doc. Turtle</Logo>
                 <NavigationWrapper>
                     {/* <StyledLink to="/inquiry">1week-chart</StyledLink>
                     <StyledLink to="#">contact</StyledLink> */}
