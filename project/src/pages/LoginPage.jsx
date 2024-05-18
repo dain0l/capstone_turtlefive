@@ -91,20 +91,17 @@ const LoginPage = () => {
                 email: email,
                 password: password
             });
-            const data = response.data;
-            if (response.status < 200 || response.status >= 300){
-                throw new Error('Network response was not ok');
-
-            } else {
+            const data = await response.data;
+            if (response.status >= 200 || response.status < 300) {
                 navigate('/home');//홈화면으로 이동
                 localStorage.setItem('accessToken', data.accessToken)
+
+            } else {
+                setLoginMessage(data.message || '로그인에 실패했습니다. 아이디와 비밀번호를 다시 한번 확인해주세요.'); // 백엔드에서 반환한 오류 메시지 표시
             }
         } catch (error) {
-            if(error.status >= 400 || error.status < 500){
-                setLoginMessage("아이디와 비밀번호를 다시 확인해주세요.")
-            }else{
-                setLoginMessage(error.data.message || "아이디와 비밀번호를 다시 확인해주세요.")
-            }
+            console.error('로그인 오류:', error);
+            setLoginMessage('로그인에 실패했습니다. 아이디와 비밀번호를 다시 한번 확인해주세요.');
         }
     };
 
