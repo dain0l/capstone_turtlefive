@@ -2,7 +2,7 @@ const { createProxyMiddleware } = require('http-proxy-middleware');
 
 module.exports = function(app) {
   app.use("/api", createProxyMiddleware({
-    target: 'httsp://docturtle.site/',
+    target: 'httsp://docturtle.site:443/',
     changeOrigin: true,
     pathRewrite: {'^/api' : ''}
   }));
