@@ -7,7 +7,7 @@ const api = axios.create({
     'Content-Type': 'application/json',
     
   },
-  credentials: 'include'
+     withCredentials: true
 });
 
 // 요청 인터셉터 추가
