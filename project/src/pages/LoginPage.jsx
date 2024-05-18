@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate  } from 'react-router-dom';
 import styled from 'styled-components';
+import api from '../services/api';
 
 const StyledLink = styled(Link)`
     color: #000000;
@@ -86,16 +87,12 @@ const LoginPage = () => {
     const handleLogin = async (e) => {
         e.preventDefault();
         try {
-            const response = await fetch('/login', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ email, password }),
-                credentials: 'include',
+            const response = await api.post('/login', {
+                email: email,
+                password: password
             });
-            const data = await response.json();
-            if (response.ok) {
+            const data = await response.data;
+            if (response.status >= 200 || response.status < 300) {
                 navigate('/home');//홈화면으로 이동
                 localStorage.setItem('accessToken', data.accessToken)
 

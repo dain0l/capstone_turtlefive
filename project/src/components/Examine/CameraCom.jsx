@@ -177,7 +177,7 @@ const CameraCom = () => {
     const response = await api.post('/webcam/alarmlog', {
       dateTime: currentTime,
     });
-    if (response.status < 200 || response.status >= 300) {
+    if (response.status <= 200 || response.status >= 300) {
       throw new Error('Network response was not ok');
     }
     console.log('Alarm log sent successfully');
