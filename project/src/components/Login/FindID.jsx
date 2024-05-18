@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import api from '../../services/api';
 
 function FindID() {
   const [name, setUsername] = useState('');
@@ -14,14 +15,11 @@ function FindID() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await fetch('/findID', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ name, phoneNo }),
+      const response = await api.post('/findID', {
+        name: name, 
+        phoneNo: phoneNo
       });
-      if (!response.ok) {
+      if (response.status < 200 || response.status >= 300) {
         throw new Error('회원 정보를 조회할 수 없습니다.');
       }
       const data = await response.json();
