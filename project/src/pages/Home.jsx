@@ -176,7 +176,8 @@ function Home() {
     }, []); // 요일변환함수는 의존성이 없으므로 빈 배열을 사용
 
 
-  const fetchDataforPercentange =useCallback( async () => {
+  const fetchData =useCallback( async () => {
+    
     try {
         const response = await api.get('/percentage');
         if (response.status < 200 || response.status >= 300) { // 상태 코드 확인
@@ -184,21 +185,14 @@ function Home() {
         }
         const data = response.data;
         setData(data);
-        
-    } catch (error) {
-        console.error("Fetch error: ", error);
-    }
-  },[]);
-  
-  const fetchDataforWeek = useCallback(async () => {
-    try {
-        const response = await api.get('/inquiry');
-        if (response.status < 200 || response.status >= 300) { // 상태 코드 확인
+
+        const response2 = await api.get('/inquiry');
+        if (response2.status < 200 || response2.status >= 300) { // 상태 코드 확인
             throw new Error('Network response was not ok');
         }
-        const data = response.data;
-        if (data) {
-            const transformedData = data.map(item => ({
+        const data2 = response2.data;
+        if (data2) {
+            const transformedData = data2.map(item => ({
                 ...item,
                 day: 요일변환함수(item.dayOfWeek),
                 time: item.webcamDuration,
@@ -207,18 +201,22 @@ function Home() {
             }));
             setData2(transformedData);
         }
+        
     } catch (error) {
         console.error("Fetch error: ", error);
+        if (error.response && (error.response.status === 401 || error.response.status === 403)) {
+          navigate("/login");
+        }
     }
-  },[요일변환함수]);
+  },[navigate, 요일변환함수]);
+  
 
   // 컴포넌트가 마운트될 때 로그인 상태를 확인
   useEffect(() => {
     const token = localStorage.getItem('accessToken');
     setIsLoggedIn(!!token); // token이 있으면 true, 없으면 false로 설정
-    fetchDataforWeek();
-    fetchDataforPercentange();
-  },[fetchDataforWeek, fetchDataforPercentange]); // 함수들을 dependency array에 추가
+    fetchData();
+  },[fetchData]); // 함수들을 dependency array에 추가
 
   // 로그아웃 함수
   const handleLogout = async () => {
