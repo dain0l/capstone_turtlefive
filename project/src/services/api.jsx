@@ -5,6 +5,7 @@ const api = axios.create({
   baseURL: 'https://docturtle.site/', // 서버 등록시 수정 예정!!!
   headers: {
     'Content-Type': 'application/json',
+    credentials: 'include'
   },
 });
 
