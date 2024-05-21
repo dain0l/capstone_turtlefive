@@ -87,9 +87,12 @@ const LoginPage = () => {
     const handleLogin = async (e) => {
         e.preventDefault();
         try {
-            const response = await api.post('/login', {
-                email: email,
-                password: password
+            const response = await fetch('/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ email, password }),
             });
             const data = await response.data;
             if (response.status >= 200 || response.status < 300) {
