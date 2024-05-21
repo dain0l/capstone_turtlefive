@@ -8,9 +8,9 @@ import styled from 'styled-components';
 
 const Button = styled.button`
   padding: 10px 20px;
-  background-color: #8fae99; /* Green */
+  background-color: #E8FAF2; /* Green */
   border: none;
-  color: white;
+  color: #5EAE89;
   text-align: center;
   text-decoration: none;
   display: inline-block;
@@ -18,9 +18,12 @@ const Button = styled.button`
   margin: 10px 2px;
   cursor: pointer;
   border-radius: 4px;
+  border: 1px solid #5EAE89;  
+  margin-bottom: 30px;  /* 하단 여백 추가 */
   
   &:hover {
-    background-color: #638d88;
+    background-color: #C5E1A5;
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15); /* hover 상태에서의 그림자 변경 */
   }
 `;
 
