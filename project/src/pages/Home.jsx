@@ -204,7 +204,7 @@ function Home() {
         
     } catch (error) {
         console.error("Fetch error: ", error);
-        if (error.response && (error.response.status === 401 || error.response.status === 403)) {
+        if (error.response && (error.response.status === 401)) {
           navigate("/login");
         }
     }
