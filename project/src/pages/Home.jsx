@@ -205,7 +205,7 @@ function Home() {
     } catch (error) {
         console.error("Fetch error: ", error);
         if (error.response && (error.response.status === 401 || error.response.status === 403)) {
-          navigate("/pleaseLogin");
+          navigate("/login");
         }
     }
   },[navigate, 요일변환함수]);
