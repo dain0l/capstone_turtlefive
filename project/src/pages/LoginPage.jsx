@@ -87,10 +87,11 @@ const LoginPage = () => {
     const handleLogin = async (e) => {
         e.preventDefault();
         try {
-            const response = await api.post('/login', e, {
-                headers: { "Content-Type": "application/json" },
+            const response = await api.post('/login', {
+                email,
+                password
             });
-            const data = response.data.accessToken;
+            const data = response.data;
             if (response.status >= 200 && response.status < 300) {
                 navigate('/home');//홈화면으로 이동
                 localStorage.setItem('accessToken', data.accessToken)
