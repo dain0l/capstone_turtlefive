@@ -114,7 +114,7 @@ const LoginPage = () => {
              </header>
             <div style={styles.loginContainer} className="login-container">
                 <h2 style={styles.h2}>로그인</h2>
-                <form onSubmit={handleLogin} method='GET'>
+                <form onSubmit={handleLogin} method='POST'>
                     <input
                         style={styles.input}
                         type="text"
