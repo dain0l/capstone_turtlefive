@@ -87,7 +87,7 @@ const LoginPage = () => {
     const handleLogin = async (e) => {
         e.preventDefault();
         try {
-            const response = await api.post('/login', body, {
+            const response = await api.post('/login', e, {
                 headers: { "Content-Type": "application/json" },
             });
             const data = response.data.accessToken;
