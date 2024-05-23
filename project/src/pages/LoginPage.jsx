@@ -87,14 +87,24 @@ const LoginPage = () => {
     const handleLogin = async (e) => {
         e.preventDefault();
         try {
+            // const response = await api.post('/login', {
+            //     email,
+            //     password
+            // });
             const response = await api.post('/login', {
-                email,
-                password
+                    email,
+                    password
+            }, {
+                    headers: { "Content-Type": "application/json" },
             });
+
             const data = response.data;
+            api.defaults.headers.common["Authorization"] = 'Bearer ${token}';
+            // localStorage에 저장
+            localStorage.setItem("beMyStoryToken", data.accessToken);
             if (response.status >= 200 && response.status < 300) {
                 navigate('/home');//홈화면으로 이동
-                localStorage.setItem('accessToken', data.accessToken)
+                //localStorage.setItem('accessToken', data.accessToken)
             } else {
                 setLoginMessage(data.message || '로그인에 실패했습니다. 아이디와 비밀번호를 다시 한번 확인해주세요.'); // 백엔드에서 반환한 오류 메시지 표시
             }
@@ -103,6 +113,32 @@ const LoginPage = () => {
             setLoginMessage('로그인에 실패했습니다. 아이디와 비밀번호를 다시 한번 확인해주세요.');
         }
     };
+    // const handleLogin = async (e) => {
+    //     e.preventDefault();
+    //     try {
+    //         const response = await axios.post('/login', {
+    //             email,
+    //             password
+    //         }, {
+    //             headers: { "Content-Type": "application/json" },
+    //         });
+            
+    //         const token = response.data.token;
+    //         // 받아온 토큰을 axios 기본 헤더에 설정
+    //         axios.defaults.headers.common["Authorization"] = 'Bearer ${token}';
+    //         // localStorage에 저장
+    //         localStorage.setItem("beMyStoryToken", token);
+
+    //         if (response.status >= 200 && response.status < 300) {
+    //             goToHome(); // 홈화면으로 이동
+    //         } else {
+    //             setLoginMessage(response.data.message || '로그인에 실패했습니다. 아이디와 비밀번호를 다시 한번 확인해주세요.');
+    //         }
+    //     } catch (error) {
+    //         console.error('로그인 오류:', error);
+    //         setLoginMessage('로그인에 실패했습니다. 아이디와 비밀번호를 다시 한번 확인해주세요.');
+    //     }
+    // };
     
 
    
