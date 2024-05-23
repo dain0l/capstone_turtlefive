@@ -95,7 +95,9 @@ const LoginPage = () => {
                     email,
                     password
             }, {
-                    headers: { "Content-Type": "application/json" },
+                    headers: { "Content-Type": "application/json",
+                    Authorization: 'Bearer ${accessToken}'
+                    },
             });
 
             const data = response.data;
@@ -103,7 +105,7 @@ const LoginPage = () => {
             // localStorage에 저장
             localStorage.setItem('accessToken', data.accessToken);
             if (response.status >= 200 && response.status < 300) {
-                navigate('/home');//홈화면으로 이동
+                navigate('/home');//홈화면으로 이동y
                 //localStorage.setItem('accessToken', data.accessToken)
             } else {
                 setLoginMessage(data.message || '로그인에 실패했습니다. 아이디와 비밀번호를 다시 한번 확인해주세요.'); // 백엔드에서 반환한 오류 메시지 표시
