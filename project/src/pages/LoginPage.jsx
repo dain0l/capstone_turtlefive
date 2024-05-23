@@ -101,7 +101,7 @@ const LoginPage = () => {
             const data = response.data;
             api.defaults.headers.common["Authorization"] = 'Bearer ${token}';
             // localStorage에 저장
-            localStorage.setItem("beMyStoryToken", data.accessToken);
+            localStorage.setItem('accessToken', data.accessToken);
             if (response.status >= 200 && response.status < 300) {
                 navigate('/home');//홈화면으로 이동
                 //localStorage.setItem('accessToken', data.accessToken)
