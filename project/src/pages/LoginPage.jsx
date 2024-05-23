@@ -100,7 +100,7 @@ const LoginPage = () => {
             });
 
             const data = response.data;
-            api.defaults.headers.common["Authorization"] = 'Bearer ${token}';
+            api.defaults.headers.common["Authorization"] = 'Bearer ${data.accessToken}';
             // localStorage에 저장
             localStorage.setItem('accessToken', data.accessToken);
             if (response.status >= 200 && response.status < 300) {
