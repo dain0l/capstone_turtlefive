@@ -95,8 +95,7 @@ const LoginPage = () => {
                     email,
                     password
             }, {
-                    headers: { "Content-Type": "application/json",
-                    Authorization: 'Bearer ${accessToken}'
+                    headers: { "Content-Type": "application/json" 
                     },
             });
 
