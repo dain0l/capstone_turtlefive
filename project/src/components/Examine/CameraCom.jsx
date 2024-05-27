@@ -155,12 +155,12 @@ const CameraCom = () => {
                             sendAlarmLog(); // 백엔드로 알람 로그 보내는 함수 호출
                         }
                         alarmTimeout.current = null; // 타이머 초기화
-                    }, 5000); // 5초 후 실행(테스트때문에 임의로 해둔 시간!!)
+                    }, 3000); // 5초 후 실행(테스트때문에 임의로 해둔 시간!!)
                 }
                 }else {
                   canvasCtx.font = "10px Arial";
                   canvasCtx.fillStyle = "green";
-                  canvasCtx.fillText("Your pose is normal", 10, 30);
+                  //canvasCtx.fillText("Your pose is normal", 10, 30);
                    // 조건이 거짓이면 현재 설정된 타이머 취소
                    if (alarmTimeout.current) {
                     clearTimeout(alarmTimeout.current);
