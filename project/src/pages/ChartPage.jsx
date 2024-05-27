@@ -5,21 +5,22 @@ import api from '../services/api';
 import { useNavigate } from 'react-router-dom';
 
 const Button = styled.button`
-  padding: 10px 20px;
-  background-color: #8fae99; /* Green */
-  border: none;
-  color: white;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 10px 2px;
-  cursor: pointer;
-  border-radius: 4px;
-  
-  &:hover {
+color: #FFF;
+background-color: #8fae99;
+font-family: Roboto;
+font-size: 1.5rem;
+font-style: normal;
+font-weight: 300;
+line-height: normal;
+cursor: pointer;
+text-decoration: none;
+padding: 10px 20px;
+border-radius: 10px;
+transition: background-color 0.3s ease;
+
+&:hover {
     background-color: #638d88;
-  }
+}
 `;
 
 const ButtonContainer = styled.div`
