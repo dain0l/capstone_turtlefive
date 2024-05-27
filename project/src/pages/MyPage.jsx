@@ -32,6 +32,7 @@ const ProfileImageContainer = styled.div`
     margin-top: 100px;
 `;
 
+
 const BottomContainer = styled.div`
     margin-top: 50px;
     display: flex;
@@ -96,6 +97,8 @@ const Info = styled.p`
     margin-bottom: 10px;
 `;
 */
+
+
  // 로그아웃 함수
  const handleLogout = async () => {
     const token = localStorage.getItem('accessToken');
@@ -159,6 +162,10 @@ function MyPage() {
             </UserInfoContainer>
                     
             {/* 추가적인 사용자 정보 */}
+            <BottomContainer>
+                <LinkButtonStyle to="/setting">설정</LinkButtonStyle>
+            </BottomContainer>
+            
             <BottomContainer>
             <LinkButtonStyle to="/home" onClick={goToHome}>Home</LinkButtonStyle>
             <LinkButtonStyle to="/logout" onClick={handleLogout}>Log out</LinkButtonStyle>
