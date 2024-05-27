@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate  } from 'react-router-dom';
+import api from '../services/api';
 
 function SignupForm() {
     const [name, setUsername] = useState('');
@@ -28,7 +29,7 @@ function SignupForm() {
         setBirthdate('');
     };
 
-    const handleSignup = (e) => {
+    const handleSignup = async (e) => {
         e.preventDefault();
         
         // 서버로 전송할 데이터 객체 생성
@@ -41,25 +42,20 @@ function SignupForm() {
             birth
         };
 
-        // 서버에 회원가입 요청 보내기
-        fetch('/signup', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(userData)
-        })
-        .then(response => response.json())
-        .then(data => {
+        try {
+            // 서버에 회원가입 요청 보내기
+            const response = await api.post('/signup', userData);
+            const data = response.data;
+
             // 회원가입 성공 시 처리
             setSignupSuccess(true);
             console.log('회원가입 완료:', data);
-        })
-        .catch(error => {
+        } catch (error) {
             // 오류 처리
             console.error('회원가입 오류:', error);
-        });
+        }
     };
+
 
     const styles = {
         header: {
