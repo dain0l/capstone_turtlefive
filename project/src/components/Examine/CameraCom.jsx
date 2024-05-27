@@ -56,7 +56,7 @@ function formatLocalDateToISOString() {
 //   }
 // }
 
-export function fixAlarm(){
+function fixAlarm(){
   let notificationPermission = Notification.permission;
   
   function showNotification() {
