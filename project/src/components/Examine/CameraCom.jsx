@@ -1,4 +1,3 @@
-
 import Webcam from 'react-webcam';
 import styled from 'styled-components';
 import { Holistic, POSE_CONNECTIONS, FACEMESH_TESSELATION } from "@mediapipe/holistic";
@@ -22,14 +21,40 @@ const StyledCanvas = styled.canvas`
   position: absolute;
   top: 0;
 `;
+
+//알림 소리 추가 
 //https://docturtle.site/image/sound.mp3
 const alarmSound = new Audio('/image/sound.mp3'); // 알림 소리 파일 URL
+
 
 function formatLocalDateToISOString() {
   const offset = new Date().getTimezoneOffset() * 60000; // getTimezoneOffset()은 분 단위로 시간대 차이를 반환합니다.
   const localISOTime = (new Date(Date.now() - offset)).toISOString().slice(0, 19);
   return localISOTime;
 }
+
+//function fixAlarm(){
+//  let notificationPermission = Notification.permission;
+//  if (notificationPermission === "granted") {
+//     //Notification을 이미 허용한 사람들에게 보여주는 알람창
+//      new Notification('You have to fix your pose!!', {
+//          body: '올바른 자세를 유지해주세요.',
+//          icon:"https://docturtle.site/image/turtle9.png"
+//       });
+//   } else if (notificationPermission !== 'denied') {
+//       //Notification을 거부했을 경우 재 허용 창 띄우기
+//       Notification.requestPermission(function (permission) {
+//           if (permission === "granted") {
+//               new Notification('You have to fix your pose!!', {
+//                   body: '올바른 자세를 유지해주세요.',
+//                   icon:"https://docturtle.site/image/turtle9.png"
+//               });
+//           }else {
+//               alert("알람 허용이 거부되었습니다.")
+//           }
+//       });
+//   }
+// }
 
 function fixAlarm(){
   let notificationPermission = Notification.permission;
@@ -45,17 +70,15 @@ function fixAlarm(){
   if (notificationPermission === "granted") {
     showNotification();
   } else if (notificationPermission !== 'denied') {
-      //Notification을 거부했을 경우 재 허용 창 띄우기
-      Notification.requestPermission(function (permission) {
-          if (permission === "granted") {
-            showNotification();
-          }else {
-              alert("알람 허용이 거부되었습니다.")
-          }
-      });
+    Notification.requestPermission(function (permission) {
+      if (permission === "granted") {
+        showNotification();
+      } else {
+        alert("알람 허용이 거부되었습니다.");
+      }
+    });
   }
 }
-
 
 
 const CameraCom = () => { 
