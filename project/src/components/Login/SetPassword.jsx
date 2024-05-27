@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import api from '../../services/api';
 
 const styles = {
     header: {
@@ -85,14 +86,11 @@ function SetPassword() {
             return;
         }
         try {
-            const response = await fetch('/setPassword', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({email,password }),
+            const response = await api.post('/setPassword', {
+                email : email,
+                password : password
             });
-            if (!response.ok) {
+            if (response.status < 200 || response.status >= 300) {
                 throw new Error('비밀번호를 새로 만드는 데 실패했습니다.');
             }
             setMessage('새로운 비밀번호가 저장되었습니다.');

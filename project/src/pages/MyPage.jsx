@@ -19,6 +19,7 @@ const Container = styled.div`
     flex-direction: column;
     align-items: center;
     border-radius: 8px;
+    overflow-x: hidden;
 `;
 
 const ProfileImageContainer = styled.div`
@@ -39,8 +40,8 @@ const BottomContainer = styled.div`
 `;
 
 const LinkButtonStyle = styled(Link)`
-    color: #FFF;
-    background-color: #8fae99;
+    color: #5EAE89;
+    background-color: #E8FAF2;
     font-family: Roboto;
     font-size: 1.5rem;
     font-style: normal;
@@ -50,13 +51,15 @@ const LinkButtonStyle = styled(Link)`
     text-decoration: none;
     padding: 10px 20px;
     border-radius: 10px;
-    transition: background-color 0.3s ease;
+    border: 1px solid #5EAE89;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 추가된 box-shadow 스타일 */
 
     &:hover {
-        background-color: #638d88;
+        background-color: #C5E1A5;
+        box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15); /* hover 상태에서의 그림자 변경 */
     }
 `;
-
 
 const ProfileImage = styled.img`
     width: 100%;
@@ -74,6 +77,13 @@ const AltText = styled.span`
     white-space: nowrap; /* 텍스트가 길어도 한 줄로 표시되도록 설정 */
 `;
 
+const UserInfoContainer = styled.span`
+
+    align-items: flex-start; /* 좌측 정렬 */
+    max-width: 600px; /* 최대 넓이 설정 */
+`;
+
+
 /*
 const Name = styled.h2`
     font-size: 1.5rem;
@@ -90,16 +100,11 @@ const Info = styled.p`
  const handleLogout = async () => {
     const token = localStorage.getItem('accessToken');
     try {
-        const response = await fetch('/logout', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`
-            },
-            body: JSON.stringify({ accessToken: token })
+        const response = await api.post('/logout', {
+            accessToken: token 
         });
 
-        if (response.ok) {
+        if (response.status >= 200 || response.status < 300)  {
             console.log('Successfully logged out');
             localStorage.removeItem('accessToken'); // 로컬 스토리지에서 accessToken 제거
         } else {
@@ -144,11 +149,14 @@ function MyPage() {
                 <ProfileImage src={imglogo} alt="" />
                 <AltText> DOCTURTLE </AltText>
             </ProfileImageContainer>
-            <p>Name: {userInfo?.name}</p>
-            <p>Email: {userInfo?.email}</p>
-            <p>Phone: {userInfo?.phoneNo}</p>
+            <UserInfoContainer>
+            <p>name: {userInfo?.name}</p>
+            <p>e-mail: {userInfo?.email}</p>
+            <p>phone: {userInfo?.phoneNo}</p>
             <p>알림빈도수: {userInfo?.alarmCount}</p>
             <p>웹캠 실행시간: {userInfo?.webcamDuration}분</p>
+
+            </UserInfoContainer>
                     
             {/* 추가적인 사용자 정보 */}
             <BottomContainer>

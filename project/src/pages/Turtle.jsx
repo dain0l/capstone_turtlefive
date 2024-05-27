@@ -8,9 +8,9 @@ import styled from 'styled-components';
 
 const Button = styled.button`
   padding: 10px 20px;
-  background-color: #8fae99; /* Green */
+  background-color: #E8FAF2; /* Green */
   border: none;
-  color: white;
+  color: #5EAE89;
   text-align: center;
   text-decoration: none;
   display: inline-block;
@@ -18,9 +18,12 @@ const Button = styled.button`
   margin: 10px 2px;
   cursor: pointer;
   border-radius: 4px;
+  border: 1px solid #5EAE89;  
+  margin-bottom: 30px;  /* 하단 여백 추가 */
   
   &:hover {
-    background-color: #638d88;
+    background-color: #C5E1A5;
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15); /* hover 상태에서의 그림자 변경 */
   }
 `;
 
@@ -66,25 +69,27 @@ const backgroundContainerStyle = {
 };
 
 const titleStyle = {
-    //backgroundColor: '#f5f1ee84',
-    color: "#333",
-    fontFamily: "Roboto",
-    fontSize: "2.5rem",
-    fontStyle: "normal",
-    fontWeight: "600",
-    lineHeight: "normal",
-    marginTop: "50px",
-    marginBottom: "2.19rem",
+  //backgroundColor: '#f5f1ee84',
+  color: "#288A72",
+  fontFamily: "Roboto",
+  fontSize: "2.5rem",
+  fontStyle: "normal",
+  fontWeight: "600",
+  lineHeight: "normal",
+  marginTop: "50px",
+  marginBottom: "2.19rem",
 };
 
+
 const containerStyle = {
-    display: 'flex', // flexbox 사용
-    justifyContent: 'space-around',
-    alignItems: 'center', // 수직 가운데 정렬
-    width: '70%', // 부모 요소의 너비를 화면 너비의 70%로 지정
-    margin: '0 auto', // 수평 가운데 정렬
-    marginLeft: '10%', // 좌측 여백 추가
+  display: 'flex', // flexbox 사용
+  justifyContent: 'space-around',
+  alignItems: 'center', // 수직 가운데 정렬
+  width: '85%', // 부모 요소의 너비를 화면 너비의 70%로 지정
+  margin: '0 auto', // 수평 가운데 정렬
+  gap: '20px', // 컴포넌트 간 간격 추가
 };
+
 
 
 

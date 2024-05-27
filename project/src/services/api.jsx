@@ -2,10 +2,13 @@ import axios from 'axios';
 
 // axios 인스턴스 생성
 const api = axios.create({
-  baseURL: 'http://localhost:3000', // 서버 등록시 수정 예정!!!
+  //baseURL: 'http://localhost:8080/api', // 서버 등록시 수정 예정!!!
+  baseURL: 'https://www.docturtle.site/api',
+
   headers: {
     'Content-Type': 'application/json',
   },
+     withCredentials: true
 });
 
 // 요청 인터셉터 추가
@@ -21,5 +24,6 @@ api.interceptors.request.use(
     return Promise.reject(error);
   }
 );
+
 
 export default api;

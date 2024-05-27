@@ -64,7 +64,7 @@ const Container = styled.div`
 
 const ChartDescription = styled.div`
     margin-left: 100px;
-    width: 55%; /* 설명 영역의 너비 조정 */
+    width: 65%; /* 설명 영역의 너비 조정 */
 `;
 
 const ChartPage = () => {
@@ -150,7 +150,7 @@ const ChartPage = () => {
                     <hr></hr>
                     <br></br>
                     <p>월요일부터 일요일까지의 데이터가 포함되어 있습니다.</p>
-                    {maxData && <p>알림 빈도수가 높은 요일은 <span style={{color: 'blue'}}>" {maxData.day} "</span> 입니다.</p>}
+                    {maxData && maxData.알림빈도수 > 0 && <p>알림 빈도수가 높은 요일은 <span style={{color: 'blue'}}>" {maxData.day} "</span> 입니다.</p>}
                     {averageUV.toFixed(2) > 0 && <p><span style={{ color: 'blue' }}>일주일 평균</span> 알림 횟수는 " {averageUV.toFixed(2)}회 " 입니다.</p>} 
                     <br></br>
                     {totalTime > 0 && <p><span style={{ color: 'green' }}>일주일 총 웹캠 사용 시간</span>은 " {totalTime}분 " 입니다.</p>}

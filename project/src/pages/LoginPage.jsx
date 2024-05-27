@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate  } from 'react-router-dom';
 import styled from 'styled-components';
+import api from '../services/api';
 
 const StyledLink = styled(Link)`
     color: #000000;
@@ -78,26 +79,20 @@ const LoginPage = () => {
     const [password, setPassword] = useState('');
     const [loginMessage, setLoginMessage] = useState('');
     const navigate = useNavigate();
-
     const goToHome = ()=>{
         navigate('/home');
     };
-
     const handleLogin = async (e) => {
         e.preventDefault();
         try {
-            const response = await fetch('/login', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ email, password }),
+            const response = await api.post('/login', {
+                email,
+                password
             });
-            const data = await response.json();
-            if (response.ok) {
+            const data = response.data;
+            if (response.status >= 200 && response.status < 300) {
                 navigate('/home');//홈화면으로 이동
                 localStorage.setItem('accessToken', data.accessToken)
-
             } else {
                 setLoginMessage(data.message || '로그인에 실패했습니다. 아이디와 비밀번호를 다시 한번 확인해주세요.'); // 백엔드에서 반환한 오류 메시지 표시
             }
@@ -106,8 +101,6 @@ const LoginPage = () => {
             setLoginMessage('로그인에 실패했습니다. 아이디와 비밀번호를 다시 한번 확인해주세요.');
         }
     };
-
-   
 
     return (
         <div style={styles.body}>
