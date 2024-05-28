@@ -204,7 +204,7 @@ function Home() {
         
     } catch (error) {
         console.error("Fetch error: ", error);
-        if (error.response && (error.response.status === 401)) {
+        if (error.response && (error.response.status === 401 && error.response.status === 403)) {
           navigate("/login");
         }
     }
@@ -212,11 +212,15 @@ function Home() {
   
 
   // 컴포넌트가 마운트될 때 로그인 상태를 확인
-  useEffect(() => {
-    const token = localStorage.getItem('accessToken');
-    setIsLoggedIn(!!token); // token이 있으면 true, 없으면 false로 설정
+ // 컴포넌트가 마운트될 때 로그인 상태를 확인
+useEffect(() => {
+  const token = localStorage.getItem('accessToken');
+  setIsLoggedIn(!!token); // token이 있으면 true, 없으면 false로 설정
+  if (token) {
     fetchData();
-  },[fetchData]); // 함수들을 dependency array에 추가
+  }
+}, [fetchData]); // 함수들을 dependency array에 추가
+ // 함수들을 dependency array에 추가
 
   // 로그아웃 함수
   const handleLogout = async () => {
