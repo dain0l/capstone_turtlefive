@@ -160,7 +160,7 @@ function Home() {
   const [data, setData] = useState([]);
   const [data2, setData2] = useState([]);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const navigate = useNavigate('');
+  const navigate = useNavigate();
 
     const 요일변환함수 = useCallback((dayOfWeek) => {
       const dayMap = {
@@ -244,7 +244,7 @@ const handleServiceButtonClick = () => {
         alert('로그인 후 이용해주세요');
         navigate("/login");
     } else {
-        navigate("/webcam");
+      navigate("/webcam");
     }
 };
   // API로부터 데이터를 성공적으로 받아온 경우, 데이터를 화면에 표시합니다.
@@ -268,7 +268,9 @@ const handleServiceButtonClick = () => {
                     </NavigationWrapper>
         </HeaderContainer>
             <RectangleContainer>
-               <StyledButton onClick={handleServiceButtonClick} >자세교정 서비스 이용하기</StyledButton>
+               
+                <StyledButton onClick={handleServiceButtonClick} >자세교정 서비스 이용하기</StyledButton>
+               
             </RectangleContainer>
             
             <RectangleContainer>
