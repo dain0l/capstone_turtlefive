@@ -34,7 +34,8 @@ function fixAlarm(){
       //Notification을 이미 허용한 사람들에게 보여주는 알람창
       new Notification('You have to fix your pose!!', {
           body: '올바른 자세를 유지해주세요.',
-          icon:"https://www.docturtle.site/image/turtle9.png"
+          icon:"https://wwww.docturtle.site/image/turtle9.png",
+          sound: "https://www.docturtle.site/sound/turtle.mp3" 
       });
   } else if (notificationPermission !== 'denied') {
       //Notification을 거부했을 경우 재 허용 창 띄우기
@@ -42,7 +43,8 @@ function fixAlarm(){
           if (permission === "granted") {
               new Notification('You have to fix your pose!!', {
                   body: '올바른 자세를 유지해주세요.',
-                  icon:"https://www.docturtle.site/image/turtle9.png"
+                  icon:"https://www.docturtle.site/image/turtle9.png",
+                  sound: "https://www.docturtle.site/sound/turtle.mp3" 
               });
           }else {
               alert("알람 허용이 거부되었습니다.")
