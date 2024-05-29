@@ -205,7 +205,11 @@ const ChatBotContainer = styled.div`
   display: flex;
   justify-content: space-around;
   align-items: center;
+<<<<<<< HEAD
   width: 40%;
+=======
+  width: 30%;
+>>>>>>> main
   height: 300px;
   overflow: hidden;
   
@@ -226,6 +230,12 @@ const PercentageContainer = styled.div`
   border-radius: 50px;
   padding : 20px;
 
+`;
+
+const TextContainer2 = styled.div`
+  width: 100%;
+  text-align: center;
+  margin-bottom: 30px;
 `;
 
 
