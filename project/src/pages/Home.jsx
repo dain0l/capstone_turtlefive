@@ -258,7 +258,6 @@ const handleServiceButtonClick = () => {
             <HeaderContainer>
                 <Logo to="/register">Doc. Turtle</Logo>
                 <NavigationWrapper>
-                <StyledLink to="/chatbot">chatbot</StyledLink>
                     {/* <StyledLink to="/inquiry">1week-chart</StyledLink>
                     <StyledLink to="#">contact</StyledLink> */}
                     {isLoggedIn ? (
@@ -269,6 +268,7 @@ const handleServiceButtonClick = () => {
                     ) : (
                         <StyledLink to="/login">login</StyledLink> // 로그아웃 상태일 때 로그인 버튼 표시
                     )}
+                    <StyledLink to="/chatbot">chatbot</StyledLink>
                     <StyledLink to="/explain">explain</StyledLink> 
                     </NavigationWrapper>
         </HeaderContainer>
