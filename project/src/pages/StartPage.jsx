@@ -214,17 +214,18 @@ const StartPage = () => {
       </Section>
       <Section className="section" id="section2">
         <h2>About Us</h2>
-        <p>Website created to prevent text neck syndrome. This is some information about our site.</p>
+        <p style={{ marginRight: '30px' }}>거북목 예방을 위해 만들어진 홈페이지입니다.</p>
+        <p >docturtle 사이트에 대한 일부 정보입니다.</p>
         <img src={image3} alt="Image 2" />
       </Section>
       <Section className="section" id="section3">
         <h2>Our Services</h2>
-        <p>We provide a posture correction service using a webcam.</p>
+        <p>웹캠을 활용한 자세 교정 서비스를 제공합니다.</p>
         <img src={image2} alt="Image 3" />
       </Section>
       <Section className="section" id="section4">
-        <h2>Contact Us</h2>
-        <p>Shall we get started?</p>
+        <h2>Start</h2>
+        <p>시작해볼까요?</p>
         <img src={image4} alt="Image 4" />
         <LinkButtonStyle to="/home">START</LinkButtonStyle>
       </Section>
