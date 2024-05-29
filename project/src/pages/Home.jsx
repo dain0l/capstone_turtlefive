@@ -76,7 +76,7 @@ const RectangleContainer = styled.div`
   overflow: hidden;
  // border: 1.5px solid #505050; /* 테두리 속성 추가 */
  box-shadow: 0 0 5px #f5ede6d6; /* 검정색 그림자 추가 */
-
+ margin-bottom:30px;
   @media screen and (max-width: 768px) {
     width: calc(100% - 6%);
   }
@@ -148,6 +148,7 @@ const LargeContainer1 = styled.div`
   border-radius: 50px;
   border: 0.6px solid #ececec;
   box-shadow: 0 0 5px #f5ede6d6; /* 검정색 그림자 추가 */
+  margin-bottom:30px;
   
 
 `;
@@ -193,7 +194,7 @@ const LargeContainer2 = styled.div`
   height: 400px;
   overflow: hidden;
   background-color: #FFFFFF; /* 원하는 배경색으로 변경 */
-  border-radius: 50px;
+  border-radius: 30px;
   border: 0.6px solid #ececec;
   box-shadow: 0 0 5px #f5ede6d6; /* 검정색 그림자 추가 */
 `;
@@ -205,11 +206,7 @@ const ChatBotContainer = styled.div`
   display: flex;
   justify-content: space-around;
   align-items: center;
-<<<<<<< HEAD
   width: 40%;
-=======
-  width: 30%;
->>>>>>> main
   height: 300px;
   overflow: hidden;
   
