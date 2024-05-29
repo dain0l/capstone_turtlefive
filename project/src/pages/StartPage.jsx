@@ -1,55 +1,237 @@
-import styled from 'styled-components';
+import React, { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-import imglogo2 from '../img/ground.jpg';
+import styled, { createGlobalStyle, keyframes } from 'styled-components';
+import image1 from '../img/image1.jpg';
+import image2 from '../img/image2.jpg';
+import image3 from '../img/image3.jpg';
+import image4 from '../img/image4.jpg';
 
+const GlobalStyle = createGlobalStyle`
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to bottom, rgba(184, 253, 214, 0.562) 20%, rgba(197, 193, 193, 0.95) 40%, rgba(68, 68, 81, 0.676) 40%, rgba(22, 22, 33, 0.813) 100%);
+  }
 
-const BackStyle = styled.div`
-    display: flex;
-    background-image: url(${imglogo2});
-    //background-color: #000000;
-    //background-image: linear-gradient(to left, #ccffaa, #779787, #1e5b53);
-    width: 100vw;
-    height: 100vh;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    opacity: 0.8; /* 불투명도 조절 */
+  h1 {
+    margin: 5px;
+    font-size: 36px;
+  }
 `;
 
+const fadeInLeft = keyframes`
+  from {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+`;
 
-const TitleStyle = styled.div`
-    color: #FBFDF5;
-    font-family: Roboto;
-    font-size: 4rem;
-    font-style: normal;
-    font-weight: 600;
-    line-height: normal;
+const fadeInRight = keyframes`
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+`;
+
+const fadeInBottom = keyframes`
+  from {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+`;
+
+const fadeInTop = keyframes`
+  from {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+`;
+
+const Section = styled.div`
+  height: 100vh;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+  position: relative;
+
+  &.visible {
+    opacity: 1;
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: -2px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100% + 4px);
+    height: 3px;
+    background-color: #3a4f2cd3;
+    z-index: -1;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -2px;
+    width: 2px;
+    height: 100%;
+    background-color: #DFF0D8;
+    z-index: -1;
+  }
+
+  img {
+    max-width: 80%;
+    max-height: 50vh;
+    height: auto;
+    margin-top: 20px;
+    opacity: 0.5;
+    box-shadow: 0px 10px 20px rgba(255, 255, 255, 0.8);
+    transition: opacity 2s ease-in-out;
+  }
+
+  &#section1 {
+    align-items: flex-start;
+    padding-left: 20px;
+
+    &.visible img {
+      opacity: 1;
+      animation: ${fadeInLeft} 1.2s;
+    }
+  }
+
+  &#section2 {
+    align-items: flex-end;
+    padding-right: 20px;
+
+    &.visible img {
+      opacity: 1;
+      animation: ${fadeInRight} 1.2s;
+    }
+  }
+
+  &#section3 {
+    align-items: flex-start;
+    padding-left: 20px;
+
+    &.visible img {
+      opacity: 1;
+      animation: ${fadeInBottom} 1.2s;
+    }
+  }
+
+  &#section4 {
+    align-items: center;
+
+    &.visible img {
+      opacity: 1;
+      animation: ${fadeInTop} 1.2s;
+    }
+
+    &.visible #startButton {
+      display: block;
+    }
+  }
 `;
 
 const LinkButtonStyle = styled(Link)`
-    color: #FBFDF5;
-    font-family: Roboto;
-    font-size: 1.5rem;
-    font-style: normal;
-    font-weight: 300;
-    line-height: normal;
-    margin-top: 1rem;
-    cursor: pointer;
-    text-decoration: none;
+  color: #FBFDF5;
+  font-family: Roboto;
+  font-size: 1.5rem;
+  font-style: normal;
+  font-weight: 300;
+  line-height: normal;
+  margin-top: 100px;
+  cursor: pointer;
+  text-decoration: none;
 
-    &:hover {
-        color: #FFFFFF;
-        text-decoration: none; // Ensure no underline on hover
-    }
+  &:hover {
+    color: #FFFFFF;
+    text-decoration: none;
+  }
 `;
 
-function StartPage() {
-    return (
-        <BackStyle>
-            <TitleStyle>TurtleFIve</TitleStyle>  
-            <LinkButtonStyle to="/home">START</LinkButtonStyle>
-        </BackStyle>
-    );
-}
+const StartPage = () => {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const sections = document.querySelectorAll('.section');
+
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.1
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        } else {
+          entry.target.classList.remove('visible');
+        }
+      });
+    }, observerOptions);
+
+    sections.forEach(section => {
+      observer.observe(section);
+    });
+
+    return () => {
+      sections.forEach(section => {
+        observer.unobserve(section);
+      });
+    };
+  }, []);
+
+  return (
+    <>
+      <GlobalStyle />
+      <Section className="section" id="section1">
+        <h1>Welcome to</h1>
+        <h1 style={{ marginLeft: '100px' }}>TurtleFIve</h1>
+        <img src={image1} alt="Image 1" />
+      </Section>
+      <Section className="section" id="section2">
+        <h2>About Us</h2>
+        <p>Website created to prevent text neck syndrome. This is some information about our site.</p>
+        <img src={image3} alt="Image 2" />
+      </Section>
+      <Section className="section" id="section3">
+        <h2>Our Services</h2>
+        <p>We provide a posture correction service using a webcam.</p>
+        <img src={image2} alt="Image 3" />
+      </Section>
+      <Section className="section" id="section4">
+        <h2>Contact Us</h2>
+        <p>Shall we get started?</p>
+        <img src={image4} alt="Image 4" />
+        <LinkButtonStyle to="/home">START</LinkButtonStyle>
+      </Section>
+    </>
+  );
+};
 
 export default StartPage;
