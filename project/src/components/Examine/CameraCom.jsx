@@ -33,29 +33,6 @@ function formatLocalDateToISOString() {
   return localISOTime;
 }
 
-//function fixAlarm(){
-//  let notificationPermission = Notification.permission;
-//  if (notificationPermission === "granted") {
-//     //Notification을 이미 허용한 사람들에게 보여주는 알람창
-//      new Notification('You have to fix your pose!!', {
-//          body: '올바른 자세를 유지해주세요.',
-//          icon:"https://docturtle.site/image/turtle9.png"
-//       });
-//   } else if (notificationPermission !== 'denied') {
-//       //Notification을 거부했을 경우 재 허용 창 띄우기
-//       Notification.requestPermission(function (permission) {
-//           if (permission === "granted") {
-//               new Notification('You have to fix your pose!!', {
-//                   body: '올바른 자세를 유지해주세요.',
-//                   icon:"https://docturtle.site/image/turtle9.png"
-//               });
-//           }else {
-//               alert("알람 허용이 거부되었습니다.")
-//           }
-//       });
-//   }
-// }
-
 function fixAlarm(){
   let notificationPermission = Notification.permission;
   
@@ -158,7 +135,7 @@ const CameraCom = () => {
               const distanceBool = distance <= 0.1;
               const angleBool = (angle <= 60 || angle >= 130);
 
-              //console.log("D:"+ distanceBool +distance + "\n" + "Z: "+ZvaluesBool + Zvalues);
+              console.log("D:"+ distanceBool +distance + "\n" + "Z: "+ZvaluesBool + Zvalues);
 
               if(chinLandmark){ // 152번 랜드마크가 인식될 경우 
                  if( distanceBool || ZvaluesBool || angleBool){
