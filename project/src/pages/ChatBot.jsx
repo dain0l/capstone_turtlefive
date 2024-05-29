@@ -1,4 +1,4 @@
-import React, { useState } from 'react'; 
+import React, { useCallback, useState, useEffect } from 'react';
 import axios from 'axios';
 import api from '../services/api';
 import styled, { createGlobalStyle } from 'styled-components';
@@ -41,6 +41,7 @@ const StyledLink = styled(Link)`
     text-decoration: underline;
   }
 `;
+
 
 
 const NavigationWrapper = styled.nav`
@@ -182,6 +183,13 @@ const ChatBot = () => {
     }
   };
 
+
+  useEffect(() => {
+    const token = localStorage.getItem('accessToken');
+    setIsLoggedIn(!!token); // token이 있으면 true, 없으면 false로 설정
+
+  }); 
+  
   const handleSend = async () => {
     if (userInput.trim() === '') return;
 

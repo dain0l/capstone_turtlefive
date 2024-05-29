@@ -130,7 +130,18 @@ const StyledThirdContent = styled.div`
   margin: 12px;
 `;
 
+
+
 function ExplainPage() {
+
+        
+    useEffect(() => {
+        const token = localStorage.getItem('accessToken');
+        setIsLoggedIn(!!token); // token이 있으면 true, 없으면 false로 설정
+
+    }); 
+
+
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const handleLogout = async () => {
