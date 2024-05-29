@@ -32,37 +32,50 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 
+const AllContainer  = styled.div`
+  overflow-x: hidden; /* 좌우 스크롤 제거 */
+  background-color: #ececec; /* 원하는 배경색으로 변경 */
+`;
+
+
 const Container = styled.div`
   overflow-x: hidden; /* 좌우 스크롤 제거 */
-  background: #FFFFFF;
+  background-color: #ececec; /* 원하는 배경색으로 변경 */
+  margin: 20px;
+  
 `;
 
 const HeaderContainer = styled.div`
   display: flex;
-  background: #FFFFFF // #b4b4b4; --> 위에 헤더
+  background: #f5ede6d6;
   color: #eeeeee;
   padding: 1rem;
   width: 100%;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap; /* 필요에 따라 행을 여러 줄로 바꿉니다. */
+  
 `;
 
 const RectangleContainer = styled.div`
+  margin: 20px 0;
+  flex-direction: row;
+  width: auto;
+  height: 400px;
   background-color: #FFFFFF;
   padding: 20px;
   border-radius: 10px;
   margin-top: 20px;
   display: flex;
   justify-content: center;
-  flex-direction: column;
   align-items: center;
-  width: calc(95% - 3%);
-  height: 360px;
   margin-right: auto;
   margin-left: auto;
+  border-radius: 50px;
+  border: 0.6px solid #ececec;
   overflow: hidden;
  // border: 1.5px solid #505050; /* 테두리 속성 추가 */
+ box-shadow: 0 0 5px #f5ede6d6; /* 검정색 그림자 추가 */
 
   @media screen and (max-width: 768px) {
     width: calc(100% - 6%);
@@ -82,7 +95,7 @@ const Rectangle2Container = styled.div`
   height: 300px;
   margin-left: 20px;
   overflow: hidden;
-  border: 1.5px solid #505050;
+  border: 1.5px solid #ececec;
   margin-right: 20px;
   text-align: left;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -132,7 +145,10 @@ const LargeContainer1 = styled.div`
   width: auto;
   height: 400px;
   overflow: hidden;
-  // border: 1.5px solid #505050;
+  border-radius: 50px;
+  border: 0.6px solid #ececec;
+  box-shadow: 0 0 5px #f5ede6d6; /* 검정색 그림자 추가 */
+  
 
 `;
 
@@ -167,26 +183,19 @@ const TextContainer = styled.div`
   margin-left: 50px;
   margin-bottom: 30px; /* 텍스트와 차트 사이의 간격을 추가 */
 `;
-
-const TextContainer2 = styled.div`
-  width: 100%;
-  text-align: center;
-  margin-bottom: 30px;
-`;
-
 const LargeContainer2 = styled.div`
-  background-color: #ffffff;
-  padding: 20px;
-  margin: 20px 0;
+  padding: 20px;  
+  margin-bottom: 50px;
   display: flex;
   justify-content: space-around;
-  flex-direction: row;
-  align-items: flex-start; 
+  align-items: center; 
   width: 100%;
-  height: 330px;
+  height: 400px;
   overflow: hidden;
-  // border: 1.5px solid #505050;
-
+  background-color: #FFFFFF; /* 원하는 배경색으로 변경 */
+  border-radius: 50px;
+  border: 0.6px solid #ececec;
+  box-shadow: 0 0 5px #f5ede6d6; /* 검정색 그림자 추가 */
 `;
 
 const ChatBotContainer = styled.div`
@@ -196,24 +205,37 @@ const ChatBotContainer = styled.div`
   display: flex;
   justify-content: space-around;
   align-items: center;
+<<<<<<< HEAD
+  width: 40%;
+=======
   width: 30%;
+>>>>>>> main
   height: 300px;
   overflow: hidden;
+  
 
 `;
 
 const PercentageContainer = styled.div`
   marginTop: '20px'
-  background-color: #FFFF00;
+  background-color: #FFFFFF;
   border-radius: 10px;
-  margin-right: 50px;
+  margin-left: 50px;
   display: flex;
   justify-content: space-between;
   flex-direction: column;
   width: 60%;
   height: 300px;
   overflow: hidden;
+  border-radius: 50px;
+  padding : 20px;
 
+`;
+
+const TextContainer2 = styled.div`
+  width: 100%;
+  text-align: center;
+  margin-bottom: 30px;
 `;
 
 
@@ -387,8 +409,8 @@ const handleServiceButtonClick = () => {
   // API로부터 데이터를 성공적으로 받아온 경우, 데이터를 화면에 표시합니다.
     return (
         <div>
-            <Container>
-            <HeaderContainer>
+          <AllContainer>
+          <HeaderContainer>
                 <Logo to="/register">Doc. Turtle</Logo>
                 <NavigationWrapper>
                     {isLoggedIn ? (
@@ -403,8 +425,8 @@ const handleServiceButtonClick = () => {
                     <StyledLink to="/explain">explain</StyledLink> 
                     </NavigationWrapper>
         </HeaderContainer>
+            <Container>
         <hr></hr>
-            
         <RectangleContainer>
           <Swiper
                 modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}
@@ -508,7 +530,7 @@ const handleServiceButtonClick = () => {
             <PercentageContainer>
               <div style={{marginBottom: '5px'}}>
                 <h3>오늘 {data.name}님의 자세 유지 비율👏</h3>
-                <div style={{ width: '100%', backgroundColor: '#eee', borderRadius: '10px', overflow: 'hidden' }}>
+                <div style={{ width: '100%', backgroundColor: '#b8b8b8', borderRadius: '10px', overflow: 'hidden' }}>
                   <div style={{ width: `${data.posturePercentage}%`, backgroundColor: '#4CAF50', textAlign: 'right', lineHeight: '70px', borderRadius: '10px 0 0 10px', color: 'white', paddingRight: '10px' }}>
                     {data.posturePercentage}%
                   </div>
@@ -518,7 +540,7 @@ const handleServiceButtonClick = () => {
               <div style={{marginTop: '10px'}}>
                 <h3>오늘 총 이용자 중에서 👑상위{data.rankPercentage < 1 ? 1 : data.rankPercentage}%</h3>
                   <div style={{ width: '100%', backgroundColor: '#FFA07A', borderRadius: '10px', overflow: 'hidden' }}>
-                    <div style={{ width: `${data.rankPercentage < 1 ? 1 : data.rankPercentage}%`, backgroundColor: '#eee', textAlign: 'right', lineHeight: '70px', borderRadius: '10px 0 0 10px', color: 'black', paddingRight: '10px' }}>
+                    <div style={{ width: `${data.rankPercentage < 1 ? 1 : data.rankPercentage}%`, backgroundColor: '#b8b8b8', textAlign: 'right', lineHeight: '70px', borderRadius: '10px 0 0 10px', color: 'black', paddingRight: '10px' }}>
                       {data.rankPercentage < 1 ? 1 : data.rankPercentage}%
                     </div>
                   </div>
@@ -531,6 +553,7 @@ const handleServiceButtonClick = () => {
           <p>&copy; 2024 docturtle website</p>
         </StyledFooter>
       </Container>
+      </AllContainer>
     </div>
   );
 }
