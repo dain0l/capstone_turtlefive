@@ -135,7 +135,8 @@ const CameraCom = () => {
               const distanceBool = distance <= 0.1;
               const angleBool = (angle <= 60 || angle >= 130);
 
-              console.log("D:"+ distanceBool +distance + "\n" + "Z: "+ZvaluesBool + Zvalues);
+              //console.log("D:"+ distanceBool +distance + "\n" + "Z: "+ZvaluesBool + Zvalues);
+              console.log("D:"+ distance + "\n" + "angle: " + angle);
 
               if(chinLandmark){ // 152번 랜드마크가 인식될 경우 
                  if( distanceBool || ZvaluesBool || angleBool){
