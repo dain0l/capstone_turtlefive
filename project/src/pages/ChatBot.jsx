@@ -4,6 +4,16 @@ import api from '../services/api';
 import styled, { createGlobalStyle } from 'styled-components';
 import { Link, useNavigate } from 'react-router-dom';
 
+// 글로벌 스타일 정의
+const GlobalStyle = createGlobalStyle`
+  body, html {
+    overflow-x: hidden; /* 전체 페이지에서 가로 스크롤 제거 */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+`;
+
 const HeaderContainer = styled.div`
   display: flex;
   background: #f5ede6d6;
@@ -225,6 +235,7 @@ const ChatBot = () => {
 
   return (
     <div>
+      <GlobalStyle />
       <HeaderContainer>
         <Logo to="/home">Doc. Turtle</Logo>
         <NavigationWrapper>
