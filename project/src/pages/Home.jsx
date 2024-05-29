@@ -76,9 +76,9 @@ const Rectangle2Container = styled.div`
   display: flex;
   justify-content: center;
   flex-direction: column;
-  align-items: center; /* 차트를 중앙에 위치시키기 위해 center로 변경 */
-  width: 87%;
-  height: 250px;
+  align-items: left; /* 차트를 중앙에 위치시키기 위해 center로 변경 */
+  width: auto; /*87%*/
+  height: 300px;
   margin-left: 20px;
   overflow: hidden;
   border: 1.5px solid #505050;
@@ -91,6 +91,8 @@ const Rectangle2Container = styled.div`
     width: 90%;
   }
 `;
+
+
 
 const Rectangle3Container = styled.div`
   background-color: #FFFFFF;
@@ -118,12 +120,92 @@ const Rectangle3Container = styled.div`
   }
 `;
 
+const LargeContainer1 = styled.div`
+  background-color: #ffffff;
+  padding: 20px;
+  margin: 20px 0;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+  align-items: flex-start; 
+  width: auto;
+  height: 400px;
+  overflow: hidden;
+  // border: 1.5px solid #505050;
 
+`;
+
+const ChartContainer = styled.div`
+  background-color: #FFFFFF;
+  border-radius: 10px;
+  // margin: 20px 0;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  width: auto;
+  height: 400px;
+  overflow: hidden;
+
+`;
+const CamContainer = styled.div`
+  background-color: #FFFFFF;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30%;
+  height: 100%;
+  overflow: hidden;
+
+`;
 
 const TextContainer = styled.div`
   width: 100%;
   text-align: left; /* 텍스트를 왼쪽 정렬 */
+  margin-left: 50px;
   margin-bottom: 30px; /* 텍스트와 차트 사이의 간격을 추가 */
+`;
+
+const LargeContainer2 = styled.div`
+  background-color: #ffffff;
+  padding: 20px;
+  margin: 20px 0;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+  align-items: flex-start; 
+  width: 100%;
+  height: 330px;
+  overflow: hidden;
+  // border: 1.5px solid #505050;
+
+`;
+
+const ChatBotContainer = styled.div`
+  padding: 20px;
+  background-color: #FFFFFF;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 30%;
+  height: 250px;
+  overflow: hidden;
+
+`;
+
+const PercentageContainer = styled.div`
+  marginTop: '20px'
+  background-color: #FFFF00;
+  border-radius: 10px;
+  margin-right: 50px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  width: 60%;
+  height: 300px;
+  overflow: hidden;
+
 `;
 
 
@@ -171,13 +253,13 @@ const Row = styled.div`
 const StyledButton = styled.button`
   font-family:'TheJamsil5Bold',sans-serif;
   color: #5EAE89;
-  font-size: 2rem;
+  font-size: 5rem;
   padding: 0.5rem 1rem;
   background-color: #FFFFFF;
   color: 5EAE89;
-  width: 100px;
-  height: 100px;
-  border: 1;
+  width: 200px;
+  height: 200px;
+  border: 2;
   border-radius: 100px;
   cursor: pointer;
   border: 1px solid #5EAE89;
@@ -315,8 +397,8 @@ const handleServiceButtonClick = () => {
         </HeaderContainer>
         <hr></hr>
             
-            <RectangleContainer>
-            <Swiper
+        <RectangleContainer>
+          <Swiper
                 modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}
                 spaceBetween={0}
                 slidesPerView={2}
@@ -332,91 +414,103 @@ const handleServiceButtonClick = () => {
                 onSlideChange={() => console.log('slide change')}
                 style={{ width: '100%', height: '100%' }} // 스와이퍼의 너비와 높이를 부모 요소에 맞게 설정
             >
-          <SwiperSlide>
-            <img src={turtle1} alt="Slide 1" style={{ width: '90%', height: '90%' , borderRadius: '10px' }} />
-          </SwiperSlide>
-          <SwiperSlide>
-            <img src={turtle3} alt="Slide 2" style={{ width: '90%', height: '90%', borderRadius: '10px' }} />
-          </SwiperSlide>
-          <SwiperSlide>
-            <img src={turtle2} alt="Slide 3" style={{ width: '90%', height: '90%' , borderRadius: '10px'}} />
-          </SwiperSlide>
-          <SwiperSlide>
-            <img src={turtle4} alt="Slide 4" style={{ width: '90%', height: '90%' , borderRadius: '10px'}} />
-          </SwiperSlide>
-          <SwiperSlide>
-            <img src={turtle5} alt="Slide 4" style={{ width: '90%', height: '90%' , borderRadius: '10px'}} />
-          </SwiperSlide>
-          <SwiperSlide>
-            <img src={turtle6} alt="Slide 4" style={{ width: '90%', height: '90%', borderRadius: '10px' }} />
-          </SwiperSlide>
-          <SwiperSlide>
-            <img src={turtle7} alt="Slide 4" style={{ width: '90%', height: '90%' , borderRadius: '10px'}} />
-          </SwiperSlide>
-        </Swiper>
-            </RectangleContainer>
+            <SwiperSlide>
+              <img src={turtle1} alt="Slide 1" style={{ width: '90%', height: '90%' , borderRadius: '10px' }} />
+            </SwiperSlide>
+            <SwiperSlide>
+              <img src={turtle3} alt="Slide 2" style={{ width: '90%', height: '90%', borderRadius: '10px' }} />
+            </SwiperSlide>
+            <SwiperSlide>
+              <img src={turtle2} alt="Slide 3" style={{ width: '90%', height: '90%' , borderRadius: '10px'}} />
+            </SwiperSlide>
+            <SwiperSlide>
+              <img src={turtle4} alt="Slide 4" style={{ width: '90%', height: '90%' , borderRadius: '10px'}} />
+            </SwiperSlide>
+            <SwiperSlide>
+              <img src={turtle5} alt="Slide 4" style={{ width: '90%', height: '90%' , borderRadius: '10px'}} />
+            </SwiperSlide>
+            <SwiperSlide>
+              <img src={turtle6} alt="Slide 4" style={{ width: '90%', height: '90%', borderRadius: '10px' }} />
+            </SwiperSlide>
+            <SwiperSlide>
+              <img src={turtle7} alt="Slide 4" style={{ width: '90%', height: '90%' , borderRadius: '10px'}} />
+            </SwiperSlide>
+          </Swiper>
+        </RectangleContainer>
 
-        <Rectangle3Container>
+
+        <LargeContainer1>
+        <Link to="/inquiry" style={{ width: '50%', textDecoration: 'none', color: 'black' }}>
+
+              <ChartContainer>
+                <TextContainer>
+                  {data2.length > 0 ? (
+                    <h2 style={{ margin: 0 }}>🦖{data2[0].name}님의 일주일간의 알람 빈도수입니다.</h2>
+                  ) : (
+                    <h2 style={{ margin: 0 }}>..로딩중</h2>
+                  )}
+                </TextContainer>
+
+                <ResponsiveContainer height="100%" width="100%">
+                  <BarChart data={data2} margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
+                    <XAxis dataKey="day" scale="point" padding={{ left: 70, right: 10 }} />
+                    <YAxis />
+                    <Tooltip contentStyle={{ backgroundColor: 'white', color: 'black' }} />
+                    <Bar dataKey="알림빈도수" fill="#FFBD83" background={{ fill: '#eee' }} />
+                  </BarChart>
+                </ResponsiveContainer>
+
+              </ChartContainer>
+        </Link> 
+              <CamContainer>
+                <StyledButton onClick={handleServiceButtonClick} >📷</StyledButton>    
+              </CamContainer>
+
+        
+              {/* 💬 */}
+               
+        </LargeContainer1>
+
+
+        <LargeContainer1>
         <div style={{ padding: '20px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
               <h3>자세교정, </h3>
               <h3>Doc. Turtle과 함께 해야 하는 이유</h3>
               
-          </div>
-                       
-        </Rectangle3Container>
-
-
-
-
-            <RectangleContainer>
-               
-               <StyledButton onClick={handleServiceButtonClick} >📷</StyledButton>
-              
-           </RectangleContainer>
+        </div>                       
+        </LargeContainer1>
            
                 
-            {isLoggedIn && ( // 로그인 상태일 때만 아래 컨텐츠를 렌더링
+        {isLoggedIn && ( // 로그인 상태일 때만 아래 컨텐츠를 렌더링
         <Row>
-          {/* 컨테이너 1 */}
-        <div style={{ width: '20%', marginRight: '3%' ,textDecoration: 'none', color: 'black'}}>
 
-          <Rectangle2Container>
-            <div style={{ padding: '20px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
-              <h3>오늘 {data.name}님의 자세 유지 비율👏</h3>
-              <div style={{ width: '100%', backgroundColor: '#eee', borderRadius: '10px', overflow: 'hidden' }}>
-                <div style={{ width: `${data.posturePercentage}%`, backgroundColor: '#4CAF50', textAlign: 'right', lineHeight: '40px', borderRadius: '10px 0 0 10px', color: 'white', paddingRight: '10px' }}>
-                  {data.posturePercentage}%
-                </div>
-              </div>
-              </div>
-              <h3 style={{ marginTop: '20px' }}>오늘 총 이용자 중에서 👑상위{data.rankPercentage < 1 ? 1 : data.rankPercentage}%</h3>
-                <div style={{ width: '100%', backgroundColor: '#FFA07A', borderRadius: '10px', overflow: 'hidden' }}>
-                  <div style={{ width: `${data.rankPercentage < 1 ? 1 : data.rankPercentage}%`, backgroundColor: '#eee', textAlign: 'right', lineHeight: '40px', borderRadius: '10px 0 0 10px', color: 'black', paddingRight: '10px' }}>
-                    {data.rankPercentage < 1 ? 1 : data.rankPercentage}%
+          <LargeContainer2>
+
+            <ChatBotContainer>
+
+
+            </ChatBotContainer>
+
+            <PercentageContainer>
+              <div style={{marginBottom: '5px'}}>
+                <h3>오늘 {data.name}님의 자세 유지 비율👏</h3>
+                <div style={{ width: '100%', backgroundColor: '#eee', borderRadius: '10px', overflow: 'hidden' }}>
+                  <div style={{ width: `${data.posturePercentage}%`, backgroundColor: '#4CAF50', textAlign: 'right', lineHeight: '70px', borderRadius: '10px 0 0 10px', color: 'white', paddingRight: '10px' }}>
+                    {data.posturePercentage}%
                   </div>
                 </div>
-                </Rectangle2Container>
               </div>
-          {/* 컨테이너 2 */}
-          <Link to="/inquiry" style={{ width: '77%', textDecoration: 'none', color: 'black' }}>
-            <Rectangle2Container>
-              <TextContainer>
-                {data2.length > 0 ? (
-                  <h2 style={{ margin: 0 }}>🦖{data2[0].name}님의 일주일간의 알람 빈도수입니다.</h2>
-                ) : (
-                  <h2 style={{ margin: 0 }}>..로딩중</h2>
-                )}
-              </TextContainer>
-              <ResponsiveContainer height="80%" width="80%">
-                <BarChart data={data2} margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
-                  <XAxis dataKey="day" scale="point" padding={{ left: 70, right: 10 }} />
-                  <YAxis />
-                  <Tooltip contentStyle={{ backgroundColor: 'white', color: 'black' }} />
-                  <Bar dataKey="알림빈도수" fill="#FFBD83" background={{ fill: '#eee' }} />
-                </BarChart>
-              </ResponsiveContainer>
-            </Rectangle2Container>
-          </Link>
+
+              <div style={{marginTop: '10px'}}>
+                <h3>오늘 총 이용자 중에서 👑상위{data.rankPercentage < 1 ? 1 : data.rankPercentage}%</h3>
+                  <div style={{ width: '100%', backgroundColor: '#FFA07A', borderRadius: '10px', overflow: 'hidden' }}>
+                    <div style={{ width: `${data.rankPercentage < 1 ? 1 : data.rankPercentage}%`, backgroundColor: '#eee', textAlign: 'right', lineHeight: '70px', borderRadius: '10px 0 0 10px', color: 'black', paddingRight: '10px' }}>
+                      {data.rankPercentage < 1 ? 1 : data.rankPercentage}%
+                    </div>
+                  </div>
+              </div>
+            </PercentageContainer>
+          </LargeContainer2>
         </Row>
       )}
         <StyledFooter>
