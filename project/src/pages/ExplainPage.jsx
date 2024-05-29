@@ -1,38 +1,55 @@
-import React from 'react';
-import styled from 'styled-components';
-import { Link } from 'react-router-dom'; 
+import React, { useCallback, useState, useEffect } from 'react';
+import styled,{ createGlobalStyle } from 'styled-components';
+import { Link, useNavigate } from 'react-router-dom';
+import api from '../services/api';
 
-const LinkButtonStyle = styled(Link)`
-    padding: 10px 20px;
-    background-color: #E8FAF2; /* Green */
-    border: none;
-    color: #5EAE89;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 10px;
-    cursor: pointer;
-    border-radius: 4px;
-    border: 1px solid #5EAE89;
-
-    &:hover {
-        background-color: #C5E1A5;
-        box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15); /* hover 상태에서의 그림자 변경 */   
-    }
+// 글로벌 스타일 정의
+const GlobalStyle = createGlobalStyle`
+  body, html {
+    overflow-x: hidden; /* 전체 페이지에서 가로 스크롤 제거 */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
 `;
 
-const BottomContainer = styled.div`
-    display: flex;
-    justify-content: center; /* 수평 중앙 정렬 */
-    align-items: center; /* 수직 중앙 정렬 */
-    height: 15vh; /* 전체 뷰포트 높이 */
+const HeaderContainer = styled.div`
+  display: flex;
+  background: #f5ede6d6;
+  color: #eeeeee;
+  padding: 1rem;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap; /* 필요에 따라 행을 여러 줄로 바꿉니다. */
+`;
+
+const StyledLink = styled(Link)`
+  color: #288A72;
+  text-decoration: none;
+  margin-right: 2rem;
+
+  &:hover {
+    background-color: #dff0d8; /* 호버 시 배경색 변경 */
+    text-decoration: underline;
+  }
+`;
+
+const Logo = styled.div`
+  color: #288A72;
+  font-size: 1.5rem;
+  font-weight: bold;
+`;
+
+const NavigationWrapper = styled.nav`
+  display: flex;
 `;
 
 const StyledApp = styled.div`
     text-align: center;
-    margin: 0 auto;
+    margin: 3%;
     padding: 20px;
+    border: 4px solid #779787;
 `;
 
 const StyledHeader = styled.header`
@@ -44,6 +61,7 @@ const StyledHeader = styled.header`
 
 const StyledMain = styled.main`
     padding: 20px;
+    margin-bottom: 10px;
 `;
 
 const StyledSection = styled.section`
@@ -103,15 +121,56 @@ const StyledStartContent = styled.div`
 
 const StyledSecondContent = styled.div`
     text-align: left;
+    margin: 12px;
 `;
 
 const StyledThirdContent = styled.div`
     text-align: left;
-    margin-bottom: 20px;
+    margin: 12px;
 `;
 
 function ExplainPage() {
+
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+    const handleLogout = async () => {
+        const token = localStorage.getItem('accessToken');
+        try {
+          const response = await api.post('/logout', {
+            accessToken: token
+          });
+    
+          if (response.status >= 200 || response.status < 300) {
+            console.log('Successfully logged out');
+            localStorage.removeItem('accessToken'); // 로컬 스토리지에서 accessToken 제거
+            setIsLoggedIn(false); // 로그인 상태 업데이트
+          } else {
+            throw new Error('Logout failed');
+          }
+        } catch (error) {
+          console.error('Logout error:', error);
+        }
+    
+      };
+
     return (
+    <styledConatiner>
+        <GlobalStyle />
+        <HeaderContainer>
+                <Logo to="/home">Doc. Turtle</Logo>
+                <NavigationWrapper>
+                    {isLoggedIn ? (
+                        <>
+                        <StyledLink to="#" onClick={handleLogout}>logout</StyledLink>
+                        <StyledLink to="/myPage">my page</StyledLink>
+                        </>
+                    ) : (
+                        <StyledLink to="/login">login</StyledLink> // 로그아웃 상태일 때 로그인 버튼 표시
+                    )}
+                    <StyledLink to="/chatbot">chatbot</StyledLink>
+                    <StyledLink to="/home">home</StyledLink> 
+                    </NavigationWrapper>
+            </HeaderContainer>  
         <StyledApp>
             <StyledHeader>
                 <h1>Guide For Users📖</h1>
@@ -169,10 +228,10 @@ function ExplainPage() {
                             <StyledSummary>🫶 웹 서비스 이용과 더불어 빠르고 간편한 스트레칭 추천 서비스</StyledSummary>
                             <p></p>
                         </details>
-                        {/* <details>
+                        <details>
                             <StyledSummary>💬 자세 관련 정보를 검색할 수 있는 챗봇 서비스</StyledSummary>
                             <p></p>
-                        </details> */}
+                        </details>
                     </StyledSecondContent>
                 </StyledSection>
                 <StyledTitleContent>
@@ -203,15 +262,6 @@ function ExplainPage() {
                                                 </ol>
                                             </details>
                                         </li>
-                                        {/* <li>
-                                            <details>
-                                                <StyledSummary>C) 웹캠 사용을 위한 조건</StyledSummary>
-                                                <ol>
-                                                    <li>귀여워지기</li>
-                                                    <li>귀여워지기</li>
-                                                </ol>
-                                            </details>
-                                        </li>  */}
                                     </ul>
                                 </details>
                             </li>
@@ -231,13 +281,11 @@ function ExplainPage() {
                     </StyledThirdContent>
                 </StyledSection>
             </StyledMain>
-            <BottomContainer>
-                <LinkButtonStyle to='/home'>돌아가기</LinkButtonStyle>
-            </BottomContainer>
             <StyledFooter>
                 <p>&copy; 2024 docturtle guide website</p>
             </StyledFooter>
         </StyledApp>
+    </styledConatiner>    
     );
 }
 
