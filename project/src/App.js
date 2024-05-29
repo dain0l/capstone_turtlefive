@@ -18,9 +18,7 @@ import ChartPage2 from './pages/ChartPage2.jsx'
 import MyPage from './pages/MyPage.jsx'
 import CameraCom from './components/Examine/CameraCom.jsx';
 import Setting from './pages/Setting.jsx';
-import ChatBot from './pages/ChatBot.jsx';
-
-
+import ChatBot from './pages/Chatbot.jsx';
 
 function App() {
   return (
