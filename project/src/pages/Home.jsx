@@ -110,6 +110,7 @@ const Rectangle3Container = styled.div`
   margin-right: 20px;
   text-align: left;
 
+  
   @media screen and (min-width: 768px) {
     width: 90%;
     margin-left: auto;
