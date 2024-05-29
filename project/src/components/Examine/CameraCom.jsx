@@ -151,14 +151,21 @@ const CameraCom = () => {
               const angle = checkAngle(chinLandmark, leftShoulder, shoulderMidPoint);
 
               const ZvaluesBool =  Zvalues >= 0.38;
-              const distanceBool = distance <= 0.1;
+              let distanceBool = false;
               const angleBool = (angle <= 60 || angle >= 130);
-
-              //console.log("D:"+ distanceBool +distance + "\n" + "Z: "+ZvaluesBool + Zvalues);
-              console.log("D:"+ distance + "\n" + "angle: " + angle);
+              if(noseLandmark){
+                if((noseLandmark.z <= -0.023)){
+                  distanceBool = distance <= 0.16;
+                  console.log("D:"+ distanceBool +distance + "\n" + "Z:" +noseLandmark.z);
+                }else{
+                  distanceBool = distance <= 0.14;
+                  console.log("D:"+ distanceBool +distance + "\n" + "Z:" +noseLandmark.z);
+                }
+              }
+              //console.log("D:"+ distanceBool +distance + "\n" + "Z:" +noseLandmark.z);
 
               if(chinLandmark){ // 152번 랜드마크가 인식될 경우 
-                 if( distanceBool || ZvaluesBool || angleBool){
+                 if( distanceBool || angleBool){
                   canvasCtx.font = "10px Arial";
                   canvasCtx.fillStyle = "red";
                   canvasCtx.fillText("You have to fix your pose.", 10, 30);

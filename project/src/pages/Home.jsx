@@ -12,6 +12,7 @@ import turtle4 from '../img/turtle4.jpg';
 import turtle5 from '../img/turtle5.jpg';
 import turtle6 from '../img/turtle6.jpg';
 import turtle7 from '../img/turtle7.jpg';
+import chatbot from '../img/chatbot.png';
 
 import {
   BarChart,
@@ -169,6 +170,7 @@ const CamContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
   width: 30%;
   height: 100%;
   overflow: hidden;
@@ -481,11 +483,17 @@ const handleServiceButtonClick = () => {
               </ChartContainer>
         </Link> 
               <CamContainer>
+                <TextContainer2>
+                  {data2.length > 0 ? (
+                    <h2 style={{ margin: 0 }}>자세 교정 서비스 이용하기</h2>
+                  ) : (
+                    <h2 style={{ margin: 0 }}>..로딩중</h2>
+                  )}
+                </TextContainer2>
+
                 <StyledButton onClick={handleServiceButtonClick} >📷</StyledButton>    
               </CamContainer>
 
-        
-              {/* 💬 */}
                
         </LargeContainer1>
 
@@ -505,8 +513,8 @@ const handleServiceButtonClick = () => {
           <LargeContainer2>
 
             <ChatBotContainer>
-
-
+              <StyledLink to="/chatbot"><img src={chatbot} /></StyledLink>
+              
             </ChatBotContainer>
 
             <PercentageContainer>
