@@ -258,8 +258,6 @@ const handleServiceButtonClick = () => {
             <HeaderContainer>
                 <Logo to="/register">Doc. Turtle</Logo>
                 <NavigationWrapper>
-                    {/* <StyledLink to="/inquiry">1week-chart</StyledLink>
-                    <StyledLink to="#">contact</StyledLink> */}
                     {isLoggedIn ? (
                         <>
                         <StyledLink to="#" onClick={handleLogout}>logout</StyledLink>
