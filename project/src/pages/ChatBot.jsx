@@ -1,5 +1,41 @@
 import React, { useState } from 'react'; 
 import axios from 'axios';
+import api from '../services/api';
+import styled, { createGlobalStyle } from 'styled-components';
+import { Link, useNavigate } from 'react-router-dom';
+
+const HeaderContainer = styled.div`
+  display: flex;
+  background: #f5ede6d6;
+  color: #eeeeee;
+  padding: 1rem;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap; /* 필요에 따라 행을 여러 줄로 바꿉니다. */
+`;
+const Logo = styled.div`
+  color: #288A72;
+  font-size: 1.5rem;
+  font-weight: bold;
+`;
+
+
+const StyledLink = styled(Link)`
+  color: #288A72;
+  text-decoration: none;
+  margin-right: 2rem;
+
+  &:hover {
+    background-color: #dff0d8; /* 호버 시 배경색 변경 */
+    text-decoration: underline;
+  }
+`;
+
+
+const NavigationWrapper = styled.nav`
+  display: flex;
+`;
 
 const ChatBot = () => {
   // CSS 코드를 JSX 파일 안에 넣음
@@ -115,6 +151,27 @@ const ChatBot = () => {
   ]);
   const [userInput, setUserInput] = useState('');
 
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  const handleLogout = async () => {
+    const token = localStorage.getItem('accessToken');
+    try {
+      const response = await api.post('/logout', {
+        accessToken: token
+      });
+
+      if (response.status >= 200 || response.status < 300) {
+        console.log('Successfully logged out');
+        localStorage.removeItem('accessToken'); // 로컬 스토리지에서 accessToken 제거
+        setIsLoggedIn(false); // 로그인 상태 업데이트
+      } else {
+        throw new Error('Logout failed');
+      }
+    } catch (error) {
+      console.error('Logout error:', error);
+    }
+  };
+
   const handleSend = async () => {
     if (userInput.trim() === '') return;
 
@@ -167,6 +224,22 @@ const ChatBot = () => {
   };
 
   return (
+    <div>
+      <HeaderContainer>
+        <Logo to="/home">Doc. Turtle</Logo>
+        <NavigationWrapper>
+          {isLoggedIn ? (
+            <>
+              <StyledLink to="#" onClick={handleLogout}>logout</StyledLink>
+              <StyledLink to="/myPage">my page</StyledLink>
+            </>
+          ) : (
+            <StyledLink to="/login">login</StyledLink> // 로그아웃 상태일 때 로그인 버튼 표시
+          )}
+          <StyledLink to="/explain">explain</StyledLink>
+          <StyledLink to="/home">home</StyledLink>
+        </NavigationWrapper>
+      </HeaderContainer>
     <div style={styles.container}>
       <h1 style={styles.h1}>Doc. turtle Chatbot 💬</h1> 
       <div style={styles.chatWindow}>
@@ -196,6 +269,7 @@ const ChatBot = () => {
         />
         <button onClick={handleSend} style={styles.button}>Send</button>
       </div>
+    </div>
     </div>
   );
 };
