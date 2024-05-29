@@ -93,7 +93,7 @@ const Rectangle2Container = styled.div`
 `;
 
 const Rectangle3Container = styled.div`
-  background-color: #FFFFFF; --> 오늘 ~ 님의 비율, 차트 background
+  background-color: #FFFFFF;
   padding: 20px;
   border-radius: 10px;
   margin-top: 20px;
@@ -110,9 +110,10 @@ const Rectangle3Container = styled.div`
   margin-right: 20px;
   text-align: left;
 
-  @media screen and (min-width: 1000px) {
-    margin-left: 45px;
+  @media screen and (min-width: 768px) {
     width: 90%;
+    margin-left: auto;
+    margin-right: auto;
   }
 `;
 
