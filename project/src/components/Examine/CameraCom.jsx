@@ -22,9 +22,24 @@ const StyledCanvas = styled.canvas`
   top: 0;
 `;
 
+const ToggleButton = styled.button`
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  
+`;
+
+
 //알림 소리 추가 
 //https://docturtle.site/image/sound.mp3
 const alarmSound = new Audio('/image/sound.mp3'); // 알림 소리 파일 URL
+let isAlarmOn = false; // 알림 스위치 상태 저장
 
 
 function formatLocalDateToISOString() {
@@ -32,6 +47,7 @@ function formatLocalDateToISOString() {
   const localISOTime = (new Date(Date.now() - offset)).toISOString().slice(0, 19);
   return localISOTime;
 }
+
 
 function fixAlarm(){
   let notificationPermission = Notification.permission;
@@ -43,14 +59,17 @@ function fixAlarm(){
     });
     alarmSound.play(); // 알림 소리 재생
   }
-  
+ 
   if (notificationPermission === "granted") {
       //Notification을 이미 허용한 사람들에게 보여주는 알람창
+      
       new Notification('You have to fix your pose!!', {
           body: '올바른 자세를 유지해주세요.',
           icon:"https://wwww.docturtle.site/image/turtle9.png",
           sound: "https://www.docturtle.site/sound/turtle.mp3" 
+      
       });
+    
   } else if (notificationPermission !== 'denied') {
       //Notification을 거부했을 경우 재 허용 창 띄우기
       Notification.requestPermission(function (permission) {
@@ -211,12 +230,13 @@ const CameraCom = () => {
   }
 };
 
-    return (
-      <CameraContainer>
-        <Webcam ref={webcamRef} style={{ width: '90%', height: '100%' }} />
-        <StyledCanvas ref={canvasRef} style={{ width: '90%', height: '100%' }}/>
-    </CameraContainer>
-    );
-  }
+return (
+  <CameraContainer>
+    <Webcam ref={webcamRef} style={{ width: '90%', height: '100%' }} />
+    <StyledCanvas ref={canvasRef} style={{ width: '90%', height: '100%' }}/>
+    
+  </CameraContainer>
+);
+}
 
 export default CameraCom;
