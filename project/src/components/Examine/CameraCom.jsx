@@ -162,15 +162,7 @@ const CameraCom = () => {
                   console.log("D:"+ distanceBool +distance + "\n" + "Z:" +noseLandmark.z);
                 }
               }
-
-<<<<<<< HEAD
-
-
               //console.log("D:"+ distanceBool +distance + "\n" + "Z:" +noseLandmark.z);
-=======
-              //console.log("D:"+ distanceBool +distance + "\n" + "Z: "+ZvaluesBool + Zvalues);
-              console.log("D:"+ distance + "\n" + "angle: " + angle);
->>>>>>> main
 
               if(chinLandmark){ // 152번 랜드마크가 인식될 경우 
                  if( distanceBool || angleBool){
