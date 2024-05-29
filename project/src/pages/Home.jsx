@@ -2,6 +2,8 @@ import React, { useCallback, useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { Link, useNavigate } from 'react-router-dom';
 import api from '../services/api';
+import '../index.css'
+
 
 import turtle1 from '../img/turtle1.jpg';
 import turtle2 from '../img/turtle2.jpg';
@@ -137,6 +139,7 @@ const Row = styled.div`
 `;
 
 const StyledButton = styled.button`
+  font-family:'TheJamsil5Bold',sans-serif;
   color: #5EAE89;
   font-size: 2rem;
   padding: 0.5rem 1rem;
@@ -147,11 +150,11 @@ const StyledButton = styled.button`
   cursor: pointer;
   border: 1px solid #5EAE89;
   transition: background-color 0.3s ease, box-shadow 0.3s ease;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 추가된 box-shadow 스타일 */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 
   &:hover {
     background-color: #C5E1A5;
-    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15); /* hover 상태에서의 그림자 변경 */
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
   }
 `;
 
@@ -274,7 +277,7 @@ const handleServiceButtonClick = () => {
         </HeaderContainer>
             <RectangleContainer>
                
-                <StyledButton onClick={handleServiceButtonClick} >자세교정 서비스 이용하기</StyledButton>
+                <StyledButton onClick={handleServiceButtonClick}>자세교정서비스</StyledButton>
                
             </RectangleContainer>
             

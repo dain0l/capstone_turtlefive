@@ -10,7 +10,6 @@ import image4 from '../img/image4.jpg';
 const GlobalStyle = createGlobalStyle`
   body {
     margin: 0;
-    font-family: Arial, sans-serif;
     background: linear-gradient(to bottom, rgba(184, 253, 214, 0.562) 20%, rgba(197, 193, 193, 0.95) 40%, rgba(68, 68, 81, 0.676) 40%, rgba(22, 22, 33, 0.813) 100%);
   }
 
@@ -158,7 +157,6 @@ const Section = styled.div`
 
 const LinkButtonStyle = styled(Link)`
   color: #FBFDF5;
-  font-family: Roboto;
   font-size: 1.5rem;
   font-style: normal;
   font-weight: 300;
