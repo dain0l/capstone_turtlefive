@@ -162,9 +162,7 @@ function MyPage() {
             </UserInfoContainer>
                     
             {/* 추가적인 사용자 정보 */}
-            <BottomContainer>
-                <LinkButtonStyle to="/setting">설정</LinkButtonStyle>
-            </BottomContainer>
+            
             
             <BottomContainer>
             <LinkButtonStyle to="/home" onClick={goToHome}>Home</LinkButtonStyle>

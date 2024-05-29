@@ -2,8 +2,9 @@ import axios from 'axios';
 
 // axios 인스턴스 생성
 const api = axios.create({
-  //baseURL: 'http://localhost:8080/api', // 서버 등록시 수정 예정!!!
-  baseURL: 'https://www.docturtle.site/api',
+  baseURL: 'http://localhost:8080/api', // 서버 등록시 수정 예정!!!
+  //baseURL: 'https://www.docturtle.site/api',
+
 
   headers: {
     'Content-Type': 'application/json',
