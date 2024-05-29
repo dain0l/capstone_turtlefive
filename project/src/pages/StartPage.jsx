@@ -102,7 +102,7 @@ const Section = styled.div`
   }
 
   img {
-    max-width: 80%;
+    max-width: 100%;
     max-height: 50vh;
     height: auto;
     margin-top: 20px;
