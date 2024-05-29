@@ -33,11 +33,12 @@ import 'swiper/css/scrollbar';
 
 const Container = styled.div`
   overflow-x: hidden; /* 좌우 스크롤 제거 */
+  background: #FFFFFF;
 `;
 
 const HeaderContainer = styled.div`
   display: flex;
-  background: #f5ede6d6;
+  background: #FFFFFF // #b4b4b4; --> 위에 헤더
   color: #eeeeee;
   padding: 1rem;
   width: 100%;
@@ -47,7 +48,7 @@ const HeaderContainer = styled.div`
 `;
 
 const RectangleContainer = styled.div`
-  background-color: #f5ede6d6;
+  background-color: #FFFFFF;
   padding: 20px;
   border-radius: 10px;
   margin-top: 20px;
@@ -56,18 +57,18 @@ const RectangleContainer = styled.div`
   flex-direction: column;
   align-items: center;
   width: calc(95% - 3%);
-  height: 250px;
+  height: 360px;
   margin-right: auto;
   margin-left: auto;
   overflow: hidden;
-  border: 1.5px solid #8fae99; /* 테두리 속성 추가 */
+ // border: 1.5px solid #505050; /* 테두리 속성 추가 */
 
   @media screen and (max-width: 768px) {
     width: calc(100% - 6%);
   }
 `;
 const Rectangle2Container = styled.div`
-  background-color: #f5ede6d6;
+  background-color: #FFFFFF; --> 오늘 ~ 님의 비율, 차트 background
   padding: 20px;
   border-radius: 10px;
   margin-top: 20px;
@@ -80,7 +81,32 @@ const Rectangle2Container = styled.div`
   height: 250px;
   margin-left: 20px;
   overflow: hidden;
-  border: 1.5px solid #8fae99;
+  border: 1.5px solid #505050;
+  margin-right: 20px;
+  text-align: left;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  
+  @media screen and (min-width: 1000px) {
+    margin-left: 45px;
+    width: 90%;
+  }
+`;
+
+const Rectangle3Container = styled.div`
+  background-color: #FFFFFF; --> 오늘 ~ 님의 비율, 차트 background
+  padding: 20px;
+  border-radius: 10px;
+  margin-top: 20px;
+  margin-bottom: 80px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center; /* 차트를 중앙에 위치시키기 위해 center로 변경 */
+  width: 87%;
+  height: 250px;
+  margin-left: 20px;
+  overflow: hidden;
+  border: 1.5px solid #505050;
   margin-right: 20px;
   text-align: left;
 
@@ -89,6 +115,8 @@ const Rectangle2Container = styled.div`
     width: 90%;
   }
 `;
+
+
 
 const TextContainer = styled.div`
   width: 100%;
@@ -112,7 +140,7 @@ const StyledFooter = styled.footer`
 `;
 
 const Logo = styled.div`
-  color: #288A72;
+  color: #505050;
   font-size: 1.5rem;
   font-weight: bold;
 `;
@@ -122,7 +150,7 @@ const NavigationWrapper = styled.nav`
 `;
 
 const StyledLink = styled(Link)`
-  color: #288A72;
+  color: #505050;
   text-decoration: none;
   margin-right: 2rem;
 
@@ -143,14 +171,24 @@ const StyledButton = styled.button`
   color: #5EAE89;
   font-size: 2rem;
   padding: 0.5rem 1rem;
-  background-color: #E8FAF2;
+  background-color: #FFFFFF;
   color: 5EAE89;
-  border: none;
-  border-radius: 5px;
+  width: 100px;
+  height: 100px;
+  border: 1;
+  border-radius: 100px;
   cursor: pointer;
   border: 1px solid #5EAE89;
   transition: background-color 0.3s ease, box-shadow 0.3s ease;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+  // .button {
+  //   border: 1;
+  //   width: 100px;
+  //   height: 100px;
+  //   border-radius: 100px;
+  //   background-color: white;
+  // }
 
   &:hover {
     background-color: #C5E1A5;
@@ -273,11 +311,7 @@ const handleServiceButtonClick = () => {
                     <StyledLink to="/explain">explain</StyledLink> 
                     </NavigationWrapper>
         </HeaderContainer>
-            <RectangleContainer>
-               
-                <StyledButton onClick={handleServiceButtonClick}>자세교정서비스</StyledButton>
-               
-            </RectangleContainer>
+        <hr></hr>
             
             <RectangleContainer>
             <Swiper
@@ -297,7 +331,7 @@ const handleServiceButtonClick = () => {
                 style={{ width: '100%', height: '100%' }} // 스와이퍼의 너비와 높이를 부모 요소에 맞게 설정
             >
           <SwiperSlide>
-            <img src={turtle1} alt="Slide 1" style={{ width: '90%', height: '90%' , borderRadius: '10px'}} />
+            <img src={turtle1} alt="Slide 1" style={{ width: '90%', height: '90%' , borderRadius: '10px' }} />
           </SwiperSlide>
           <SwiperSlide>
             <img src={turtle3} alt="Slide 2" style={{ width: '90%', height: '90%', borderRadius: '10px' }} />
@@ -320,6 +354,25 @@ const handleServiceButtonClick = () => {
         </Swiper>
             </RectangleContainer>
 
+        <Rectangle3Container>
+        <div style={{ padding: '20px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+              <h3>자세교정, </h3>
+              <h3>Doc. Turtle과 함께 해야 하는 이유</h3>
+              
+          </div>
+                       
+        </Rectangle3Container>
+
+
+
+
+            <RectangleContainer>
+               
+               <StyledButton onClick={handleServiceButtonClick} >📷</StyledButton>
+              
+           </RectangleContainer>
+           
+                
             {isLoggedIn && ( // 로그인 상태일 때만 아래 컨텐츠를 렌더링
         <Row>
           {/* 컨테이너 1 */}
