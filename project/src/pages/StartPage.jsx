@@ -195,13 +195,16 @@ const Section = styled.div`
 
 const LinkButtonStyle = styled(Link)`
   color: #FBFDF5;
-  font-size: 1.5rem;
+  font-size: 2rem;
   font-style: normal;
   font-weight: 300;
   line-height: normal;
   margin-top: 100px;
+  padding: 20px;
   cursor: pointer;
   text-decoration: none;
+  border-radius: 50px; /* 동그란 테두리 */
+  border: 2px solid #eee; /* 겉에 흰 테두리 추가 */
 
   &:hover {
     color: #FFFFFF;

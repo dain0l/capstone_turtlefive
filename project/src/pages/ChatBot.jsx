@@ -68,7 +68,7 @@ const ChatBot = () => {
       border: '1px solid #ccc',
       borderRadius: '10px',
       padding: '10px',
-      height: '660px',
+      height: '600px',
       overflowY: 'scroll',
       margin: '20px',
       marginBottom: '10px',

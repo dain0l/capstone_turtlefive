@@ -49,7 +49,7 @@ const StyledApp = styled.div`
   text-align: center;
   margin: 3%;
   padding: 20px;
-  border: 4px solid #288A72;
+  border: 4px solid #505050;
   margin-bottom: 100px; /* 추가된 부분: Footer와의 겹침 방지 */
   border-radius: 10px;
 `;
