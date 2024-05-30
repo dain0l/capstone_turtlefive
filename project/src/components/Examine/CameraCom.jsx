@@ -134,18 +134,18 @@ const CameraCom = ({ setAlarm, alarm }) => {
               //턱끝과 어깨 중심의 2차원 각도 계산(angle) - 다은
               const angle = checkAngle(chinLandmark, leftShoulder, shoulderMidPoint);
 
-              const ZvaluesBool =  Zvalues >= 0.38;
               let distanceBool = false;
               const angleBool = (angle <= 60 || angle >= 130);
               if(noseLandmark){
-                if(noseLandmark.z <= -0.025){
-                  distanceBool = distance <= 0.12;
-                  console.log("D:"+ distanceBool +distance + "\n" + "Z:" +noseLandmark.z);
-                } else if(noseLandmark.z <= -0.026){
+                // if(noseLandmark.z <= -0.025){
+                //   distanceBool = distance <= 0.128;
+                //   console.log("D:"+ distanceBool +distance + "\n" + "Z:" +noseLandmark.z);
+                // } else 
+                if(noseLandmark.z <= -0.026){
                   distanceBool = distance <= 0.13;
                   console.log("D:"+ distanceBool +distance + "\n" + "Z:" +noseLandmark.z)            
-                } else if(noseLandmark.z <= -0.029){
-                    distanceBool = distance <= 0.145;
+                } else if(noseLandmark.z <= -0.0298){
+                    distanceBool = distance <= 0.15;
                     console.log("D:"+ distanceBool +distance + "\n" + "Z:" +noseLandmark.z);
                 } else {
                     distanceBool = distance <= 0.16;
