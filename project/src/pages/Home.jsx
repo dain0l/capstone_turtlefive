@@ -519,7 +519,7 @@ const handleServiceButtonClick = () => {
           <div style={{ padding: '20px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', lineHeight: '80%'}}>
             <h1 style={{ fontSize: '40px', marginTop: '60px', color: '#000000bf' }}>Doc. Turtle과 함께 해야 하는 이유</h1>  
             <h2 style={{ fontSize: '30px', color: '#000000bf' }}>Doc. Turtle, 이런 분들에게 필요합니다.</h2>
-            <p style={{ textAlign: 'center', fontSize: '25px', lineHeight: '1.8' , color: '#000000bf' }}>
+            <p style={{ textAlign: 'center', fontSize: '20px', lineHeight: '1.8' , color: '#000000bf' }}>
               거북목, 목과 허리의 디스크, 오십견, 퇴행성 관절염, 스트레스 등 <br/>
               현대인의 잘못된 행동 습관, 또는 반복적인 직업 활동으로 인해 생기는 통증과 불편함 등은<br/>
               생활 속 꾸준한 자세 교정을 통해 회복될 수 있습니다.
@@ -549,7 +549,7 @@ const handleServiceButtonClick = () => {
 
             <PercentageContainer>
               <div style={{marginBottom: '5px'}}>
-                <h1>오늘 {data.name}님의 자세 유지 비율👏</h1>
+                <h1>오늘 {data.name}님의 올바른 자세 비율👏</h1>
                 <div style={{ width: '100%', backgroundColor: '#cccccc', borderRadius: '10px', overflow: 'hidden' }}>
                   <div style={{ width: `${data.posturePercentage}%`, backgroundColor: '#4287f5', textAlign: 'right', lineHeight: '70px', borderRadius: '10px 0 0 10px', color: 'white', paddingRight: '10px' }}>
                     {data.posturePercentage}%

@@ -103,7 +103,7 @@ const LinkCom = () => {
                             <SlideStyle>
                                 <iframe
                                     width="420"
-                                    height="250"
+                                    height="220"
                                     src={video}
                                     title="YouTube video player"
                                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
