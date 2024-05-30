@@ -145,7 +145,7 @@ const CameraCom = ({ setAlarm, alarm }) => {
                   distanceBool = distance <= 0.13;
                   console.log("D:"+ distanceBool +distance + "\n" + "Z:" +noseLandmark.z)            
                 } else if(noseLandmark.z <= -0.0298){
-                    distanceBool = distance <= 0.15;
+                    distanceBool = distance <= 0.152;
                     console.log("D:"+ distanceBool +distance + "\n" + "Z:" +noseLandmark.z);
                 } else {
                     distanceBool = distance <= 0.16;
