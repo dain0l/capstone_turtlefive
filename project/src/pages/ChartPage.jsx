@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 
 const Button = styled.button`
 color: #FFF;
-background-color: #8fae99;
+background-color: #a5a5a5;
 font-family: Roboto;
 font-size: 1.5rem;
 font-style: normal;
@@ -14,12 +14,12 @@ font-weight: 300;
 line-height: normal;
 cursor: pointer;
 text-decoration: none;
-padding: 10px 20px;
+padding: 10px;
 border-radius: 10px;
 transition: background-color 0.3s ease;
 
 &:hover {
-    background-color: #638d88;
+    background-color: #000;
 }
 `;
 

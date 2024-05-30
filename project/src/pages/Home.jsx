@@ -524,6 +524,7 @@ const handleServiceButtonClick = () => {
 
               <TextContainer2>
                 <h1 style={{ margin: 0, marginTop: '20px', fontSize: '20px', cursor: 'pointer'
+
                   }}to="/chatbot">대화 시작하기 ➤</h1>
               </TextContainer2>
             </ChatBotContainer>
