@@ -15,7 +15,6 @@ import turtle77 from '../img/turtle77.png';
 import background from '../img/background.png';
 import chatbot from '../img/chatbot.png';
 
-
 import {
   BarChart,
   Bar,
@@ -109,31 +108,6 @@ const Rectangle2Container = styled.div`
 `;
 
 
-
-const Rectangle3Container = styled.div`
-  background-color: #FFFFFF; --> 오늘 ~ 님의 비율, 차트 background
-  padding: 20px;
-  border-radius: 10px;
-  margin-top: 20px;
-  margin-bottom: 80px;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center; /* 차트를 중앙에 위치시키기 위해 center로 변경 */
-  width: 87%;
-  height: 250px;
-  margin-left: 20px;
-  overflow: hidden;
-  border: 1.5px solid #505050;
-  margin-right: 20px;
-  text-align: left;
-
-  @media screen and (min-width: 1000px) {
-    margin-left: 45px;
-    width: 90%;
-  }
-`;
-
 const LargeContainer1 = styled.div`
   background-color: #ffffff;
   padding: 20px;
@@ -153,24 +127,6 @@ const LargeContainer1 = styled.div`
 
 `;
 
-const LargeContainer3 = styled.div`
-  background-color: #ffffff;
-  padding: 20px;
-  margin: 20px 0;
-  display: flex;
-  justify-content: center;
-  flex-direction: row;
-  align-items: center; 
-  width: auto;
-  height: 400px;
-  overflow: hidden;
-  background-image: url(${background});
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  // border: 1.5px solid #505050;
-`;
-
 const ChartContainer = styled.div`
   background-color: #FFFFFF;
   border-radius: 10px;
@@ -184,7 +140,7 @@ const ChartContainer = styled.div`
 
 `;
 const CamContainer = styled.div`
-  background-color: #FFFFFF;
+  background-color: #cccccc;
   border-radius: 10px;
   display: flex;
   justify-content: center;
@@ -193,6 +149,7 @@ const CamContainer = styled.div`
   width: 30%;
   height: 100%;
   overflow: hidden;
+  border-radius: 40px;
 
 `;
 
@@ -229,19 +186,19 @@ const ChatBotContainer = styled.div`
   overflow: hidden;
 `;
 
-
 const PercentageContainer = styled.div`
-  marginTop: '20px'
-  background-color: #FFFFFF;
+  marginTop: 10px
+  background-color: #FF0000;
   border-radius: 10px;
-  margin-left: 50px;
+  margin-left: 20px;
+  margin-right: 40px;
   display: flex;
   justify-content: space-between;
   flex-direction: column;
   width: 60%;
-  height: 300px;
+  height: 320px;
   overflow: hidden;
-  border-radius: 50px;
+  border-radius: 10px;
   padding : 20px;
 
 `;
@@ -288,6 +245,12 @@ const StyledLink = styled(Link)`
   }
 `;
 
+const StyledChatBot = styled(Link)`
+  border: 5px solid #fcae47;
+  border-radius: 160px;
+
+`;
+
 const Row = styled.div`
   display: flex;
   flex-wrap: wrap; /* 필요에 따라 행을 여러 줄로 바꿉니다. */
@@ -299,14 +262,14 @@ const StyledButton = styled.button`
   color: #5EAE89;
   font-size: 5rem;
   padding: 0.5rem 1rem;
-  background-color: #FFFFFF;
+  background-color: #ffd4ad;
   color: 5EAE89;
   width: 200px;
   height: 200px;
   border: 2;
   border-radius: 100px;
   cursor: pointer;
-  border: 1px solid #5EAE89;
+  border: 1px solid #ffffff;
   transition: background-color 0.3s ease, box-shadow 0.3s ease;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 
@@ -319,7 +282,7 @@ const StyledButton = styled.button`
   // }
 
   &:hover {
-    background-color: #C5E1A5;
+    background-color: #ffaf6e;
     box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
   }
 `;
@@ -459,25 +422,25 @@ const handleServiceButtonClick = () => {
                 style={{ width: '100%', height: '100%' }} // 스와이퍼의 너비와 높이를 부모 요소에 맞게 설정
             >
             <SwiperSlide>
-              <img src={turtle11} alt="Slide 11" style={{ width: '90%', height: '90%' , borderRadius: '10px' }} />
+              <img src={turtle11} alt="Slide 1" style={{ width: '90%', height: '90%' , borderRadius: '10px' }} />
             </SwiperSlide>
             <SwiperSlide>
-              <img src={turtle33} alt="Slide 22" style={{ width: '90%', height: '90%', borderRadius: '10px' }} />
+              <img src={turtle33} alt="Slide 2" style={{ width: '90%', height: '90%', borderRadius: '10px' }} />
             </SwiperSlide>
             <SwiperSlide>
-              <img src={turtle22} alt="Slide 33" style={{ width: '90%', height: '90%' , borderRadius: '10px'}} />
+              <img src={turtle22} alt="Slide 3" style={{ width: '90%', height: '90%' , borderRadius: '10px'}} />
             </SwiperSlide>
             <SwiperSlide>
-              <img src={turtle44} alt="Slide 44" style={{ width: '90%', height: '90%' , borderRadius: '10px'}} />
+              <img src={turtle44} alt="Slide 4" style={{ width: '90%', height: '90%' , borderRadius: '10px'}} />
             </SwiperSlide>
             <SwiperSlide>
-              <img src={turtle55} alt="Slide 55" style={{ width: '90%', height: '90%' , borderRadius: '10px'}} />
+              <img src={turtle55} alt="Slide 4" style={{ width: '90%', height: '90%' , borderRadius: '10px'}} />
             </SwiperSlide>
             <SwiperSlide>
-              <img src={turtle66} alt="Slide 66" style={{ width: '90%', height: '90%', borderRadius: '10px' }} />
+              <img src={turtle66} alt="Slide 4" style={{ width: '90%', height: '90%', borderRadius: '10px' }} />
             </SwiperSlide>
             <SwiperSlide>
-              <img src={turtle77} alt="Slide 77" style={{ width: '90%', height: '90%' , borderRadius: '10px'}} />
+              <img src={turtle77} alt="Slide 4" style={{ width: '90%', height: '90%' , borderRadius: '10px'}} />
             </SwiperSlide>
           </Swiper>
         </RectangleContainer>
@@ -489,9 +452,9 @@ const handleServiceButtonClick = () => {
               <ChartContainer>
                 <TextContainer>
                   {data2.length > 0 ? (
-                    <h2 style={{ margin: 0 }}>🦖{data2[0].name}님의 일주일간의 알람 빈도수입니다.</h2>
+                    <h1 style={{ margin: 0 }}>🦖{data2[0].name}님의 일주일간의 알람 빈도수입니다.</h1>
                   ) : (
-                    <h2 style={{ margin: 0 }}>..로딩중</h2>
+                    <h1 style={{ margin: 0 }}>..로딩중</h1>
                   )}
                 </TextContainer>
 
@@ -509,33 +472,32 @@ const handleServiceButtonClick = () => {
               <CamContainer>
                 <TextContainer2>
                   {data2.length > 0 ? (
-                    <h2 style={{ margin: 0 }}>자세 교정 서비스 이용하기</h2>
+                    <h1 style={{ margin: 0, marginTop: '30px'}}>자세 교정 서비스 이용하기</h1>
                   ) : (
-                    <h2 style={{ margin: 0 }}>..로딩중</h2>
+                    <h1 style={{ margin: 0 }}>..로딩중</h1>
                   )}
                 </TextContainer2>
 
-                <StyledButton onClick={handleServiceButtonClick} >📷</StyledButton>    
+                <StyledButton onClick={handleServiceButtonClick} >📷</StyledButton>
+                <TextContainer2>
+                <h1 style={{ margin: 0, marginTop: '30px', fontSize: '40px', cursor: 'pointer'  // 커서를 손가락 모양으로 변경
+                  }} onClick={handleServiceButtonClick}>Click!
+                </h1>
+                </TextContainer2>
+
               </CamContainer>
 
                
         </LargeContainer1>
 
 
-        <LargeContainer3>
-          <div style={{
-            padding: '20px',
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            justifyContent: 'center',
-            background: 'rgba(255, 255, 255, 0.8)', // Optional: Add a semi-transparent background to make the text more readable
-            borderRadius: '10px' // Optional: Add rounded corners
-          }}>
-            <h3>자세교정, </h3>
-            <h3>Doc. Turtle과 함께 해야 하는 이유</h3>
-          </div>
-      </LargeContainer3>
+        <LargeContainer1>
+        <div style={{ padding: '20px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+              <h3>자세교정, </h3>
+              <h3>Doc. Turtle과 함께 해야 하는 이유</h3>
+              
+        </div>                       
+        </LargeContainer1>
            
                 
         {isLoggedIn && ( // 로그인 상태일 때만 아래 컨텐츠를 렌더링
@@ -544,24 +506,23 @@ const handleServiceButtonClick = () => {
           <LargeContainer2>
 
             <ChatBotContainer>
-              <StyledLink to="/chatbot"><img src={chatbot} /></StyledLink>
-              
+            <StyledChatBot to="/chatbot"><img src={chatbot} /></StyledChatBot>
             </ChatBotContainer>
 
             <PercentageContainer>
               <div style={{marginBottom: '5px'}}>
-                <h3>오늘 {data.name}님의 자세 유지 비율👏</h3>
+                <h1>오늘 {data.name}님의 자세 유지 비율👏</h1>
                 <div style={{ width: '100%', backgroundColor: '#b8b8b8', borderRadius: '10px', overflow: 'hidden' }}>
-                  <div style={{ width: `${data.posturePercentage}%`, backgroundColor: '#4CAF50', textAlign: 'right', lineHeight: '70px', borderRadius: '10px 0 0 10px', color: 'white', paddingRight: '10px' }}>
+                  <div style={{ width: `${data.posturePercentage}%`, backgroundColor: '#4287f5', textAlign: 'right', lineHeight: '70px', borderRadius: '10px 0 0 10px', color: 'white', paddingRight: '10px' }}>
                     {data.posturePercentage}%
                   </div>
                 </div>
               </div>
 
               <div style={{marginTop: '10px'}}>
-                <h3>오늘 총 이용자 중에서 👑상위{data.rankPercentage < 1 ? 1 : data.rankPercentage}%</h3>
-                  <div style={{ width: '100%', backgroundColor: '#FFA07A', borderRadius: '10px', overflow: 'hidden' }}>
-                    <div style={{ width: `${data.rankPercentage < 1 ? 1 : data.rankPercentage}%`, backgroundColor: '#b8b8b8', textAlign: 'right', lineHeight: '70px', borderRadius: '10px 0 0 10px', color: 'black', paddingRight: '10px' }}>
+                <h1>오늘 총 이용자 중에서 👑상위{data.rankPercentage < 1 ? 1 : data.rankPercentage}%</h1>
+                  <div style={{ width: '100%', backgroundColor: '#b8b8b8', borderRadius: '10px', overflow: 'hidden' }}>
+                    <div style={{ width: `${data.rankPercentage < 1 ? 1 : data.rankPercentage}%`, backgroundColor: '#FFA07A', textAlign: 'right', lineHeight: '70px', borderRadius: '10px 0 0 10px', color: 'black', paddingRight: '10px' }}>
                       {data.rankPercentage < 1 ? 1 : data.rankPercentage}%
                     </div>
                   </div>
