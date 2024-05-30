@@ -13,6 +13,8 @@ import turtle55 from '../img/turtle55.png';
 import turtle66 from '../img/turtle66.png';
 import turtle77 from '../img/turtle77.png';
 import background from '../img/background.png';
+import chatbot from '../img/chatbot.png';
+
 
 import {
   BarChart,
