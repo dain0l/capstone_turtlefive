@@ -220,14 +220,13 @@ const ChatBotContainer = styled.div`
   background-color: #FFFFFF;
   border-radius: 10px;
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
   width: 40%;
-  height: 300px;
+  height: 100%;
   overflow: hidden;
-  
-
 `;
+
 
 const PercentageContainer = styled.div`
   marginTop: '20px'
