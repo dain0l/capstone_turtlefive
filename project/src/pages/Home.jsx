@@ -95,6 +95,27 @@ const LargeContainer1 = styled.div`
 
 `;
 
+const LargeContainer3 = styled.div`
+  background-color: #ffffff;
+  padding: 20px;
+  margin: 20px 0;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+  align-items: flex-start; 
+  width: auto;
+  height: 400px;
+  overflow: hidden;
+  border-radius: 50px;
+  border: 0.6px solid #ececec;
+  box-shadow: 0 0 5px #f5ede6d6; /* 검정색 그림자 추가 */
+  margin-bottom:30px;
+  background-image: url(${background}); /* 이미지 변수 사용 */
+  background-size: cover; /* 이미지 크기를 컨테이너에 맞춤 */
+  background-position: center; /* 이미지를 중앙에 위치시킴 */
+`;
+
+
 const ChartContainer = styled.div`
   background-color: #FFFFFF;
   border-radius: 10px;
@@ -455,8 +476,6 @@ const handleServiceButtonClick = () => {
                   )}
                 </TextContainer2>
 
-                {/* 💬 */}
-
                 <StyledButton onClick={handleServiceButtonClick} >📷</StyledButton>
                 <TextContainer2>
                 <h1 style={{ margin: 0, marginTop: '30px', fontSize: '40px', cursor: 'pointer'  // 커서를 손가락 모양으로 변경
@@ -464,26 +483,30 @@ const handleServiceButtonClick = () => {
                 </h1>
                 </TextContainer2>
 
-              </CamContainer>
-
-               
+              </CamContainer>               
         </LargeContainer1>
 
 
-        <LargeContainer1>
-        <div style={{ padding: '20px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
-              <h3>자세교정, </h3>
-              <h3>Doc. Turtle과 함께 해야 하는 이유</h3>
-              
-        </div>                       
-        </LargeContainer1>
+        <LargeContainer3>
+          <div style={{ padding: '20px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', lineHeight: '80%'}}>
+            <h1 style={{ fontSize: '40px' }}>Doc. Turtle과 함께 해야 하는 이유</h1>  
+            <h2 style={{ fontSize: '30px' }}>Doc. Turtle, 이런 분들에게 필요합니다.</h2>
+
+            <p style={{ textAlign: 'center', fontSize: '25px', lineHeight: '1.8' }}>
+              거북목, 목과 허리의 디스크, 오십견, 퇴행성 관절염, 스트레스 등 <br/>
+              현대인의 잘못된 행동 습관, 또는 반복적인 직업 활동으로 인해 생기는 통증과 불편함 등은<br/>
+              생활 속 꾸준한 자세 교정을 통해 회복될 수 있습니다.
+            </p>
+
+          </div>                 
+        </LargeContainer3>
            
                 
         {isLoggedIn && ( // 로그인 상태일 때만 아래 컨텐츠를 렌더링
         <Row>
 
           <LargeContainer2>
-            
+
             <ChatBotContainer>
               <TextContainer2>
                 <h1 style={{ margin: 0, marginTop: '30px'}}>🐢 챗봇에게 물어보세요! 💬</h1>
