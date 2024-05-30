@@ -39,7 +39,6 @@ function App() {
         <Route path="/mypage" element={<MyPage />} />
         <Route path="/cameracom" element={<CameraCom />} />
         <Route path="/chatbot" element={<ChatBot/>}/>
-        
       </Routes>
     </Router>
   );
