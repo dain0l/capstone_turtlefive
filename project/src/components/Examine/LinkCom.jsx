@@ -55,8 +55,8 @@ const StyledSelect = styled.select`
 
 const SwiperContainer = styled.div`
   width: 100%;
-  max-width: 640px;
-  height: 640px;
+  max-width: 540px;
+  height: 540px;
   background-color:f5ede6d6;
 `;
 

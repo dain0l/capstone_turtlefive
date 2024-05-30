@@ -14,6 +14,11 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
+const AllContainer = styled.div`
+    min-height: 100vh; /* 최소 높이를 화면 높이만큼으로 설정 */
+`;
+
+
 const HeaderContainer = styled.div`
   display: flex;
   background: #515151;
@@ -243,6 +248,7 @@ const ChatBot = () => {
 
   return (
     <div>
+      <AllContainer>
       <GlobalStyle />
       <HeaderContainer>
         <Logo to="/home">Doc. Turtle</Logo>
@@ -289,6 +295,7 @@ const ChatBot = () => {
         <button onClick={handleSend} style={styles.button}>Send</button>
       </div>
     </div>
+    </AllContainer>
     </div>
   );
 };
