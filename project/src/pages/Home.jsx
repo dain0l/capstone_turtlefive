@@ -307,6 +307,7 @@ function Home() {
 
 
   const fetchData =useCallback( async () => {
+    console.log('fetchData is called'); // 이 로그를 추가합니다.
     
     try {
         const response = await api.get('/percentage');
@@ -352,26 +353,25 @@ useEffect(() => {
 }, [fetchData]); // 함수들을 dependency array에 추가
  // 함수들을 dependency array에 추가
 
-  // 로그아웃 함수
-  const handleLogout = async () => {
-    const token = localStorage.getItem('accessToken');
-    try {
-      const response = await api.post('/logout', {
-        accessToken: token
-      });
+ const handleLogout = async () => {
+  const token = localStorage.getItem('accessToken');
+  try {
+    const response = await api.post('/logout', {
+      accessToken: token
+    });
 
-      if (response.status >= 200 || response.status < 300) {
-        console.log('Successfully logged out');
-        localStorage.removeItem('accessToken'); // 로컬 스토리지에서 accessToken 제거
-        setIsLoggedIn(false); // 로그인 상태 업데이트
-      } else {
-        throw new Error('Logout failed');
-      }
-    } catch (error) {
-      console.error('Logout error:', error);
+    if (response.status >= 200 || response.status < 300) {
+      console.log('Successfully logged out');
+      localStorage.removeItem('accessToken'); // 로컬 스토리지에서 accessToken 제거
+      setIsLoggedIn(false); // 로그인 상태 업데이트
+    } else {
+      throw new Error('Logout failed');
     }
+  } catch (error) {
+    console.error('Logout error:', error);
+  }
+};
 
-  };
 
 const handleServiceButtonClick = () => {
     if (!isLoggedIn) {
@@ -451,7 +451,7 @@ const handleServiceButtonClick = () => {
 
               <ChartContainer>
               <TextContainer>
-                {data2.length > 0 ? (
+                {isLoggedIn && data2.length > 0 ? (
                   <h1 style={{ margin: 0 }}>🦖{data2[0].name}님의 일주일간의 알람 빈도수입니다.</h1>
                 ) : (
                   <>
@@ -476,7 +476,7 @@ const handleServiceButtonClick = () => {
         </Link> 
               <CamContainer>
                 <TextContainer2>
-                  {data2.length > 0 ? (
+                  {isLoggedIn &&data2.length > 0 ? (
                     <h1 style={{ margin: 0, marginTop: '30px'}}>자세 교정 서비스 이용하기</h1>
                   ) : (
                     <h1 style={{ margin: 0, marginTop: '30px' }}>
