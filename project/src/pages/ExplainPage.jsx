@@ -16,7 +16,7 @@ const GlobalStyle = createGlobalStyle`
 const HeaderContainer = styled.div`
   display: flex;
   background: #f5ede6d6;
-  color: #eeeeee;
+  color: #288A72;
   padding: 1rem;
   width: 100%;
   justify-content: space-between;
@@ -25,7 +25,7 @@ const HeaderContainer = styled.div`
 `;
 
 const StyledLink = styled(Link)`
-  color: #288A72;
+  color: #505050;
   text-decoration: none;
   margin-right: 2rem;
 
@@ -36,7 +36,7 @@ const StyledLink = styled(Link)`
 `;
 
 const Logo = styled.div`
-  color: #288A72;
+  color: #505050;
   font-size: 1.5rem;
   font-weight: bold;
 `;

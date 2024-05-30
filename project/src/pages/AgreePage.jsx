@@ -99,7 +99,7 @@ function AgreePage() {
                     <input
                         type="submit"
                         value="다음"
-                        style={{ width: '100%', padding: '10px', marginTop: '20px', backgroundColor: '#588D71', color: '#fff', border: 'none', borderRadius: '5px', cursor: 'pointer' }}
+                        style={{ width: '100%', padding: '10px', marginTop: '20px', backgroundColor: '#a5a5a5', color: '#fff', border: 'none', borderRadius: '5px', cursor: 'pointer' }}
                         disabled={!agreeTerms || !agreePrivacy}
                     />
                 </Link>

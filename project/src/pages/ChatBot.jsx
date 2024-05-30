@@ -25,14 +25,14 @@ const HeaderContainer = styled.div`
   flex-wrap: wrap; /* 필요에 따라 행을 여러 줄로 바꿉니다. */
 `;
 const Logo = styled.div`
-  color: #288A72;
+  color: #505050;
   font-size: 1.5rem;
   font-weight: bold;
 `;
 
 
 const StyledLink = styled(Link)`
-  color: #288A72;
+  color: #505050;
   text-decoration: none;
   margin-right: 2rem;
 

@@ -51,7 +51,7 @@ const styles = {
         padding: '15px',
         margin: '0 auto',
         marginBottom: '15px',
-        border: '1px solid #779787',
+        border: '1px solid #a5a5a5',
         borderRadius: '40px',
         boxSizing: 'border-box',
     },
@@ -59,7 +59,7 @@ const styles = {
         marginTop: '10px',
         width: '100%',
         padding: '15px',
-        backgroundColor: '#588D71',
+        backgroundColor: '#a5a5a5',
         color: '#fff',
         border: 'none',
         borderRadius: '5px',
@@ -132,7 +132,7 @@ const LoginPage = () => {
                 <div className="additional-links" style={styles.additionalLinks}>
                 <p><StyledLink to ="/findID">아이디 찾기</StyledLink> | <StyledLink to ="/findPassword">비밀번호 찾기</StyledLink></p>
                 <p><StyledLink to="/agree">회원가입</StyledLink></p>
-            </div>
+                </div>
             </div>
         </div>
     );
