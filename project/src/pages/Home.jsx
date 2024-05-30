@@ -414,10 +414,12 @@ const handleServiceButtonClick = () => {
                         <StyledLink to="/chatbot">chatbot</StyledLink>
                         </>
                     ) : (
-                        <StyledLink to="/login">login</StyledLink> // 로그아웃 상태일 때 로그인 버튼 표시
+                      <>
+                        <StyledLink to="/login">login</StyledLink>
+                        <StyledLink to="/singup">signup</StyledLink> 
+                        </>
                     )}
                     <StyledLink to="/explain">explain</StyledLink> 
-                    <StyledLink to="/singup">signup</StyledLink> 
                     </NavigationWrapper>
         </HeaderContainer>
             <Container>
