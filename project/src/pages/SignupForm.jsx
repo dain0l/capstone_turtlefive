@@ -1,6 +1,12 @@
 import React, { useState } from 'react';
 import { Link, useNavigate  } from 'react-router-dom';
 import api from '../services/api';
+import styled from 'styled-components';
+
+
+const AllContainer = styled.div`
+    min-height: 100vh; /* 최소 높이를 화면 높이만큼으로 설정 */
+`;
 
 function SignupForm() {
     const [name, setUsername] = useState('');
@@ -146,6 +152,7 @@ function SignupForm() {
     };
 
     return (
+        <AllContainer>
         <div style={styles.body}>
             <header style={styles.header}>
             <h1 onClick={goToHome}>docturtle🐢</h1>
@@ -241,9 +248,9 @@ function SignupForm() {
     <p style={styles.footerContainerP}>
         이미 계정이 있으신가요? <Link to="/login">로그인</Link>
     </p>
-</footer>
-
+        </footer>
         </div>
+        </AllContainer>
     );
 }
 export default SignupForm;

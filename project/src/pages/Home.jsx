@@ -48,7 +48,7 @@ const Container = styled.div`
 
 const HeaderContainer = styled.div`
   display: flex;
-  background: #f5ede6d6;
+  background: #515151;
   color: #eeeeee;
   padding: 1rem;
   width: 100%;
@@ -82,31 +82,6 @@ const RectangleContainer = styled.div`
     width: calc(100% - 6%);
   }
 `;
-const Rectangle2Container = styled.div`
-  background-color: #FFFFFF; --> 오늘 ~ 님의 비율, 차트 background
-  padding: 20px;
-  border-radius: 10px;
-  margin-top: 20px;
-  margin-bottom: 80px;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: left; /* 차트를 중앙에 위치시키기 위해 center로 변경 */
-  width: auto; /*87%*/
-  height: 300px;
-  margin-left: 20px;
-  overflow: hidden;
-  border: 1.5px solid #ececec;
-  margin-right: 20px;
-  text-align: left;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  
-  @media screen and (min-width: 1000px) {
-    margin-left: 45px;
-    width: 90%;
-  }
-`;
-
 
 const LargeContainer1 = styled.div`
   background-color: #ffffff;
@@ -225,7 +200,7 @@ const StyledFooter = styled.footer`
 `;
 
 const Logo = styled.div`
-  color: #505050;
+  color: #f5ede6d6;
   font-size: 1.5rem;
   font-weight: bold;
 `;
@@ -235,12 +210,12 @@ const NavigationWrapper = styled.nav`
 `;
 
 const StyledLink = styled(Link)`
-  color: #505050;
+  color: #f5ede6d6;
   text-decoration: none;
   margin-right: 2rem;
 
   &:hover {
-    background-color: #dff0d8; /* 호버 시 배경색 변경 */
+    background-color: #f5ede6d6; /* 호버 시 배경색 변경 */
     text-decoration: underline;
   }
 `;
@@ -390,15 +365,17 @@ const handleServiceButtonClick = () => {
           <HeaderContainer>
                 <Logo to="/register">Doc. Turtle</Logo>
                 <NavigationWrapper>
+                  
                     {isLoggedIn ? (
                         <>
                         <StyledLink to="#" onClick={handleLogout}>logout</StyledLink>
                         <StyledLink to="/myPage">my page</StyledLink>
+                        <StyledLink to="/chatbot">chatbot</StyledLink>
                         </>
                     ) : (
                         <StyledLink to="/login">login</StyledLink> // 로그아웃 상태일 때 로그인 버튼 표시
                     )}
-                    <StyledLink to="/chatbot">chatbot</StyledLink>
+                    <StyledLink to="/singup">signup</StyledLink> 
                     <StyledLink to="/explain">explain</StyledLink> 
                     </NavigationWrapper>
         </HeaderContainer>

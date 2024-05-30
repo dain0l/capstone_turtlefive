@@ -2,6 +2,12 @@ import React, { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import api from '../../services/api';
+import styled from 'styled-components';
+
+const AllContainer = styled.div`
+    min-height: 100vh; /* 최소 높이를 화면 높이만큼으로 설정 */
+`;
+
 
 const styles = {
     header: {
@@ -53,7 +59,7 @@ const styles = {
         width: '100%',
         padding: '12px',
         fontSize: '13px',
-        backgroundColor: '#588D71',
+        backgroundColor: '#a5a5a5',
         color: '#fff',
         border: 'none',
         borderRadius: '5px',
@@ -102,6 +108,7 @@ function SetPassword() {
     };
 
     return (
+        <AllContainer>
         <div style={styles.body}>
              <header style={styles.header}>
             <h1 onClick={goToHome}>docturtle🐢</h1>
@@ -135,6 +142,7 @@ function SetPassword() {
             </p>
         </footer>
         </div>
+        </AllContainer>
     );
 }
 

@@ -1,6 +1,13 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import '../style/everyForm.css';
+import styled from 'styled-components';
+
+
+const AllContainer = styled.div`
+    min-height: 85vh; /* 최소 높이를 화면 높이만큼으로 설정 */
+`;
+
 
 function AgreePage() {
     const [agreeAll, setAgreeAll] = useState(false);
@@ -45,6 +52,7 @@ function AgreePage() {
     };
 
     return (
+        <AllContainer>
         <div style={{ maxWidth: '600px', margin: '100px auto', padding: '20px', backgroundColor: '#ffffffbb', borderRadius: '10px', boxShadow: '0 0 10px rgba(11, 83, 67, 0.267)' }}>
             <h2 style={{ textAlign: 'center', marginBottom: '20px' }}>docturtle🐢 회원가입 동의서</h2>
             <form onSubmit={handleSubmit}>
@@ -106,6 +114,7 @@ function AgreePage() {
 
             </form>
         </div>
+        </AllContainer>
     );
 }
 

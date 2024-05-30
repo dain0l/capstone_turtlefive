@@ -2,6 +2,12 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import api from '../../services/api';
 
+import styled from 'styled-components';
+
+const AllContainer = styled.div`
+    min-height: 100vh; /* 최소 높이를 화면 높이만큼으로 설정 */
+`;
+
 function FindID() {
   const [name, setUsername] = useState('');
   const [phoneNo, setPhoneNo] = useState('');
@@ -93,7 +99,7 @@ function FindID() {
       cursor: 'pointer',
     },
     buttonHover: {
-      backgroundColor: '#446E57',
+      backgroundColor: '#3e3c3c',
     },
     paragraph: {
       marginTop: '50px',
@@ -104,6 +110,7 @@ function FindID() {
   };
 
   return (
+    <AllContainer>
     <div style={styles.body}>
        <header style={styles.header}>
             <h1 onClick={goToHome}>docturtle🐢</h1>
@@ -145,6 +152,7 @@ function FindID() {
         )}
     </div>
     </div>
+    </AllContainer>
   );
 }
 
