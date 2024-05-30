@@ -135,13 +135,18 @@ const CameraCom = ({ setAlarm,sound}) => {
               const angle = checkAngle(chinLandmark, leftShoulder, shoulderMidPoint);
 
               let distanceBool = false;
+              let sofar = false;
               const angleBool = (angle <= 60 || angle >= 130);
               if(noseLandmark){
                 // if(noseLandmark.z <= -0.025){
                 //   distanceBool = distance <= 0.128;
                 //   console.log("D:"+ distanceBool +distance + "\n" + "Z:" +noseLandmark.z);
                 // } else 
-                if(noseLandmark.z <= -0.026){
+                if(noseLandmark.z >= -0.0235){
+                    sofar = true;
+                  console.log("D:"+ distanceBool +distance + "\n" + "Z:" +noseLandmark.z)          
+                }
+                else if(noseLandmark.z <= -0.026){
                   distanceBool = distance <= 0.13;
                   console.log("D:"+ distanceBool +distance + "\n" + "Z:" +noseLandmark.z)            
                 } else if(noseLandmark.z <= -0.0298){
@@ -159,7 +164,7 @@ const CameraCom = ({ setAlarm,sound}) => {
                  if( distanceBool || angleBool){
                   canvasCtx.font = "10px Arial";
                   canvasCtx.fillStyle = "red";
-                  canvasCtx.fillText("뷸균형, 바르게 고쳐앉아주세요.", 10, 30);
+                  canvasCtx.fillText("불균형, 바르게 고쳐앉아주세요.", 10, 30);
 
                   if (!alarmTimeout.current) { // 현재 타이머가 실행 중이지 않을 때만 새 타이머 설정
                     alarmTimeout.current = setTimeout(() => {
@@ -174,9 +179,14 @@ const CameraCom = ({ setAlarm,sound}) => {
                         alarmTimeout.current = null; // 타이머 초기화
                     }, 3000); // 5초 후 실행(테스트때문에 임의로 해둔 시간!!)
                 }
-                }else {
+                }else if(sofar){
                   canvasCtx.font = "10px Arial";
-                  canvasCtx.fillStyle = "green";
+                  canvasCtx.fillStyle = "blue";
+                  canvasCtx.fillText("너무 멀어요 가까이 앉아주세요..", 10, 30);
+                }
+                else {
+                  canvasCtx.font = "10px Arial";
+                  canvasCtx.fillStyle = "red";
                   //canvasCtx.fillText("Your pose is normal", 10, 30);
                    // 조건이 거짓이면 현재 설정된 타이머 취소
                    if (alarmTimeout.current) {
