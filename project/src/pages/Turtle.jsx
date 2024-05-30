@@ -1,111 +1,162 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import CameraCom from "../components/Examine/CameraCom";
 import LinkCom from '../components/Examine/LinkCom';
 import api from '../services/api';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
+import "../index.css";
 
+const BackgroundContainer = styled.div`
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  flex-direction: column;
+  align-items: center;
+  background-color: #CFD8DC; /* Light grey background */
+  padding: 20px;
+  box-sizing: border-box;
+`;
+
+const Title = styled.div`
+  color: #37474F; /* Darker grey for title */
+  font-size: 3rem;
+  font-weight: 600;
+  margin-top: 50px;
+  margin-bottom: 2.19rem;
+  font-family: 'TheJamsil5Bold';
+`;
+const InfoContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+`;
+
+
+const Container = styled.div`
+  display: flex; 
+  flex-direction: column; 
+  justify-content: space-around; 
+  align-items: center;
+  width: 90%; 
+  margin: 0 auto;
+  gap: 20px; 
+  background-color: #FFFFFF;
+  border-radius: 20px; 
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+  padding: 20px;
+`;
+
+const ContentContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+`;
 
 const Button = styled.button`
-  padding: 10px 20px;
-  background-color: #E8FAF2; /* Green */
+  padding: 15px 30px;
+  background-color:  #37474F; /* Green */
   border: none;
-  color: #5EAE89;
+  color: white;
   text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 10px 2px;
+  font-size: 20px;
+  margin: 20px 0;
   cursor: pointer;
-  border-radius: 4px;
-  border: 1px solid #5EAE89;  
-  margin-bottom: 30px;  /* 하단 여백 추가 */
-  
+  border-radius: 10px;
+  transition: all 0.3s ease-out;
+  font-family: 'TheJamsil5Bold';
+
   &:hover {
     background-color: #C5E1A5;
-    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15); /* hover 상태에서의 그림자 변경 */
+    transform: scale(1.1);
   }
 `;
 
 function formatLocalDateToISOString() {
-  const offset = new Date().getTimezoneOffset() * 60000; // getTimezoneOffset()은 분 단위로 시간대 차이를 반환합니다.
+  const offset = new Date().getTimezoneOffset() * 60000; // getTimezoneOffset() returns the difference in minutes
   const localISOTime = (new Date(Date.now() - offset)).toISOString().slice(0, 19);
   return localISOTime;
 }
 
-function Turtle() {
-    const navigator = useNavigate();
-    const [startTime] = useState(formatLocalDateToISOString());
 
-const sendToWebcamlog = async () =>{
+function Turtle() {
+  const navigator = useNavigate();
+  const [startTime] = useState(formatLocalDateToISOString());
+  const [alarm, setAlaram] = useState(0);
+  const [webcam, setWebcam] = useState(0);
+
+  const sendToWebcamlog = async () => {
     const endTime = formatLocalDateToISOString();
-    console.log("startTime:"+startTime,endTime)
-    try{
-        const response = await api.post('/webcam/log',{
-          startTime: startTime,
-          endTime: endTime
-        });
-        if (response.status < 200 || response.status >= 300) {
-          throw new Error('Network response was not ok');
-        }
-        console.log('Webcam log sent successfully');
-      } catch (error) {
-        console.error('Failed to send Webcam log', error);
+    console.log("startTime:" + startTime, endTime);
+    try {
+      const response = await api.post('/webcam/log', {
+        startTime: startTime,
+        endTime: endTime
+      });
+      if (response.status < 200 || response.status >= 300) {
+        throw new Error('Network response was not ok');
       }
+      console.log('Webcam log sent successfully');
+    } catch (error) {
+      console.error('Failed to send Webcam log', error);
+    }
     navigator('/home');
-};
+  };
+      useEffect(() => {
+      fetchUserInfo();
+    });
+    useEffect(() => {
+      // 웹캠이 실행되는 동안 매 분마다 webcam 상태를 업데이트하는 타이머 설정
+      const timer = setInterval(() => {
+        const currentTime = formatLocalDateToISOString();
+        const duration = (new Date(currentTime) - new Date(startTime)) / 1000 / 60;
+        setWebcam((prevWebcam) => prevWebcam + duration); // webcam 상태의 최신 값을 사용하여 상태 업데이트
+      }, 60000); // 60000ms = 1분
+    
+      // 컴포넌트가 언마운트될 때 타이머 해제
+      return () => clearInterval(timer);
+    }, [startTime]);
+    
+
+
+
+    const fetchUserInfo = () => {
+      api.get('/mypage')
+      .then(response => {
+          setAlaram(response.data.alarmCount);
+          setWebcam(response.data.webcamDuration);
+      })
+      .catch(error => {
+          console.error('Error fetching user info:', error);
+      });
+  };
+  
 
   const handleStopCamera = () => {
-    sendToWebcamlog(); // 종료 시 로그 전송 함수 호출
-};
-//수정
+    sendToWebcamlog(); // Call the log sending function when stopping
+  };
 
-const backgroundContainerStyle = {
-    display: "flex",    
-    width: "100vw",
-    height: "100vh",
-    flexDirection: "column",
-    alignItems: "center",
-};
-
-const titleStyle = {
-  //backgroundColor: '#f5f1ee84',
-  color: "#288A72",
-  fontFamily: "Roboto",
-  fontSize: "2.5rem",
-  fontStyle: "normal",
-  fontWeight: "600",
-  lineHeight: "normal",
-  marginTop: "50px",
-  marginBottom: "2.19rem",
-};
-
-
-const containerStyle = {
-  display: 'flex', // flexbox 사용
-  justifyContent: 'space-around',
-  alignItems: 'center', // 수직 가운데 정렬
-  width: '85%', // 부모 요소의 너비를 화면 너비의 70%로 지정
-  margin: '0 auto', // 수평 가운데 정렬
-  gap: '20px', // 컴포넌트 간 간격 추가
-};
-
-
-
-
-return (
-    <div style={backgroundContainerStyle}>
-      <div style={titleStyle}>자세 교정 시스템</div>
-      <div style={containerStyle}>
-        {/* CameraCom 컴포넌트를 왼쪽에 배치합니다. */}
-        <CameraCom />
-        {/* LinkCom 컴포넌트를 오른쪽에 배치합니다. */}
-        <LinkCom />
-      </div>
-      <Button onClick={handleStopCamera}>종료하기</Button>
-    </div>
+  return (
+    <BackgroundContainer>
+      <Title>자세 교정 시스템</Title>
+      <Container>
+      <InfoContainer>
+          <span>알림빈도수: {alarm}</span>
+          <span>웹캠 실행시간: {webcam}분</span>
+        </InfoContainer>
+        <ContentContainer>
+          <CameraCom setAlarm={setAlaram} alarm={alarm}/> 
+          <LinkCom />
+        </ContentContainer>
+        <Button onClick={handleStopCamera}>종료하기</Button>
+      </Container>
+    </BackgroundContainer>
   );
-  
 }
 
 export default Turtle;

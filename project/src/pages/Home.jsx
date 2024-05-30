@@ -59,25 +59,19 @@ const HeaderContainer = styled.div`
 `;
 
 const RectangleContainer = styled.div`
-  margin: 20px 0;
   flex-direction: row;
   width: auto;
   height: 400px;
   background-color: #FFFFFF;
   padding: 20px;
-  border-radius: 10px;
-  margin-top: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-right: auto;
-  margin-left: auto;
-  border-radius: 50px;
   border: 0.6px solid #ececec;
   overflow: hidden;
- // border: 1.5px solid #505050; /* 테두리 속성 추가 */
- box-shadow: 0 0 5px #f5ede6d6; /* 검정색 그림자 추가 */
- margin-bottom:30px;
+  border-radius: 50px;
+  box-shadow: 0 0 5px #f5ede6d6; /* 검정색 그림자 추가 */
+
   @media screen and (max-width: 768px) {
     width: calc(100% - 6%);
   }
@@ -98,9 +92,29 @@ const LargeContainer1 = styled.div`
   border: 0.6px solid #ececec;
   box-shadow: 0 0 5px #f5ede6d6; /* 검정색 그림자 추가 */
   margin-bottom:30px;
-  
 
 `;
+
+const LargeContainer3 = styled.div`
+  background-color: #ffffff;
+  padding: 20px;
+  margin: 20px 0;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+  align-items: flex-start; 
+  width: auto;
+  height: 400px;
+  overflow: hidden;
+  border-radius: 50px;
+  border: 0.6px solid #ececec;
+  box-shadow: 0 0 5px #f5ede6d6; /* 검정색 그림자 추가 */
+  margin-bottom:30px;
+  background-image: url(${background}); /* 이미지 변수 사용 */
+  background-size: cover; /* 이미지 크기를 컨테이너에 맞춤 */
+  background-position: center; /* 이미지를 중앙에 위치시킴 */
+`;
+
 
 const ChartContainer = styled.div`
   background-color: #FFFFFF;
@@ -155,10 +169,19 @@ const ChatBotContainer = styled.div`
   border-radius: 10px;
   display: flex;
   justify-content: center;
+  flex-direction: column;
   align-items: center;
   width: 40%;
   height: 100%;
   overflow: hidden;
+
+
+
+  // flex-direction: column;
+  // width: 30%;
+  // height: 100%;
+  // overflow: hidden;
+  // border-radius: 40px;
 `;
 
 const PercentageContainer = styled.div`
@@ -462,19 +485,23 @@ const handleServiceButtonClick = () => {
                 </h1>
                 </TextContainer2>
 
-              </CamContainer>
-
-               
+              </CamContainer>               
         </LargeContainer1>
 
 
-        <LargeContainer1>
-        <div style={{ padding: '20px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
-              <h3>자세교정, </h3>
-              <h3>Doc. Turtle과 함께 해야 하는 이유</h3>
-              
-        </div>                       
-        </LargeContainer1>
+        <LargeContainer3>
+          <div style={{ padding: '20px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', lineHeight: '80%'}}>
+            <h1 style={{ fontSize: '40px' }}>Doc. Turtle과 함께 해야 하는 이유</h1>  
+            <h2 style={{ fontSize: '30px' }}>Doc. Turtle, 이런 분들에게 필요합니다.</h2>
+
+            <p style={{ textAlign: 'center', fontSize: '25px', lineHeight: '1.8' }}>
+              거북목, 목과 허리의 디스크, 오십견, 퇴행성 관절염, 스트레스 등 <br/>
+              현대인의 잘못된 행동 습관, 또는 반복적인 직업 활동으로 인해 생기는 통증과 불편함 등은<br/>
+              생활 속 꾸준한 자세 교정을 통해 회복될 수 있습니다.
+            </p>
+
+          </div>                 
+        </LargeContainer3>
            
                 
         {isLoggedIn && ( // 로그인 상태일 때만 아래 컨텐츠를 렌더링
@@ -483,13 +510,22 @@ const handleServiceButtonClick = () => {
           <LargeContainer2>
 
             <ChatBotContainer>
-            <StyledChatBot to="/chatbot"><img src={chatbot} /></StyledChatBot>
+              <TextContainer2>
+                <h1 style={{ margin: 0, marginTop: '30px'}}>🐢 챗봇에게 물어보세요! 💬</h1>
+              </TextContainer2>
+
+              <StyledChatBot to="/chatbot"><img src={chatbot} width = '250px' height = '250px'/></StyledChatBot>
+
+              <TextContainer2>
+                <h1 style={{ margin: 0, marginTop: '20px', fontSize: '40px', cursor: 'pointer'
+                  }} onClick={handleServiceButtonClick}>대화 시작하기 ➤</h1>
+              </TextContainer2>
             </ChatBotContainer>
 
             <PercentageContainer>
               <div style={{marginBottom: '5px'}}>
                 <h1>오늘 {data.name}님의 자세 유지 비율👏</h1>
-                <div style={{ width: '100%', backgroundColor: '#b8b8b8', borderRadius: '10px', overflow: 'hidden' }}>
+                <div style={{ width: '100%', backgroundColor: '#cccccc', borderRadius: '10px', overflow: 'hidden' }}>
                   <div style={{ width: `${data.posturePercentage}%`, backgroundColor: '#4287f5', textAlign: 'right', lineHeight: '70px', borderRadius: '10px 0 0 10px', color: 'white', paddingRight: '10px' }}>
                     {data.posturePercentage}%
                   </div>
@@ -498,7 +534,7 @@ const handleServiceButtonClick = () => {
 
               <div style={{marginTop: '10px'}}>
                 <h1>오늘 총 이용자 중에서 👑상위{data.rankPercentage < 1 ? 1 : data.rankPercentage}%</h1>
-                  <div style={{ width: '100%', backgroundColor: '#b8b8b8', borderRadius: '10px', overflow: 'hidden' }}>
+                  <div style={{ width: '100%', backgroundColor: '#cccccc', borderRadius: '10px', overflow: 'hidden' }}>
                     <div style={{ width: `${data.rankPercentage < 1 ? 1 : data.rankPercentage}%`, backgroundColor: '#FFA07A', textAlign: 'right', lineHeight: '70px', borderRadius: '10px 0 0 10px', color: 'black', paddingRight: '10px' }}>
                       {data.rankPercentage < 1 ? 1 : data.rankPercentage}%
                     </div>
