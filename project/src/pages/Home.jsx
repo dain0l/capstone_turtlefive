@@ -549,7 +549,7 @@ const handleServiceButtonClick = () => {
 
             <PercentageContainer>
               <div style={{marginBottom: '5px'}}>
-                <h1>오늘 {data.name}님의 자세 유지 비율👏</h1>
+                <h1>오늘 {data.name}님의 올바른 자세 비율👏</h1>
                 <div style={{ width: '100%', backgroundColor: '#cccccc', borderRadius: '10px', overflow: 'hidden' }}>
                   <div style={{ width: `${data.posturePercentage}%`, backgroundColor: '#4287f5', textAlign: 'right', lineHeight: '70px', borderRadius: '10px 0 0 10px', color: 'white', paddingRight: '10px' }}>
                     {data.posturePercentage}%
