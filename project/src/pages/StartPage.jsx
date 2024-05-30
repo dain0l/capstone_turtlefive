@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+import api from '../services/api';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import styled, { createGlobalStyle, keyframes } from 'styled-components';
@@ -7,10 +8,12 @@ import image2 from '../img/image2.jpg';
 import image3 from '../img/image3.jpg';
 import image4 from '../img/image4.jpg'; 
 
+const AllContainer  = styled.div`
+background: linear-gradient(to bottom, rgba(184, 253, 214, 0.562) 20%, rgba(68, 68, 81, 0.676) 40%, rgba(22, 22, 33, 0.813) 100%);
+`;
 const GlobalStyle = createGlobalStyle`
   body {
     margin: 0;
-    background: linear-gradient(to bottom, rgba(184, 253, 214, 0.562) 20%, rgba(68, 68, 81, 0.676) 40%, rgba(22, 22, 33, 0.813) 100%);
   }
 
   h1 {
@@ -119,6 +122,10 @@ const Section = styled.div`
       opacity: 0.9;
       animation: ${fadeInLeft} 1.2s;
     }
+    p {
+      z-index: 1; /* 텍스트가 이미지 위에 표시되도록 설정 */
+      position: absolute;
+    }
   }
 
   &#section2 {
@@ -195,13 +202,16 @@ const Section = styled.div`
 
 const LinkButtonStyle = styled(Link)`
   color: #FBFDF5;
-  font-size: 1.5rem;
+  font-size: 2rem;
   font-style: normal;
   font-weight: 300;
   line-height: normal;
   margin-top: 100px;
+  padding: 20px;
   cursor: pointer;
   text-decoration: none;
+  border-radius: 50px; /* 동그란 테두리 */
+  border: 2px solid #eee; /* 겉에 흰 테두리 추가 */
 
   &:hover {
     color: #FFFFFF;
@@ -211,6 +221,8 @@ const LinkButtonStyle = styled(Link)`
 
 const StartPage = () => {
   const navigate = useNavigate();
+
+  const [memberCount, setMemberCount] = useState(null);
 
   useEffect(() => {
     const sections = document.querySelectorAll('.section');
@@ -235,6 +247,15 @@ const StartPage = () => {
       observer.observe(section);
     });
 
+    api.get('/Membercount')
+    .then(response => {
+      setMemberCount(response.data);
+      console.log(response.data);
+    })
+    .catch(error => {
+      console.error('Error fetching member count:', error);
+    });
+
     return () => {
       sections.forEach(section => {
         observer.unobserve(section);
@@ -242,14 +263,21 @@ const StartPage = () => {
     };
   }, []);
 
+
   return (
     <>
+    <AllContainer>
       <GlobalStyle />
       <Section className="section" id="section1">
         <h1>Welcome to</h1>
         <h1 style={{ marginLeft: '100px' }}>' TurtleFIve '</h1>
         <img src={image1} alt="Image 1" />
-        <div className="overlay"></div>
+        <p style={{ position: 'absolute', right: '100px', top: '260px', fontSize: '45px' }}>
+            <span style={{ color: '#072715d5' }}>ALL</span> Members: {memberCount?.allnum}
+        </p>
+        <p style={{ position: 'absolute', right: '40px', top: '340px', fontSize: '30px' }}>
+        <span style={{ color: '#1f4e33b0' }}>Today's</span> Members: {memberCount?.todaynum}  
+        </p>
       </Section>
       <Section className="section" id="section2">
   <h1 style={{ marginTop: '100px' }}>자세교정,  docturtle과</h1>
@@ -316,6 +344,7 @@ const StartPage = () => {
         <img src={image4} alt="Image 4" />
         <LinkButtonStyle to="/home">START</LinkButtonStyle>
       </Section>
+      </AllContainer>
     </>
   );
 };

@@ -9,6 +9,7 @@ const LogoutContainer = styled.div`
   align-items: center;
   justify-content: center;
   height: 100vh;
+  min-height: 100vh; /* 최소 높이를 화면 높이만큼으로 설정 */
 `;
 
 const Logo = styled.h1`

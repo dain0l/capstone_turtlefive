@@ -13,6 +13,10 @@ const StyledLink = styled(Link)`
     }
 `; 
 
+const AllContainer = styled.div`
+    min-height: 100vh; /* 최소 높이를 화면 높이만큼으로 설정 */
+`;
+
 const styles = {
     header: {
         backgroundColor: '#f5f1ee84', // 원하는 배경색으로 변경
@@ -103,6 +107,7 @@ const LoginPage = () => {
     };
 
     return (
+        <AllContainer>
         <div style={styles.body}>
            <header style={styles.header}>
              <h1 onClick={goToHome}>docturtle🐢</h1>
@@ -135,6 +140,7 @@ const LoginPage = () => {
                 </div>
             </div>
         </div>
+        </AllContainer>
     );
 };
 

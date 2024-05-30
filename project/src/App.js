@@ -14,7 +14,6 @@ import FindPassword from './components/Login/FindPassword.jsx'
 import SetPassword from './components/Login/SetPassword.jsx';
 import Turtle from './pages/Turtle.jsx';
 import ChartPage from './pages/ChartPage.jsx'
-import ChartPage2 from './pages/ChartPage2.jsx'
 import MyPage from './pages/MyPage.jsx'
 import CameraCom from './components/Examine/CameraCom.jsx';
 import ChatBot from './pages/ChatBot.jsx';
@@ -37,7 +36,6 @@ function App() {
         <Route path="/setPassword" element={<SetPassword />} />
         <Route path="/webcam" element={<Turtle />} />
         <Route path="/inquiry" element={<ChartPage />} />
-        <Route path="/percentage" element={<ChartPage2 />} />
         <Route path="/mypage" element={<MyPage />} />
         <Route path="/cameracom" element={<CameraCom />} />
         <Route path="/chatbot" element={<ChatBot/>}/>

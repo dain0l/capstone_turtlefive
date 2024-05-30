@@ -1,5 +1,11 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import styled from 'styled-components';
+
+const AllContainer = styled.div`
+    min-height: 100vh; /* 최소 높이를 화면 높이만큼으로 설정 */
+`;
+
 
 function FindPassword() {
   const [name, setUsername] = useState('');
@@ -109,6 +115,7 @@ function FindPassword() {
   };
 
   return (
+    <AllContainer>
     <div style={styles.body}>
       <header style={styles.header}>
         <h1 onClick={goToHome}>docturtle🐢</h1>
@@ -165,6 +172,7 @@ function FindPassword() {
         )}
       </div>
     </div>
+    </AllContainer>
   );
 }
 
