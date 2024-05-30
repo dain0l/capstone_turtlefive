@@ -19,7 +19,7 @@ border-radius: 10px;
 transition: background-color 0.3s ease;
 
 &:hover {
-    background-color: #000;
+    background-color: #000  ;
 }
 `;
 

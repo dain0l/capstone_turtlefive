@@ -171,7 +171,6 @@ function ExplainPage() {
         <NavigationWrapper>
           {isLoggedIn ? (
             <>
-              <StyledLink to="#" onClick={handleLogout}>logout</StyledLink>
               <StyledLink to="/myPage">my page</StyledLink>
             </>
           ) : (

@@ -104,7 +104,7 @@ const LargeContainer3 = styled.div`
   flex-direction: row;
   align-items: flex-start; 
   width: auto;
-  height: 400px;
+  height: ${props => props.expanded ? 'auto' : '400px'};
   overflow: hidden;
   border-radius: 50px;
   border: 0.6px solid #ececec;
@@ -113,8 +113,16 @@ const LargeContainer3 = styled.div`
   background-image: url(${background}); /* 이미지 변수 사용 */
   background-size: cover; /* 이미지 크기를 컨테이너에 맞춤 */
   background-position: center; /* 이미지를 중앙에 위치시킴 */
+  cursor: pointer; /* 커서를 포인터로 변경하여 클릭 가능함을 나타냄 */
 `;
 
+
+const ContentContainer = styled.div`
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
 
 const ChartContainer = styled.div`
   background-color: #FFFFFF;
@@ -295,6 +303,13 @@ function Home() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const navigate = useNavigate();
 
+  const [expanded, setExpanded] = useState(false);
+
+  const toggleExpansion = () => {
+    setExpanded(!expanded);
+  };
+
+
     const 요일변환함수 = useCallback((dayOfWeek) => {
       const dayMap = {
         MONDAY: '월요일',
@@ -389,7 +404,7 @@ const handleServiceButtonClick = () => {
         <div>
           <AllContainer>
           <HeaderContainer>
-                <Logo to="/register">Doc. Turtle</Logo>
+                <Logo to="/home">Doc. Turtle</Logo>
                 <NavigationWrapper>
                   
                     {isLoggedIn ? (
@@ -401,8 +416,8 @@ const handleServiceButtonClick = () => {
                     ) : (
                         <StyledLink to="/login">login</StyledLink> // 로그아웃 상태일 때 로그인 버튼 표시
                     )}
-                    <StyledLink to="/singup">signup</StyledLink> 
                     <StyledLink to="/explain">explain</StyledLink> 
+                    <StyledLink to="/singup">signup</StyledLink> 
                     </NavigationWrapper>
         </HeaderContainer>
             <Container>
@@ -500,9 +515,7 @@ const handleServiceButtonClick = () => {
 
               </CamContainer>               
         </LargeContainer1>
-
-
-        <LargeContainer3>
+        <LargeContainer3 >
           <div style={{ padding: '20px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', lineHeight: '80%'}}>
             <h1 style={{ fontSize: '40px', marginTop: '60px', color: '#000000bf' }}>Doc. Turtle과 함께 해야 하는 이유</h1>  
             <h2 style={{ fontSize: '30px', color: '#000000bf' }}>Doc. Turtle, 이런 분들에게 필요합니다.</h2>

@@ -186,12 +186,12 @@ function MyPage() {
 
     return (
         <AllContainer>
+
             <HeaderContainer>
                 <Logo to="/home">Doc. Turtle</Logo>
                 <NavigationWrapper>
                 {isLoggedIn ? (
                     <>
-                    <StyledLink to="#" onClick={handleLogout}>logout</StyledLink>
                     <StyledLink to="/explain">explain</StyledLink>
                     </>
                 ) : (
