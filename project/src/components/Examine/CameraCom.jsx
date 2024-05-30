@@ -7,7 +7,7 @@ import { checkZValues } from "../Algorithms/checkZValues";
 import { checkDistance } from "../Algorithms/checkDistance"; 
 import { checkAngle } from "../Algorithms/checkAngle";
 import api from '../../services/api';
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 
 
 const CameraContainer = styled.div`
@@ -22,24 +22,10 @@ const StyledCanvas = styled.canvas`
   top: 0;
 `;
 
-const ToggleButton = styled.button`
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  padding: 10px 20px;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  
-`;
-
-
 //알림 소리 추가 
-//https://docturtle.site/image/sound.mp3
-const alarmSound = new Audio('/image/sound.mp3'); // 알림 소리 파일 URL
-let isAlarmOn = false; // 알림 스위치 상태 저장
+// //https://docturtle.site/image/sound.mp3
+// const alarmSound = new Audio('/image/sound.mp3'); // 알림 소리 파일 URL
+// let isAlarmOn = false; // 알림 스위치 상태 저장
 
 
 function formatLocalDateToISOString() {
@@ -55,9 +41,9 @@ function fixAlarm(){
   function showNotification() {
     new Notification('You have to fix your pose!!', {
       body: '올바른 자세를 유지해주세요.',
-      icon: "https://docturtle.site/image/turtle9.png"
+      icon: "https://docturtle.site/image/turtle9.png",
+      sound: "https://www.docturtle.site/sound/sound.mp3" 
     });
-    alarmSound.play(); // 알림 소리 재생
   }
  
   if (notificationPermission === "granted") {
@@ -65,8 +51,8 @@ function fixAlarm(){
       
       new Notification('You have to fix your pose!!', {
           body: '올바른 자세를 유지해주세요.',
-          icon:"https://wwww.docturtle.site/image/turtle9.png",
-          sound: "https://www.docturtle.site/sound/turtle.mp3" 
+          icon:"https://www.docturtle.site/image/turtle9.png",
+          sound: "https://www.docturtle.site/sound/sound.mp3" 
       
       });
     
@@ -77,7 +63,7 @@ function fixAlarm(){
               new Notification('You have to fix your pose!!', {
                   body: '올바른 자세를 유지해주세요.',
                   icon:"https://www.docturtle.site/image/turtle9.png",
-                  sound: "https://www.docturtle.site/sound/turtle.mp3" 
+                  sound: "https://www.docturtle.site/sound/sound.mp3" 
               });
           }else {
               alert("알람 허용이 거부되었습니다.")
@@ -94,9 +80,7 @@ function fixAlarm(){
     });
   }
 }
-
-
-const CameraCom = () => { 
+const CameraCom = ({ setAlarm, alarm }) => { 
     const webcamRef = useRef(null);
     const canvasRef = useRef(null);
     let alarmTimeout = useRef(null);
@@ -154,28 +138,36 @@ const CameraCom = () => {
               let distanceBool = false;
               const angleBool = (angle <= 60 || angle >= 130);
               if(noseLandmark){
-                if((noseLandmark.z <= -0.023)){
-                  distanceBool = distance <= 0.16;
+                if(noseLandmark.z <= -0.025){
+                  distanceBool = distance <= 0.12;
                   console.log("D:"+ distanceBool +distance + "\n" + "Z:" +noseLandmark.z);
-                }else{
-                  distanceBool = distance <= 0.14;
-                  console.log("D:"+ distanceBool +distance + "\n" + "Z:" +noseLandmark.z);
-                }
+                } else if(noseLandmark.z <= -0.026){
+                  distanceBool = distance <= 0.13;
+                  console.log("D:"+ distanceBool +distance + "\n" + "Z:" +noseLandmark.z)            
+                } else if(noseLandmark.z <= -0.029){
+                    distanceBool = distance <= 0.145;
+                    console.log("D:"+ distanceBool +distance + "\n" + "Z:" +noseLandmark.z);
+                } else {
+                    distanceBool = distance <= 0.16;
+                    console.log("D:"+ distanceBool +distance + "\n" + "Z:" +noseLandmark.z);
+                }              
               }
+              
               //console.log("D:"+ distanceBool +distance + "\n" + "Z:" +noseLandmark.z);
 
               if(chinLandmark){ // 152번 랜드마크가 인식될 경우 
                  if( distanceBool || angleBool){
                   canvasCtx.font = "10px Arial";
                   canvasCtx.fillStyle = "red";
-                  canvasCtx.fillText("You have to fix your pose.", 10, 30);
+                  canvasCtx.fillText("뷸균형, 바르게 고쳐앉아주세요.", 10, 30);
 
                   if (!alarmTimeout.current) { // 현재 타이머가 실행 중이지 않을 때만 새 타이머 설정
                     alarmTimeout.current = setTimeout(() => {
                         // 타이머가 실행될 때 조건을 다시 확인
-                        if (distanceBool || ZvaluesBool || angleBool) {
+                        if (distanceBool || angleBool) {
                             fixAlarm(); // 조건이 여전히 참이라면 알람 보내기
-                            sendAlarmLog(); // 백엔드로 알람 로그 보내는 함수 호출
+                            sendAlarmLog(); // 백엔드로 알람 로그 보내는 함수 호출(
+                            setAlarm(alarm + 1);
                         }
                         alarmTimeout.current = null; // 타이머 초기화
                     }, 3000); // 5초 후 실행(테스트때문에 임의로 해둔 시간!!)
