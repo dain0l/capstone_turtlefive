@@ -5,13 +5,15 @@ import api from '../services/api';
 import '../index.css'
 
 
-import turtle1 from '../img/turtle1.jpg';
-import turtle2 from '../img/turtle2.jpg';
-import turtle3 from '../img/turtle3.jpg';
-import turtle4 from '../img/turtle4.jpg';
-import turtle5 from '../img/turtle5.jpg';
-import turtle6 from '../img/turtle6.jpg';
-import turtle7 from '../img/turtle7.jpg';
+import turtle11 from '../img/turtle11.png';
+import turtle22 from '../img/turtle22.png';
+import turtle33 from '../img/turtle33.png';
+import turtle44 from '../img/turtle44.png';
+import turtle55 from '../img/turtle55.png';
+import turtle66 from '../img/turtle66.png';
+import turtle77 from '../img/turtle77.png';
+import background from '../img/background.png';
+
 
 import {
   BarChart,
@@ -131,6 +133,24 @@ const LargeContainer1 = styled.div`
   overflow: hidden;
   // border: 1.5px solid #505050;
 
+`;
+
+const LargeContainer3 = styled.div`
+  background-color: #ffffff;
+  padding: 20px;
+  margin: 20px 0;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  align-items: center; 
+  width: auto;
+  height: 400px;
+  overflow: hidden;
+  background-image: url(${background});
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  // border: 1.5px solid #505050;
 `;
 
 const ChartContainer = styled.div`
@@ -413,25 +433,25 @@ const handleServiceButtonClick = () => {
                 style={{ width: '100%', height: '100%' }} // 스와이퍼의 너비와 높이를 부모 요소에 맞게 설정
             >
             <SwiperSlide>
-              <img src={turtle1} alt="Slide 1" style={{ width: '90%', height: '90%' , borderRadius: '10px' }} />
+              <img src={turtle11} alt="Slide 11" style={{ width: '90%', height: '90%' , borderRadius: '10px' }} />
             </SwiperSlide>
             <SwiperSlide>
-              <img src={turtle3} alt="Slide 2" style={{ width: '90%', height: '90%', borderRadius: '10px' }} />
+              <img src={turtle33} alt="Slide 22" style={{ width: '90%', height: '90%', borderRadius: '10px' }} />
             </SwiperSlide>
             <SwiperSlide>
-              <img src={turtle2} alt="Slide 3" style={{ width: '90%', height: '90%' , borderRadius: '10px'}} />
+              <img src={turtle22} alt="Slide 33" style={{ width: '90%', height: '90%' , borderRadius: '10px'}} />
             </SwiperSlide>
             <SwiperSlide>
-              <img src={turtle4} alt="Slide 4" style={{ width: '90%', height: '90%' , borderRadius: '10px'}} />
+              <img src={turtle44} alt="Slide 44" style={{ width: '90%', height: '90%' , borderRadius: '10px'}} />
             </SwiperSlide>
             <SwiperSlide>
-              <img src={turtle5} alt="Slide 4" style={{ width: '90%', height: '90%' , borderRadius: '10px'}} />
+              <img src={turtle55} alt="Slide 55" style={{ width: '90%', height: '90%' , borderRadius: '10px'}} />
             </SwiperSlide>
             <SwiperSlide>
-              <img src={turtle6} alt="Slide 4" style={{ width: '90%', height: '90%', borderRadius: '10px' }} />
+              <img src={turtle66} alt="Slide 66" style={{ width: '90%', height: '90%', borderRadius: '10px' }} />
             </SwiperSlide>
             <SwiperSlide>
-              <img src={turtle7} alt="Slide 4" style={{ width: '90%', height: '90%' , borderRadius: '10px'}} />
+              <img src={turtle77} alt="Slide 77" style={{ width: '90%', height: '90%' , borderRadius: '10px'}} />
             </SwiperSlide>
           </Swiper>
         </RectangleContainer>
@@ -470,13 +490,20 @@ const handleServiceButtonClick = () => {
         </LargeContainer1>
 
 
-        <LargeContainer1>
-        <div style={{ padding: '20px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
-              <h3>자세교정, </h3>
-              <h3>Doc. Turtle과 함께 해야 하는 이유</h3>
-              
-        </div>                       
-        </LargeContainer1>
+        <LargeContainer3>
+          <div style={{
+            padding: '20px',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'center',
+            background: 'rgba(255, 255, 255, 0.8)', // Optional: Add a semi-transparent background to make the text more readable
+            borderRadius: '10px' // Optional: Add rounded corners
+          }}>
+            <h3>자세교정, </h3>
+            <h3>Doc. Turtle과 함께 해야 하는 이유</h3>
+          </div>
+      </LargeContainer3>
            
                 
         {isLoggedIn && ( // 로그인 상태일 때만 아래 컨텐츠를 렌더링
