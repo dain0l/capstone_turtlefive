@@ -450,13 +450,18 @@ const handleServiceButtonClick = () => {
         <Link to="/inquiry" style={{ width: '50%', textDecoration: 'none', color: 'black' }}>
 
               <ChartContainer>
-                <TextContainer>
-                  {data2.length > 0 ? (
-                    <h1 style={{ margin: 0 }}>🦖{data2[0].name}님의 일주일간의 알람 빈도수입니다.</h1>
-                  ) : (
-                    <h1 style={{ margin: 0 }}>..로딩중</h1>
-                  )}
-                </TextContainer>
+              <TextContainer>
+                {data2.length > 0 ? (
+                  <h1 style={{ margin: 0 }}>🦖{data2[0].name}님의 일주일간의 알람 빈도수입니다.</h1>
+                ) : (
+                  <>
+                    <h1>로그인을 완료하셔야 해당 서비스를 이용하실 수 있습니다!</h1>
+                    <h3>로그인을 완료하여 개인화된 서비스를 경험해 보세요. <br></br>
+                      계정이 없으시다면, 간단한 회원가입 절차를 통해 새로운 계정을 만드실 수 있습니다.</h3>
+                  </>
+                )}
+              </TextContainer>
+
 
                 <ResponsiveContainer height="100%" width="100%">
                   <BarChart data={data2} margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
@@ -474,7 +479,12 @@ const handleServiceButtonClick = () => {
                   {data2.length > 0 ? (
                     <h1 style={{ margin: 0, marginTop: '30px'}}>자세 교정 서비스 이용하기</h1>
                   ) : (
-                    <h1 style={{ margin: 0 }}>..로딩중</h1>
+                    <h1 style={{ margin: 0, marginTop: '30px' }}>
+                      로그인 후 이용해주세요!</h1>
+
+                    // "로그인을 완료하셔야 해당 서비스를 이용하실 수 있습니다. 로그인을 통해 개인화된 서비스를 경험해 보세요. 
+                    // 만약 계정이 없으시다면, 회원가입을 진행해 주시길 바랍니다. 회원가입은 간단하며, 몇 분이면 완료할 수 있습니다. 
+                    // 로그인 후에는 다양한 혜택과 서비스를 마음껏 이용하실 수 있습니다. 궁금하신 점이 있으시면 언제든지 문의해 주세요."
                   )}
                 </TextContainer2>
 
@@ -493,22 +503,18 @@ const handleServiceButtonClick = () => {
           <div style={{ padding: '20px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', lineHeight: '80%'}}>
             <h1 style={{ fontSize: '40px' }}>Doc. Turtle과 함께 해야 하는 이유</h1>  
             <h2 style={{ fontSize: '30px' }}>Doc. Turtle, 이런 분들에게 필요합니다.</h2>
-
             <p style={{ textAlign: 'center', fontSize: '25px', lineHeight: '1.8' }}>
               거북목, 목과 허리의 디스크, 오십견, 퇴행성 관절염, 스트레스 등 <br/>
               현대인의 잘못된 행동 습관, 또는 반복적인 직업 활동으로 인해 생기는 통증과 불편함 등은<br/>
               생활 속 꾸준한 자세 교정을 통해 회복될 수 있습니다.
             </p>
-
           </div>                 
         </LargeContainer3>
            
                 
         {isLoggedIn && ( // 로그인 상태일 때만 아래 컨텐츠를 렌더링
         <Row>
-
           <LargeContainer2>
-
             <ChatBotContainer>
               <TextContainer2>
                 <h1 style={{ margin: 0, marginTop: '30px'}}>🐢 챗봇에게 물어보세요! 💬</h1>
