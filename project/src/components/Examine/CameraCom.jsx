@@ -7,8 +7,8 @@ import { checkZValues } from "../Algorithms/checkZValues";
 import { checkDistance } from "../Algorithms/checkDistance"; 
 import { checkAngle } from "../Algorithms/checkAngle";
 import api from '../../services/api';
-import React, { useRef, useEffect, useState } from 'react';
-
+import React, { useRef, useEffect } from 'react';
+import soundFile from "../../img/sound.mp3";
 
 const CameraContainer = styled.div`
   position: relative;
@@ -80,7 +80,7 @@ function fixAlarm(){
     });
   }
 }
-const CameraCom = ({ setAlarm, alarm }) => { 
+const CameraCom = ({ setAlarm,sound}) => { 
     const webcamRef = useRef(null);
     const canvasRef = useRef(null);
     let alarmTimeout = useRef(null);
@@ -167,7 +167,9 @@ const CameraCom = ({ setAlarm, alarm }) => {
                         if (distanceBool || angleBool) {
                             fixAlarm(); // 조건이 여전히 참이라면 알람 보내기
                             sendAlarmLog(); // 백엔드로 알람 로그 보내는 함수 호출(
-                            setAlarm(alarm + 1);
+                            setAlarm(prevAlarm => prevAlarm + 1);
+                                // 소리 재생
+                                new Audio(soundFile).play();
                         }
                         alarmTimeout.current = null; // 타이머 초기화
                     }, 3000); // 5초 후 실행(테스트때문에 임의로 해둔 시간!!)
