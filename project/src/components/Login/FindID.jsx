@@ -21,16 +21,23 @@ function FindID() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
+      // Axios를 사용하여 서버로부터 데이터 요청
       const response = await api.post('/findID', {
         name: name, 
         phoneNo: phoneNo
       });
+      // 응답 상태 코드가 200~299 범위 외면 오류 발생
       if (response.status < 200 || response.status >= 300) {
-        throw new Error('회원 정보를 조회할 수 없습니다.');
+        throw new Error('회원 정보를 가져올 수 없습니다.');
       }
-      const data = await response.json();
-      setEmail(data.email);
+
+      const data = response.data; // 서버에서 응답 받은 데이터
+      console.log('API 응답 데이터:', data); 
+      
+      // 팝업창을 통해 사용자에게 이메일 정보 알림
+      alert(`🐻‍❄️ 해당 ID는 ${data}입니다. 🐻‍❄️`);
     } catch (error) {
+      // 오류 발생 시, 팝업창을 통해 오류 메시지 알림
       alert(error.message);
     }
   };

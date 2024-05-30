@@ -8,6 +8,7 @@ import image2 from '../img/image2.jpg';
 import image3 from '../img/image3.jpg';
 import image4 from '../img/image4.jpg'; 
 
+
 const AllContainer  = styled.div`
 background: linear-gradient(to bottom, rgba(184, 253, 214, 0.562) 20%, rgba(68, 68, 81, 0.676) 40%, rgba(22, 22, 33, 0.813) 100%);
 `;

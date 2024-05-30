@@ -95,7 +95,7 @@ function Turtle() {
   const sendToWebcamlog = async () => {
     const endTime = formatLocalDateToISOString();
     console.log("startTime:" + startTime, endTime);
-    try {
+     try {
       const response = await api.post('/webcam/log', {
         startTime: startTime,
         endTime: endTime
@@ -109,20 +109,25 @@ function Turtle() {
     }
     navigator('/home');
   };
+
       useEffect(() => {
       fetchUserInfo();
     });
     useEffect(() => {
-      // 웹캠이 실행되는 동안 매 분마다 webcam 상태를 업데이트하는 타이머 설정
+      // 컴포넌트가 마운트될 때의 시간을 기록
+      const mountedTime = Date.now();
+      
       const timer = setInterval(() => {
-        const currentTime = formatLocalDateToISOString();
-        const duration = (new Date(currentTime) - new Date(startTime)) / 1000 / 60;
-        setWebcam((prevWebcam) => prevWebcam + duration); // webcam 상태의 최신 값을 사용하여 상태 업데이트
-      }, 60000); // 60000ms = 1분
-    
-      // 컴포넌트가 언마운트될 때 타이머 해제
-      return () => clearInterval(timer);
-    }, [startTime]);
+        // 현재 시간과 마운트될 때의 시간 차이를 계산하여 분으로 변환
+        const elapsedTimeInMinutes = Math.floor((Date.now() - mountedTime) / 60000);
+        
+        // 이전 웹캠 실행 시간을 가져와서 경과 시간을 더해서 업데이트
+        setWebcam(elapsedTimeInMinutes);
+      }, 60000); // 1분마다 업데이트
+      
+      return () => clearInterval(timer); // 컴포넌트가 언마운트될 때 타이머 해제
+    }, []); // 빈 의존성 배열을 사용하여 컴포넌트가 마운트될 때 한 번만 실행됨
+
     
 
 
@@ -131,7 +136,6 @@ function Turtle() {
       api.get('/mypage')
       .then(response => {
           setAlaram(response.data.alarmCount);
-          setWebcam(response.data.webcamDuration);
       })
       .catch(error => {
           console.error('Error fetching user info:', error);
