@@ -219,7 +219,6 @@ function MyPage() {
                     ) : null}
                 </p>
                 <p>웹캠 실행시간: {userInfo?.webcamDuration}분</p>
-
                 </UserInfoContainer>
             </Container>
         </AllContainer>
