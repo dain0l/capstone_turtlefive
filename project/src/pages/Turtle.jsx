@@ -128,10 +128,6 @@ function Turtle() {
       return () => clearInterval(timer); // 컴포넌트가 언마운트될 때 타이머 해제
     }, []); // 빈 의존성 배열을 사용하여 컴포넌트가 마운트될 때 한 번만 실행됨
 
-    
-
-
-
     const fetchUserInfo = () => {
       api.get('/mypage')
       .then(response => {
