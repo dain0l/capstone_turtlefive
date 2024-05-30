@@ -12,7 +12,6 @@ const BackgroundContainer = styled.div`
   height: 100vh;
   flex-direction: column;
   align-items: center;
-  background-color: #CFD8DC; /* Light grey background */
   padding: 20px;
   box-sizing: border-box;
 `;
@@ -25,12 +24,14 @@ const Title = styled.div`
   margin-bottom: 2.19rem;
   font-family: 'TheJamsil5Bold';
 `;
+
 const InfoContainer = styled.div`
   display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  align-items: center;
+  flex-direction: column; /* 세로로 정렬 */
+  justify-content: center; /* 수직 중앙 정렬 */
+  align-items: center; /* 수평 중앙 정렬 */
   width: 100%;
+  margin-bottom: 20px; /* 하단 여백 추가 */
 `;
 
 
@@ -40,9 +41,9 @@ const Container = styled.div`
   justify-content: space-around; 
   align-items: center;
   width: 90%; 
+  height: 85%; /* 수정: 화면 높이의 80%를 차지하도록 설정 */
   margin: 0 auto;
-  gap: 20px; 
-  background-color: #FFFFFF;
+  background-color: #ffffffc3;
   border-radius: 20px; 
   box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
   box-sizing: border-box;
@@ -56,10 +57,11 @@ const ContentContainer = styled.div`
   align-items: center;
   gap: 20px;
   width: 100%;
+  height: 80%; /* 수정: 화면 높이의 80%를 차지하도록 설정 */
 `;
 
 const Button = styled.button`
-  padding: 15px 30px;
+  padding: 12px 30px;
   background-color:  #37474F; /* Green */
   border: none;
   color: white;

@@ -517,7 +517,7 @@ const handleServiceButtonClick = () => {
               <StyledChatBot to="/chatbot"><img src={chatbot} width = '250px' height = '250px'/></StyledChatBot>
 
               <TextContainer2>
-                <h1 style={{ margin: 0, marginTop: '20px', fontSize: '40px', cursor: 'pointer'
+                <h1 style={{ margin: 0, marginTop: '20px', fontSize: '20px', cursor: 'pointer'
                   }} onClick={handleServiceButtonClick}>대화 시작하기 ➤</h1>
               </TextContainer2>
             </ChatBotContainer>
