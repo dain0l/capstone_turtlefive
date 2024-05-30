@@ -1,3 +1,23 @@
 body {
-    background-image: linear-gradient(to left, #ffffff, #bab9b9);
+    position: relative;
+    margin: 0;
+    padding: 0;
+    height: auto;
+    width: auto;
+    overflow-x: hidden;
+}
+
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../img/backgroundImage.jpg'); /* 이미지를 넣고 싶은 경로로 수정 */
+    background-repeat: repeat; /* 이미지를 반복적으로 배치 */
+    background-position: center center; /* 이미지를 가운데에 위치시키도록 설정 */
+    background-size: fill; /* 이미지를 화면에 맞게 조정 */
+    filter: blur(10px); /* 블러 효과 적용 */
+    z-index: -1; /* 배경 이미지가 다른 내용 뒤에 있도록 설정 */
 }

@@ -15,22 +15,23 @@ const header = {
 };
 
 const StyledLink = styled(Link)`
-  color: #505050;
+  color: #f5ede6d6;
   text-decoration: none;
   margin-right: 2rem;
 
   &:hover {
-    background-color: #dff0d8; /* 호버 시 배경색 변경 */
+    background-color: #f5ede6d6; /* 호버 시 배경색 변경 */
     text-decoration: underline;
   }
 `;
 
 const AllContainer = styled.div`
+    min-height: 100vh; /* 최소 높이를 화면 높이만큼으로 설정 */
 `;
 
 const HeaderContainer = styled.div`
   display: flex;
-  background: #f5ede6d6;
+  background: #515151;
   color: #288A72;
   padding: 1rem;
   width: 100%;
@@ -45,11 +46,10 @@ const NavigationWrapper = styled.nav`
 
 
 const Logo = styled.div`
-  color: #505050;
+  color: #f5ede6d6;
   font-size: 1.5rem;
   font-weight: bold;
 `;
-
 
 // 스타일링된 컴포넌트 정의
 const Container = styled.div`
@@ -102,13 +102,15 @@ const WarningText2 = styled.span`
 const UserInfoContainer = styled.div`
     align-items: flex-start; /* 좌측 정렬 */
     max-width: 600px; /* 최대 넓이 설정 */
-    background-color: #f9f9f9;
+    background-color: #ffffff98;
     padding: 1rem;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 그림자 추가 */
     width: 100%;
     text-align: left;
     margin-top: 1rem;
+    font-size: 20px;
+
 `;
 
  // 로그아웃 함수
@@ -219,7 +221,6 @@ function MyPage() {
                     ) : null}
                 </p>
                 <p>웹캠 실행시간: {userInfo?.webcamDuration}분</p>
-
                 </UserInfoContainer>
             </Container>
         </AllContainer>

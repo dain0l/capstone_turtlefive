@@ -48,7 +48,7 @@ const Container = styled.div`
 
 const HeaderContainer = styled.div`
   display: flex;
-  background: #f5ede6d6;
+  background: #515151;
   color: #eeeeee;
   padding: 1rem;
   width: 100%;
@@ -223,7 +223,7 @@ const StyledFooter = styled.footer`
 `;
 
 const Logo = styled.div`
-  color: #505050;
+  color: #f5ede6d6;
   font-size: 1.5rem;
   font-weight: bold;
 `;
@@ -233,12 +233,12 @@ const NavigationWrapper = styled.nav`
 `;
 
 const StyledLink = styled(Link)`
-  color: #505050;
+  color: #f5ede6d6;
   text-decoration: none;
   margin-right: 2rem;
 
   &:hover {
-    background-color: #dff0d8; /* 호버 시 배경색 변경 */
+    background-color: #f5ede6d6; /* 호버 시 배경색 변경 */
     text-decoration: underline;
   }
 `;
@@ -388,15 +388,17 @@ const handleServiceButtonClick = () => {
           <HeaderContainer>
                 <Logo to="/register">Doc. Turtle</Logo>
                 <NavigationWrapper>
+                  
                     {isLoggedIn ? (
                         <>
                         <StyledLink to="#" onClick={handleLogout}>logout</StyledLink>
                         <StyledLink to="/myPage">my page</StyledLink>
+                        <StyledLink to="/chatbot">chatbot</StyledLink>
                         </>
                     ) : (
                         <StyledLink to="/login">login</StyledLink> // 로그아웃 상태일 때 로그인 버튼 표시
                     )}
-                    <StyledLink to="/chatbot">chatbot</StyledLink>
+                    <StyledLink to="/singup">signup</StyledLink> 
                     <StyledLink to="/explain">explain</StyledLink> 
                     </NavigationWrapper>
         </HeaderContainer>

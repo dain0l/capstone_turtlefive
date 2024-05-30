@@ -15,7 +15,7 @@ const GlobalStyle = createGlobalStyle`
 
 const HeaderContainer = styled.div`
   display: flex;
-  background: #f5ede6d6;
+  background: #515151;
   color: #288A72;
   padding: 1rem;
   width: 100%;
@@ -25,18 +25,18 @@ const HeaderContainer = styled.div`
 `;
 
 const StyledLink = styled(Link)`
-  color: #505050;
+  color: #f5ede6d6;
   text-decoration: none;
   margin-right: 2rem;
 
   &:hover {
-    background-color: #dff0d8; /* 호버 시 배경색 변경 */
+    background-color: #f5ede6d6; /* 호버 시 배경색 변경 */
     text-decoration: underline;
   }
 `;
 
 const Logo = styled.div`
-  color: #505050;
+  color: #f5ede6d6;
   font-size: 1.5rem;
   font-weight: bold;
 `;
