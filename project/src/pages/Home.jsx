@@ -59,54 +59,23 @@ const HeaderContainer = styled.div`
 `;
 
 const RectangleContainer = styled.div`
-  margin: 20px 0;
   flex-direction: row;
   width: auto;
   height: 400px;
   background-color: #FFFFFF;
   padding: 20px;
-  border-radius: 10px;
-  margin-top: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-right: auto;
-  margin-left: auto;
-  border-radius: 50px;
   border: 0.6px solid #ececec;
   overflow: hidden;
- // border: 1.5px solid #505050; /* 테두리 속성 추가 */
- box-shadow: 0 0 5px #f5ede6d6; /* 검정색 그림자 추가 */
- margin-bottom:30px;
+  border-radius: 50px;
+  box-shadow: 0 0 5px #f5ede6d6; /* 검정색 그림자 추가 */
+
   @media screen and (max-width: 768px) {
     width: calc(100% - 6%);
   }
 `;
-const Rectangle2Container = styled.div`
-  background-color: #FFFFFF; --> 오늘 ~ 님의 비율, 차트 background
-  padding: 20px;
-  border-radius: 10px;
-  margin-top: 20px;
-  margin-bottom: 80px;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: left; /* 차트를 중앙에 위치시키기 위해 center로 변경 */
-  width: auto; /*87%*/
-  height: 300px;
-  margin-left: 20px;
-  overflow: hidden;
-  border: 1.5px solid #ececec;
-  margin-right: 20px;
-  text-align: left;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  
-  @media screen and (min-width: 1000px) {
-    margin-left: 45px;
-    width: 90%;
-  }
-`;
-
 
 const LargeContainer1 = styled.div`
   background-color: #ffffff;
@@ -123,7 +92,6 @@ const LargeContainer1 = styled.div`
   border: 0.6px solid #ececec;
   box-shadow: 0 0 5px #f5ede6d6; /* 검정색 그림자 추가 */
   margin-bottom:30px;
-  
 
 `;
 
@@ -180,10 +148,19 @@ const ChatBotContainer = styled.div`
   border-radius: 10px;
   display: flex;
   justify-content: center;
+  flex-direction: column;
   align-items: center;
   width: 40%;
   height: 100%;
   overflow: hidden;
+
+
+
+  // flex-direction: column;
+  // width: 30%;
+  // height: 100%;
+  // overflow: hidden;
+  // border-radius: 40px;
 `;
 
 const PercentageContainer = styled.div`
@@ -478,6 +455,8 @@ const handleServiceButtonClick = () => {
                   )}
                 </TextContainer2>
 
+                {/* 💬 */}
+
                 <StyledButton onClick={handleServiceButtonClick} >📷</StyledButton>
                 <TextContainer2>
                 <h1 style={{ margin: 0, marginTop: '30px', fontSize: '40px', cursor: 'pointer'  // 커서를 손가락 모양으로 변경
@@ -504,15 +483,24 @@ const handleServiceButtonClick = () => {
         <Row>
 
           <LargeContainer2>
-
+            
             <ChatBotContainer>
-            <StyledChatBot to="/chatbot"><img src={chatbot} /></StyledChatBot>
+              <TextContainer2>
+                <h1 style={{ margin: 0, marginTop: '30px'}}>🐢 챗봇에게 물어보세요! 💬</h1>
+              </TextContainer2>
+
+              <StyledChatBot to="/chatbot"><img src={chatbot} width = '250px' height = '250px'/></StyledChatBot>
+
+              <TextContainer2>
+                <h1 style={{ margin: 0, marginTop: '20px', fontSize: '40px', cursor: 'pointer'
+                  }} onClick={handleServiceButtonClick}>대화 시작하기 ➤</h1>
+              </TextContainer2>
             </ChatBotContainer>
 
             <PercentageContainer>
               <div style={{marginBottom: '5px'}}>
                 <h1>오늘 {data.name}님의 자세 유지 비율👏</h1>
-                <div style={{ width: '100%', backgroundColor: '#b8b8b8', borderRadius: '10px', overflow: 'hidden' }}>
+                <div style={{ width: '100%', backgroundColor: '#cccccc', borderRadius: '10px', overflow: 'hidden' }}>
                   <div style={{ width: `${data.posturePercentage}%`, backgroundColor: '#4287f5', textAlign: 'right', lineHeight: '70px', borderRadius: '10px 0 0 10px', color: 'white', paddingRight: '10px' }}>
                     {data.posturePercentage}%
                   </div>
@@ -521,7 +509,7 @@ const handleServiceButtonClick = () => {
 
               <div style={{marginTop: '10px'}}>
                 <h1>오늘 총 이용자 중에서 👑상위{data.rankPercentage < 1 ? 1 : data.rankPercentage}%</h1>
-                  <div style={{ width: '100%', backgroundColor: '#b8b8b8', borderRadius: '10px', overflow: 'hidden' }}>
+                  <div style={{ width: '100%', backgroundColor: '#cccccc', borderRadius: '10px', overflow: 'hidden' }}>
                     <div style={{ width: `${data.rankPercentage < 1 ? 1 : data.rankPercentage}%`, backgroundColor: '#FFA07A', textAlign: 'right', lineHeight: '70px', borderRadius: '10px 0 0 10px', color: 'black', paddingRight: '10px' }}>
                       {data.rankPercentage < 1 ? 1 : data.rankPercentage}%
                     </div>
