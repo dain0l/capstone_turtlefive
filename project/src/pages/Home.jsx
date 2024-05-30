@@ -286,6 +286,9 @@ const StyledButton = styled.button`
 `;
 
 function Home() {
+
+
+
   // 로그인 상태를 관리하는 상태 변수
   const [data, setData] = useState([]);
   const [data2, setData2] = useState([]);
