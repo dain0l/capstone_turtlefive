@@ -142,15 +142,12 @@ const CameraCom = ({ setAlarm,sound}) => {
                 //   distanceBool = distance <= 0.128;
                 //   console.log("D:"+ distanceBool +distance + "\n" + "Z:" +noseLandmark.z);
                 // } else 
-                if(noseLandmark.z >= -0.0235){
-                    sofar = true;
-                  console.log("D:"+ distanceBool +distance + "\n" + "Z:" +noseLandmark.z)          
-                }
-                else if(noseLandmark.z <= -0.026){
-                  distanceBool = distance <= 0.13;
+
+                 if(noseLandmark.z <= -0.026){
+                  distanceBool = distance <= 0.155;
                   console.log("D:"+ distanceBool +distance + "\n" + "Z:" +noseLandmark.z)            
-                } else if(noseLandmark.z <= -0.0298){
-                    distanceBool = distance <= 0.152;
+                } else if(noseLandmark.z <= -0.028){
+                    distanceBool = distance <= 0.17;
                     console.log("D:"+ distanceBool +distance + "\n" + "Z:" +noseLandmark.z);
                 } else {
                     distanceBool = distance <= 0.16;
@@ -179,10 +176,6 @@ const CameraCom = ({ setAlarm,sound}) => {
                         alarmTimeout.current = null; // 타이머 초기화
                     }, 3000); // 5초 후 실행(테스트때문에 임의로 해둔 시간!!)
                 }
-                }else if(sofar){
-                  canvasCtx.font = "10px Arial";
-                  canvasCtx.fillStyle = "blue";
-                  canvasCtx.fillText("너무 멀어요 가까이 앉아주세요..", 10, 30);
                 }
                 else {
                   canvasCtx.font = "10px Arial";
